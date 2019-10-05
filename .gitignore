@@ -130,3 +130,7 @@ dmypy.json
 # data blocks
 fewBlocks/
 foundation/fewBlocks/
+
+# dependencies
+foundations/dataparser/dependencies/
+

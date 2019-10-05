@@ -1,9 +1,9 @@
-from datetime import datetime
 import os
+from datetime import datetime
 
 import psycopg2 as psycopg2
-from psycopg2 import IntegrityError
 from blockchain_parser.blockchain import Blockchain
+from psycopg2 import IntegrityError
 
 # https://github.com/alecalve/python-bitcoin-blockchain-parser
 # https://libraries.io/pypi/blockchain-parser
@@ -18,13 +18,12 @@ i = 1
 
 
 def insert_block(block):
-        cur.execute(
-            '''INSERT INTO bitcoin.block (hash,version,hashPrev,hashMerkleRoot,nBits,nNonce,ntime) 
-                   values (%s , %s , %s , %s , %s , %s , %s) returning id''',
-            (block.hash, block.header.version, block.header.previous_block_hash, block.header.merkle_root,
-             block.header.bits, block.header.nonce, datetime.timestamp(block.header.timestamp)))
-        return cur.fetchone()[0]
-
+    cur.execute(
+        '''INSERT INTO bitcoin.block (hash,version,hashPrev,hashMerkleRoot,nBits,nNonce,ntime) 
+               values (%s , %s , %s , %s , %s , %s , %s) returning id''',
+        (block.hash, block.header.version, block.header.previous_block_hash, block.header.merkle_root,
+         block.header.bits, block.header.nonce, datetime.timestamp(block.header.timestamp)))
+    return cur.fetchone()[0]
 
 
 def insert_transaction(transaction, block_id):
@@ -59,7 +58,9 @@ def insert_addresses(addresses, output_id):
             public_key = address.public_key.hex()
         address_id = get_address(address.address)
         if address_id is None:
-            cur.execute("INSERT INTO bitcoin.address (hash, public_key, address) values ('%s', '%s' , '%s')  returning id" %(address.hash.hex(), public_key, address.address))
+            cur.execute(
+                "INSERT INTO bitcoin.address (hash, public_key, address) values ('%s', '%s' , '%s')  returning id" % (
+                    address.hash.hex(), public_key, address.address))
             address_id = cur.fetchone()[0]
         cur.execute("INSERT INTO bitcoin.output_address (output_id, address_id) values (%s , %s)",
                     (output_id, address_id))
@@ -78,7 +79,7 @@ for blck in blockchain.get_unordered_blocks():
         try:
             blck_id = insert_block(blck)
         except IntegrityError:
-            #print("already saved!")
+            # print("already saved!")
             con.rollback()
             continue
 
@@ -98,6 +99,6 @@ for blck in blockchain.get_unordered_blocks():
     except (Exception, psycopg2.DatabaseError) as error:
         print("Error in transaction Reverting all other operations of a transaction ", error)
         con.rollback()
-        #break
+        # break
 
 con.close()
