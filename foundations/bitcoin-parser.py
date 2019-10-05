@@ -93,7 +93,8 @@ for blck in blockchain.get_unordered_blocks():
 
             i = i + 1
             print("%d blocks saved. last block id = %d" % (i, blck_id))
-            con.commit()
+
+        con.commit()
     except (Exception, psycopg2.DatabaseError) as error:
         print("Error in transaction Reverting all other operations of a transaction ", error)
         con.rollback()
