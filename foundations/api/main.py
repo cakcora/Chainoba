@@ -1,47 +1,37 @@
 from config import cfg as CONFIG
 from flask import Flask
-from flask_restful import Resource, Api
+from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
+from resources.address import Address
+from resources.block import Block
+from resources.transaction import Transaction
 
-DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=CONFIG.POSTGRES_USER, pw=CONFIG.POSTGRES_PW,
-                                                               url=CONFIG.POSTGRES_URL, db=CONFIG.POSTGRES_DB)
-
+# Flask application initialization
 app = Flask(__name__)
 api = Api(app)
 db = SQLAlchemy(app)
 
-POSTGRES = {
-    'user': 'postgres',
-    'pw': 'password',
-    'db': 'my_database',
-    'host': 'localhost',
-    'port': '5432',
-}
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\
-%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
+# PostgreSQL DB URL setup
+DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=CONFIG.POSTGRES_USER, pw=CONFIG.POSTGRES_PW,
+                                                               url=CONFIG.POSTGRES_HOST, db=CONFIG.POSTGRES_DB)
+# SQLALCHEMY ORM setup
+# For more information: https://www.sqlalchemy.org/
+app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+db = SQLAlchemy(app)
 
 # TODO
-# Add a database connection to PostgreSQL
+# 1. Update the API endpoints for
+#    a. Block
+#    b. Transaction
+#    c. Address
 
-class Address(Resource):
-    def get(self):
-        return {'hello': 'world'}
-
-
-class Block(Resource):
-    def get(self):
-        return {'hello': 'world'}
-
-
-class Transaction(Resource):
-    def get(self):
-        return {'hello': 'world'}
-
-
-api.add_resource(Address, '/bitcoin/address')
-api.add_resource(Block, '/bitcoin/block')
-api.add_resource(Transaction, '/bitcoin/transaction')
+# Endpoints
+api.add_resource(Address, '/bitcoin/addresses', endpoint='address')
+api.add_resource(Block, '/bitcoin/blocks', endpoint='block')
+api.add_resource(Transaction, '/bitcoin/transactions', endpoint='transaction')
 
 if __name__ == '__main__':
+    # debug=True in development mode, for production set debug=False
     app.run(debug=True)
