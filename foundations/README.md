@@ -2,6 +2,7 @@
 
 **This package includes dataparser with data insertions to PostgreSQL and RESTful APIs.**
 
+**BETA** API Documentation: http://159.203.28.234:8000/
 ### Project structure
 ```python
 foundations/

@@ -9,7 +9,7 @@ with open("requirements.txt", 'r') as fp:
 setup(
     name='COMP 7570/4060',
     version='1.0',
-    description='Blochain Analytics',
+    description='Blockchain Analytics',
     packages=['COMP 7570/4060'],  # same as name
     install_requires=packages
 )
