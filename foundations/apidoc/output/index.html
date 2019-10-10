@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMP 7570 / 4060 - Blockchain Analytics</title>
+    
+<link href="./css/combined.css" rel="stylesheet">
+<script type="text/javascript" src="./js/combined.js"></script>
+     
+</head>
+<body>
+    <div class="jumbotron">
+    <div class="container">
+        <h1>COMP 7570 / 4060 - Blockchain Analytics</h1><p>
+        API documentation to use the endpoints to query blockchain data.
+        </p></div>
+</div><div id="help-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Keyboard Shortcuts</h3>
+            </div>
+            <div class="modal-body">
+                <div class="help_row">
+                    <h4>Site wide shortcuts</h4>
+                    <dl class="keyboard-mappings">
+                        <dt>?</dt>
+                        <dd>Bring up this help dialog</dd>
+                    </dl>
+                    <dl class="keyboard-mappings">
+                        <dt>esc</dt>
+                        <dd>Hide this help dialog</dd>
+                    </dl>
+                    <dl class="keyboard-mappings">
+                        <dt>/</dt>
+                        <dd>Focus search bar</dd>
+                    </dl>
+                </div>
+                <div class="help_row">
+                    <h4>Navigation</h4>
+                    <dl class="keyboard-mappings">
+                        <dt>j <em>or</em> n</dt>
+                        <dd>Move to next method or type</dd>
+                    </dl>
+                    <dl class="keyboard-mappings">
+                        <dt>k <em>or</em> p</dt>
+                        <dd>Move to previous method or type</dd>
+                    </dl>
+            
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</div><div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="doc-sidebar"><input type="search" placeholder="search" class="col-md-12 form-control">
+<div class="scroll-spyable">
+    <ul class="nav nav-list doc-sidenav">
+        <li class="nav-header"><h5>Methods</h5></li><li class="nav-header" data-group="Bitcoin"><a href="javascript:navigateTo({category: 'Bitcoin'}, ['category', 'method', 'type'])" data-target="#c-Bitcoin"><h6>Bitcoin</h6></a></li>
+        <li data-group="Bitcoin"  data-item="Blocks"><a href="javascript:navigateTo({category: 'Bitcoin', method: 'BlockList'}, ['category', 'method'])" data-target="#m-BlockList"><span>Blocks</span></a></li>
+    </ul>
+    <ul class="nav nav-list doc-sidenav">
+        <li class="nav-header"><h5>Types</h5></li>
+        <li data-group="None" data-item="Address"><a href="javascript:navigateTo({category: 'None', type: 'Address'}, ['category', 'method'])" data-target="#t-Address"><span>Address</span></a></li>
+        <li data-group="None" data-item="Block"><a href="javascript:navigateTo({category: 'None', type: 'Block'}, ['category', 'method'])" data-target="#t-Block"><span>Block</span></a></li>
+        <li data-group="None" data-item="Transaction"><a href="javascript:navigateTo({category: 'None', type: 'Transaction'}, ['category', 'method'])" data-target="#t-Transaction"><span>Transaction</span></a></li>
+    </ul>
+</div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div id="item-head" class="item">
+                <h4></h4>
+                <div class="diff-header"></div>
+                <div class="stack">
+                    <h5>hello</h5>
+                </div>
+            </div>
+            <div class="page-header">
+                <h2>Methods</h2>
+            </div>
+            <ul class="list-unstyled">
+    <li class="category" id="c-Bitcoin"><h3>Bitcoin</h3>
+        <ul class="list-unstyled">
+            <li class="method item" id="m-BlockList" data-method="GET">
+                <h4>Blocks</h4><div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+<h5 class="title"></h5>
+
+<div class="description stack">
+    
+    <div class="diff_version" data-version="v1.0">Query for an existing block(s) based on timestamp</div></div><div class="request stack">
+    <h5><i class="i-request"></i> Request: </h5>
+    <h6>Resource: </h6>
+
+    <code  class="diff_version" data-version="v1.0"><span class="hur">http://uofmblockchainanalytics.com/bitcoin/blocks</span></code>
+    <h6>Query String Parameters: </h6><table class="table table-bordered table-hover table-condensed">
+        <colgroup>
+            <col></col>
+            <col width="160px"></col>
+            <col width="70px"></col>
+            <col width="50%"></col>
+        </colgroup>
+        <thead>
+            <tr>
+            <th><span
+            >Parameter</span></th>
+            <th><span
+            >Type</span></th>
+            <th><span
+            >Optional</span></th>
+            <th><span
+            >Description</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        <tr class="diff_version " data-version="v1.0">
+            <td><span class="str">date_offset</span></td>
+            <td><span class="typ">integer<td><span class="lit"></span></td>
+            <td><span class="com">Timeframe of the required data</span></td>
+        </tr>
+        <tr class="diff_version " data-version="v1.0">
+            <td><span class="str">day</span></td>
+            <td><span class="typ">integer<td><span class="lit"></span></td>
+            <td><span class="com">Day of block creation</span></td>
+        </tr>
+        <tr class="diff_version " data-version="v1.0">
+            <td><span class="str">month</span></td>
+            <td><span class="typ">integer<td><span class="lit"></span></td>
+            <td><span class="com">Month of block creation</span></td>
+        </tr>
+        <tr class="diff_version " data-version="v1.0">
+            <td><span class="str">year</span></td>
+            <td><span class="typ">integer<td><span class="lit"></span></td>
+            <td><span class="com">Year of block creation</span></td>
+        </tr>
+        </tbody>
+    </table>
+    <h6>Body: </h6>
+    <div class="code"><table class="table-hover">
+        <colgroup>
+            <col width="50%%"></col>
+            <col width="50%%"></col>
+        </colgroup>
+        <tbody>
+
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">{</span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"date_offset"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
+        <td class="com">Timeframe of the required data</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"day"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
+        <td class="com">Day of block creation</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"month"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
+        <td class="com">Month of block creation</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"year"</span><span class="pun">: </span><span class="typ">integer</span></td>
+        <td class="com">Year of block creation</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">}</span></td>
+        <td></td>
+    </tr>
+        </tbody>
+    </table></div>
+</div>
+
+<div class="response stack">
+    <h5><i class="i-response"></i> Response: </h5>
+    <h6>Body: </h6>
+    <div class="code"><table class="table-hover">
+        <colgroup>
+            <col width="50%%"></col>
+            <col width="50%%"></col>
+        </colgroup>
+        <tbody>
+
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">{</span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"Block"</span><span class="pun">: </span><span class="typ"><a href="javascript:navigateTo({type: 'Block'}, ['category', 'method'])">Block</a></span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">}</span></td>
+        <td></td>
+    </tr>
+        </tbody>
+    </table></div>
+    <h6>Codes: </h6><table class="table table-bordered table-hover table-condensed">
+        <colgroup>
+            <col width="50px"></col>
+            <col></col>
+            <col width="50%"></col>
+        </colgroup>
+        <thead>
+            <tr>
+            <th><span
+            >Code</span></th>
+            <th><span
+            >Message</span></th>
+            <th><span
+            >Description</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        <tr class="diff_version " data-version="v1.0">
+            <td><span class="lit">404</span></td>
+            <td><span class="str">Block not found</span></td>
+            <td><span class="com">Block does not exists</span></td>
+        </tr>
+        </tbody>
+    </table>
+</div><div class="stack sample"><div data-version="v1.0">
+
+<h5><i class="i-sample"></i> Sample: </h5>
+<h6>Request: </h6>
+<div class="code"><span class="hme">GET</span> <span class="hur">/blocks?date_offset=42&amp;day=42&amp;month=42&amp;year=42</span> <span class="hpr">HTTP/1.1</span>
+<span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+<span class="pun">{
+</span>  <span class="str">"date_offset"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>  <span class="str">"day"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>  <span class="str">"month"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>  <span class="str">"year"</span><span class="pun">: </span><span class="lit">42</span>
+<span class="pun">}</span></div>
+        <h6>Response: </h6>
+        <div class="code"><span class="hpr">HTTP/1.1</span> <span class="lit">200</span> <span class="str">OK</span>
+<span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+<span class="pun">{
+</span>  <span class="str">"Block"</span><span class="pun">: </span><span class="pun">{
+</span>    <span class="str">"block_id"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>    <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>    <span class="str">"transactions"</span><span class="pun">: </span><span class="pun">[
+</span>      <span class="pun">{
+</span>        <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>        <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
+</span>          <span class="pun">{
+</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+          <span class="pun">}</span><span class="pun">,
+</span>          <span class="pun">{
+</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+          <span class="pun">}</span>
+        <span class="pun">]</span><span class="pun">,
+</span>        <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
+</span>          <span class="pun">{
+</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+          <span class="pun">}</span><span class="pun">,
+</span>          <span class="pun">{
+</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+          <span class="pun">}</span>
+        <span class="pun">]</span><span class="pun">,
+</span>        <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+      <span class="pun">}</span><span class="pun">,
+</span>      <span class="pun">{
+</span>        <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>        <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
+</span>          <span class="pun">{
+</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+          <span class="pun">}</span><span class="pun">,
+</span>          <span class="pun">{
+</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+          <span class="pun">}</span>
+        <span class="pun">]</span><span class="pun">,
+</span>        <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
+</span>          <span class="pun">{
+</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+          <span class="pun">}</span><span class="pun">,
+</span>          <span class="pun">{
+</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+          <span class="pun">}</span>
+        <span class="pun">]</span><span class="pun">,
+</span>        <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+      <span class="pun">}</span>
+    <span class="pun">]</span>
+  <span class="pun">}</span>
+<span class="pun">}</span></div></div></div>
+                </div>
+            </li>
+        </ul>
+    </li>
+            </ul>
+            <div class="page-header">
+                <h2>Types</h2>
+            </div>
+            <ul class="list-unstyled">
+    <li class="category" id="c-None">
+        <ul class="list-unstyled">
+            <li class="type item" id="t-Address">
+                <h4>Address</h4><div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+
+<div class="description stack">
+    
+    <div class="diff_version" data-version="v1.0">An address</div></div><div class="configuration stack">
+    <h5><i class="i-presentation"></i> Presentation: </h5>
+    <div class="code"><table class="table-hover">
+        <colgroup>
+            <col width="50%%"></col>
+            <col width="50%%"></col>
+        </colgroup>
+        <tbody>
+
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">{</span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
+        <td class="com">Hash of the transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="typ">integer</span></td>
+        <td class="com">Transaction identifier</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">}</span></td>
+        <td></td>
+    </tr>
+        </tbody>
+    </table></div>
+
+
+</div><div class="stack sample"><div data-version="v1.0">
+
+<h5><i class="i-sample"></i> Formats: </h5>
+<h6>Sample: </h6>
+<div class="code"><span class="pun">{
+</span>  <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+<span class="pun">}</span></div></div></div>
+                </div>
+            </li>
+            <li class="type item" id="t-Block">
+                <h4>Block</h4><div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+
+<div class="description stack">
+    
+    <div class="diff_version" data-version="v1.0">A Block</div></div><div class="configuration stack">
+    <h5><i class="i-presentation"></i> Presentation: </h5>
+    <div class="code"><table class="table-hover">
+        <colgroup>
+            <col width="50%%"></col>
+            <col width="50%%"></col>
+        </colgroup>
+        <tbody>
+
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">{</span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"block_id"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
+        <td class="com">Block identifier</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
+        <td class="com">Hash of the block</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"transactions"</span><span class="pun">: </span><span class="pun">[</span></td>
+        <td class="com">List of transactions</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>    <span class="typ"><a href="javascript:navigateTo({type: 'Transaction'}, ['category', 'method'])">Transaction</a></span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="pun">]</span></td>
+        <td></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">}</span></td>
+        <td></td>
+    </tr>
+        </tbody>
+    </table></div>
+
+
+</div><div class="stack sample"><div data-version="v1.0">
+
+<h5><i class="i-sample"></i> Formats: </h5>
+<h6>Sample: </h6>
+<div class="code"><span class="pun">{
+</span>  <span class="str">"block_id"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>  <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>  <span class="str">"transactions"</span><span class="pun">: </span><span class="pun">[
+</span>    <span class="pun">{
+</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>      <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
+</span>        <span class="pun">{
+</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+        <span class="pun">}</span><span class="pun">,
+</span>        <span class="pun">{
+</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+        <span class="pun">}</span>
+      <span class="pun">]</span><span class="pun">,
+</span>      <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
+</span>        <span class="pun">{
+</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+        <span class="pun">}</span><span class="pun">,
+</span>        <span class="pun">{
+</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+        <span class="pun">}</span>
+      <span class="pun">]</span><span class="pun">,
+</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span><span class="pun">,
+</span>    <span class="pun">{
+</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>      <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
+</span>        <span class="pun">{
+</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+        <span class="pun">}</span><span class="pun">,
+</span>        <span class="pun">{
+</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+        <span class="pun">}</span>
+      <span class="pun">]</span><span class="pun">,
+</span>      <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
+</span>        <span class="pun">{
+</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+        <span class="pun">}</span><span class="pun">,
+</span>        <span class="pun">{
+</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+        <span class="pun">}</span>
+      <span class="pun">]</span><span class="pun">,
+</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span>
+  <span class="pun">]</span>
+<span class="pun">}</span></div></div></div>
+                </div>
+            </li>
+            <li class="type item" id="t-Transaction">
+                <h4>Transaction</h4><div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+
+<div class="description stack">
+    
+    <div class="diff_version" data-version="v1.0">A transaction</div></div><div class="configuration stack">
+    <h5><i class="i-presentation"></i> Presentation: </h5>
+    <div class="code"><table class="table-hover">
+        <colgroup>
+            <col width="50%%"></col>
+            <col width="50%%"></col>
+        </colgroup>
+        <tbody>
+
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">{</span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
+        <td class="com">Hash of the transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[</span></td>
+        <td class="com">List of input addresses</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>    <span class="typ"><a href="javascript:navigateTo({type: 'Address'}, ['category', 'method'])">Address</a></span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="pun">]</span><span class="pun">,</span></td>
+        <td></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[</span></td>
+        <td class="com">List of output addresses</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>    <span class="typ"><a href="javascript:navigateTo({type: 'Address'}, ['category', 'method'])">Address</a></span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="pun">]</span><span class="pun">,</span></td>
+        <td></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="typ">integer</span></td>
+        <td class="com">Transaction identifier</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">}</span></td>
+        <td></td>
+    </tr>
+        </tbody>
+    </table></div>
+
+
+</div><div class="stack sample"><div data-version="v1.0">
+
+<h5><i class="i-sample"></i> Formats: </h5>
+<h6>Sample: </h6>
+<div class="code"><span class="pun">{
+</span>  <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>  <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
+</span>    <span class="pun">{
+</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span><span class="pun">,
+</span>    <span class="pun">{
+</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span>
+  <span class="pun">]</span><span class="pun">,
+</span>  <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
+</span>    <span class="pun">{
+</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span><span class="pun">,
+</span>    <span class="pun">{
+</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
+</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span>
+  <span class="pun">]</span><span class="pun">,
+</span>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+<span class="pun">}</span></div></div></div>
+                </div>
+            </li>
+        </ul>
+    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="btn-group">
+        <button class="btn btn-default i-previous" type="button"></button>
+        <button class="btn btn-default i-top" type="button"></button>
+        <button class="btn btn-default i-next" type="button"></button>
+    </div>
+</footer>
+
+</body>
+</html>

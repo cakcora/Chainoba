@@ -1,0 +1,108 @@
+configuration:
+  title: COMP 7570 / 4060 - Blockchain Analytics
+  description: API documentation to use the endpoints to query blockchain data.
+  uri: http://uofmblockchainanalytics.com/bitcoin
+categories:
+  Blockchain:
+    description: Query transactions
+  Users:
+    description: Query transactions from Bitcoin blockchain
+versions:
+  v1.0:
+    status: beta
+    major: 1
+    minor: 1
+    methods:
+      BlockList:
+        label: Blocks
+        method: GET
+        description: Query for an existing block(s) based on timestamp
+        uri: /blocks
+        category: Bitcoin
+        request_parameters:
+          year:
+            type: integer
+            description: Year of block creation
+          month:
+            type: integer
+            description: Month of block creation
+          day:
+            type: integer
+            description: Day of block creation
+          date_offset:
+            type: integer
+            description: Timeframe of the required data
+        request_body:
+          type: object
+          properties:
+            year:
+              type: integer
+              description: Year of block creation
+            month:
+              type: integer
+              description: Month of block creation
+            day:
+              type: integer
+              description: Day of block creation
+            date_offset:
+              type: integer
+              description: Timeframe of the required data
+        response_body:
+          type: object
+          properties:
+            Block:
+              type: Block
+        response_codes:
+          - code: 404
+            message: Block not found
+            description: Block does not exists
+
+    types:
+      Block:
+        description: A Block
+        item:
+          type: object
+          properties:
+            block_id:
+              type: integer
+              description: Block identifier
+            hash:
+              type: string
+              description: Hash of the block
+            transactions:
+              type: array
+              description: List of transactions
+              items:
+                type: Transaction
+      Transaction:
+        description: A transaction
+        item:
+          type: object
+          properties:
+            transaction_id:
+              type: integer
+              description: Transaction identifier
+            hash:
+              type: string
+              description: Hash of the transaction
+            input_addresses:
+              type: array
+              description: List of input addresses
+              items:
+                type: Address
+            output_addresses:
+              type: array
+              description: List of output addresses
+              items:
+                type: Address
+      Address:
+        description: An address
+        item:
+          type: object
+          properties:
+            transaction_id:
+              type: integer
+              description: Transaction identifier
+            hash:
+              type: string
+              description: Hash of the transaction

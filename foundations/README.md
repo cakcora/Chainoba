@@ -3,18 +3,32 @@
 **This package includes dataparser with data insertions to PostgreSQL and RESTful APIs.**
 
 ### Project structure
+```python
 foundations/
-+-- api
-|   +-- __init__.py
-|   +-- main.py
-+-- dataparser
-|   +-- __init__.py
-|   +-- bitcoin-parser.py
-|   +-- Data_model.sql
-+-- __init__.py
-+-- environment.yml
-+-- README.md
-+-- setup.py
+├── README.md
+├── __init__.py
+├── api/
+│   ├── __init__.py
+│   ├── common/
+│   │   ├── __init__.py
+│   │   └── utils.py
+│   ├── config.py
+│   ├── main.py
+│   └── resources/
+│       ├── __init__.py
+│       ├── address.py
+│       ├── block.py
+│       └── transaction.py
+├── apidoc/
+│   └── source.yml
+├── dataparser/
+│   ├── Data_model.sql
+│   ├── __init__.py
+│   ├── bitcoin-parser.py
+│   └── dependencies/
+├── requirements.txt
+└── setup.py
+```
 
 ## Project Setup
 
