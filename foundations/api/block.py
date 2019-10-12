@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, LargeBinary, BigInteger
+from sqlalchemy import Column, Integer, String, ForeignKey, LargeBinary, BigInteger, DateTime
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -111,11 +112,29 @@ class OutputAddress(Base):
             self.id, self.output_id, self.address_id)
 
 
+class BlockReadableTime(Base):
+    __tablename__ = 'block_readable_time'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    hash = Column(String)
+    id = Column(Integer, primary_key=True)
+    version = Column(Integer)
+    hashprev = Column(String)
+    hashmerkleroot = Column(String)
+    ntime = Column(Integer)
+    nbits = Column(Integer)
+    nnonce = Column(Integer)
+    timestamp = Column(DateTime)
+
+    def __repr__(self):
+        return "<Block(hash='{}', id='{}', version={}, hashprev={}, hashmerkleroot={}, ntime={}, nbits={}, nnonce={}, timstamp={}>" \
+            .format(self.hash, self.id, self.version, self.hashprev, self.hashmerkleroot, self.ntime, self.nbits,
+                    self.nnonce, self.timestamp)
+
 print(s.query(Block).first())
 print(s.query(Address).first())
 print(s.query(Transaction).first())
 print(s.query(Input).first())
 print(s.query(Output).first())
 print(s.query(OutputAddress).first())
-
+print(s.query(BlockReadableTime).first())
 s.close()
