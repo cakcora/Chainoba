@@ -1,36 +1,17 @@
-from config import cfg as CONFIG
 from flask import Flask
 from flask_restful import Api
-from flask_sqlalchemy import SQLAlchemy
-from resources.address import Address
-from resources.block import Block
-from resources.transaction import Transaction
+from resources.address import AddressEndpoint
+from resources.block import BlockEndpoint
+from resources.transaction import TransactionEndpoint
 
 # Flask application initialization
 app = Flask(__name__)
 api = Api(app)
-db = SQLAlchemy(app)
-
-# PostgreSQL DB URL setup
-DB_URL = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=CONFIG.POSTGRES_USER, pw=CONFIG.POSTGRES_PW,
-                                                               url=CONFIG.POSTGRES_HOST, db=CONFIG.POSTGRES_DB)
-# SQLALCHEMY ORM setup
-# For more information: https://www.sqlalchemy.org/
-app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-# TODO
-# 1. Update the API endpoints for
-#    a. Block
-#    b. Transaction
-#    c. Address
 
 # Endpoints
-api.add_resource(Address, '/bitcoin/addresses', endpoint='address')
-api.add_resource(Block, '/bitcoin/blocks', endpoint='block')
-api.add_resource(Transaction, '/bitcoin/transactions', endpoint='transaction')
+api.add_resource(AddressEndpoint, '/bitcoin/addresses')
+api.add_resource(BlockEndpoint, '/bitcoin/blocks')
+api.add_resource(TransactionEndpoint, '/bitcoin/transactions')
 
 if __name__ == '__main__':
     # debug=True in development mode, for production set debug=False
