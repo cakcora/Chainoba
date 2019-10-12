@@ -1,20 +1,23 @@
+from .config import cfg as CONFIG
 from sqlalchemy import Column, Integer, String, ForeignKey, LargeBinary, BigInteger, DateTime
-
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
+from sqlalchemy.orm import sessionmaker
+
 Base = declarative_base()
 
-from main import DB_URI
+# PostgreSQL DB URL setup
+DB_URI = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=CONFIG.POSTGRES_USER, pw=CONFIG.POSTGRES_PW,
+                                                               url=CONFIG.POSTGRES_HOST, db=CONFIG.POSTGRES_DB)
 
 Base = declarative_base()
 engine = create_engine(DB_URI)
 
-from sqlalchemy.orm import sessionmaker
-
+# Session to connect to the postgres sqlalchemy engine
 Session = sessionmaker(bind=engine)
 
-s = Session()
+db_session = Session()
 
 CONSTANTS = {
     'schema': 'bitcoin'
@@ -130,11 +133,14 @@ class BlockReadableTime(Base):
             .format(self.hash, self.id, self.version, self.hashprev, self.hashmerkleroot, self.ntime, self.nbits,
                     self.nnonce, self.timestamp)
 
-print(s.query(Block).first())
-print(s.query(Address).first())
-print(s.query(Transaction).first())
-print(s.query(Input).first())
-print(s.query(Output).first())
-print(s.query(OutputAddress).first())
-print(s.query(BlockReadableTime).first())
-s.close()
+
+if __name__ == '__main__':
+    s = Session()
+    print(s.query(Block).first())
+    print(s.query(Address).first())
+    print(s.query(Transaction).first())
+    print(s.query(Input).first())
+    print(s.query(Output).first())
+    print(s.query(OutputAddress).first())
+    print(s.query(BlockReadableTime).first())
+    s.close()
