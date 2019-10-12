@@ -135,4 +135,4 @@ foundation/fewBlocks/
 foundations/dataparser/dependencies/
 
 # db configuration
-foundations/api/config.py
+foundations/api/models/config.py
