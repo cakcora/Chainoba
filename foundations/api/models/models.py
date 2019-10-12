@@ -1,9 +1,9 @@
-from .config import cfg as CONFIG
 from sqlalchemy import Column, Integer, String, ForeignKey, LargeBinary, BigInteger, DateTime
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-
 from sqlalchemy.orm import sessionmaker
+
+from .config import cfg as CONFIG
 
 Base = declarative_base()
 
@@ -40,6 +40,9 @@ class Block(Base):
         return "<Block(hash='{}', id='{}', version={}, hashprev={}, hashmerkleroot={}, ntime={}, nbits={}, nnonce={})>" \
             .format(self.hash, self.id, self.version, self.hashprev, self.hashmerkleroot, self.ntime, self.nbits,
                     self.nnonce)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns()}
 
 
 class Address(Base):
