@@ -11,8 +11,6 @@ from webargs.flaskparser import use_kwargs
 
 class BlockEndpoint(Resource):
     """Resource class endpoint to serve block related requests
-
-    TODO: Complete the API
     """
 
     args = {
