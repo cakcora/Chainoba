@@ -16,7 +16,7 @@ DB_URI = 'postgresql+psycopg2://{user}:{pw}@{url}/{db}'.format(user=CONFIG.POSTG
                                                                url=CONFIG.POSTGRES_HOST, db=CONFIG.POSTGRES_DB)
 # SQLALCHEMY ORM setup
 # For more information: https://www.sqlalchemy.org/
-app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
+app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
