@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "a02d450b-1a8a-4faf-ac96-86083ece93c4",
+		"name": "Chainoba/foundations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get blocks by day",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/bitcoin/blocks?year=2009&month=1&day=3&date_offset=1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"blocks"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2009"
+						},
+						{
+							"key": "month",
+							"value": "1"
+						},
+						{
+							"key": "day",
+							"value": "3"
+						},
+						{
+							"key": "date_offset",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Get blocks by day."
+			},
+			"response": []
+		},
+		{
+			"name": "get transactions by block id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/bitcoin/transactions?block_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "block_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
