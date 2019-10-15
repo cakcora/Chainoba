@@ -1,4 +1,5 @@
 import time
+import json
 from datetime import datetime, timedelta
 
 from flask_restful import Resource
@@ -9,10 +10,14 @@ from webargs import fields, validate
 from webargs.flaskparser import use_kwargs
 
 
-class BlockEndpoint(Resource):
-    """Resource class endpoint to serve block related requests
-    """
+def serialize_block(block):
+    return {'id': block.id, 'hash_prev': block.hashprev, 'hash': block.hash, 'n_time': block.ntime,
+            'nnonce': block.nnonce, 'version': block.version, 'hash_merkle_root': block.hashmerkleroot,
+            'nbits': block.nbits}
 
+
+# Returns the blocks by day of the year
+class BlockEndpoint(Resource):
     args = {
         'year': fields.Integer(
             required=True,
@@ -41,18 +46,19 @@ class BlockEndpoint(Resource):
         from_time = datetime(year, month, day)
         to_time = from_time + timedelta(days=date_offset)
 
-        from_unixtime = time.mktime(from_time.timetuple())
+        from_unixtime = time.mktime(from_time.timetuple())  # get the unix time to form the query
         to_unixtime = time.mktime(to_time.timetuple())
 
+        # perform the query
         block_data = db_session.query(Block).filter(
             and_(Block.ntime >= from_unixtime, Block.ntime <= to_unixtime)).order_by(Block.ntime.asc())
         blk_counter = 0
 
-        for blk in block_data:
-            print(blk.__dict__)
+        block_list = dict() # the list of blocks returned by the API
+        for block in block_data:
+            block_as_dict = serialize_block(block)
+            block_list[block_as_dict['hash']] = block_as_dict
             blk_counter += 1
-            date = blk.__dict__['ntime']
-            print("Date: {}".format(datetime.fromtimestamp(date)))
 
-        return {'year': year, 'month': month, 'day': day, 'date_offset': date_offset, 'from_unix_time': from_unixtime,
-                'to_unix_time': to_unixtime, 'num_blocks': blk_counter}
+        return {'from_date': from_unixtime, 'to_date': to_unixtime, 'num_blocks': blk_counter, 'blocks': block_list}
+
