@@ -73,6 +73,9 @@ class Transaction(Base):
                                                                                               self.locktime,
                                                                                               self.block_id)
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns()}
+
 
 class Input(Base):
     __tablename__ = 'input'
@@ -89,6 +92,9 @@ class Input(Base):
         return "<Input(id='{}', prevout_hash={}, prevout_n={}, scriptsig={}, sequence={}, transaction_id={}, prev_output_id={})>".format(
             self.id, self.prevout_hash, self.prevout_n, self.scriptsig, self.sequence, self.transaction_id,
             self.prev_output_id)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns()}
 
 
 class Output(Base):
@@ -116,6 +122,9 @@ class OutputAddress(Base):
     def __repr__(self):
         return "<OutputAddress(id='{}', output_id={}, address_id={})>".format(
             self.id, self.output_id, self.address_id)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns()}
 
 
 class BlockReadableTime(Base):
