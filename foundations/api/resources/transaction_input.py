@@ -7,7 +7,7 @@ from webargs.flaskparser import use_kwargs
 
 def serialize_transaction_input(trans_input):
     return {'id': trans_input.id, 'prevout_hash': trans_input.prevout_hash, 'prevout_n': trans_input.prevout_n,
-            'scriptsig': trans_input.scriptsig, 'sequence': trans_input.sequence,
+            'scriptsig': str(trans_input.scriptsig), 'sequence': trans_input.sequence,
             'prev_output_id': trans_input.prev_output_id, 'transaction_id': trans_input.transaction_id
             }
 
@@ -24,7 +24,7 @@ class TransactionInputEndpoint(Resource):
     @use_kwargs(args)
     def get(self, transaction_id):
         transaction_inputs = db_session.query(TransactionInput).filter(
-            TransactionInput.transaction_id == transaction_id)
+            TransactionInput.transaction_id == transaction_id).all()
 
         trans_input_counter = 0
         trans_input_list = dict()  # the list of transactions returned by the API
@@ -34,4 +34,4 @@ class TransactionInputEndpoint(Resource):
             trans_input_counter += 1
 
         return {'transaction_id': transaction_id, 'num_trans_inputs': trans_input_counter,
-                'transactio_inputs': trans_input_list}
+                'transaction_inputs': trans_input_list}

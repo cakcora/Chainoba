@@ -6,13 +6,13 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_transaction_output(trans_output):
-    return {'id': trans_output.id, 'value': trans_output.value, 'scriptpubkey': trans_output.scriptpubkey,
+    return {'id': trans_output.id, 'value': trans_output.value, 'scriptpubkey': str(trans_output.scriptpubkey),
             'transaction_id': trans_output.transaction_id, 'index': trans_output.index,
-            'script_type': trans_output.script_type
+            'script_type': str(trans_output.script_type).strip()
             }
 
 
-class TransactionInputEndpoint(Resource):
+class TransactionOutputEndpoint(Resource):
     args = {
         'transaction_id': fields.Integer(
             required=True,
