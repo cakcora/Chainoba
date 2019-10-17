@@ -17,7 +17,7 @@ api.add_resource(BlockEndpoint, '/bitcoin/blocks')
 api.add_resource(TransactionEndpoint, '/bitcoin/transactions')
 api.add_resource(TransactionInputEndpoint, '/bitcoin/transactions/inputs')
 api.add_resource(TransactionOutputEndpoint, '/bitcoin/transactions/outputs')
-api.add_resource(TransactionOutputAddressEndpoint, '/bitcoin/transactions/output_addresses')
+api.add_resource(TransactionOutputAddressEndpoint, '/bitcoin/transactions/addr')
 
 if __name__ == '__main__':
     # debug=True in development mode, for production set debug=False

@@ -8,8 +8,9 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_address(address, output_id):
-    return {'id': address.id, 'output_id': output_id, 'hash': address.hash, 'public_key': address.public_key,
-            'address': address.address
+    return {'address_id': address.id, 'output_id': output_id, 'hash': address.hash.strip(),
+            'public_key': address.public_key.strip(),
+            'address': address.address.strip()
             }
 
 
@@ -35,16 +36,17 @@ class TransactionOutputAddressEndpoint(Resource):
         transaction_output_id_list = db_session.query(TransactionOutput).filter(
             TransactionOutput.transaction_id == transaction_id).order_by(TransactionOutput.id.asc()).with_entities(
             TransactionOutput.id).all()
-
-        transaction_output_address_list = dict()
-
+        output_addresses = []
+        transaction_output_address_list = {'addresses': []}
         for output_id in transaction_output_id_list:
             output_address_list = db_session.query(TransactionOutputAddress).filter(
-                TransactionOutputAddress.output_id == output_id).order_by(TransactionOutputAddress.id.asc())
+                TransactionOutputAddress.output_id == output_id.id).order_by(TransactionOutputAddress.id.asc()).all()
             for output_address in output_address_list:
                 trans_output_address_as_dict = serialize_transaction_output_address(output_address.address_id,
-                                                                                    output_id)
-                transaction_output_address_list[trans_output_address_as_dict["id"]] = trans_output_address_as_dict
+                                                                                    output_id.id)
+                output_addresses.append(trans_output_address_as_dict)
+
+        transaction_output_address_list['addresses'] = output_addresses
 
         return {'transaction_id': transaction_id,
-                'transaction-output_addresses': trans_output_address_as_dict}
+                'transaction-output_addresses': transaction_output_address_list['addresses']}
