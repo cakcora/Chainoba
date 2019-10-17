@@ -33,7 +33,3 @@ Maybe the desired graph with particular properties is required to be stored.
 * **Can your results be used as input in the algorithms of other groups? (this estimate will be updated after you see algorithms that are being implemented by others)**
 No, we implement the final module which is visualization.
  
-
- 
-Code: Algorithms and functions that I will implement.
-`<store>` is a typical example.
