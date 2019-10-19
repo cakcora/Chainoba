@@ -1,9 +1,9 @@
 from flask_restful import Resource
-from foundations.api.models.models import OutputAddress as TransactionOutputAddress
-from foundations.api.models.models import Output as TransactionOutput
-from foundations.api.models.models import Address
-from foundations.api.models.models import db_session
-from webargs import fields, validate
+from models.models import Address
+from models.models import Output as TransactionOutput
+from models.models import OutputAddress as TransactionOutputAddress
+from models.models import db_session
+from webargs import fields
 from webargs.flaskparser import use_kwargs
 
 

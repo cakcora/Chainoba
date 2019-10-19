@@ -1,10 +1,9 @@
 import time
-import json
 from datetime import datetime, timedelta
 
 from flask_restful import Resource
-from foundations.api.models.models import Block
-from foundations.api.models.models import db_session
+from models.models import Block
+from models.models import db_session
 from sqlalchemy import and_
 from webargs import fields, validate
 from webargs.flaskparser import use_kwargs

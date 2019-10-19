@@ -1,7 +1,7 @@
 from flask_restful import Resource
-from foundations.api.models.models import Input as  TransactionInput
-from foundations.api.models.models import db_session
-from webargs import fields, validate
+from models.models import Input as  TransactionInput
+from models.models import db_session
+from webargs import fields
 from webargs.flaskparser import use_kwargs
 
 
