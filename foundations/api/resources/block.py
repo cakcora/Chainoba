@@ -51,12 +51,10 @@ class BlockEndpoint(Resource):
         # perform the query
         block_data = db_session.query(Block).filter(
             and_(Block.ntime >= from_unixtime, Block.ntime <= to_unixtime)).order_by(Block.ntime.asc())
-        blk_counter = 0
 
         block_list = dict()  # the list of blocks returned by the API
         for block in block_data:
             block_as_dict = serialize_block(block)
             block_list[block_as_dict['hash']] = block_as_dict
-            blk_counter += 1
 
-        return {'from_date': from_unixtime, 'to_date': to_unixtime, 'num_blocks': blk_counter, 'blocks': block_list}
+        return {'from_date': from_unixtime, 'to_date': to_unixtime, 'num_blocks': len(block_list), 'blocks': block_list}
