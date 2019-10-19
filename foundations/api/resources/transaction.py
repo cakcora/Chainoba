@@ -1,3 +1,4 @@
+import requests
 from flask_restful import Resource
 from models.models import Transaction
 from models.models import db_session
@@ -10,25 +11,35 @@ def serialize_transaction(transaction):
             'locktime': transaction.locktime, 'version': transaction.block_id}
 
 
+args_block = {
+    'block_id': fields.List(fields.Integer(validate=lambda blk_id: blk_id > 0))
+}
+
+
 class TransactionEndpoint(Resource):
-    args_block = {
-        'block_id': fields.Integer(
-            required=True,
-            validate=lambda blk_id: blk_id > 0,
-            location='query'
-        )
-    }
 
     @use_kwargs(args_block)
     def get(self, block_id):
-        block_transactions = db_session.query(Transaction).filter(Transaction.block_id == block_id).order_by(
-            Transaction.id.asc())
-        trans_counter = 0
 
-        trans_list = dict()  # the list of transactions returned by the API
-        for transaction in block_transactions:
-            trans_as_dict = serialize_transaction(transaction)
-            trans_list[trans_as_dict['hash']] = trans_as_dict
-            trans_counter += 1
+        block_transactions_dict = {}
+        for blk_id in block_id:
+            transaction_ids = []
+            block_transactions = db_session.query(Transaction).filter(Transaction.block_id == blk_id).order_by(
+                Transaction.id.asc())
 
-        return {'block id': block_id, 'num_trans': trans_counter, 'transactions': trans_list}
+            trans_list = []  # the list of transactions returned by the API
+            for transaction in block_transactions:
+                trans_as_dict = serialize_transaction(transaction)
+                trans_list.append(trans_as_dict)
+                transaction_ids.append(trans_as_dict['id'])
+
+            print("Transaction ids: {}".format(transaction_ids))
+            input_response = requests.post('http://localhost:5000/bitcoin/inputs',
+                                           json={'transaction_ids': transaction_ids}).text
+            print(input_response)
+
+            # Visit this after completing transaction input endpoint
+
+            block_transactions_dict[blk_id] = trans_list
+
+        return {'block_transactions': block_transactions_dict}
