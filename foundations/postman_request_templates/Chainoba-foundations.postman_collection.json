@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a02d450b-1a8a-4faf-ac96-86083ece93c4",
+		"_postman_id": "0a289dd4-e9ee-4924-bb8c-31383a64d9cb",
 		"name": "Chainoba/foundations",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -39,42 +39,47 @@
 						}
 					]
 				},
-				"description": "Get blocks by day."
+				"description": "Get block IDs by day."
 			},
 			"response": []
 		},
 		{
-			"name": "get transactions by block id",
+			"name": "Get transaction IDs by block IDs",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5000/bitcoin/transactions?block_id=1",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"bitcoin",
-						"transactions"
-					],
-					"query": [
-						{
-							"key": "block_id",
-							"value": "1"
-						}
-					]
+					"raw": ""
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "get transaction input by transaction id",
+			"name": "Get transactions by trasanction id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transaction_id\": [1]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "localhost:5000/bitcoin/transactions/inputs?transaction_id=1",
+					"raw": "localhost:5000/bitcoin/transactions/inputs",
 					"host": [
 						"localhost"
 					],
@@ -83,19 +88,13 @@
 						"bitcoin",
 						"transactions",
 						"inputs"
-					],
-					"query": [
-						{
-							"key": "transaction_id",
-							"value": "1"
-						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "get transaction output by transaction id",
+			"name": "get transactions outputs by trasanction id Copy",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -119,6 +118,33 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get transactions output addresses by trasanction id Copy Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/bitcoin/transactions/addr?transaction_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"transactions",
+						"addr"
+					],
+					"query": [
+						{
+							"key": "transaction_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
