@@ -1,3 +1,4 @@
+import json
 import os
 from datetime import datetime
 
@@ -11,7 +12,15 @@ from psycopg2 import IntegrityError
 # containing the .blk files created by bitcoind
 blockchain = Blockchain(os.path.expanduser('fewBlocks'))
 
-con = psycopg2.connect(database="blockchain", user="postgres", password="1", host="127.0.0.1", port="5432")
+
+with open('config.json') as json_data_file:
+    config = json.load(json_data_file)
+con = psycopg2.connect(database=config['db'],
+                       user=config['user'],
+                       password=config['passwd'],
+                       host=config['host'],
+                       port="5432")
+
 con.autocommit = False
 cur = con.cursor()
 i = 1
@@ -79,7 +88,7 @@ for blck in blockchain.get_unordered_blocks():
         try:
             blck_id = insert_block(blck)
         except IntegrityError:
-            # print("already saved!")
+            print("already saved!")
             con.rollback()
             continue
 
@@ -92,9 +101,8 @@ for blck in blockchain.get_unordered_blocks():
             for txin in tx.inputs:
                 insert_input(txin, tran_id)
 
-            i = i + 1
-            print("%d blocks saved. last block id = %d" % (i, blck_id))
-
+        i = i + 1
+        print("%d blocks saved. last block id = %d" % (i, blck_id))
         con.commit()
     except (Exception, psycopg2.DatabaseError) as error:
         print("Error in transaction Reverting all other operations of a transaction ", error)
