@@ -3,7 +3,7 @@
 <h4 align="center"> Graph Analytics Team </h4>
 <h5 align="right"> -Tadepalli Sarada Kiranmayee</h5>
 
-* <b>What is your group, what are your considered articles? </b>
+* <b> What is your group, what are your considered articles? </b>
 
 	- Group name: Graph Analytics
 	- Articles:
