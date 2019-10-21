@@ -14,7 +14,8 @@ The group - Clustering
 - Clustering in weighted networks (survey paper).
 
 ##### What is the aim in your project? What algorithms will you implement?
-> The aim of the project is to cluster blockchain data
+> The aim of the project is to cluster blockchain data. The idea is to tag addresses that belong to a particular vendor/merchant. 
+> - K means clustering 
 
 ##### What type of data do you require from the database, on which blockchain?
 > The data of bitcoin address(input/output) and transaction based on amount are required for the analysis of bitcoin blockchain
