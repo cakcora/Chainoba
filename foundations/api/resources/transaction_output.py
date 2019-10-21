@@ -1,9 +1,9 @@
 from flask_restful import Resource
-from foundations.api.models.models import OutputAddress as TransactionOutputAddress
-from foundations.api.models.models import Output as TransactionOutput
-from foundations.api.models.models import Address
-from foundations.api.models.models import db_session
-from webargs import fields, validate
+from models.models import Address
+from models.models import Output as TransactionOutput
+from models.models import OutputAddress as TransactionOutputAddress
+from models.models import db_session
+from webargs import fields
 from webargs.flaskparser import use_kwargs
 
 
@@ -37,28 +37,28 @@ def serialize_transaction_output_address(trans_output_id):
 
 
 class TransactionOutputEndpoint(Resource):
-    args = {
-        'transaction_id': fields.Integer(
-            required=True,
-            validate=lambda blk_id: blk_id > 0,
-            location='query'
-        )
-    }
+    args = {'output_id': fields.List(fields.Integer(validate=lambda out_id: out_id > 0))}
 
     @use_kwargs(args)
-    def get(self, transaction_id):
-        transaction_outputs = db_session.query(TransactionOutput).filter(
-            TransactionOutput.transaction_id == transaction_id).order_by(TransactionOutput.id.asc()).all()
+    def get(self, output_id):
 
-        trans_output_counter = 0
-        trans_output_list = []
-        trans_output_dict = {'trans_output': []}
-        for trans_output in transaction_outputs:
-            trans_output_address_as_dict = serialize_transaction_output_address(trans_output.id)
-            trans_output_as_dict = serialize_transaction_output(trans_output, trans_output_address_as_dict['addresses'])
-            trans_output_list.append(trans_output_as_dict)
-            trans_output_counter += 1
-        trans_output_dict['trans_output'] = trans_output_list
+        transaction_outputs_dict = {}
+        for out_id in output_id:
+            transaction_outputs = db_session.query(TransactionOutput).filter(
+                TransactionOutput.transaction_id == out_id).order_by(TransactionOutput.id.asc()).all()
 
-        return {'transaction_id': transaction_id, 'num_trans_outputs': trans_output_counter,
-                'transaction-outputs': trans_output_dict['trans_output']}
+            trans_output_list = []
+            for trans_output in transaction_outputs:
+                trans_output_address_as_dict = serialize_transaction_output_address(trans_output.id)
+                trans_output_as_dict = serialize_transaction_output(trans_output,
+                                                                    trans_output_address_as_dict['addresses'])
+                trans_output_list.append(trans_output_as_dict)
+
+            transaction_outputs_dict[out_id] = trans_output_list
+
+        total_inputs = 0
+        for key, value in transaction_outputs_dict.items():
+            total_inputs += len(value)
+
+        return {'num_trans_outputs': total_inputs,
+                'transaction_outputs': transaction_outputs_dict}
