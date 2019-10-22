@@ -1,6 +1,6 @@
- -> #Blockchain Analysis Proposal  <-
--> COMP 7570 <-
--> By Baha Rababah <-
+                                              # Blockchain Analysis Proposal  
+                                                       # COMP 7570 
+                                                    # By Baha Rababah 
 
 
 
