@@ -1,10 +1,11 @@
-#Foundation Team
+# Foundation Team
 The foundation team has below responsibilities:
 
-•	Parsing blockchain data 
+1. Parsing blockchain data 
+2. Building an API interface so that members of other teams can access blockchain data by invoking methods.
 
-•	Building an API interface so that members of other teams can access blockchain data by invoking methods.
-#My Contribution
+# My Contribution
+
 My contribution in foundations team is mainly creating endpoints for API methods:
 1.	Writing and testing code for 3 individual api end points one for Transaction input and one for transaction Output and one for Output addresses. 
 2.	Providing above individual end points for integration with Transaction level data endpoint. (in collaboration with Mario and Mahesh)
