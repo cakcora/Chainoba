@@ -133,6 +133,20 @@ versions:
                   items:
                     type: TransactionOutput
 
+        TransactionOutputAddress:
+          description: A transaction Output Address
+          item:
+            type: object
+              properties:
+                transaction_id:
+                  type: integer
+                  description: transaction identifier
+                transaction-output_addresses:
+                  type: array
+                  properties:
+                  items:
+                    type: TransactionOutputAddress
+
 
 
 
