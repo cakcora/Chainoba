@@ -8,17 +8,17 @@
 foundations/
 ├── README.md
 ├── __init__.py
-├── api
+├── api/
 │   ├── __init__.py
-│   ├── common
+│   ├── common/
 │   │   ├── __init__.py
 │   │   └── utils.py
 │   ├── main.py
-│   ├── models
+│   ├── models/
 │   │   ├── __init__.py
 │   │   ├── config.py
 │   │   └── models.py
-│   ├── resources
+│   ├── resources/
 │   │   ├── __init__.py
 │   │   ├── address.py
 │   │   ├── block.py
@@ -26,21 +26,21 @@ foundations/
 │   │   ├── transaction_input.py
 │   │   ├── transaction_output.py
 │   │   └── transaction_output_address.py
-│   └── tests
+│   └── tests/
 │       └── __init__.py
-├── apidoc
-│   ├── output
+├── apidoc/
+│   ├── output/
 │   └── source.yml
-├── dataparser
+├── dataparser/
 │   ├── Data_model.sql
 │   ├── __init__.py
 │   ├── bitcoin-parser.py
-│   └── dependencies
+│   └── dependencies/
 │       └── python-bitcoin-blockchain-parser
 │           ├── LICENSE
 │           ├── README.md
 │           ├── blockchain_parser
-├── postman_request_templates
+├── postman_request_templates/
 │   └── Chainoba-foundations.postman_collection.json
 ├── requirements.txt
 └── setup.py
