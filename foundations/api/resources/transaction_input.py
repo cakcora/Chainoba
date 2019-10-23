@@ -17,14 +17,14 @@ def serialize_transaction_input(trans_input):
 
 class TransactionInputEndpoint(Resource):
     args_transaction = {
-        'transaction_id': fields.List(fields.Integer(validate=lambda trans_id: trans_id > 0))
+        'transaction_ids': fields.List(fields.Integer(validate=lambda trans_id: trans_id > 0))
     }
 
     @use_kwargs(args_transaction)
-    def get(self, transaction_id):
+    def get(self, transaction_ids):
 
         transaction_inputs_dict = {}
-        for trans_id in transaction_id:
+        for trans_id in transaction_ids:
             transaction_inputs = db_session.query(TransactionInput).filter(
                 TransactionInput.transaction_id == trans_id).all()
 
