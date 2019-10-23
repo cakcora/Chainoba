@@ -106,3 +106,34 @@ versions:
             hash:
               type: string
               description: Hash of the transaction
+      TransactionInput:
+        description: A transaction Input
+        item:
+          type: object
+            properties:
+              num_of_transaction_inputs:
+                type: integer
+                description: number of transaction Inputs
+              transaction_inputs:
+                type: array
+                items:
+                  type: TransactionInput
+
+        TransactionOutput:
+          description: A transaction Output
+          item:
+            type: object
+              properties:
+                num_of_transaction_inputs:
+                  type: integer
+                  description: number of transaction outputs
+                transaction_outputs:
+                  type: array
+                  properties:
+                  items:
+                    type: TransactionOutput
+
+
+
+
+
