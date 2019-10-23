@@ -13,7 +13,6 @@ versions:
     major: 1
     minor: 1
     methods:
-      # Documentation for Block endpoint
       BlockList:
         label: Blocks
         method: GET
@@ -38,71 +37,117 @@ versions:
           properties:
             year:
               type: integer
-              description: Year of block creation (E.g., 2009)
+              description: Year of block creation
             month:
               type: integer
-              description: Month of block creation (E.g., 01)
+              description: Month of block creation
             day:
               type: integer
-              description: Day of block creation (E.g., 01)
+              description: Day of block creation
             date_offset:
               type: integer
-              description: Timeframe of the required data (E.g., 1)
+              description: Timeframe of the required data
         response_body:
           type: object
           properties:
-            from_date:
-              type: string
-              description: The start time of the extracted blocks (E.g., 2009-01-01 00:00:00)
-            to_date:
-              type: string
-              description: The end time of the extracted blocks (E.g., 2009-01-02 00:00:00)
-            num_blocks:
-              type: integer
-              description: The number of extracted blocks between from and to date (E.g., 5)
-            blocks:
-              type: object
-              properties:
-                current_hash:
-                  description: The hash of the current block is the key of 'current_hash' (E.g., 00000000bdee0cd38a8570bf8bdba1476baf7b4114a2cbefffa0ca6ca8ae31b0 )
-                  type: BlockItem
+            Block:
+              type: Block
         response_codes:
           - code: 404
             message: Block not found
             description: Block does not exists
 
-      # Documentation for GetBlockByBlockID endpoint
-      # Documentation for GetTransactionsByTransactionID endpoint
-      # Documentation for GetOutputsByTransactionID endpoint
-      # Documentation for GetOutputAddressByTransaction endpoint
-
     types:
-      BlockItem:
-        description: The contents of a block
+      Block:
+        description: A Block
         item:
           type: object
           properties:
-            id:
+            block_id:
               type: integer
-              description: The block ID (E.g., 1)
-            previous_hash:
+              description: Block identifier
+            hash:
               type: string
-              description: The hash value of the previous block (E.g., 00000000bfd207db43427b40674c368ac4390b21c5990670ae16dadac9c897bd)
-            current_hash:
-              type: string
-              description: The hash value of the current block (E.g., 00000000bdee0cd38a8570bf8bdba1476baf7b4114a2cbefffa0ca6ca8ae31b0)
-            n_time:
-              type: string
-              description: The time of block creation (E.g., 2009-05-03 05:05:38)
-            nonce:
+              description: Hash of the block
+            transactions:
+              type: array
+              description: List of transactions
+              items:
+                type: Transaction
+      Transaction:
+        description: A transaction
+        item:
+          type: object
+          properties:
+            transaction_id:
               type: integer
-              description: The nonce used to create the desired hash value (E.g., 361935961)
-            version:
-              type: integer
-              description: Version of the block (E.g., 1)
-            hash_merkle_root:
+              description: Transaction identifier
+            hash:
               type: string
-              description: The hash of the merkle root (E.g., cefbba69f6d0f9c575dba3dd366b81fd50e5f015a08b9f433b9d45d6e2b)
-            nbits:
+              description: Hash of the transaction
+            input_addresses:
+              type: array
+              description: List of input addresses
+              items:
+                type: Address
+            output_addresses:
+              type: array
+              description: List of output addresses
+              items:
+                type: Address
+      Address:
+        description: An address
+        item:
+          type: object
+          properties:
+            transaction_id:
               type: integer
-              description: The size of the block in bits (E.g., 486604799)
+              description: Transaction identifier
+            hash:
+              type: string
+              description: Hash of the transaction
+      TransactionInput:
+        description: A transaction Input
+        item:
+          type: object
+            properties:
+              num_of_transaction_inputs:
+                type: integer
+                description: number of transaction Inputs
+              transaction_inputs:
+                type: array
+                items:
+                  type: TransactionInput
+
+        TransactionOutput:
+          description: A transaction Output
+          item:
+            type: object
+              properties:
+                num_of_transaction_inputs:
+                  type: integer
+                  description: number of transaction outputs
+                transaction_outputs:
+                  type: array
+                  properties:
+                  items:
+                    type: TransactionOutput
+
+        TransactionOutputAddress:
+          description: A transaction Output Address
+          item:
+            type: object
+              properties:
+                transaction_id:
+                  type: integer
+                  description: transaction identifier
+                transaction-output_addresses:
+                  type: array
+                  properties:
+                  items:
+                    type: TransactionOutputAddress
+
+
+
+
+
