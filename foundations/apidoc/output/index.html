@@ -74,6 +74,9 @@
         <li data-group="None" data-item="TransactionOutput"><a
                 href="javascript:navigateTo({category: 'None', type: 'TransactionOutput'}, ['category', 'method'])"
                 data-target="#t-TransactionOutput"><span>TransactionOutput</span></a></li>
+        <li data-group="None" data-item="TransactionOutput"><a
+                href="javascript:navigateTo({category: 'None', type: 'TransactionOutputAddress'}, ['category', 'method'])"
+                data-target="#t-TransactionOutputAddress"><span>TransactionOutputAddress</span></a></li>
     </ul>
 </div>
             </div>
@@ -818,10 +821,6 @@
                                     <td><span class="pun">]</span><span class="pun"></span></td>
                                     <td></td>
                                 </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td><span class="str">"transaction_id"</span><span class="pun">: </span><span
-                                            class="typ">integer</span></td>
-                                    <td class="com">Transaction identifier</td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
                                     <td><span class="pun">}</span><span class="pun"></span></td>
@@ -911,6 +910,128 @@
      <span class="pun">]</span>
    <span class="pun">}</span>
     </span>
+<span class="pun">}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="type item" id="t-TransactionOutputAddress">
+                <h4>Transaction Output Address </h4>
+                <div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+
+                    <div class="description stack">
+
+                        <div class="diff_version" data-version="v1.0">A transaction Output Address</div>
+                    </div>
+                    <div class="configuration stack">
+                        <h5><i class="i-presentation"></i> Presentation: </h5>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"transaction_id"</span><span class="pun">: </span><span
+                                            class="typ">integer</span></td>
+                                    <td class="com">Transaction Identifier</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"addresses"</span><span class="pun">:</span><span class="pun">[</span>
+                                    </td>
+                                    <td class="com">Transaction Output addresses</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"address_id"</span><span class="pun">: </span><span
+                                            class="typ">integer</span></td>
+                                    <td class="com">OutPut Address Id</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span>
+                                    </td>
+                                    <td class="com">Hash of Output address</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"public_key"</span><span class="pun">: </span><span
+                                            class="typ">string</span></td>
+                                    <td class="com">public Key linked to Output address</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"address"</span><span class="pun">: </span><span class="typ">string</span>
+                                    </td>
+                                    <td class="com">Output Address used as account address</td>
+                                </tr>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span><span class="pun"></span></td>
+                                    <td></td>
+                                </tr>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">]</span><span class="pun"></span></td>
+                                    <td></td>
+                                </tr>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span><span class="pun"></span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <div class="stack sample">
+                        <div data-version="v1.0">
+
+                            <h5><i class="i-sample"></i> Formats: </h5>
+                            <h6>Sample: </h6>
+                            <div class="code"><span class="pun">{
+</span>
+                                <span class="str">"transaction_id"</span><span class="pun">: </span><span
+                                        class="lit">1</span><span
+                                        class="pun">,
+
+            <span class="str">"output_addresses"</span> <span class="pun">: </span>
+            <span class="pun">[</span>
+                <span class="pun">{</span>
+                    <span class="str">"address_id"</span><span class="pun">: </span><span class="lit">1</span><span
+                                            class="pun">,
+                    <span class="str">"hash"</span><span class="pun">: </span><span>"62e907b15cbf27d5425399ebf6f0fb50ebb88f18"</span><span
+                                                class="pun">,
+                    <span class="str">"public_key"</span><span class="pun">: </span><span>"04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f""</span><span
+                                                    class="pun">,
+                     <span class="str">"address"</span><span class="pun">: </span><span>"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'"</span><span
+                                                        class="pun">
+                <span class="pun">}</span><span class="pun">,</span>
+                <span class="pun">{</span>
+                      <span class="str">"address_id"</span><span class="pun">: </span><span class="lit">2</span><span
+                                                        class="pun">,
+                      <span class="str">"hash"</span><span class="pun">: </span><span>"119b098e2e980a229e139a9ed01a469e518e6f26"</span><span
+                                                            class="pun">,
+                      <span class="str">"public_key"</span><span class="pun">: </span><span>"0496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858ee""</span><span
+                                                                class="pun">,
+                      <span class="str">"address"</span><span class="pun">: </span><span>"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX'"</span><span
+                                                                    class="pun">
+                 <span class="pun">}</span>
+             <span class="pun">]</span>
 <span class="pun">}</span>
                             </div>
                         </div>
