@@ -80,13 +80,16 @@ Aim: Find pump and dump schemes in real time.
 Result to store: Pump possibility of a token at a time.
 Results to visualize: Token prices in time, token pump scores in time.
 
-## Mahesh Foundations. Deployment.
+## Mahesh
+Foundations. Deployment.
 
 ## Hafsa: No proposal
 
-## Mahya Foundations. Data parser.
+## Mahya
+Foundations. Data parser.
 
-## Jasmine: No proposal
+## Jasmine
+Foundations. Data and API connections.
 
 ## Mamun 
 Data: Ethereum.
