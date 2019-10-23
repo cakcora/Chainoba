@@ -65,9 +65,7 @@
     </ul>
     <ul class="nav nav-list doc-sidenav">
         <li class="nav-header"><h5>Types</h5></li>
-        <li data-group="None" data-item="Address"><a href="javascript:navigateTo({category: 'None', type: 'Address'}, ['category', 'method'])" data-target="#t-Address"><span>Address</span></a></li>
-        <li data-group="None" data-item="Block"><a href="javascript:navigateTo({category: 'None', type: 'Block'}, ['category', 'method'])" data-target="#t-Block"><span>Block</span></a></li>
-        <li data-group="None" data-item="Transaction"><a href="javascript:navigateTo({category: 'None', type: 'Transaction'}, ['category', 'method'])" data-target="#t-Transaction"><span>Transaction</span></a></li>
+        <li data-group="None" data-item="BlockItem"><a href="javascript:navigateTo({category: 'None', type: 'BlockItem'}, ['category', 'method'])" data-target="#t-BlockItem"><span>BlockItem</span></a></li>
     </ul>
 </div>
             </div>
@@ -156,19 +154,19 @@
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td>  <span class="str">"date_offset"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
-        <td class="com">Timeframe of the required data</td>
+        <td class="com">Timeframe of the required data (E.g., 1)</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td>  <span class="str">"day"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
-        <td class="com">Day of block creation</td>
+        <td class="com">Day of block creation (E.g., 01)</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td>  <span class="str">"month"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
-        <td class="com">Month of block creation</td>
+        <td class="com">Month of block creation (E.g., 01)</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td>  <span class="str">"year"</span><span class="pun">: </span><span class="typ">integer</span></td>
-        <td class="com">Year of block creation</td>
+        <td class="com">Year of block creation (E.g., 2009)</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td><span class="pun">}</span></td>
@@ -193,8 +191,28 @@
         <td class="com"></td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"Block"</span><span class="pun">: </span><span class="typ"><a href="javascript:navigateTo({type: 'Block'}, ['category', 'method'])">Block</a></span></td>
+        <td>  <span class="str">"blocks"</span><span class="pun">: </span><span class="pun">{</span></td>
         <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>    <span class="str">"current_hash"</span><span class="pun">: </span><span class="typ"><a href="javascript:navigateTo({type: 'BlockItem'}, ['category', 'method'])">BlockItem</a></span></td>
+        <td class="com">The hash of the current block is the key of 'current_hash' (E.g., 00000000bdee0cd38a8570bf8bdba1476baf7b4114a2cbefffa0ca6ca8ae31b0 )</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="pun">}</span><span class="pun">,</span></td>
+        <td></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"from_date"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
+        <td class="com">The start time of the extracted blocks (E.g., 2009-01-01 00:00:00)</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"num_blocks"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
+        <td class="com">The number of extracted blocks between from and to date (E.g., 5)</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"to_date"</span><span class="pun">: </span><span class="typ">string</span></td>
+        <td class="com">The end time of the extracted blocks (E.g., 2009-01-02 00:00:00)</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td><span class="pun">}</span></td>
@@ -245,60 +263,21 @@
 <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
 
 <span class="pun">{
-</span>  <span class="str">"Block"</span><span class="pun">: </span><span class="pun">{
-</span>    <span class="str">"block_id"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
-</span>    <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>    <span class="str">"transactions"</span><span class="pun">: </span><span class="pun">[
-</span>      <span class="pun">{
-</span>        <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>        <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span><span class="pun">,
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span>
-        <span class="pun">]</span><span class="pun">,
-</span>        <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span><span class="pun">,
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span>
-        <span class="pun">]</span><span class="pun">,
-</span>        <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-      <span class="pun">}</span><span class="pun">,
-</span>      <span class="pun">{
-</span>        <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>        <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span><span class="pun">,
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span>
-        <span class="pun">]</span><span class="pun">,
-</span>        <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span><span class="pun">,
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span>
-        <span class="pun">]</span><span class="pun">,
-</span>        <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-      <span class="pun">}</span>
-    <span class="pun">]</span>
-  <span class="pun">}</span>
+</span>  <span class="str">"blocks"</span><span class="pun">: </span><span class="pun">{
+</span>    <span class="str">"current_hash"</span><span class="pun">: </span><span class="pun">{
+</span>      <span class="str">"current_hash"</span><span class="pun">: </span><span class="str">"my_current_hash"</span><span class="pun">,
+</span>      <span class="str">"hash_merkle_root"</span><span class="pun">: </span><span class="str">"my_hash_merkle_root"</span><span class="pun">,
+</span>      <span class="str">"id"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>      <span class="str">"n_time"</span><span class="pun">: </span><span class="str">"my_n_time"</span><span class="pun">,
+</span>      <span class="str">"nbits"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>      <span class="str">"nonce"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>      <span class="str">"previous_hash"</span><span class="pun">: </span><span class="str">"my_previous_hash"</span><span class="pun">,
+</span>      <span class="str">"version"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span>
+  <span class="pun">}</span><span class="pun">,
+</span>  <span class="str">"from_date"</span><span class="pun">: </span><span class="str">"my_from_date"</span><span class="pun">,
+</span>  <span class="str">"num_blocks"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>  <span class="str">"to_date"</span><span class="pun">: </span><span class="str">"my_to_date"</span>
 <span class="pun">}</span></div></div></div>
                 </div>
             </li>
@@ -311,14 +290,14 @@
             <ul class="list-unstyled">
     <li class="category" id="c-None">
         <ul class="list-unstyled">
-            <li class="type item" id="t-Address">
-                <h4>Address</h4><div class="nocontents">no implementation for this version</div>
+            <li class="type item" id="t-BlockItem">
+                <h4>BlockItem</h4><div class="nocontents">no implementation for this version</div>
                 <div class="contents">
 
 
 <div class="description stack">
     
-    <div class="diff_version" data-version="v1.0">An address</div></div><div class="configuration stack">
+    <div class="diff_version" data-version="v1.0">The contents of a block</div></div><div class="configuration stack">
     <h5><i class="i-presentation"></i> Presentation: </h5>
     <div class="code"><table class="table-hover">
         <colgroup>
@@ -332,12 +311,36 @@
         <td class="com"></td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
-        <td class="com">Hash of the transaction</td>
+        <td>  <span class="str">"current_hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
+        <td class="com">The hash value of the current block (E.g., 00000000bdee0cd38a8570bf8bdba1476baf7b4114a2cbefffa0ca6ca8ae31b0)</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="typ">integer</span></td>
-        <td class="com">Transaction identifier</td>
+        <td>  <span class="str">"hash_merkle_root"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
+        <td class="com">The hash of the merkle root (E.g., cefbba69f6d0f9c575dba3dd366b81fd50e5f015a08b9f433b9d45d6e2b)</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"id"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
+        <td class="com">The block ID (E.g., 1)</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"n_time"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
+        <td class="com">The time of block creation (E.g., 2009-05-03 05:05:38)</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"nbits"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
+        <td class="com">The size of the block in bits (E.g., 486604799)</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"nonce"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
+        <td class="com">The nonce used to create the desired hash value (E.g., 361935961)</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"previous_hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
+        <td class="com">The hash value of the previous block (E.g., 00000000bfd207db43427b40674c368ac4390b21c5990670ae16dadac9c897bd)</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td>  <span class="str">"version"</span><span class="pun">: </span><span class="typ">integer</span></td>
+        <td class="com">Version of the block (E.g., 1)</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td><span class="pun">}</span></td>
@@ -352,206 +355,14 @@
 <h5><i class="i-sample"></i> Formats: </h5>
 <h6>Sample: </h6>
 <div class="code"><span class="pun">{
-</span>  <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-<span class="pun">}</span></div></div></div>
-                </div>
-            </li>
-            <li class="type item" id="t-Block">
-                <h4>Block</h4><div class="nocontents">no implementation for this version</div>
-                <div class="contents">
-
-
-<div class="description stack">
-    
-    <div class="diff_version" data-version="v1.0">A Block</div></div><div class="configuration stack">
-    <h5><i class="i-presentation"></i> Presentation: </h5>
-    <div class="code"><table class="table-hover">
-        <colgroup>
-            <col width="50%%"></col>
-            <col width="50%%"></col>
-        </colgroup>
-        <tbody>
-
-    <tr class="diff_version" data-version="v1.0">
-        <td><span class="pun">{</span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"block_id"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
-        <td class="com">Block identifier</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
-        <td class="com">Hash of the block</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"transactions"</span><span class="pun">: </span><span class="pun">[</span></td>
-        <td class="com">List of transactions</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>    <span class="typ"><a href="javascript:navigateTo({type: 'Transaction'}, ['category', 'method'])">Transaction</a></span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="pun">]</span></td>
-        <td></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td><span class="pun">}</span></td>
-        <td></td>
-    </tr>
-        </tbody>
-    </table></div>
-
-
-</div><div class="stack sample"><div data-version="v1.0">
-
-<h5><i class="i-sample"></i> Formats: </h5>
-<h6>Sample: </h6>
-<div class="code"><span class="pun">{
-</span>  <span class="str">"block_id"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
-</span>  <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>  <span class="str">"transactions"</span><span class="pun">: </span><span class="pun">[
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span><span class="pun">,
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span>
-      <span class="pun">]</span><span class="pun">,
-</span>      <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span><span class="pun">,
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span>
-      <span class="pun">]</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span><span class="pun">,
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span><span class="pun">,
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span>
-      <span class="pun">]</span><span class="pun">,
-</span>      <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span><span class="pun">,
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span>
-      <span class="pun">]</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span>
-  <span class="pun">]</span>
-<span class="pun">}</span></div></div></div>
-                </div>
-            </li>
-            <li class="type item" id="t-Transaction">
-                <h4>Transaction</h4><div class="nocontents">no implementation for this version</div>
-                <div class="contents">
-
-
-<div class="description stack">
-    
-    <div class="diff_version" data-version="v1.0">A transaction</div></div><div class="configuration stack">
-    <h5><i class="i-presentation"></i> Presentation: </h5>
-    <div class="code"><table class="table-hover">
-        <colgroup>
-            <col width="50%%"></col>
-            <col width="50%%"></col>
-        </colgroup>
-        <tbody>
-
-    <tr class="diff_version" data-version="v1.0">
-        <td><span class="pun">{</span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
-        <td class="com">Hash of the transaction</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[</span></td>
-        <td class="com">List of input addresses</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>    <span class="typ"><a href="javascript:navigateTo({type: 'Address'}, ['category', 'method'])">Address</a></span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="pun">]</span><span class="pun">,</span></td>
-        <td></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[</span></td>
-        <td class="com">List of output addresses</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>    <span class="typ"><a href="javascript:navigateTo({type: 'Address'}, ['category', 'method'])">Address</a></span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="pun">]</span><span class="pun">,</span></td>
-        <td></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="typ">integer</span></td>
-        <td class="com">Transaction identifier</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td><span class="pun">}</span></td>
-        <td></td>
-    </tr>
-        </tbody>
-    </table></div>
-
-
-</div><div class="stack sample"><div data-version="v1.0">
-
-<h5><i class="i-sample"></i> Formats: </h5>
-<h6>Sample: </h6>
-<div class="code"><span class="pun">{
-</span>  <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>  <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span><span class="pun">,
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span>
-  <span class="pun">]</span><span class="pun">,
-</span>  <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span><span class="pun">,
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span>
-  <span class="pun">]</span><span class="pun">,
-</span>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+</span>  <span class="str">"current_hash"</span><span class="pun">: </span><span class="str">"my_current_hash"</span><span class="pun">,
+</span>  <span class="str">"hash_merkle_root"</span><span class="pun">: </span><span class="str">"my_hash_merkle_root"</span><span class="pun">,
+</span>  <span class="str">"id"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>  <span class="str">"n_time"</span><span class="pun">: </span><span class="str">"my_n_time"</span><span class="pun">,
+</span>  <span class="str">"nbits"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>  <span class="str">"nonce"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span>  <span class="str">"previous_hash"</span><span class="pun">: </span><span class="str">"my_previous_hash"</span><span class="pun">,
+</span>  <span class="str">"version"</span><span class="pun">: </span><span class="lit">42</span>
 <span class="pun">}</span></div></div></div>
                 </div>
             </li>
