@@ -37,13 +37,13 @@ def serialize_transaction_output_address(trans_output_id):
 
 
 class TransactionOutputEndpoint(Resource):
-    args = {'output_id': fields.List(fields.Integer(validate=lambda out_id: out_id > 0))}
+    args = {'transaction_ids': fields.List(fields.Integer(validate=lambda out_id: out_id > 0))}
 
     @use_kwargs(args)
-    def get(self, output_id):
+    def get(self, transaction_ids):
 
         transaction_outputs_dict = {}
-        for out_id in output_id:
+        for out_id in transaction_ids:
             transaction_outputs = db_session.query(TransactionOutput).filter(
                 TransactionOutput.transaction_id == out_id).order_by(TransactionOutput.id.asc()).all()
 

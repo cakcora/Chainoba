@@ -27,12 +27,12 @@ class TransactionEndpoint(Resource):
         for transaction in transaction_ids:
             trans_as_dict = {}
             input_response = json.loads(requests.get('http://localhost:5000/bitcoin/transactions/inputs',
-                                                     json={'transaction_id': [transaction]}).text)
+                                                     json={'transaction_ids': [transaction]}).text)
 
             trans_as_dict["inputs"] = input_response["transaction_inputs"][str(transaction)]
 
             output_response = json.loads(requests.get('http://localhost:5000/bitcoin/transactions/outputs',
-                                                      json={'output_id': [transaction]}).text)
+                                                      json={'transaction_ids': [transaction]}).text)
             trans_as_dict["outputs"] = output_response["transaction_outputs"][str(transaction)]
 
             block_transactions_dict[transaction] = trans_as_dict
