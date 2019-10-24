@@ -10,7 +10,8 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_block(block):
-    return {'id': block.id, 'hash_prev': block.hashprev, 'hash': block.hash, 'n_time': block.ntime,
+    return {'id': block.id, 'hash_prev': block.hashprev, 'hash': block.hash,
+            'n_time': datetime.utcfromtimestamp(block.ntime).strftime('%Y-%m-%d %H:%M:%S'),
             'nnonce': block.nnonce, 'version': block.version, 'hash_merkle_root': block.hashmerkleroot,
             'nbits': block.nbits}
 
@@ -62,7 +63,9 @@ class GetBlockIDByDateEndpoint(Resource):
             block_as_dict = serialize_block(block)
             block_list[block_as_dict['hash']] = block_as_dict
 
-        return {'from_date': from_unixtime, 'to_date': to_unixtime, 'num_blocks': len(block_list), 'blocks': block_list}
+        return {'from_date': from_time.strftime('%Y-%m-%d %H:%M:%S'), 'to_date': to_time.strftime('%Y-%m-%d %H:%M:%S'),
+                'num_blocks': len(block_list),
+                'blocks': block_list}
 
 
 # Returns the blocks by day of the year
