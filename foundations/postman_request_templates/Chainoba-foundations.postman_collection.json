@@ -11,9 +11,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5000/bitcoin/blocks?year=2009&month=1&day=3&date_offset=1",
+					"raw": "http://159.203.28.234:5000/bitcoin/blocks?year=2009&month=1&day=10&date_offset=5",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"159",
+						"203",
+						"28",
+						"234"
 					],
 					"port": "5000",
 					"path": [
@@ -31,11 +35,11 @@
 						},
 						{
 							"key": "day",
-							"value": "3"
+							"value": "10"
 						},
 						{
 							"key": "date_offset",
-							"value": "1"
+							"value": "5"
 						}
 					]
 				},
@@ -63,9 +67,13 @@
 					"raw": "{\n\t\"block_ids\": [1,2]\n}"
 				},
 				"url": {
-					"raw": "localhost:5000/bitcoin/blocks/transactions",
+					"raw": "http://159.203.28.234:5000/bitcoin/blocks/transactions",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"159",
+						"203",
+						"28",
+						"234"
 					],
 					"port": "5000",
 					"path": [
@@ -97,9 +105,13 @@
 					"raw": "{\n\t\"transaction_ids\": [1,2, 3]\n}"
 				},
 				"url": {
-					"raw": "localhost:5000/bitcoin/transactions",
+					"raw": "http://159.203.28.234:5000/bitcoin/transactions",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"159",
+						"203",
+						"28",
+						"234"
 					],
 					"port": "5000",
 					"path": [
@@ -130,9 +142,13 @@
 					"raw": "{\n\t\"transaction_ids\": [1,2, 3]\n}"
 				},
 				"url": {
-					"raw": "localhost:5000/bitcoin/transactions/inputs",
+					"raw": "http://159.203.28.234:5000/bitcoin/transactions/inputs",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"159",
+						"203",
+						"28",
+						"234"
 					],
 					"port": "5000",
 					"path": [
@@ -164,9 +180,13 @@
 					"raw": "{\n\t\"transaction_ids\": [1,2, 3]\n}"
 				},
 				"url": {
-					"raw": "localhost:5000/bitcoin/transactions/outputs",
+					"raw": "http://159.203.28.234:5000/bitcoin/transactions/outputs",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"159",
+						"203",
+						"28",
+						"234"
 					],
 					"port": "5000",
 					"path": [
