@@ -8,7 +8,7 @@ from foundations.api.models.models import db_session
 from sqlalchemy import and_
 from webargs import fields, validate
 from webargs.flaskparser import use_kwargs
-from flask import Response, json
+
 
 
 def serialize_block(block):
@@ -173,7 +173,7 @@ class GetTransactionIDByBlockID(Resource):
 
     @use_kwargs(args_block)
     def get(self, block_ids):
-        block_ids = set(list(block_ids))
+        block_ids = list(set(list(block_ids)))
         block_ids = [block_id.strip() for block_id in block_ids if block_id.strip()]
         validation_errors = {"Errors": []}
         validations_result = ValidateBlockIds(self, block_ids)
@@ -183,7 +183,7 @@ class GetTransactionIDByBlockID(Resource):
         try:
             block_transactions_dict = {}
             num_of_empty_blocks = 0
-            for blk_id in block_ids:
+            for blk_id in sorted(block_ids):
                 transactions = db_session.query(Transaction).filter(Transaction.block_id == blk_id).order_by(
                     Transaction.id.asc())
 
