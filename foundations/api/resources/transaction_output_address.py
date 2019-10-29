@@ -10,7 +10,7 @@ from foundations.api.models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_address(address, output_id):
-    return {'hash': address.hash.strip(),
+    return {'address_id': address.id, 'hash': address.hash.strip(),
             'public_key': address.public_key.strip(),
             'address': address.address.strip()
             }
@@ -76,30 +76,34 @@ class GetTransactionOutputAddressByTransactionId(Resource):
                     TransactionOutput.transaction_id == int(transaction_id)).order_by(
                     TransactionOutput.id.asc()).with_entities(
                     TransactionOutput.id).all()
-                transaction_output_address_dict = {}
-                for trans_output_id in sorted(transaction_output_id_list):
+                transaction_output_address_list = []
+                for trans_output_id in sorted(list(transaction_output_id_list)):
                     output_address_list = db_session.query(TransactionOutputAddress).filter(
                         TransactionOutputAddress.output_id == trans_output_id.id).order_by(
                         TransactionOutputAddress.id.asc()).all()
                     total_output_addresses = 0
-                    output_addresses = {}
+                    trans_out_addr_dict = {}
+                    output_addresses = []
+
                     for output_address in output_address_list:
                         trans_output_address_as_dict = serialize_transaction_output_address(
                             output_address.address_id,
                             trans_output_id.id)
-                        output_addresses[output_address.address_id] = trans_output_address_as_dict
+                        output_addresses.append(trans_output_address_as_dict)
                         total_output_addresses = total_output_addresses + 1
-                    transaction_output_address_dict[trans_output_id.id] = {
-                        'num_of_output_addresses': len(output_addresses),
-                        'output-addresses': output_addresses}
+                        trans_out_addr_dict = {
+                            'output_id': trans_output_id.id,
+                            'num_of_output_addresses': len(output_addresses),
+                            'output-addresses': output_addresses}
+                    transaction_output_address_list.append(trans_out_addr_dict)
                     total_outputs = total_outputs + 1
-                trans_out_dict[transaction_id] = {'num_of_transaction_outputs': total_outputs,
-                                                  'outputs': transaction_output_address_dict}
+                trans_out_dict[transaction_id] = {'num_of_outputs': total_outputs,
+                                                  'outputs': transaction_output_address_list}
             if total_outputs > 0:
                 return {
                     'ResponseCode': "0" + str(ResponseCodes.Success.value),
                     'ResponseDesc': ResponseCodes.Success.name,
-                    'transactions': trans_out_dict
+                    'transaction_outputs': trans_out_dict
                 }
             else:
                 return CreateErrorResponse(self, ResponseCodes.NoDataFound.name,
@@ -167,11 +171,11 @@ class GetTransactionOutputAddressByTransactionOutputId(Resource):
                     TransactionOutputAddress.output_id == transaction_output_id).order_by(
                     TransactionOutputAddress.id.asc()).all()
                 total_output_addresses = 0
-                output_addresses = {}
+                output_addresses = []
                 for output_address in output_address_list:
                     trans_output_address_as_dict = serialize_transaction_output_address(output_address.address_id,
                                                                                         transaction_output_id)
-                    output_addresses[output_address.address_id] = trans_output_address_as_dict
+                    output_addresses.append(trans_output_address_as_dict)
                     total_output_addresses = total_output_addresses + 1
                 if total_output_addresses > 0:
                     return {

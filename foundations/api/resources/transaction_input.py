@@ -8,7 +8,7 @@ from foundations.api.models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_transaction_input(trans_input):
-    return {'prevout_hash': trans_input.prevout_hash, 'prevout_n': trans_input.prevout_n,
+    return {'input_id': trans_input.id, 'prevout_hash': trans_input.prevout_hash, 'prevout_n': trans_input.prevout_n,
             'scriptsig': str(trans_input.scriptsig), 'sequence': trans_input.sequence,
             'prev_output_id': trans_input.prev_output_id
             }
@@ -73,7 +73,7 @@ class TransactionInputEndpoint(Resource):
 
                 previous_output_ids = []
                 total_inputs = 0
-                trans_input_dict = {}  # the list of transactions returned by the API
+                trans_input_list = []  # the list of transactions returned by the API
                 for trans_input in transaction_inputs:
                     trans_input_as_dict = serialize_transaction_input(trans_input)
 
@@ -87,16 +87,16 @@ class TransactionInputEndpoint(Resource):
                         previous_output_address = prev_address["address"]
                         trans_input_as_dict["prev_output_id"] = previous_output_address
 
-                    trans_input_dict[trans_input.id] = trans_input_as_dict
+                    trans_input_list.append(trans_input_as_dict)
                     total_inputs = total_inputs + 1
                 transaction_inputs_dict[trans_id] = {"num_of_inputs": total_inputs,
-                                                     "inputs": trans_input_dict}
+                                                     "inputs": trans_input_list}
 
             if total_inputs > 0:
                 return {
                     'ResponseCode': "0" + str(ResponseCodes.Success.value),
                     'ResponseDesc': ResponseCodes.Success.name,
-                    'transactions': transaction_inputs_dict
+                    'transaction_inputs': transaction_inputs_dict
                 }
             else:
                 return CreateErrorResponse(self, ResponseCodes.NoDataFound.name,

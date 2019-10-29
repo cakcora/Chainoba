@@ -4,13 +4,20 @@ import requests
 from flask_restful import Resource
 from webargs import fields
 from webargs.flaskparser import use_kwargs
+from foundations.api.models.models import Transaction, db_session
 from foundations.api.models.ResponseCodes import ResponseCodes
 from foundations.api.models.ResponseCodes import ResponseDescriptions
 
 
-def serialize_transaction(transaction):
-    return {'id': transaction.id, 'hash': transaction.hash, 'version': transaction.version,
-            'locktime': transaction.locktime, 'version': transaction.block_id}
+def serialize_transaction(transaction_data, input_response, output_response, transaction_id):
+    return {'transaction_id': transaction_id,
+            'hash': transaction_data.hash, 'version': transaction_data.version,
+            'locktime': transaction_data.locktime, 'version': transaction_data.block_id,
+            'num_of_inputs': (input_response["transaction_inputs"][str(transaction_id)])['num_of_inputs'],
+            'inputs': (input_response["transaction_inputs"][str(transaction_id)])['inputs'],
+            'num_of_outputs': (output_response["transaction_outputs"][str(transaction_id)])['num_of_outputs'],
+            'outputs': (output_response["transaction_outputs"][str(transaction_id)])['outputs']
+            }
 
 
 args_transaction = {
@@ -69,6 +76,8 @@ class TransactionEndpoint(Resource):
             num_of_empty_transactions = 0
             for transaction_id in sorted(transaction_ids):
                 trans_as_dict = {}
+                transaction_data = db_session.query(Transaction).filter(Transaction.id == transaction_id).order_by(
+                    Transaction.id.asc())
                 input_response = json.loads(requests.get('http://localhost:5000/bitcoin/transactions/inputs',
                                                          json={'transaction_ids': [transaction_id]}).text)
 
@@ -77,22 +86,18 @@ class TransactionEndpoint(Resource):
 
                 if (input_response["ResponseCode"] == "0" + str(ResponseCodes.Success.value) and output_response[
                     "ResponseCode"] == "0" + str(ResponseCodes.Success.value)):
-                    block_transactions_dict[transaction_id] = {
-                        'num_of_inputs': (input_response["transactions"][str(transaction_id)])['num_of_inputs'],
-                        'inputs': (input_response["transactions"][str(transaction_id)])['inputs'],
-                        'num_of_outputs': (output_response["transactions"][str(transaction_id)])['num_of_outputs'],
-                        'outputs': (output_response["transactions"][str(transaction_id)])['outputs']
-                    }
+                    block_transactions_dict[transaction_id] = serialize_transaction(transaction_data[0], input_response,
+                                                                                    output_response, transaction_id)
                     if trans_as_dict is None or (
-                            trans_as_dict is not None and (input_response["transactions"][str(transaction_id)])[
-                        'num_of_inputs'] == 0 and (output_response["transactions"][str(transaction_id)])[
+                            trans_as_dict is not None and (input_response["transaction_inputs"][str(transaction_id)])[
+                        'num_of_inputs'] == 0 and (output_response["transaction_outputs"][str(transaction_id)])[
                                 'num_of_outputs'] == 0):
                         num_of_empty_transactions = num_of_empty_transactions + 1
             if num_of_empty_transactions != len(transaction_ids):
                 return {
                     'ResponseCode': "0" + str(ResponseCodes.Success.value),
                     'ResponseDesc': ResponseCodes.Success.name,
-                    'transactions': block_transactions_dict
+                    'transaction_data': block_transactions_dict
                 }
             else:
                 return CreateErrorResponse(self, ResponseCodes.NoDataFound.name,

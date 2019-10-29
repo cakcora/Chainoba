@@ -12,14 +12,14 @@ from foundations.api.models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_address(address, output_id):
-    return {'hash': address.hash.strip(),
+    return {'address_id': address.id, 'hash': address.hash.strip(),
             'public_key': address.public_key.strip(),
             'address': address.address.strip()
             }
 
 
 def serialize_transaction_output(trans_output, num_of_output_addresses, output_address_as_dict):
-    return {'value': trans_output.value, 'scriptpubkey': str(trans_output.scriptpubkey),
+    return {'output_id': trans_output.id, 'value': trans_output.value, 'scriptpubkey': str(trans_output.scriptpubkey),
             'index': trans_output.index,
             'script_type': str(trans_output.script_type).strip(),
             'num_of_output_addresses': num_of_output_addresses,
@@ -77,7 +77,7 @@ class TransactionOutputEndpoint(Resource):
                 transaction_outputs = db_session.query(TransactionOutput).filter(
                     TransactionOutput.transaction_id == int(transaction_id)).order_by(TransactionOutput.id.asc()).all()
 
-                trans_output_as_dict = {}
+                trans_output_as_list = []
                 total_num_of_transaction_outputs = 0
                 for trans_output in transaction_outputs:
                     output_address_response = json.loads(
@@ -85,16 +85,16 @@ class TransactionOutputEndpoint(Resource):
                                      {'transaction_id': transaction_id,
                                       'transaction_output_id': str(trans_output.id)}).text)
                     if output_address_response["ResponseCode"] == "0" + str(ResponseCodes.Success.value):
-                        trans_output_as_dict[trans_output.id] = serialize_transaction_output(trans_output,
-                                                                                             int(
+                        trans_output_as_list.append(serialize_transaction_output(trans_output,
+                                                                                 int(
                                                                                                  output_address_response[
                                                                                                      "num_of_output_addresses"]),
-                                                                                             output_address_response[
-                                                                                                 "output-addresses"])
+                                                                                 output_address_response[
+                                                                                     "output-addresses"]))
                     total_num_of_transaction_outputs = total_num_of_transaction_outputs + 1
                 transaction_outputs_dict[transaction_id] = {
                     "num_of_outputs": total_num_of_transaction_outputs,
-                    "outputs": trans_output_as_dict
+                    "outputs": trans_output_as_list
                 }
 
             total_outputs = 0
@@ -105,7 +105,7 @@ class TransactionOutputEndpoint(Resource):
                 return {
                     'ResponseCode': "0" + str(ResponseCodes.Success.value),
                     'ResponseDesc': ResponseCodes.Success.name,
-                    'transactions': transaction_outputs_dict
+                    'transaction_outputs': transaction_outputs_dict
                 }
             else:
                 return CreateErrorResponse(self, ResponseCodes.NoDataFound.name,
