@@ -1,7 +1,7 @@
-import json
+
+from config import cfg as CONFIG
 import os
 from datetime import datetime
-
 import psycopg2 as psycopg2
 from blockchain_parser.blockchain import Blockchain
 from psycopg2 import IntegrityError
@@ -12,13 +12,10 @@ from psycopg2 import IntegrityError
 # containing the .blk files created by bitcoind
 blockchain = Blockchain(os.path.expanduser('fewBlocks'))
 
-
-with open('config.json') as json_data_file:
-    config = json.load(json_data_file)
-con = psycopg2.connect(database=config['db'],
-                       user=config['user'],
-                       password=config['passwd'],
-                       host=config['host'],
+con = psycopg2.connect(database=CONFIG.POSTGRES_DB,
+                       user=CONFIG.POSTGRES_USER,
+                       password=CONFIG.POSTGRES_PW,
+                       host=CONFIG.POSTGRES_HOST,
                        port="5432")
 
 con.autocommit = False
