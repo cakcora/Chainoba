@@ -75,7 +75,7 @@
 				"method": "GET",
               "header": [],
 				"url": {
-                  "raw": "localhost:5000/bitcoin/transactions?transaction_ids=3",
+                  "raw": "localhost:5000/bitcoin/transactions?transaction_ids=1",
 					"host": [
 						"localhost"
 					],
@@ -87,7 +87,7 @@
                   "query": [
                     {
                       "key": "transaction_ids",
-                      "value": "3"
+                      "value": "1"
                     }
 					]
 				}
@@ -155,12 +155,12 @@
           "response": []
         },
       {
-        "name": "get transactions output addresses by trasanction id",
+        "name": "get transactions outputs addresses by transanction id and output id",
         "request": {
           "method": "GET",
           "header": [],
           "url": {
-            "raw": "localhost:5000/bitcoin/transactions/output/addresses?transaction_ids=1",
+            "raw": "localhost:5000/bitcoin/transactions/outputs/addresses?transaction_id=1&transaction_output_id=1",
             "host": [
               "localhost"
             ],
@@ -168,33 +168,7 @@
             "path": [
               "bitcoin",
               "transactions",
-              "output",
-              "addresses"
-            ],
-            "query": [
-              {
-                "key": "transaction_ids",
-                "value": "1"
-              }
-            ]
-          }
-        },
-        "response": []
-      },
-      {
-        "name": "get transactions output addresses by trasanction id and transaction output id",
-        "request": {
-          "method": "GET",
-          "header": [],
-          "url": {
-            "raw": "localhost:5000/bitcoin/output/addresses?transaction_id=1&transaction_output_id=1",
-            "host": [
-              "localhost"
-            ],
-            "port": "5000",
-            "path": [
-              "bitcoin",
-              "output",
+              "outputs",
               "addresses"
             ],
             "query": [

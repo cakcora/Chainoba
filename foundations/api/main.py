@@ -5,7 +5,6 @@ from foundations.api.resources.block import GetBlockIDByDateEndpoint, GetTransac
 from foundations.api.resources.transaction import TransactionEndpoint
 from foundations.api.resources.transaction_input import TransactionInputEndpoint
 from foundations.api.resources.transaction_output import TransactionOutputEndpoint
-from foundations.api.resources.transaction_output_address import GetTransactionOutputAddressByTransactionId
 from foundations.api.resources.transaction_output_address import GetTransactionOutputAddressByTransactionOutputId
 
 # Flask application initialization
@@ -19,8 +18,7 @@ api.add_resource(GetTransactionIDByBlockID, '/bitcoin/blocks/transactions')
 api.add_resource(TransactionEndpoint, '/bitcoin/transactions')
 api.add_resource(TransactionInputEndpoint, '/bitcoin/transactions/inputs')
 api.add_resource(TransactionOutputEndpoint, '/bitcoin/transactions/outputs')
-api.add_resource(GetTransactionOutputAddressByTransactionId, '/bitcoin/transactions/output/addresses')
-api.add_resource(GetTransactionOutputAddressByTransactionOutputId, '/bitcoin/output/addresses')
+api.add_resource(GetTransactionOutputAddressByTransactionOutputId, '/bitcoin/transactions/outputs/addresses')
 
 if __name__ == '__main__':
     # debug=True in development mode, for production set debug=False
