@@ -130,7 +130,7 @@
 				"method": "GET",
               "header": [],
 				"url": {
-                  "raw": "localhost:5000/bitcoin/transactions/outputs?transaction_ids=1",
+                  "raw": "localhost:5000/bitcoin/transactions/outputs?transaction_ids=1&transaction_ids=3",
 					"host": [
 						"localhost"
 					],
@@ -144,6 +144,10 @@
                     {
                       "key": "transaction_ids",
                       "value": "1"
+                    },
+                    {
+                      "key": "transaction_ids",
+                      "value": "3"
                     }
                   ]
                 }
