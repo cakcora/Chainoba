@@ -1,0 +1,202 @@
+{
+	"info": {
+		"_postman_id": "39903294-8519-4c7e-8d9b-77af8018b85c",
+		"name": "Chainoba/foundations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get blocks by day",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://159.203.28.234:5000/bitcoin/blocks?year=2009&month=1&day=10&date_offset=5",
+					"protocol": "http",
+					"host": [
+						"159",
+						"203",
+						"28",
+						"234"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"blocks"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2009"
+						},
+						{
+							"key": "month",
+							"value": "1"
+						},
+						{
+							"key": "day",
+							"value": "10"
+						},
+						{
+							"key": "date_offset",
+							"value": "5"
+						}
+					]
+				},
+				"description": "Get block IDs by day."
+			},
+			"response": []
+		},
+		{
+			"name": "Get transaction IDs by block IDs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"block_ids\": [1,2]\n}"
+				},
+				"url": {
+					"raw": "http://159.203.28.234:5000/bitcoin/blocks/transactions",
+					"protocol": "http",
+					"host": [
+						"159",
+						"203",
+						"28",
+						"234"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"blocks",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get transactions by trasanction id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transaction_ids\": [1,2, 3]\n}"
+				},
+				"url": {
+					"raw": "http://159.203.28.234:5000/bitcoin/transactions",
+					"protocol": "http",
+					"host": [
+						"159",
+						"203",
+						"28",
+						"234"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get transaction inputs by transaction id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transaction_ids\": [1,2, 3]\n}"
+				},
+				"url": {
+					"raw": "http://159.203.28.234:5000/bitcoin/transactions/inputs",
+					"protocol": "http",
+					"host": [
+						"159",
+						"203",
+						"28",
+						"234"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"transactions",
+						"inputs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get transaction outputs by transaction id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"transaction_ids\": [1,2, 3]\n}"
+				},
+				"url": {
+					"raw": "http://159.203.28.234:5000/bitcoin/transactions/outputs",
+					"protocol": "http",
+					"host": [
+						"159",
+						"203",
+						"28",
+						"234"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"transactions",
+						"outputs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

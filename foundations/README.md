@@ -2,19 +2,49 @@
 
 **This package includes dataparser with data insertions to PostgreSQL and RESTful APIs.**
 
+**BETA** API Documentation: http://159.203.28.234:8000/
 ### Project structure
+```python
 foundations/
-+-- api
-|   +-- __init__.py
-|   +-- main.py
-+-- dataparser
-|   +-- __init__.py
-|   +-- bitcoin-parser.py
-|   +-- Data_model.sql
-+-- __init__.py
-+-- environment.yml
-+-- README.md
-+-- setup.py
+├── README.md
+├── __init__.py
+├── api/
+│   ├── __init__.py
+│   ├── common/
+│   │   ├── __init__.py
+│   │   └── utils.py
+│   ├── main.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   └── models.py
+│   ├── resources/
+│   │   ├── __init__.py
+│   │   ├── address.py
+│   │   ├── block.py
+│   │   ├── transaction.py
+│   │   ├── transaction_input.py
+│   │   ├── transaction_output.py
+│   │   └── transaction_output_address.py
+│   └── tests/
+│       └── __init__.py
+├── apidoc/
+│   ├── output/
+│   └── source.yml
+├── dataparser/
+│   ├── Data_model.sql
+│   ├── __init__.py
+│   ├── bitcoin-parser.py
+│   └── dependencies/
+│       └── python-bitcoin-blockchain-parser
+│           ├── LICENSE
+│           ├── README.md
+│           ├── blockchain_parser
+├── postman_request_templates/
+│   └── Chainoba-foundations.postman_collection.json
+├── requirements.txt
+└── setup.py
+```
 
 ## Project Setup
 
@@ -35,7 +65,7 @@ then copy everything inside `/foundations/dataparser/Data_model.sql` into the te
 
 ## Known Issues
 
-* `conda: Command not found.` Add export PATH=~/anaconda3/bin:$PATH to your ~/.bashrc then test by opening a new terminal
+* > conda: Command not found. Add export `PATH=~/anaconda3/bin:$PATH` to your ~/.bashrc then test by opening a new terminal
 and running `conda --version`.
 
 
