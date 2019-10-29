@@ -11,6 +11,8 @@ class ResponseCodes(Enum):
     DateOffsetInputMissing = 104
     BlockIdsInputMissing = 105
     TransactionIdsInputMissing = 106
+    TransactionIdInputMissing = 107
+    TransactionOutputIdInputMissing = 108
     InvalidRequest = 200
     InvalidDayInput = 201
     InvalidYearInput = 202
@@ -23,6 +25,9 @@ class ResponseCodes(Enum):
     NumberOfBlockIdsLimitExceeded = 209
     InvalidTransactionIdsInputValues = 210
     NumberOfTransactionIdsLimitExceeded = 211
+    InvalidTransactionIdInputValue = 212
+    InvalidTransactionOutputIdInputValue = 213
+    OutputDoesNotBelongToTransaction = 214
     NoDataFound = 300
     ErrorFromDataBase = 501
 
@@ -34,6 +39,8 @@ class ResponseDescriptions(Enum):
     DateOffsetInputMissing = "Value of Input Parameter DateOffset is missing."
     BlockIdsInputMissing = "Value of block_ids Input is missing."
     TransactionIdsInputMissing = "Value of transaction_ids Input is missing."
+    TransactionIdInputMissing = "Value of transaction_id Input is missing."
+    TransactionOutputIdInputMissing = "Value of transaction_output_id Input is missing."
     InvalidRequest = "Input request is Invalid."
     InvalidDayInput = "Value of Input Parameter day must be positive integer  with value range between 1 to 31."
     InvalidYearInput = "Value of Input Parameter year must be positive integer and in YYYY format with value range between 2009 and current year."
@@ -43,5 +50,8 @@ class ResponseDescriptions(Enum):
     NumberOfBlockIdsLimitExceeded = "Only upto 5 Blocks_ids are allowed."
     InvalidTransactionIdsInputValues = "Value of transaction_ids must be a positive integer"
     NumberOfTransactionIdsLimitExceeded = "Only upto 10 transaction_ids Blocks_ids are allowed."
+    InvalidTransactionIdInputValue = "Value of Input Parameter transaction_id must be positive integer."
+    InvalidTransactionOutputIdInputValue = "Value of Input Parameter transaction_output_id must be positive integer."
+    OutputDoesNotBelongToTransaction = "transaction_output_id does not belong to the transaction_id."
     NoDataFound = "No Data found."
     ErrorFromDataBase = "Value of Input Parameter Day is missing."

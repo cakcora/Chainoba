@@ -57,7 +57,6 @@ class TransactionEndpoint(Resource):
 
     @use_kwargs(args_transaction)
     def get(self, transaction_ids):
-
         transaction_ids = list(set(list(transaction_ids)))
         transaction_ids = [transaction_id.strip() for transaction_id in transaction_ids if transaction_id.strip()]
         validation_errors = {"Errors": []}
@@ -68,22 +67,27 @@ class TransactionEndpoint(Resource):
         try:
             block_transactions_dict = {}
             num_of_empty_transactions = 0
-            for transaction in sorted(transaction_ids):
+            for transaction_id in sorted(transaction_ids):
                 trans_as_dict = {}
                 input_response = json.loads(requests.get('http://localhost:5000/bitcoin/transactions/inputs',
-                                                         json={'transaction_ids': [int(transaction)]}).text)
-
-                trans_as_dict["inputs"] = input_response["transaction_inputs"][str(transaction)]
+                                                         json={'transaction_ids': [transaction_id]}).text)
 
                 output_response = json.loads(requests.get('http://localhost:5000/bitcoin/transactions/outputs',
-                                                          json={'transaction_ids': [transaction]}).text)
-                trans_as_dict["outputs"] = output_response["transaction_outputs"][str(transaction)]
+                                                          json={'transaction_ids': [str(transaction_id)]}).text)
 
-                block_transactions_dict[transaction] = trans_as_dict
-                if trans_as_dict is None or (
-                        trans_as_dict is not None and int(input_response['num_of_transaction_inputs']) == 0 and int(
-                    output_response['num_trans_outputs']) == 0):
-                    num_of_empty_transactions = num_of_empty_transactions + 1
+                if (input_response["ResponseCode"] == "0" + str(ResponseCodes.Success.value) and output_response[
+                    "ResponseCode"] == "0" + str(ResponseCodes.Success.value)):
+                    block_transactions_dict[transaction_id] = {
+                        'num_of_inputs': (input_response["transactions"][str(transaction_id)])['num_of_inputs'],
+                        'inputs': (input_response["transactions"][str(transaction_id)])['inputs'],
+                        'num_of_outputs': (output_response["transactions"][str(transaction_id)])['num_of_outputs'],
+                        'outputs': (output_response["transactions"][str(transaction_id)])['outputs']
+                    }
+                    if trans_as_dict is None or (
+                            trans_as_dict is not None and (input_response["transactions"][str(transaction_id)])[
+                        'num_of_inputs'] == 0 and (output_response["transactions"][str(transaction_id)])[
+                                'num_of_outputs'] == 0):
+                        num_of_empty_transactions = num_of_empty_transactions + 1
             if num_of_empty_transactions != len(transaction_ids):
                 return {
                     'ResponseCode': "0" + str(ResponseCodes.Success.value),
