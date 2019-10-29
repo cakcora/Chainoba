@@ -10,7 +10,7 @@ from foundations.api.models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_transaction(transaction_data, input_response, output_response, transaction_id):
-    return {'transaction_id': transaction_id,
+    return {'transaction_id': int(transaction_id),
             'hash': transaction_data.hash, 'version': transaction_data.version,
             'locktime': transaction_data.locktime, 'version': transaction_data.block_id,
             'num_of_inputs': (input_response["transaction_inputs"][str(transaction_id)])['num_of_inputs'],
@@ -93,6 +93,18 @@ class TransactionEndpoint(Resource):
                         'num_of_inputs'] == 0 and (output_response["transaction_outputs"][str(transaction_id)])[
                                 'num_of_outputs'] == 0):
                         num_of_empty_transactions = num_of_empty_transactions + 1
+                else:
+                    if input_response["ResponseCode"] != "0" + str(ResponseCodes.Success.value):
+                        return CreateErrorResponse(self, str(input_response["ResponseCode"]),
+                                                   str(input_response["ResponseDesc"]),
+                                                   "Error in Transaction Input Service : " + str(
+                                                       input_response["ErrorMessage"]))
+                    if output_response["ResponseCode"] != "0" + str(ResponseCodes.Success.value):
+                        return CreateErrorResponse(self, str(output_response["ResponseCode"]),
+                                                   str(output_response["ResponseDesc"]),
+                                                   "Error in Transaction Output Service : " + str(
+                                                       output_response["ErrorMessage"]))
+
             if num_of_empty_transactions != len(transaction_ids):
                 return {
                     'ResponseCode': "0" + str(ResponseCodes.Success.value),

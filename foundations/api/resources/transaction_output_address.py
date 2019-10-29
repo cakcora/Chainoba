@@ -10,7 +10,7 @@ from foundations.api.models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_address(address, output_id):
-    return {'address_id': address.id, 'hash': address.hash.strip(),
+    return {'address_id': int(address.id), 'hash': address.hash.strip(),
             'public_key': address.public_key.strip(),
             'address': address.address.strip()
             }
@@ -30,90 +30,6 @@ def CreateErrorResponse(self, code, desc, message):
     json_data["ResponseDesc"] = desc
     json_data["ErrorMessage"] = message
     return json_data
-
-
-def ValidateTransactionIds(self, transaction_ids):
-    validationErrorList = []
-
-    if len(transaction_ids) == 0:
-        validationErrorList.append(CreateErrorResponse(self, ResponseCodes.TransactionIdsInputMissing.name,
-                                                       str(ResponseCodes.TransactionIdsInputMissing.value),
-                                                       str(ResponseDescriptions.TransactionIdsInputMissing.value)))
-    if len(transaction_ids) > 10:
-        validationErrorList.append(CreateErrorResponse(self, ResponseCodes.NumberOfTransactionIdsLimitExceeded.name,
-                                                       str(ResponseCodes.NumberOfTransactionIdsLimitExceeded.value),
-                                                       str(
-                                                           ResponseDescriptions.NumberOfTransactionIdsLimitExceeded.value)))
-    if len(transaction_ids) > 0:
-        for transaction_id in transaction_ids:
-            if not str.isdigit(transaction_id) or (str.isdigit(str(transaction_id)) and int(transaction_id) <= 0):
-                validationErrorList.append(
-                    CreateErrorResponse(self, ResponseCodes.InvalidTransactionIdsInputValues.name,
-                                        str(ResponseCodes.InvalidTransactionIdsInputValues.value),
-                                        str(
-                                            ResponseDescriptions.InvalidTransactionIdsInputValues.value)))
-                break
-    return validationErrorList
-
-
-class GetTransactionOutputAddressByTransactionId(Resource):
-    args = {'transaction_ids': fields.List(fields.String())}
-
-    @use_kwargs(args)
-    def get(self, transaction_ids):
-        transaction_ids = list(set(list(transaction_ids)))
-        transaction_ids = [transaction_id.strip() for transaction_id in transaction_ids if transaction_id.strip()]
-        validation_errors = {"Errors": []}
-        validations_result = ValidateTransactionIds(self, transaction_ids)
-        if validations_result is not None and len(validations_result) > 0:
-            validation_errors["Errors"] = validations_result
-            return validation_errors
-        try:
-            trans_out_dict = {}
-            for transaction_id in sorted(transaction_ids):
-                total_outputs = 0
-                transaction_output_id_list = db_session.query(TransactionOutput).filter(
-                    TransactionOutput.transaction_id == int(transaction_id)).order_by(
-                    TransactionOutput.id.asc()).with_entities(
-                    TransactionOutput.id).all()
-                transaction_output_address_list = []
-                for trans_output_id in sorted(list(transaction_output_id_list)):
-                    output_address_list = db_session.query(TransactionOutputAddress).filter(
-                        TransactionOutputAddress.output_id == trans_output_id.id).order_by(
-                        TransactionOutputAddress.id.asc()).all()
-                    total_output_addresses = 0
-                    trans_out_addr_dict = {}
-                    output_addresses = []
-
-                    for output_address in output_address_list:
-                        trans_output_address_as_dict = serialize_transaction_output_address(
-                            output_address.address_id,
-                            trans_output_id.id)
-                        output_addresses.append(trans_output_address_as_dict)
-                        total_output_addresses = total_output_addresses + 1
-                        trans_out_addr_dict = {
-                            'output_id': trans_output_id.id,
-                            'num_of_output_addresses': len(output_addresses),
-                            'output-addresses': output_addresses}
-                    transaction_output_address_list.append(trans_out_addr_dict)
-                    total_outputs = total_outputs + 1
-                trans_out_dict[transaction_id] = {'num_of_outputs': total_outputs,
-                                                  'outputs': transaction_output_address_list}
-            if total_outputs > 0:
-                return {
-                    'ResponseCode': "0" + str(ResponseCodes.Success.value),
-                    'ResponseDesc': ResponseCodes.Success.name,
-                    'transaction_outputs': trans_out_dict
-                }
-            else:
-                return CreateErrorResponse(self, ResponseCodes.NoDataFound.name,
-                                           str(ResponseCodes.NoDataFound.value),
-                                           ResponseDescriptions.NoDataFound.value)
-
-        except Exception as ex:
-            return CreateErrorResponse(self, ResponseCodes.InternalError.name,
-                                       str(ResponseCodes.InternalError.value),
-                                       str(ex))
 
 
 def ValidateTransactionIdAndTransactionOutputId(self, transaction_id, transaction_output_id):
@@ -181,8 +97,8 @@ class GetTransactionOutputAddressByTransactionOutputId(Resource):
                     return {
                         'ResponseCode': "0" + str(ResponseCodes.Success.value),
                         'ResponseDesc': ResponseCodes.Success.name,
-                        'transaction_id': transaction_id,
-                        'transaction_output_id': transaction_output_id,
+                        'transaction_id': int(transaction_id),
+                        'transaction_output_id': int(transaction_output_id),
                         'num_of_output_addresses': len(output_addresses),
                         'output-addresses': output_addresses
                     }

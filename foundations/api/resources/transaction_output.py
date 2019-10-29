@@ -12,14 +12,15 @@ from foundations.api.models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_address(address, output_id):
-    return {'address_id': address.id, 'hash': address.hash.strip(),
+    return {'address_id': int(address.id), 'hash': address.hash.strip(),
             'public_key': address.public_key.strip(),
             'address': address.address.strip()
             }
 
 
 def serialize_transaction_output(trans_output, num_of_output_addresses, output_address_as_dict):
-    return {'output_id': trans_output.id, 'value': trans_output.value, 'scriptpubkey': str(trans_output.scriptpubkey),
+    return {'output_id': int(trans_output.id), 'value': trans_output.value,
+            'scriptpubkey': str(trans_output.scriptpubkey),
             'index': trans_output.index,
             'script_type': str(trans_output.script_type).strip(),
             'num_of_output_addresses': num_of_output_addresses,
@@ -81,7 +82,7 @@ class TransactionOutputEndpoint(Resource):
                 total_num_of_transaction_outputs = 0
                 for trans_output in transaction_outputs:
                     output_address_response = json.loads(
-                        requests.get('http://localhost:5000/bitcoin/output/addresses',
+                        requests.get('http://localhost:5000/bitcoin/transactions/outputs/addresses',
                                      {'transaction_id': transaction_id,
                                       'transaction_output_id': str(trans_output.id)}).text)
                     if output_address_response["ResponseCode"] == "0" + str(ResponseCodes.Success.value):

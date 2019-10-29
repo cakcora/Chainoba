@@ -22,13 +22,13 @@ versions:
         request_parameters:
           year:
             type: integer
-            description: Year of block creation
+            description: Year of Block creation
           month:
             type: integer
-            description: Month of block creation
+            description: Month of Block creation
           day:
             type: integer
-            description: Day of block creation
+            description: Day of Block creation
           date_offset:
             type: integer
             description: Timeframe of the required data
@@ -37,21 +37,37 @@ versions:
           properties:
             year:
               type: integer
-              description: Year of block creation
+              description: Year of Block creation
             month:
               type: integer
-              description: Month of block creation
+              description: Month of Block creation
             day:
               type: integer
-              description: Day of block creation
+              description: Day of Block creation
             date_offset:
               type: integer
               description: Timeframe of the required data
         response_body:
           type: object
           properties:
+            ResponseCode:
+              type: string
+              description: Response Code of Api Method Service
+            ResponseDesc:
+              type: string
+              description: Response Desc of Api Method Service
+            from_date:
+              type: string
+              description: From Date Range Min Value
+            to_date:
+              type: string
+              description: From Date Range Max Value
+            num_blocks:
+              type: integer
+              description: Number of blocks found withing the timeframe.
             Block:
               type: Block
+              description: Block data of blocks returned in result.
         response_codes:
           - code: 404
             message: Block not found
@@ -68,14 +84,33 @@ versions:
               description: Block identifier
             hash:
               type: string
-              description: Hash of the block
+              description: Hash of the Block
+            hash_prev:
+              type: string
+              description: Hash of the Previous Block
+            n_time:
+              type: string
+              description: Timestamp
+            nnonce:
+              type: integer
+              description: Nonce value computed for Block
+            version:
+              type: integer
+              description: Version of the Blockchain
+            hash_merkle_root:
+              type: string
+              description: Hash of the Merkle tree of Block
+            nbits:
+              type: integer
+              description: Size of the Block in bits
             transactions:
               type: array
-              description: List of transactions
+              description: List of Transactions
               items:
                 type: Transaction
+
       Transaction:
-        description: A transaction
+        description: A Transaction
         item:
           type: object
           properties:
@@ -84,68 +119,123 @@ versions:
               description: Transaction identifier
             hash:
               type: string
-              description: Hash of the transaction
-            input_addresses:
+              description: Hash of the Transaction
+            version:
+              type: integer
+              description: Version of the Blockchain
+            locktime:
+              type: integer
+              description: Lock Time of Transaction
+            num_of_inputs:
+              type: integer
+              description: Number of Inputs of Transaction
+            inputs:
               type: array
-              description: List of input addresses
+              description: List of Inputs of Transaction
               items:
-                type: Address
-            output_addresses:
+                type: TransactionInput
+            num_of_outputs:
+              type: integer
+              description: Number of Outputs of Transaction
+            outputs:
               type: array
-              description: List of output addresses
+              description: List of Outputs of Transaction
               items:
-                type: Address
+                type: TransactionOutput
+
       Address:
-        description: An address
+        description: An Address
         item:
           type: object
           properties:
-            transaction_id:
+            address_id:
               type: integer
-              description: Transaction identifier
+              description: Address identifier
             hash:
               type: string
-              description: Hash of the transaction
+              description: Hash of the Address
+            public_key:
+              type: string
+              description: Public key of Address
+            address:
+              type: string
+              description: Address string
+
       TransactionInput:
-        description: A transaction Input
+        description: A Transaction Input
         item:
           type: object
             properties:
-              num_of_transaction_inputs:
+              input_id:
                 type: integer
-                description: number of transaction Inputs
-              transaction_inputs:
-                type: array
-                items:
-                  type: TransactionInput
+                description: Identifier of an input of a transaction
+              prevout_hash:
+                type: string
+                  type: Hash of the previous transaction whose output is responsible for this input
+              prevout_n:
+                type: integer
+                  type: Identifier of of output of previous transaction that responsible for this input
+              scriptsig:
+                type: string
+                  type: Pay to script Hash Signature
+              sequence:
+                type: integer
+                  type: Sequence Number of this Input of Transaction
+              prev_output_id:
+                type: integer
+                  type: Identifier of output of previous transaction that responsible for this input
+
 
         TransactionOutput:
-          description: A transaction Output
+          description: A Transaction Output
           item:
             type: object
               properties:
-                num_of_transaction_inputs:
+                output_id:
                   type: integer
-                  description: number of transaction outputs
-                transaction_outputs:
+                  description: Identifier of an Output of a Transaction
+                value:
+                  type: string
+                    type: Amount Transferred in Satoshis during Transaction
+                scriptpubkey:
+                  type: integer
+                    type: Public Key Script associated with Transaction Output
+                index:
+                  type: string
+                    type: Index of Transaction output among the other Transaction Output list
+                script_type:
+                  type: string
+                    type: Script Type of Transaction Output
+                num_of_output_addresses:
+                  type: integer
+                  description: Number of Output addresses associated with Transaction Outputs
+                output-addresses:
                   type: array
                   properties:
                   items:
-                    type: TransactionOutput
+                    type: TransactionOutputAddress
+                    description: Transaction Output Addresses Data
 
         TransactionOutputAddress:
-          description: A transaction Output Address
+          description: A Transaction Output Address
           item:
             type: object
               properties:
                 transaction_id:
                   type: integer
-                  description: transaction identifier
-                transaction-output_addresses:
+                  description: Transaction Identifier
+                transaction_output_id:
+                  type: integer
+                  description: Transaction Output Identifier
+                num_of_output_addresses:
+                  type: integer
+                  description: Number of Output Addresses assoiated with an Transaction Output
+                output-addresses:
                   type: array
                   properties:
                   items:
-                    type: TransactionOutputAddress
+                    type: Address
+                    description: Addresses Info associated with Transaction Outputs
 
 
 

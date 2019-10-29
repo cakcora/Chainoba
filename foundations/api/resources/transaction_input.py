@@ -8,7 +8,8 @@ from foundations.api.models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_transaction_input(trans_input):
-    return {'input_id': trans_input.id, 'prevout_hash': trans_input.prevout_hash, 'prevout_n': trans_input.prevout_n,
+    return {'input_id': int(trans_input.id), 'prevout_hash': trans_input.prevout_hash,
+            'prevout_n': trans_input.prevout_n,
             'scriptsig': str(trans_input.scriptsig), 'sequence': trans_input.sequence,
             'prev_output_id': trans_input.prev_output_id
             }
