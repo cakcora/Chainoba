@@ -13,7 +13,7 @@ versions:
     major: 1
     minor: 1
     methods:
-      BlockList:
+      BlockListByDate:
         label: Blocks
         method: GET
         description: Query for an existing block(s) based on timestamp
@@ -22,13 +22,13 @@ versions:
         request_parameters:
           year:
             type: integer
-            description: Year of block creation
+            description: Year of Block creation
           month:
             type: integer
-            description: Month of block creation
+            description: Month of Block creation
           day:
             type: integer
-            description: Day of block creation
+            description: Day of Block creation
           date_offset:
             type: integer
             description: Timeframe of the required data
@@ -37,25 +37,389 @@ versions:
           properties:
             year:
               type: integer
-              description: Year of block creation
+              description: Year of Block creation
             month:
               type: integer
-              description: Month of block creation
+              description: Month of Block creation
             day:
               type: integer
-              description: Day of block creation
+              description: Day of Block creation
             date_offset:
               type: integer
               description: Timeframe of the required data
         response_body:
           type: object
           properties:
+            ResponseCode:
+              type: string
+              description: Response Code of Api Method Service
+            ResponseDesc:
+              type: string
+              description: Response Desc of Api Method Service
+            from_date:
+              type: string
+              description: From Date Range Min Value
+            to_date:
+              type: string
+              description: From Date Range Max Value
+            num_blocks:
+              type: integer
+              description: Number of blocks found withing the timeframe.
             Block:
               type: Block
+              description: Block data of blocks returned in result.
         response_codes:
-          - code: 404
-            message: Block not found
-            description: Block does not exists
+          - code: 101
+            message: Value of Input Parameter day is missing.
+            description: Required Validation of Input parameter day
+          - code: 102
+              message: Value of Input Parameter month is missing.
+              description: Required Validation of Input parameter month
+          - code: 103
+              message: Value of Input Parameter year is missing.
+              description: Required Validation of Input parameter year
+          - code: 104
+              message: Value of Input Parameter date_offset is missing.
+              description: Required Validation of Input parameter date_offset
+          - code: 201
+              message: Value of Input Parameter day is invalid.
+              description: Value Validation for Input parameter day
+          - code: 202
+              message: Value of Input Parameter month is invalid.
+              description: Value Validation for Input parameter month
+          - code: 203
+              message: Value of Input Parameter year is invalid.
+              description: Value Validation for Input parameter year
+          - code: 204
+              message: Value of Input Parameter date_offset is invalid.
+              description: Value Validation for Input parameter date_offset
+          - code: 00
+              message: Success
+              description: Value Validation for request api call operation success
+          - code: 99
+              message: Internal Server Error
+              description: Internal Server Error
+          - code: 300
+              message: No data found.
+              description: No Data found for the parameters passed in the request.
+
+      TransactionListByBlockId:
+        label: Blocks
+        method: GET
+        description: Query for an all existing transaction corresponding to list of  blockId(s) passed as request parameter
+        uri: /blocks/transactions
+        category: Bitcoin
+        request_parameters:
+          block_ids:
+            type: array
+            description: List of Block Ids
+            items:
+              type: integer
+              description: Block Id
+        request_body:
+          type: object
+          properties:
+            block_ids:
+              type: array
+              description: List of Block Ids
+              items:
+                type: integer
+                description: Block Id
+        response_body:
+          type: object
+          properties:
+            ResponseCode:
+              type: string
+              description: Response Code of Api Method Service
+            ResponseDesc:
+              type: string
+              description: Response Desc of Api Method Service
+            Block_Transaction_Data:
+              type: object
+              description: Transaction Data belonging to the input block Ids
+              properties:
+                num_of_transactions:
+                  type: integer
+                  description: Number of transactions corresponding to a input block Id
+                transactions:
+                  items:
+                    type: Transaction
+                    description: transaction data belonging to an input block id
+        response_codes:
+          - code: 105
+              message: Value of Input Parameter block_ids is missing.
+              description: Required Validation of block_ids  passed as request parameter
+          - code: 205
+              message: Value of Input Parameter block_ids is invalid.
+              description: Value Validation for block_ids  passed as request parameter
+          - code: 206
+              message: Number of block_ids input values limit exceeded.
+              description: Validation for limit of Items in List of block_ids  passed as request parameter
+          - code: 00
+              message: Success
+              description: Value Validation for request api call operation success
+          - code: 99
+              message: Internal Server Error
+              description: Internal Server Error
+          - code: 300
+              message: No data found.
+              description: No Data found for the parameters passed in the request.
+
+      TransactionDataByTransactionId:
+        label: Transactions
+        method: GET
+        description: Query for an all transaction data corresponding to list of input transaction_ids(s)
+        uri: /transactions
+        category: Bitcoin
+        request_parameters:
+          transaction_ids:
+            type: array
+            description: List of Transaction Ids
+            items:
+              type: integer
+              description: Transaction Ids
+        request_body:
+          type: object
+          properties:
+            block_ids:
+              type: array
+              description: List of Transaction Ids
+              items:
+                type: integer
+                description: Transaction Ids
+        response_body:
+          type: object
+          properties:
+            ResponseCode:
+              type: string
+              description: Response Code of Api Method Service
+            ResponseDesc:
+              type: string
+              description: Response Desc of Api Method Service
+            transaction_data:
+              type: object
+              description: Transaction Data belonging to the Transaction Ids passed as request parameter
+              properties:
+                transactions:
+                  type: Transaction
+                  description: transaction data belonging to an Transaction id passed as request parameter
+        response_codes:
+          - code: 106
+              message: Value of Input Parameter transaction_ids is missing.
+              description: Required Validation of transaction_ids passed as request parameter
+          - code: 207
+              message: Value of Input Parameter transaction_ids is invalid.
+              description: Value Validation for transaction_ids passed as request parameter
+          - code: 208
+              message: Number of transaction_ids input values limit exceeded.
+              description: Validation for limit of Items in List of transaction_ids passes as request parameter.
+          - code: 00
+              message: Success
+              description: Value Validation for request api call operation success
+          - code: 99
+              message: Internal Server Error
+              description: Internal Server Error
+          - code: 300
+              message: No data found.
+              description: No Data found for the parameters passed in the request.
+
+      TransactionInputDataByTransactionId:
+        label: Transactions
+        method: GET
+        description: Query for an all Transaction Input data corresponding to transaction_ids(s) passed as request paramater
+        uri: /transactions/inputs
+        category: Bitcoin
+        request_parameters:
+          transaction_ids:
+            type: array
+            description: List of Transaction Ids
+            items:
+              type: integer
+              description: Transaction Ids
+        request_body:
+          type: object
+          properties:
+            block_ids:
+              type: array
+              description: List of Transaction Ids
+              items:
+                type: integer
+                description: Transaction Ids
+        response_body:
+          type: object
+          properties:
+            ResponseCode:
+              type: string
+              description: Response Code of Api Method Service
+            ResponseDesc:
+              type: string
+              description: Response Desc of Api Method Service
+            transaction_inputs:
+              type: object
+              description: Transaction Input Data belonging to the Transaction Id(s) passed as request paramater
+              properties:
+                transactions:
+                  type: array
+                    items:
+                      num_of_inputs:
+                        type: integer
+                        description: Number of Transaction Inputs belonging to an Transaction id passed as request paramater
+                      inputs:
+                        type: TrancsationInput
+                        description: Transaction Input data belonging to an Transaction id passed as request paramater
+        response_codes:
+          - code: 106
+              message: Value of Parameter transaction_ids is missing.
+              description: Required Validation of transaction_ids passed as request paramater
+          - code: 207
+              message: Value of Parameter transaction_ids is invalid.
+              description: Value Validation for transaction_ids passed as paramater
+          - code: 208
+              message: Number of transaction_ids parameter values limit exceeded.
+              description: Validation for limit of Items in List of transaction_ids passed as request paramater
+          - code: 00
+              message: Success
+              description: Value Validation for request api call operation success
+          - code: 99
+              message: Internal Server Error
+              description: Internal Server Error
+          - code: 300
+              message: No data found.
+              description: No Data found for the parameters passed in the request.
+
+      TransactionOutputDataByTransactionId:
+        label: Transactions
+        method: GET
+        description: Query for an all Transaction Output data corresponding to transaction_ids(s) passed as request paramater
+        uri: /transactions/outputs
+        category: Bitcoin
+        request_parameters:
+          transaction_ids:
+            type: array
+            description: List of Transaction Ids
+            items:
+              type: integer
+              description: Transaction Ids
+        request_body:
+          type: object
+          properties:
+            block_ids:
+              type: array
+              description: List of Transaction Ids
+              items:
+                type: integer
+                description: Transaction Ids
+        response_body:
+          type: object
+          properties:
+            ResponseCode:
+              type: string
+              description: Response Code of Api Method Service
+            ResponseDesc:
+              type: string
+              description: Response Desc of Api Method Service
+            transaction_outputs:
+              type: object
+              description: Transaction Data belonging to the Transaction Id(s) passed as paramater
+              properties:
+                transactions:
+                  type: array
+                    items:
+                      num_of_outputs:
+                        type: integer
+                        description: Number of Transaction Outputs belonging to an Transaction id passed as request paramater
+                      outputs:
+                        type: TrancsationOutput
+                        description: Transaction Input data belonging to an Transaction id passed as request paramater
+        response_codes:
+          - code: 106
+              message: Value of Parameter transaction_ids is missing.
+              description: Required Validation of transaction_ids passed as request paramater
+          - code: 207
+              message: Value of Parameter transaction_ids is invalid.
+              description: Value Validation for transaction_id passed as request paramater
+          - code: 208
+              message: Number of transaction_ids parameter values limit exceeded.
+              description: Validation for limit of Items in List of transaction_id passed as request paramater
+          - code: 00
+              message: Success
+              description: Value Validation for request api call operation success
+          - code: 99
+              message: Internal Server Error
+              description: Internal Server Error
+          - code: 300
+              message: No data found.
+              description: No Data found for the parameters passed in the request.
+
+      TransactionOutputAddressDataByTransactionIdAndTransactionOutputId:
+        label: Transactions
+        method: GET
+        description: Query for an all Transaction Output Address data corresponding to transaction_id and transaction_output_id passed as request paramater
+        uri: /transactions/outputs/addresses
+        category: Bitcoin
+        request_parameters:
+          transaction_id:
+            type: integer
+            description: Transaction Id
+          transaction_output_id:
+            type: integer
+            description: Transaction Output Id
+        request_body:
+          type: object
+          properties:
+            transaction_id:
+              type: integer
+              description: Transaction Id
+            transaction_output_id:
+              type: integer
+              description: Transaction Output Id
+        response_body:
+          type: object
+          properties:
+            ResponseCode:
+              type: string
+              description: Response Code of Api Method Service
+            ResponseDesc:
+              type: string
+              description: Response Desc of Api Method Service
+            transaction_id:
+              type: integer
+              description: Transaction Id
+            transaction_output_id:
+              type: integer
+              description: Transaction Output Id
+            num_of_output_addresses:
+              type: integer
+              description: Numvber of Output addresses linked to a transaction and the transaction output id passed as paramaters
+            output-addresses:
+              type: TransactionOutputAddreses
+              description: Transaction Output Address Data belonging to transaction and the transaction output id passed as paramaters
+        response_codes:
+          - code: 107
+              message: Value of Parameter transaction_id is missing.
+              description: Required Validation of transaction_id passed as request paramater
+          - code: 108
+              message: Value of Parameter transaction_output_id is missing.
+              description: Required Validation of transaction_output_id passed as request paramater
+          - code: 209
+              message: Value of Parameter transaction_id is invalid.
+              description: Value Validation for transaction_id passed as request paramater
+          - code: 210
+              message: Value of Parameter transaction_output_id is invalid.
+              description: Value Validation for transaction_output_id passed as request paramater
+          - code: 211
+              message: value of parameter transaction_output_id does not belong to the paraneter transaction_id
+              description: Validation for checking if transaction_output_id passes as request param is related to the transaction_id.
+          - code: 00
+              message: Success
+              description: Value Validation for request api call operation success
+          - code: 99
+              message: Internal Server Error
+              description: Internal Server Error
+          - code: 300
+              message: No data found.
+              description: No Data found for the parameters passed in the request.
+
 
     types:
       Block:
@@ -68,14 +432,33 @@ versions:
               description: Block identifier
             hash:
               type: string
-              description: Hash of the block
+              description: Hash of the Block
+            hash_prev:
+              type: string
+              description: Hash of the Previous Block
+            n_time:
+              type: string
+              description: Timestamp
+            nnonce:
+              type: integer
+              description: Nonce value computed for Block
+            version:
+              type: integer
+              description: Version of the Blockchain
+            hash_merkle_root:
+              type: string
+              description: Hash of the Merkle tree of Block
+            nbits:
+              type: integer
+              description: Size of the Block in bits
             transactions:
               type: array
-              description: List of transactions
+              description: List of Transactions
               items:
                 type: Transaction
+
       Transaction:
-        description: A transaction
+        description: A Transaction
         item:
           type: object
           properties:
@@ -84,68 +467,123 @@ versions:
               description: Transaction identifier
             hash:
               type: string
-              description: Hash of the transaction
-            input_addresses:
+              description: Hash of the Transaction
+            version:
+              type: integer
+              description: Version of the Blockchain
+            locktime:
+              type: integer
+              description: Lock Time of Transaction
+            num_of_inputs:
+              type: integer
+              description: Number of Inputs of Transaction
+            inputs:
               type: array
-              description: List of input addresses
+              description: List of Inputs of Transaction
               items:
-                type: Address
-            output_addresses:
+                type: TransactionInput
+            num_of_outputs:
+              type: integer
+              description: Number of Outputs of Transaction
+            outputs:
               type: array
-              description: List of output addresses
+              description: List of Outputs of Transaction
               items:
-                type: Address
+                type: TransactionOutput
+
+
       Address:
-        description: An address
+        description: An Address
         item:
           type: object
           properties:
-            transaction_id:
+            address_id:
               type: integer
-              description: Transaction identifier
+              description: Address identifier
             hash:
               type: string
-              description: Hash of the transaction
+              description: Hash of the Address
+            public_key:
+              type: string
+              description: Public key of Address
+            address:
+              type: string
+              description: Address string
+
       TransactionInput:
-        description: A transaction Input
+        description: A Transaction Input
         item:
           type: object
             properties:
-              num_of_transaction_inputs:
+              input_id:
                 type: integer
-                description: number of transaction Inputs
-              transaction_inputs:
-                type: array
-                items:
-                  type: TransactionInput
+                description: Identifier of an input of a transaction
+              prevout_hash:
+                type: string
+                  type: Hash of the previous transaction whose output is responsible for this input
+              prevout_n:
+                type: integer
+                  type: Identifier of of output of previous transaction that responsible for this input
+              scriptsig:
+                type: string
+                  type: Pay to script Hash Signature
+              sequence:
+                type: integer
+                  type: Sequence Number of this Input of Transaction
+              prev_output_id:
+                type: integer
+                  type: Identifier of output of previous transaction that responsible for this input
+
 
         TransactionOutput:
-          description: A transaction Output
+          description: A Transaction Output
           item:
             type: object
               properties:
-                num_of_transaction_inputs:
+                output_id:
                   type: integer
-                  description: number of transaction outputs
-                transaction_outputs:
+                  description: Identifier of an Output of a Transaction
+                value:
+                  type: string
+                    type: Amount Transferred in Satoshis during Transaction
+                scriptpubkey:
+                  type: integer
+                    type: Public Key Script associated with Transaction Output
+                index:
+                  type: string
+                    type: Index of Transaction output among the other Transaction Output list
+                script_type:
+                  type: string
+                    type: Script Type of Transaction Output
+                num_of_output_addresses:
+                  type: integer
+                  description: Number of Output addresses associated with Transaction Outputs
+                output-addresses:
                   type: array
-                  properties:
                   items:
-                    type: TransactionOutput
+                    type: TransactionOutputAddress
+                    description: Transaction Output Addresses Data
 
         TransactionOutputAddress:
-          description: A transaction Output Address
+          description: A Transaction Output Address
           item:
             type: object
               properties:
                 transaction_id:
                   type: integer
-                  description: transaction identifier
-                transaction-output_addresses:
+                  description: Transaction Identifier
+                transaction_output_id:
+                  type: integer
+                  description: Transaction Output Identifier
+                num_of_output_addresses:
+                  type: integer
+                  description: Number of Output Addresses assoiated with an Transaction Output
+                output-addresses:
                   type: array
                   properties:
                   items:
-                    type: TransactionOutputAddress
+                    type: Address
+                    description: Addresses Info associated with Transaction Outputs
 
 
 

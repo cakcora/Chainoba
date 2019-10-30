@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "39903294-8519-4c7e-8d9b-77af8018b85c",
+      "_postman_id": "01013724-3d9d-47cd-b7b9-7381c8300c59",
 		"name": "Chainoba/foundations",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,8 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://159.203.28.234:5000/bitcoin/blocks?year=2009&month=1&day=10&date_offset=5",
-					"protocol": "http",
+                  "raw": "localhost:5000/bitcoin/blocks?year=2009&month=02&day=03&date_offset=1",
 					"host": [
 						"159",
 						"203",
@@ -31,11 +30,12 @@
 						},
 						{
 							"key": "month",
-							"value": "1"
+                          "value": "02"
 						},
 						{
 							"key": "day",
-							"value": "10"
+                          "value": "03"
+ 
 						},
 						{
 							"key": "date_offset",
@@ -43,32 +43,18 @@
 						}
 					]
 				},
-				"description": "Get block IDs by day."
+              "description": "Get blocks by day."
 			},
 			"response": []
 		},
 		{
-			"name": "Get transaction IDs by block IDs",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+          "name": "get transactions by block id",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"block_ids\": [1,2]\n}"
-				},
+              "header": [],
 				"url": {
-					"raw": "http://159.203.28.234:5000/bitcoin/blocks/transactions",
-					"protocol": "http",
+                 "raw": "localhost:5000/bitcoin/blocks/transactions?block_ids=3",
+ 
 					"host": [
 						"159",
 						"203",
@@ -80,33 +66,28 @@
 						"bitcoin",
 						"blocks",
 						"transactions"
+                    ],
+                  "query": [
+                    {
+                      "key": "block_ids",
+                      "value": "3"
+                    }
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get transactions by trasanction id",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+          "name": "get transactions by transaction id",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"transaction_ids\": [1,2, 3]\n}"
-				},
+              "header": [],
 				"url": {
+ 
+                  "raw": "localhost:5000/bitcoin/transactions?transaction_ids=1",
+ 
 					"raw": "http://159.203.28.234:5000/bitcoin/transactions",
-					"protocol": "http",
+ 
 					"host": [
 						"159",
 						"203",
@@ -117,33 +98,25 @@
 					"path": [
 						"bitcoin",
 						"transactions"
+                    ],
+                  "query": [
+                    {
+                      "key": "transaction_ids",
+                      "value": "1"
+                    }
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get transaction inputs by transaction id",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+          "name": "get transactions inputs by trasanction id",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"transaction_ids\": [1,2, 3]\n}"
-				},
+              "header": [],
 				"url": {
-					"raw": "http://159.203.28.234:5000/bitcoin/transactions/inputs",
-					"protocol": "http",
+       "raw": "localhost:5000/bitcoin/transactions/inputs?transaction_ids=2&transaction_ids=3",
+ 
 					"host": [
 						"159",
 						"203",
@@ -155,33 +128,29 @@
 						"bitcoin",
 						"transactions",
 						"inputs"
+                    ],
+                  "query": [
+                    {
+                      "key": "transaction_ids",
+                      "value": "2"
+                    },
+                    {
+                      "key": "transaction_ids",
+                      "value": "3"
+                    }
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get transaction outputs by transaction id",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+          "name": "get transactions outputs by transanction id",
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"transaction_ids\": [1,2, 3]\n}"
-				},
+              "header": [],
 				"url": {
-					"raw": "http://159.203.28.234:5000/bitcoin/transactions/outputs",
-					"protocol": "http",
+                  "raw": "localhost:5000/bitcoin/transactions/outputs?transaction_ids=1&transaction_ids=3",
+ 
 					"host": [
 						"159",
 						"203",
@@ -193,10 +162,52 @@
 						"bitcoin",
 						"transactions",
 						"outputs"
+                    ],
+                  "query": [
+                    {
+                      "key": "transaction_ids",
+                      "value": "1"
+                    },
+                    {
+                      "key": "transaction_ids",
+                      "value": "3"
+                    }
+                  ]
+                }
+            },
+          "response": []
+        },
+      {
+        "name": "get transactions outputs addresses by transanction id and output id",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "localhost:5000/bitcoin/transactions/outputs/addresses?transaction_id=1&transaction_output_id=1",
+            "host": [
+              "localhost"
+            ],
+            "port": "5000",
+            "path": [
+              "bitcoin",
+              "transactions",
+              "outputs",
+              "addresses"
+            ],
+            "query": [
+              {
+                "key": "transaction_id",
+                "value": "1"
+              },
+              {
+                "key": "transaction_output_id",
+                "value": "1"
+              }
 					]
 				}
 			},
 			"response": []
 		}
-	]
+    ],
+  "protocolProfileBehavior": {}
 }
