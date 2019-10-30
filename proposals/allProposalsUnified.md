@@ -24,7 +24,7 @@ Results to visualize: Addresses and their edges.
 
 ## Joglas
 Data: Bitcoin
-Aim: Conflicting aim with Baha. Same target. We will discuss.
+Aim: Ripple measurement study
 
 ## Karan
 Data: Ethereum smart contracts
@@ -93,7 +93,7 @@ Foundations. Data and API connections.
 
 ## Mamun 
 Data: Ethereum.
-Aim: Conflicts with Saad's. Please talk to each other.
+Aim: TOken classification based on Latent Dirichlet Allocation
 
 ## Sourav
 Data:Bitcoin

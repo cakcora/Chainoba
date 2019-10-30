@@ -13,7 +13,10 @@
 				"url": {
                   "raw": "localhost:5000/bitcoin/blocks?year=2009&month=02&day=03&date_offset=1",
 					"host": [
-						"localhost"
+						"159",
+						"203",
+						"28",
+						"234"
 					],
 					"port": "5000",
 					"path": [
@@ -32,10 +35,11 @@
 						{
 							"key": "day",
                           "value": "03"
+ 
 						},
 						{
 							"key": "date_offset",
-							"value": "1"
+							"value": "5"
 						}
 					]
 				},
@@ -49,9 +53,13 @@
 				"method": "GET",
               "header": [],
 				"url": {
-                  "raw": "localhost:5000/bitcoin/blocks/transactions?block_ids=3",
+                 "raw": "localhost:5000/bitcoin/blocks/transactions?block_ids=3",
+ 
 					"host": [
-						"localhost"
+						"159",
+						"203",
+						"28",
+						"234"
 					],
 					"port": "5000",
 					"path": [
@@ -75,9 +83,16 @@
 				"method": "GET",
               "header": [],
 				"url": {
+ 
                   "raw": "localhost:5000/bitcoin/transactions?transaction_ids=1",
+ 
+					"raw": "http://159.203.28.234:5000/bitcoin/transactions",
+ 
 					"host": [
-						"localhost"
+						"159",
+						"203",
+						"28",
+						"234"
 					],
 					"port": "5000",
 					"path": [
@@ -100,9 +115,13 @@
 				"method": "GET",
               "header": [],
 				"url": {
-                  "raw": "localhost:5000/bitcoin/transactions/inputs?transaction_ids=2&transaction_ids=3",
+       "raw": "localhost:5000/bitcoin/transactions/inputs?transaction_ids=2&transaction_ids=3",
+ 
 					"host": [
-						"localhost"
+						"159",
+						"203",
+						"28",
+						"234"
 					],
 					"port": "5000",
 					"path": [
@@ -131,8 +150,12 @@
               "header": [],
 				"url": {
                   "raw": "localhost:5000/bitcoin/transactions/outputs?transaction_ids=1&transaction_ids=3",
+ 
 					"host": [
-						"localhost"
+						"159",
+						"203",
+						"28",
+						"234"
 					],
 					"port": "5000",
 					"path": [
