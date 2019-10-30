@@ -10,7 +10,6 @@ from webargs import fields, validate
 from webargs.flaskparser import use_kwargs
 
 
-
 def serialize_block(block):
     return {'id': block.id, 'hash_prev': block.hashprev, 'hash': block.hash,
             'n_time': datetime.utcfromtimestamp(block.ntime).strftime('%Y-%m-%d %H:%M:%S'),
@@ -19,7 +18,7 @@ def serialize_block(block):
 
 
 def serialize_transaction(transaction):
-    return {'id': transaction.id, 'hash': transaction.hash, 'version': transaction.version,
+    return {'transaction_id': transaction.id, 'hash': transaction.hash, 'version': transaction.version,
             'locktime': transaction.locktime, 'version': transaction.block_id}
 
 
@@ -194,12 +193,12 @@ class GetTransactionIDByBlockID(Resource):
                     trans_list.append(trans_as_dict)
                 if len(trans_list) == 0:
                     num_of_empty_blocks = num_of_empty_blocks + 1
-                block_transactions_dict[blk_id] = trans_list
+                block_transactions_dict[blk_id] = {"num_of_transactions": len(trans_list), 'transactions': trans_list}
             if block_transactions_dict is not None and num_of_empty_blocks != len(block_ids):
                 return {
                     'ResponseCode': "0" + str(ResponseCodes.Success.value),
                     'ResponseDesc': ResponseCodes.Success.name,
-                    'blocks': block_transactions_dict
+                    'Block_Transaction_Data': block_transactions_dict
                 }
             else:
                 return CreateErrorResponse(self, ResponseCodes.NoDataFound.name,
