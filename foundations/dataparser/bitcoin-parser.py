@@ -1,5 +1,6 @@
-
+import multiprocessing as mp
 from config import cfg as CONFIG
+import time
 import os
 from datetime import datetime
 import psycopg2 as psycopg2
@@ -12,18 +13,20 @@ from psycopg2 import IntegrityError
 # containing the .blk files created by bitcoind
 blockchain = Blockchain(os.path.expanduser('fewBlocks'))
 
-con = psycopg2.connect(database=CONFIG.POSTGRES_DB,
-                       user=CONFIG.POSTGRES_USER,
-                       password=CONFIG.POSTGRES_PW,
-                       host=CONFIG.POSTGRES_HOST,
-                       port="5432")
 
-con.autocommit = False
-cur = con.cursor()
+def create_db_connection():
+    con = psycopg2.connect(database=CONFIG.POSTGRES_DB,
+                           user=CONFIG.POSTGRES_USER,
+                           password=CONFIG.POSTGRES_PW,
+                           host=CONFIG.POSTGRES_HOST,
+                           port=CONFIG.POSTGRES_PORT)
+    return con
+
+
 i = 1
 
 
-def insert_block(block):
+def insert_block(cur, block):
     cur.execute(
         '''INSERT INTO bitcoin.block (hash,version,hashPrev,hashMerkleRoot,nBits,nNonce,ntime) 
                values (%s , %s , %s , %s , %s , %s , %s) returning id''',
@@ -32,14 +35,14 @@ def insert_block(block):
     return cur.fetchone()[0]
 
 
-def insert_transaction(transaction, block_id):
+def insert_transaction(cur, transaction, block_id):
     cur.execute('''INSERT INTO bitcoin.transaction (hash,version,locktime,block_id) 
                       values (%s , %s , %s , %s) returning id''',
                 (transaction.hash, transaction.version, transaction.locktime, block_id))
     return cur.fetchone()[0]
 
 
-def insert_input(input, transaction_id):
+def insert_input(cur, input, transaction_id):
     cur.execute('''INSERT INTO bitcoin.input (prevout_hash, prevout_n, sequence, transaction_id, scriptsig) 
                     values (%s , %s , %s , %s, %s)''',
                 (input.transaction_hash,
@@ -49,30 +52,31 @@ def insert_input(input, transaction_id):
                  input.script.hex.hex()))
 
 
-def insert_output(output, transaction_id, output_index):
+def insert_output(cur, output, transaction_id, output_index):
     cur.execute('''INSERT INTO bitcoin.output (value, transaction_id, scriptpubkey,script_type, index) 
                                values ( %s , %s , %s, %s, %s) returning id''',
                 (output.value, transaction_id, output.script.hex.hex(), output.type, output_index))
     output_id = cur.fetchone()[0]
-    insert_addresses(output.addresses, output_id)
+    insert_addresses(cur,output.addresses, output_id)
 
 
-def insert_addresses(addresses, output_id):
+def insert_addresses(cur, addresses, output_id):
     for address in addresses:
         public_key = None
         if address.public_key is not None:
             public_key = address.public_key.hex()
-        address_id = get_address(address.address)
+        address_id = get_address(cur,address.address)
         if address_id is None:
             cur.execute(
-                "INSERT INTO bitcoin.address (hash, public_key, address) values ('%s', '%s' , '%s')  returning id" % (
-                    address.hash.hex(), public_key, address.address))
+                "INSERT INTO bitcoin.address (hash, public_key, address) values ('%s', '%s' , '%s')  "
+                "on conflict (hash) do update set hash = '%s'  returning id" % (
+                    address.hash.hex(), public_key, address.address, address.hash.hex()))
             address_id = cur.fetchone()[0]
         cur.execute("INSERT INTO bitcoin.output_address (output_id, address_id) values (%s , %s)",
                     (output_id, address_id))
 
 
-def get_address(address):
+def get_address(cur, address):
     cur.execute("SELECT address.id from bitcoin.address where address = '%s' " % address)
     try:
         return cur.fetchone()[0]
@@ -80,30 +84,43 @@ def get_address(address):
         return None
 
 
-for blck in blockchain.get_unordered_blocks():
+def process_blocks(blck):
+    start_time = time.time()
+    global i
+    con = create_db_connection()
+    cur = con.cursor()
+    print("--- open connection %s  ---" % (time.time() - start_time))
+
     try:
         try:
-            blck_id = insert_block(blck)
+            start_time = time.time()
+            blck_id = insert_block(cur, blck)
+            print("--- insert block %s  ---" % (time.time() - start_time))
         except IntegrityError:
             print("already saved!")
             con.rollback()
-            continue
+            return 0
 
         for tx in blck.transactions:
-            tran_id = insert_transaction(tx, blck_id)
+            start_time = time.time()
+            tran_id = insert_transaction(cur, tx, blck_id)
+            print("--- insert transaction %s  ---" % (time.time() - start_time))
             out_index = 0
             for txout in tx.outputs:
-                insert_output(txout, tran_id, out_index)
+                insert_output(cur, txout, tran_id, out_index)
                 out_index = out_index + 1
             for txin in tx.inputs:
-                insert_input(txin, tran_id)
+                insert_input(cur, txin, tran_id)
 
-        i = i + 1
-        print("%d blocks saved. last block id = %d" % (i, blck_id))
+        print("last block id = %d" %blck_id)
+        cur.close()
         con.commit()
     except (Exception, psycopg2.DatabaseError) as error:
         print("Error in transaction Reverting all other operations of a transaction ", error)
         con.rollback()
         # break
 
-con.close()
+
+if __name__ == '__main__':
+    pool = mp.Pool()
+    pool.map(process_blocks, blockchain.get_unordered_blocks())
