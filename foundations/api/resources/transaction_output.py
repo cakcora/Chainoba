@@ -1,14 +1,12 @@
 from flask_restful import Resource
-from foundations.api.models.models import Address
-from foundations.api.models.models import Output as TransactionOutput
-from foundations.api.models.models import OutputAddress as TransactionOutputAddress
-from foundations.api.models.models import db_session
+from models.models import Output as TransactionOutput
+from models.models import db_session
 from webargs import fields
 import json
 import requests
 from webargs.flaskparser import use_kwargs
-from foundations.api.models.ResponseCodes import ResponseCodes
-from foundations.api.models.ResponseCodes import ResponseDescriptions
+from models.ResponseCodes import ResponseCodes
+from models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_address(address, output_id):

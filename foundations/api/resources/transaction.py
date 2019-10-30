@@ -1,12 +1,11 @@
 import json
-
 import requests
 from flask_restful import Resource
 from webargs import fields
 from webargs.flaskparser import use_kwargs
-from foundations.api.models.models import Transaction, db_session
-from foundations.api.models.ResponseCodes import ResponseCodes
-from foundations.api.models.ResponseCodes import ResponseDescriptions
+from models.models import Transaction, db_session
+from models.ResponseCodes import ResponseCodes
+from models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_transaction(transaction_data, input_response, output_response, transaction_id):

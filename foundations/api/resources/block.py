@@ -1,10 +1,10 @@
 import time
 from datetime import datetime, timedelta
 from flask_restful import Resource
-from foundations.api.models.models import Block, Transaction
-from foundations.api.models.ResponseCodes import ResponseCodes
-from foundations.api.models.ResponseCodes import ResponseDescriptions
-from foundations.api.models.models import db_session
+from models.models import Block, Transaction
+from models.ResponseCodes import ResponseCodes
+from models.ResponseCodes import ResponseDescriptions
+from models.models import db_session
 from sqlalchemy import and_
 from webargs import fields, validate
 from webargs.flaskparser import use_kwargs
