@@ -9,7 +9,7 @@ from models.ResponseCodes import ResponseDescriptions
 
 def serialize_transaction_input(trans_input):
     return {'InputId': trans_input.id,
-            'HashOfPreviousTransactionOutput': trans_input.prevout_hash.strip(),
+            'HashOfPreviousTransaction': trans_input.prevout_hash.strip(),
             'PreviousOutputNumber': trans_input.prevout_n,
             'ScriptSignature': str(trans_input.scriptsig).strip(),
             'SequenceNumber': trans_input.sequence,
@@ -66,6 +66,9 @@ class TransactionInputEndpoint(Resource):
                     prev_output_id = trans_input_as_dict["PreviousTransactionOutputId"]
 
                     if prev_output_id is not None:
+                        prev_out = db_session.query(Output).filter(Output.id == prev_output_id).one()
+                        trans_input_as_dict["Value"] = prev_out.value
+
                         previous_output_ids.append(prev_output_id)
                         prev_addresses = []
                         prev_address = db_session.query(OutputAddress, Address).filter(
