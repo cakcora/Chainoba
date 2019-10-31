@@ -1,10 +1,10 @@
 from flask_restful import Resource
-from foundations.api.models.models import Input as  TransactionInput
-from foundations.api.models.models import db_session, Output, OutputAddress, Address
+from models.models import Input as  TransactionInput
+from models.models import db_session, Output, OutputAddress, Address
 from webargs import fields
 from webargs.flaskparser import use_kwargs
-from foundations.api.models.ResponseCodes import ResponseCodes
-from foundations.api.models.ResponseCodes import ResponseDescriptions
+from models.ResponseCodes import ResponseCodes
+from models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_transaction_input(trans_input):
