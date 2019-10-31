@@ -9,67 +9,45 @@ from models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_transaction(transaction_data, input_response, output_response, transaction_id):
-    return {'transaction_id': int(transaction_id),
-            'hash': transaction_data.hash, 'version': transaction_data.version,
-            'locktime': transaction_data.locktime, 'version': transaction_data.block_id,
-            'num_of_inputs': (input_response["transaction_inputs"][str(transaction_id)])['num_of_inputs'],
-            'inputs': (input_response["transaction_inputs"][str(transaction_id)])['inputs'],
-            'num_of_outputs': (output_response["transaction_outputs"][str(transaction_id)])['num_of_outputs'],
-            'outputs': (output_response["transaction_outputs"][str(transaction_id)])['outputs']
+    return {'TransactionId': transaction_id,
+            'Hash': transaction_data.hash.strip(), 'Version': transaction_data.version,
+            'LockTime': transaction_data.locktime, 'BlockId': transaction_data.block_id,
+            'NumberOfInputs': (input_response["TransactionInputData"][str(transaction_id)])['NumberOfInputs'],
+            'TransactionInputs': (input_response["TransactionInputData"][str(transaction_id)])['TransactionInputs'],
+            'NumberOfOutputs': (output_response["TransactionOutputData"][str(transaction_id)])['NumberOfOutputs'],
+            'TransactionOutputs': (output_response["TransactionOutputData"][str(transaction_id)])['TransactionOutputs']
             }
 
 
-args_transaction = {
-    'transaction_ids': fields.List(fields.Integer(validate=lambda trans_id: trans_id > 0))
-}
-
-
-def CreateErrorResponse(self, code, desc, message):
-    json_data = {}
-    json_data["ResponseCode"] = code
-    json_data["ResponseDesc"] = desc
-    json_data["ErrorMessage"] = message
-    return json_data
-
-
+# Validate Transaction Ids Input of TransactionEndpoint endpoint
 def ValidateTransactionIds(self, transaction_ids):
     validationErrorList = []
-
     if len(transaction_ids) == 0:
-        validationErrorList.append(CreateErrorResponse(self, ResponseCodes.TransactionIdsInputMissing.name,
-                                                       str(ResponseCodes.TransactionIdsInputMissing.value),
-                                                       str(ResponseDescriptions.TransactionIdsInputMissing.value)))
+        validationErrorList.append({"ErrorMessage": ResponseDescriptions.TransactionIdsInputMissing.value})
     if len(transaction_ids) > 10:
-        validationErrorList.append(CreateErrorResponse(self, ResponseCodes.NumberOfTransactionIdsLimitExceeded.name,
-                                                       str(ResponseCodes.NumberOfTransactionIdsLimitExceeded.value),
-                                                       str(
-                                                           ResponseDescriptions.NumberOfTransactionIdsLimitExceeded.value)))
+        validationErrorList.append({"ErrorMessage": ResponseDescriptions.NumberOfTransactionIdsLimitExceeded.value})
     if len(transaction_ids) > 0:
         for transaction_id in transaction_ids:
-            if not str.isdigit(transaction_id) or (str.isdigit(str(transaction_id)) and int(transaction_id) <= 0):
+            if transaction_id <= 0:
                 validationErrorList.append(
-                    CreateErrorResponse(self, ResponseCodes.InvalidTransactionIdsInputValues.name,
-                                        str(ResponseCodes.InvalidTransactionIdsInputValues.value),
-                                        str(
-                                            ResponseDescriptions.InvalidTransactionIdsInputValues.value)))
+                    {"ErrorMessage": ResponseDescriptions.InvalidTransactionIdsInputValues.value})
                 break
     return validationErrorList
 
 
 class TransactionEndpoint(Resource):
     args_transaction = {
-        'transaction_ids': fields.List(fields.String())
+        'transaction_ids': fields.List(fields.Integer())
     }
 
     @use_kwargs(args_transaction)
     def get(self, transaction_ids):
-        transaction_ids = list(set(list(transaction_ids)))
-        transaction_ids = [transaction_id.strip() for transaction_id in transaction_ids if transaction_id.strip()]
-        validation_errors = {"Errors": []}
+        # Validate User Input
         validations_result = ValidateTransactionIds(self, transaction_ids)
         if validations_result is not None and len(validations_result) > 0:
-            validation_errors["Errors"] = validations_result
-            return validation_errors
+            return {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
+                    "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
+                    "ValidationErrors": validations_result}
         try:
             block_transactions_dict = {}
             num_of_empty_transactions = 0
@@ -81,40 +59,42 @@ class TransactionEndpoint(Resource):
                                                          json={'transaction_ids': [transaction_id]}).text)
 
                 output_response = json.loads(requests.get('http://localhost:5000/bitcoin/transactions/outputs',
-                                                          json={'transaction_ids': [str(transaction_id)]}).text)
+                                                          json={'transaction_ids': [transaction_id]}).text)
 
-                if (input_response["ResponseCode"] == "0" + str(ResponseCodes.Success.value) and output_response[
-                    "ResponseCode"] == "0" + str(ResponseCodes.Success.value)):
+                if input_response["ResponseCode"] == ResponseCodes.Success.value and \
+                        output_response["ResponseCode"] == ResponseCodes.Success.value:
                     block_transactions_dict[transaction_id] = serialize_transaction(transaction_data[0], input_response,
                                                                                     output_response, transaction_id)
                     if trans_as_dict is None or (
-                            trans_as_dict is not None and (input_response["transaction_inputs"][str(transaction_id)])[
-                        'num_of_inputs'] == 0 and (output_response["transaction_outputs"][str(transaction_id)])[
-                                'num_of_outputs'] == 0):
+                            trans_as_dict is not None and
+                            (input_response["TransactionInputData"][str(transaction_id)])['NumberOfInputs'] == 0 and
+                            (output_response["TransactionOutputData"][str(transaction_id)])['NumberOfOutputs'] == 0):
                         num_of_empty_transactions = num_of_empty_transactions + 1
-                else:
-                    if input_response["ResponseCode"] != "0" + str(ResponseCodes.Success.value):
-                        return CreateErrorResponse(self, str(input_response["ResponseCode"]),
-                                                   str(input_response["ResponseDesc"]),
-                                                   "Error in Transaction Input Service : " + str(
-                                                       input_response["ErrorMessage"]))
-                    if output_response["ResponseCode"] != "0" + str(ResponseCodes.Success.value):
-                        return CreateErrorResponse(self, str(output_response["ResponseCode"]),
-                                                   str(output_response["ResponseDesc"]),
-                                                   "Error in Transaction Output Service : " + str(
-                                                       output_response["ErrorMessage"]))
+
+                elif input_response["ResponseCode"] != ResponseCodes.Success.value:
+                    return {"ResponseCode": input_response["ResponseCode"],
+                            "ResponseDesc": input_response["ResponseDesc"],
+                            "ErrorMessage": "Internal Error in Transaction Input Service : "
+                                            + input_response["ErrorMessage"]
+                            }
+                elif output_response["ResponseCode"] != ResponseCodes.Success.value:
+                    return {"ResponseCode": output_response["ResponseCode"],
+                            "ResponseDesc": output_response["ResponseDesc"],
+                            "ErrorMessage": "Internal Error in Transaction Output Service : "
+                                            + output_response["ErrorMessage"]
+                            }
 
             if num_of_empty_transactions != len(transaction_ids):
                 return {
-                    'ResponseCode': "0" + str(ResponseCodes.Success.value),
+                    'ResponseCode': ResponseCodes.Success.value,
                     'ResponseDesc': ResponseCodes.Success.name,
-                    'transaction_data': block_transactions_dict
+                    'TransactionData': block_transactions_dict
                 }
             else:
-                return CreateErrorResponse(self, ResponseCodes.NoDataFound.name,
-                                           str(ResponseCodes.NoDataFound.value),
-                                           ResponseDescriptions.NoDataFound.value)
+                return {"ResponseCode": ResponseCodes.NoDataFound.value,
+                        "ResponseDesc": ResponseCodes.NoDataFound.name,
+                        "ErrorMessage": ResponseDescriptions.NoDataFound.value}
         except Exception as ex:
-            return CreateErrorResponse(self, ResponseCodes.InternalError.name,
-                                       str(ResponseCodes.InternalError.value),
-                                       str(ex))
+            return {"ResponseCode": ResponseCodes.InternalError.value,
+                    "ResponseDesc": ResponseCodes.InternalError.name,
+                    "ErrorMessage": str(ex)}
