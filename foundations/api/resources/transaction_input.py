@@ -14,6 +14,10 @@ def serialize_transaction_input(trans_input):
             'prev_output_id': trans_input.prev_output_id
             }
 
+def serialize_address(address):
+    return {'address_id': address.id, 'hash': address.hash, 'public_key': address.public_key,
+            'address': address.address}
+
 
 # TODO
 # 1. Verify for the NULL in the prev_output_id for the inputs in the transactions
@@ -81,12 +85,15 @@ class TransactionInputEndpoint(Resource):
                     prev_output_id = trans_input_as_dict["prev_output_id"]
                     if prev_output_id is not None:
                         previous_output_ids.append(prev_output_id)
-                        prev_address = db_session.query(TransactionInput, Output, OutputAddress, Address).filter(
-                            Output.id == int(prev_output_id)).filter(OutputAddress.output_id == Output.id).filter(
-                            Address.id == OutputAddress.address_id).all()
 
-                        previous_output_address = prev_address["address"]
-                        trans_input_as_dict["prev_output_id"] = previous_output_address
+                        prev_addresses = []
+                        prev_address = db_session.query(OutputAddress, Address).filter(
+                            OutputAddress.output_id == prev_output_id).filter(
+                            Address.id == OutputAddress.address_id).all()
+                        for address in prev_address:
+                            address_as_dict = serialize_address(address.Address)
+                            prev_addresses.append(address_as_dict)
+                        trans_input_as_dict["addresses"] = prev_addresses
 
                     trans_input_list.append(trans_input_as_dict)
                     total_inputs = total_inputs + 1
