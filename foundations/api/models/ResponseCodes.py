@@ -27,5 +27,5 @@ class ResponseDescriptions(Enum):
     InvalidTransactionIdInputValue = "Value of Input Parameter is invalid. It transaction_id must be positive integer."
     InvalidTransactionOutputIdInputValue = "Value of Input Parameter transaction_output_id is invalid. It must be positive integer."
     OutputDoesNotBelongToTransaction = "transaction_output_id does not belong to the transaction_id."
-    NoDataFound = "No Data found."
-    ErrorFromDataBase = "Value of Input Parameter Day is missing."
+    NoDataFound = "No Data found for requested parameters."
+    ErrorFromDataBase = "Database Error has occurred."

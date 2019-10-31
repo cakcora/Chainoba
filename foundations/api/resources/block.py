@@ -13,7 +13,7 @@ from models.models import db_session
 def serialize_block(block):
     return {'BlockId': block.id, 'Hash': block.hash.strip(), 'HashOfPreviousBlock': block.hashprev.strip(),
             'Timestamp': datetime.utcfromtimestamp(block.ntime).strftime('%Y-%m-%d %H:%M:%S'),
-            'Nnonce': block.nnonce, 'Version': block.version, 'MerkleRootHash': block.hashmerkleroot.strip(),
+            'Nnonce': block.nnonce, 'Version': block.version, 'HashOfMerkleRoot': block.hashmerkleroot.strip(),
             'BlockSizeInBits': block.nbits}
 
 
@@ -133,7 +133,7 @@ class GetTransactionDataByBlockID(Resource):
             if block_transactions_dict is not None and num_of_empty_blocks != len(block_ids):
                 return {'ResponseCode': ResponseCodes.Success.value,
                         'ResponseDesc': ResponseCodes.Success.name,
-                        'Block_Transaction_Data': block_transactions_dict}
+                        'BlockTransactionData': block_transactions_dict}
             else:
                 return {"ResponseCode": ResponseCodes.NoDataFound.value,
                         "ResponseDesc": ResponseCodes.NoDataFound.name,
