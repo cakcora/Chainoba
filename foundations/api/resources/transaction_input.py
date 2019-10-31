@@ -16,6 +16,10 @@ def serialize_transaction_input(trans_input):
             'PreviousTransactionOutputId': trans_input.prev_output_id
             }
 
+def serialize_address(address):
+    return {'address_id': address.id, 'hash': address.hash, 'public_key': address.public_key,
+            'address': address.address}
+
 
 # Validate Transaction Ids Input of TransactionInputEndpoint endpoint
 def ValidateTransactionIds(self, transaction_ids):
@@ -58,12 +62,14 @@ class TransactionInputEndpoint(Resource):
                     prev_output_id = trans_input_as_dict["PreviousTransactionOutputId"]
                     if prev_output_id is not None:
                         previous_output_ids.append(prev_output_id)
+
                         prev_address = db_session.query(TransactionInput, Output, OutputAddress, Address).filter(
                             int(prev_output_id) == OutputAddress.output_id).filter(
                             Address.id == OutputAddress.address_id).all()
 
                         previous_output_address = prev_address["address"]
                         trans_input_as_dict["PreviousTransactionOutputId"] = previous_output_address
+
                     trans_input_list.append(trans_input_as_dict)
                     total_num_of_inputs = total_num_of_inputs + 1
                 transaction_inputs_dict[transaction_id] = {"NumberOfInputs": total_num_of_inputs,
