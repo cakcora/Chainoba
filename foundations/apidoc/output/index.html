@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COMP 7570 / 4060 - Blockchain Analytics</title>
 
-<link href="./css/combined.css" rel="stylesheet">
+    <link href="./css/combined.css" rel="stylesheet">
 <script type="text/javascript" src="./js/combined.js"></script>
 
 </head>
@@ -20,7 +19,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button>
                 <h3>Keyboard Shortcuts</h3>
             </div>
             <div class="modal-body">
@@ -62,7 +61,25 @@
 <div class="scroll-spyable">
     <ul class="nav nav-list doc-sidenav">
         <li class="nav-header"><h5>Methods</h5></li><li class="nav-header" data-group="Bitcoin"><a href="javascript:navigateTo({category: 'Bitcoin'}, ['category', 'method', 'type'])" data-target="#c-Bitcoin"><h6>Bitcoin</h6></a></li>
-        <li data-group="Bitcoin"  data-item="Blocks"><a href="javascript:navigateTo({category: 'Bitcoin', method: 'BlockList'}, ['category', 'method'])" data-target="#m-BlockList"><span>Blocks</span></a></li>
+        <li data-group="Bitcoin" data-item="Blocks"><a
+                href="javascript:navigateTo({category: 'Bitcoin', method: 'BlockDataByDate'}, ['category', 'method'])"
+                data-target="#m-BlockDataByDate"><span>Blocks</span></a></li>
+        <li data-group="Bitcoin" data-item="Blocks - Transactions"><a
+                href="javascript:navigateTo({category: 'Bitcoin', method: 'TransactionDataByBlockId'}, ['category', 'method'])"
+                data-target="#m-TransactionDataByBlockId"><span>Blocks - Transactions</span></a></li>
+        <li data-group="Bitcoin" data-item="Transaction Inputs"><a
+                href="javascript:navigateTo({category: 'Bitcoin', method: 'TransactionInputDataByTransactionId'}, ['category', 'method'])"
+                data-target="#m-TransactionInputDataByTransactionId"><span>Transaction Inputs</span></a></li>
+        <li data-group="Bitcoin" data-item="Transaction Outputs"><a
+                href="javascript:navigateTo({category: 'Bitcoin', method: 'TransactionOutputDataByTransactionId'}, ['category', 'method'])"
+                data-target="#m-TransactionOutputDataByTransactionId"><span>Transaction Outputs</span></a></li>
+        <li data-group="Bitcoin" data-item="Transactions"><a
+                href="javascript:navigateTo({category: 'Bitcoin', method: 'TransactionDataByTransactionId'}, ['category', 'method'])"
+                data-target="#m-TransactionDataByTransactionId"><span>Transactions</span></a></li>
+        <li data-group="Bitcoin" data-item="Transactions Output Addresses"><a
+                href="javascript:navigateTo({category: 'Bitcoin', method: 'TransactionOutputAddressDataByTransactionIdAndTransactionOutputId'}, ['category', 'method'])"
+                data-target="#m-TransactionOutputAddressDataByTransactionIdAndTransactionOutputId"><span>Transactions Output Addresses</span></a>
+        </li>
     </ul>
     <ul class="nav nav-list doc-sidenav">
         <li class="nav-header"><h5>Types</h5></li>
@@ -75,9 +92,6 @@
         <li data-group="None" data-item="TransactionOutput"><a
                 href="javascript:navigateTo({category: 'None', type: 'TransactionOutput'}, ['category', 'method'])"
                 data-target="#t-TransactionOutput"><span>TransactionOutput</span></a></li>
-        <li data-group="None" data-item="TransactionOutput"><a
-                href="javascript:navigateTo({category: 'None', type: 'TransactionOutputAddress'}, ['category', 'method'])"
-                data-target="#t-TransactionOutputAddress"><span>TransactionOutputAddress</span></a></li>
     </ul>
 </div>
             </div>
@@ -96,7 +110,7 @@
             <ul class="list-unstyled">
     <li class="category" id="c-Bitcoin"><h3>Bitcoin</h3>
         <ul class="list-unstyled">
-            <li class="method item" id="m-BlockList" data-method="GET">
+            <li class="method item" id="m-BlockDataByDate" data-method="GET">
                 <h4>Blocks</h4><div class="nocontents">no implementation for this version</div>
                 <div class="contents">
 
@@ -138,17 +152,17 @@
         <tr class="diff_version " data-version="v1.0">
             <td><span class="str">day</span></td>
             <td><span class="typ">integer<td><span class="lit"></span></td>
-            <td><span class="com">Day of block creation</span></td>
+            <td><span class="com">Day of Block creation</span></td>
         </tr>
         <tr class="diff_version " data-version="v1.0">
             <td><span class="str">month</span></td>
             <td><span class="typ">integer<td><span class="lit"></span></td>
-            <td><span class="com">Month of block creation</span></td>
+            <td><span class="com">Month of Block creation</span></td>
         </tr>
         <tr class="diff_version " data-version="v1.0">
             <td><span class="str">year</span></td>
             <td><span class="typ">integer<td><span class="lit"></span></td>
-            <td><span class="com">Year of block creation</span></td>
+            <td><span class="com">Year of Block creation</span></td>
         </tr>
         </tbody>
     </table>
@@ -170,15 +184,15 @@
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td>  <span class="str">"day"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
-        <td class="com">Day of block creation</td>
+        <td class="com">Day of Block creation</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td>  <span class="str">"month"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
-        <td class="com">Month of block creation</td>
+        <td class="com">Month of Block creation</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td>  <span class="str">"year"</span><span class="pun">: </span><span class="typ">integer</span></td>
-        <td class="com">Year of block creation</td>
+        <td class="com">Year of Block creation</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td><span class="pun">}</span></td>
@@ -203,8 +217,41 @@
         <td class="com"></td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"Block"</span><span class="pun">: </span><span class="typ"><a href="javascript:navigateTo({type: 'Block'}, ['category', 'method'])">Block</a></span></td>
-        <td class="com"></td>
+        <td><span class="str">"Blocks"</span><span class="pun">: </span><span class="pun">[</span></td>
+        <td class="com">List of Blocks</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="typ"><a href="javascript:navigateTo({type: 'Block'}, ['category', 'method'])">Block</a></span>
+        </td>
+        <td class="com">Block data Information</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">]</span><span class="pun">,</span></td>
+        <td></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"FromDate"</span><span class="pun">: </span><span class="typ">string</span><span
+                class="pun">,</span></td>
+        <td class="com">From Date Range Min Value</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"NumberOfBlocks"</span><span class="pun">: </span><span class="typ">integer</span><span
+                class="pun">,</span></td>
+        <td class="com">Number of blocks found withing the timeframe.</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"ResponseCode"</span><span class="pun">: </span><span class="typ">integer</span><span
+                class="pun">,</span></td>
+        <td class="com">Response Code of Api Method Service</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"ResponseDesc"</span><span class="pun">: </span><span class="typ">string</span><span
+                class="pun">,</span></td>
+        <td class="com">Response Desc of Api Method Service</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"ToDate"</span><span class="pun">: </span><span class="typ">string</span></td>
+        <td class="com">From Date Range Max Value</td>
     </tr>
     <tr class="diff_version" data-version="v1.0">
         <td><span class="pun">}</span></td>
@@ -231,9 +278,24 @@
         <tbody>
 
         <tr class="diff_version " data-version="v1.0">
+            <td><span class="lit">200</span></td>
+            <td><span class="str">Success Scenario</span></td>
+            <td><span class="com">Success</span></td>
+        </tr>
+        <tr class="diff_version " data-version="v1.0">
             <td><span class="lit">404</span></td>
-            <td><span class="str">Block not found</span></td>
-            <td><span class="com">Block does not exists</span></td>
+            <td><span class="str">No Data found for the parameters passed in the request.</span></td>
+            <td><span class="com">NoDataFound</span></td>
+        </tr>
+        <tr class="diff_version " data-version="v1.0">
+            <td><span class="lit">422</span></td>
+            <td><span class="str">Value of Parameter in Request is invalid.</span></td>
+            <td><span class="com">InvalidRequestParameter</span></td>
+        </tr>
+        <tr class="diff_version " data-version="v1.0">
+            <td><span class="lit">500</span></td>
+            <td><span class="str">Internal Server Error has occurred.</span></td>
+            <td><span class="com">InternalError</span></td>
         </tr>
         </tbody>
     </table>
@@ -255,60 +317,1478 @@
 <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
 
 <span class="pun">{
-</span>  <span class="str">"Block"</span><span class="pun">: </span><span class="pun">{
-</span>    <span class="str">"block_id"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
-</span>    <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>    <span class="str">"transactions"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="str">"Blocks"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"BlockId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"BlockSizeInBits"</span><span class="pun">: </span><span class="lit">42</span><span
+                    class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"HashOfMerkleRoot"</span><span class="pun">: </span><span
+                    class="str">"my_HashOfMerkleRoot"</span><span class="pun">,
+</span> <span class="str">"HashOfPreviousBlock"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousBlock"</span><span
+                    class="pun">,
+</span> <span class="str">"NNonce"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Timestamp"</span><span class="pun">: </span><span class="str">"my_Timestamp"</span><span
+                    class="pun">,
+</span> <span class="str">"Version"</span><span class="pun">: </span><span class="lit">42</span>
+            <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"BlockId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"BlockSizeInBits"</span><span class="pun">: </span><span class="lit">42</span><span
+                    class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"HashOfMerkleRoot"</span><span class="pun">: </span><span
+                    class="str">"my_HashOfMerkleRoot"</span><span class="pun">,
+</span> <span class="str">"HashOfPreviousBlock"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousBlock"</span><span
+                    class="pun">,
+</span> <span class="str">"NNonce"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Timestamp"</span><span class="pun">: </span><span class="str">"my_Timestamp"</span><span
+                    class="pun">,
+</span> <span class="str">"Version"</span><span class="pun">: </span><span class="lit">42</span>
+            <span class="pun">}</span>
+            <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"FromDate"</span><span class="pun">: </span><span class="str">"my_FromDate"</span><span
+                    class="pun">,
+</span> <span class="str">"NumberOfBlocks"</span><span class="pun">: </span><span class="lit">42</span><span
+                    class="pun">,
+</span> <span class="str">"ResponseCode"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ResponseDesc"</span><span class="pun">: </span><span
+                    class="str">"my_ResponseDesc"</span><span class="pun">,
+</span> <span class="str">"ToDate"</span><span class="pun">: </span><span class="str">"my_ToDate"</span>
+            <span class="pun">}</span></div>
+                </div>
+                </div>
+                </div>
+            </li>
+            <li class="method item" id="m-TransactionDataByBlockId" data-method="GET">
+                <h4>Blocks - Transactions</h4>
+                <div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+                    <h5 class="title"></h5>
+
+                    <div class="description stack">
+
+                        <div class="diff_version" data-version="v1.0">Query for an all existing transaction
+                            corresponding to list of blockId(s) passed as request parameter
+                        </div>
+                    </div>
+                    <div class="request stack">
+                        <h5><i class="i-request"></i> Request: </h5>
+                        <h6>Resource: </h6>
+
+                        <code class="diff_version" data-version="v1.0"><span class="hur">http://uofmblockchainanalytics.com/bitcoin/blocks/transactions</span></code>
+                        <h6>Query String Parameters: </h6>
+                        <table class="table table-bordered table-hover table-condensed">
+                            <colgroup>
+                                <col></col>
+                                <col width="160px"></col>
+                                <col width="70px"></col>
+                                <col width="50%"></col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span
+                                >Parameter</span></th>
+                                <th><span
+                                >Type</span></th>
+                                <th><span
+                                >Optional</span></th>
+                                <th><span
+                                >Description</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="str">block_ids</span></td>
+                                <td><span class="typ">array
+                                <td><span class="lit"></span></td>
+                                <td><span class="com">List of Block Ids</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h6>Body: </h6>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"block_ids"</span><span class="pun">: </span><span
+                                            class="pun">[</span></td>
+                                    <td class="com">List of Block Ids</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="typ">integer</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">]</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="response stack">
+                        <h5><i class="i-response"></i> Response: </h5>
+                        <h6>Body: </h6>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"BlockTransactionData"</span><span class="pun">: </span><span
+                                            class="pun">{</span></td>
+                                    <td class="com">Transactions data corresponding ot each block in request</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"NumberOfTransactions"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Number of Transactions present in corresponding block</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"Transactions"</span><span class="pun">: </span><span
+                                            class="pun">[</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="typ"><a
+                                            href="javascript:navigateTo({type: 'Transaction'}, ['category', 'method'])">Transaction</a></span>
+                                    </td>
+                                    <td class="com">Transaction Level Information</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">]</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span><span class="pun">,</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"ResponseCode"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Response Code of Api Method Service</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"ResponseDesc"</span><span class="pun">: </span><span
+                                            class="typ">string</span></td>
+                                    <td class="com">Response Desc of Api Method Service</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h6>Codes: </h6>
+                        <table class="table table-bordered table-hover table-condensed">
+                            <colgroup>
+                                <col width="50px"></col>
+                                <col></col>
+                                <col width="50%"></col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span
+                                >Code</span></th>
+                                <th><span
+                                >Message</span></th>
+                                <th><span
+                                >Description</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">200</span></td>
+                                <td><span class="str">Success Scenario</span></td>
+                                <td><span class="com">Success</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">404</span></td>
+                                <td><span class="str">No Data found for the parameters passed in the request.</span>
+                                </td>
+                                <td><span class="com">NoDataFound</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">422</span></td>
+                                <td><span class="str">Value of Parameter in Request is invalid.</span></td>
+                                <td><span class="com">InvalidRequestParameter</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">500</span></td>
+                                <td><span class="str">Internal Server Error has occurred.</span></td>
+                                <td><span class="com">InternalError</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="stack sample">
+                        <div data-version="v1.0">
+
+                            <h5><i class="i-sample"></i> Sample: </h5>
+                            <h6>Request: </h6>
+                            <div class="code"><span class="hme">GET</span> <span class="hur">/blocks/transactions?block_ids=my_block_ids</span>
+                                <span class="hpr">HTTP/1.1</span>
+                                <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+                                <span class="pun">{
+</span> <span class="str">"block_ids"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="lit">42</span><span class="pun">,
+</span> <span class="lit">42</span>
+                                <span class="pun">]</span>
+                                <span class="pun">}</span></div>
+                            <h6>Response: </h6>
+                            <div class="code"><span class="hpr">HTTP/1.1</span> <span class="lit">200</span> <span
+                                    class="str">OK</span>
+                                <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+                                <span class="pun">{
+</span> <span class="str">"BlockTransactionData"</span><span class="pun">: </span><span class="pun">{
+</span> <span class="str">"NumberOfTransactions"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"Transactions"</span><span class="pun">: </span><span class="pun">[
 </span>      <span class="pun">{
-</span>        <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>        <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="str">"BlockId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"LockTime"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfInputs"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"NumberOfOutputs"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"TransactionId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"TransactionInputs"</span><span class="pun">: </span><span class="pun">[
 </span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+                                        class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+                                        class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+                                        class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
           <span class="pun">}</span><span class="pun">,
 </span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+                                        class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+                                        class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+                                        class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
           <span class="pun">}</span>
         <span class="pun">]</span><span class="pun">,
-</span>        <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="str">"TransactionOutputs"</span><span class="pun">: </span><span class="pun">[
 </span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+                                        class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+                                        class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"Version"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"BlockId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"LockTime"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfInputs"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"NumberOfOutputs"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"TransactionId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"TransactionInputs"</span><span class="pun">: </span><span class="pun">[
+</span>          <span class="pun">{
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+                                        class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+                                        class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+                                        class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
           <span class="pun">}</span><span class="pun">,
 </span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+                                        class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+                                        class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+                                        class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
           <span class="pun">}</span>
         <span class="pun">]</span><span class="pun">,
-</span>        <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-      <span class="pun">}</span><span class="pun">,
-</span>      <span class="pun">{
-</span>        <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>        <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span><span class="pun">,
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span>
-        <span class="pun">]</span><span class="pun">,
-</span>        <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span><span class="pun">,
-</span>          <span class="pun">{
-</span>            <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-          <span class="pun">}</span>
-        <span class="pun">]</span><span class="pun">,
-</span>        <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
+</span> <span class="str">"TransactionOutputs"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+                                        class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+                                        class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"Version"</span><span class="pun">: </span><span class="lit">42</span>
       <span class="pun">}</span>
     <span class="pun">]</span>
-  <span class="pun">}</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="str">"ResponseCode"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ResponseDesc"</span><span class="pun">: </span><span class="str">"my_ResponseDesc"</span>
+                                <span class="pun">}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="method item" id="m-TransactionInputDataByTransactionId" data-method="GET">
+                <h4>Transaction Inputs</h4>
+                <div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+                    <h5 class="title"></h5>
+
+                    <div class="description stack">
+
+                        <div class="diff_version" data-version="v1.0">Query for an all Transaction Input data
+                            corresponding to transaction_ids(s) passed as request paramater
+                        </div>
+                    </div>
+                    <div class="request stack">
+                        <h5><i class="i-request"></i> Request: </h5>
+                        <h6>Resource: </h6>
+
+                        <code class="diff_version" data-version="v1.0"><span class="hur">http://uofmblockchainanalytics.com/bitcoin/transactions/inputs</span></code>
+                        <h6>Query String Parameters: </h6>
+                        <table class="table table-bordered table-hover table-condensed">
+                            <colgroup>
+                                <col></col>
+                                <col width="160px"></col>
+                                <col width="70px"></col>
+                                <col width="50%"></col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span
+                                >Parameter</span></th>
+                                <th><span
+                                >Type</span></th>
+                                <th><span
+                                >Optional</span></th>
+                                <th><span
+                                >Description</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="str">transaction_ids</span></td>
+                                <td><span class="typ">array
+                                <td><span class="lit"></span></td>
+                                <td><span class="com">List of Transaction Ids</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h6>Body: </h6>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"transaction_ids"</span><span class="pun">: </span><span
+                                            class="pun">[</span></td>
+                                    <td class="com">List of Transaction Ids</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="typ">integer</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">]</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="response stack">
+                        <h5><i class="i-response"></i> Response: </h5>
+                        <h6>Body: </h6>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"ResponseCode"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Response Code of Api Method Service</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"ResponseDesc"</span><span class="pun">: </span><span
+                                            class="typ">string</span><span class="pun">,</span></td>
+                                    <td class="com">Response Desc of Api Method Service</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"TransactionInputData"</span><span class="pun">: </span><span
+                                            class="pun">{</span></td>
+                                    <td class="com">Transaction Input Data belonging to the Transaction Id(s) passed as
+                                        request paramater
+                                    </td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"NumberOfInputs"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Number of Transaction Inputs belonging to an Transaction id passed
+                                        as request paramater
+                                    </td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"TransactionInputs"</span><span class="pun">: </span><span
+                                            class="pun">[</span></td>
+                                    <td class="com">Transaction Input data belonging to an Transaction id passed as
+                                        request paramater
+                                    </td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="typ"><a
+                                            href="javascript:navigateTo({type: 'TransactionInput'}, ['category', 'method'])">TransactionInput</a></span>
+                                    </td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">]</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h6>Codes: </h6>
+                        <table class="table table-bordered table-hover table-condensed">
+                            <colgroup>
+                                <col width="50px"></col>
+                                <col></col>
+                                <col width="50%"></col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span
+                                >Code</span></th>
+                                <th><span
+                                >Message</span></th>
+                                <th><span
+                                >Description</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">200</span></td>
+                                <td><span class="str">Success Scenario</span></td>
+                                <td><span class="com">Success</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">404</span></td>
+                                <td><span class="str">No Data found for the parameters passed in the request.</span>
+                                </td>
+                                <td><span class="com">NoDataFound</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">422</span></td>
+                                <td><span class="str">Value of Parameter in Request is invalid.</span></td>
+                                <td><span class="com">InvalidRequestParameter</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">500</span></td>
+                                <td><span class="str">Internal Server Error has occurred.</span></td>
+                                <td><span class="com">InternalError</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="stack sample">
+                        <div data-version="v1.0">
+
+                            <h5><i class="i-sample"></i> Sample: </h5>
+                            <h6>Request: </h6>
+                            <div class="code"><span class="hme">GET</span> <span class="hur">/transactions/inputs?transaction_ids=my_transaction_ids</span>
+                                <span class="hpr">HTTP/1.1</span>
+                                <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+                                <span class="pun">{
+</span> <span class="str">"transaction_ids"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="lit">42</span><span class="pun">,
+</span> <span class="lit">42</span>
+                                <span class="pun">]</span>
+                                <span class="pun">}</span></div>
+                            <h6>Response: </h6>
+                            <div class="code"><span class="hpr">HTTP/1.1</span> <span class="lit">200</span> <span
+                                    class="str">OK</span>
+                                <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+                                <span class="pun">{
+</span> <span class="str">"ResponseCode"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ResponseDesc"</span><span class="pun">: </span><span
+                                        class="str">"my_ResponseDesc"</span><span class="pun">,
+</span> <span class="str">"TransactionInputData"</span><span class="pun">: </span><span class="pun">{
+</span> <span class="str">"NumberOfInputs"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"TransactionInputs"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+                                        class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+                                        class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+                                        class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+                                        class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+                                        class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+                                        class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span>
+                                <span class="pun">}</span>
+                                <span class="pun">}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="method item" id="m-TransactionOutputDataByTransactionId" data-method="GET">
+                <h4>Transaction Outputs</h4>
+                <div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+                    <h5 class="title"></h5>
+
+                    <div class="description stack">
+
+                        <div class="diff_version" data-version="v1.0">Query for an all Transaction Output data
+                            corresponding to transaction_ids(s) passed as request paramater
+                        </div>
+                    </div>
+                    <div class="request stack">
+                        <h5><i class="i-request"></i> Request: </h5>
+                        <h6>Resource: </h6>
+
+                        <code class="diff_version" data-version="v1.0"><span class="hur">http://uofmblockchainanalytics.com/bitcoin/transactions/outputs</span></code>
+                        <h6>Query String Parameters: </h6>
+                        <table class="table table-bordered table-hover table-condensed">
+                            <colgroup>
+                                <col></col>
+                                <col width="160px"></col>
+                                <col width="70px"></col>
+                                <col width="50%"></col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span
+                                >Parameter</span></th>
+                                <th><span
+                                >Type</span></th>
+                                <th><span
+                                >Optional</span></th>
+                                <th><span
+                                >Description</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="str">transaction_ids</span></td>
+                                <td><span class="typ">array
+                                <td><span class="lit"></span></td>
+                                <td><span class="com">List of Transaction Ids</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h6>Body: </h6>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"transaction_ids"</span><span class="pun">: </span><span
+                                            class="pun">[</span></td>
+                                    <td class="com">List of Transaction Ids</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="typ">integer</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">]</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="response stack">
+                        <h5><i class="i-response"></i> Response: </h5>
+                        <h6>Body: </h6>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"ResponseCode"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Response Code of Api Method Service</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"ResponseDesc"</span><span class="pun">: </span><span
+                                            class="typ">string</span><span class="pun">,</span></td>
+                                    <td class="com">Response Desc of Api Method Service</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"TransactionOutputData"</span><span class="pun">: </span><span
+                                            class="pun">{</span></td>
+                                    <td class="com">Transaction Output Data belonging to the Transaction Id(s) passed as
+                                        request paramater
+                                    </td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"NumberOfOutputs"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Number of Transaction Outputs belonging to an Transaction id passed
+                                        as request paramater
+                                    </td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"TransactionOutputs"</span><span class="pun">: </span><span
+                                            class="pun">[</span></td>
+                                    <td class="com">Transaction Output data belonging to an Transaction id passed as
+                                        request paramater
+                                    </td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="typ"><a
+                                            href="javascript:navigateTo({type: 'TransactionOutput'}, ['category', 'method'])">TransactionOutput</a></span>
+                                    </td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">]</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h6>Codes: </h6>
+                        <table class="table table-bordered table-hover table-condensed">
+                            <colgroup>
+                                <col width="50px"></col>
+                                <col></col>
+                                <col width="50%"></col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span
+                                >Code</span></th>
+                                <th><span
+                                >Message</span></th>
+                                <th><span
+                                >Description</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">200</span></td>
+                                <td><span class="str">Success Scenario</span></td>
+                                <td><span class="com">Success</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">404</span></td>
+                                <td><span class="str">No Data found for the parameters passed in the request.</span>
+                                </td>
+                                <td><span class="com">NoDataFound</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">422</span></td>
+                                <td><span class="str">Value of Parameter in Request is invalid.</span></td>
+                                <td><span class="com">InvalidRequestParameter</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">500</span></td>
+                                <td><span class="str">Internal Server Error has occurred.</span></td>
+                                <td><span class="com">InternalError</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="stack sample">
+                        <div data-version="v1.0">
+
+                            <h5><i class="i-sample"></i> Sample: </h5>
+                            <h6>Request: </h6>
+                            <div class="code"><span class="hme">GET</span> <span class="hur">/transactions/outputs?transaction_ids=my_transaction_ids</span>
+                                <span class="hpr">HTTP/1.1</span>
+                                <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+                                <span class="pun">{
+</span> <span class="str">"transaction_ids"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="lit">42</span><span class="pun">,
+</span> <span class="lit">42</span>
+                                <span class="pun">]</span>
+                                <span class="pun">}</span></div>
+                            <h6>Response: </h6>
+                            <div class="code"><span class="hpr">HTTP/1.1</span> <span class="lit">200</span> <span
+                                    class="str">OK</span>
+                                <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+                                <span class="pun">{
+</span> <span class="str">"ResponseCode"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ResponseDesc"</span><span class="pun">: </span><span
+                                        class="str">"my_ResponseDesc"</span><span class="pun">,
+</span> <span class="str">"TransactionOutputData"</span><span class="pun">: </span><span class="pun">{
+</span> <span class="str">"NumberOfOutputs"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"TransactionOutputs"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+                                        class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+                                        class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span>
+                                <span class="pun">}</span>
+                                <span class="pun">}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="method item" id="m-TransactionDataByTransactionId" data-method="GET">
+                <h4>Transactions</h4>
+                <div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+                    <h5 class="title"></h5>
+
+                    <div class="description stack">
+
+                        <div class="diff_version" data-version="v1.0">Query for an all transaction data corresponding to
+                            list of input transaction_ids(s)
+                        </div>
+                    </div>
+                    <div class="request stack">
+                        <h5><i class="i-request"></i> Request: </h5>
+                        <h6>Resource: </h6>
+
+                        <code class="diff_version" data-version="v1.0"><span class="hur">http://uofmblockchainanalytics.com/bitcoin/transactions</span></code>
+                        <h6>Query String Parameters: </h6>
+                        <table class="table table-bordered table-hover table-condensed">
+                            <colgroup>
+                                <col></col>
+                                <col width="160px"></col>
+                                <col width="70px"></col>
+                                <col width="50%"></col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span
+                                >Parameter</span></th>
+                                <th><span
+                                >Type</span></th>
+                                <th><span
+                                >Optional</span></th>
+                                <th><span
+                                >Description</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="str">transaction_ids</span></td>
+                                <td><span class="typ">array
+                                <td><span class="lit"></span></td>
+                                <td><span class="com">List of Transaction Ids</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h6>Body: </h6>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"transaction_ids"</span><span class="pun">: </span><span
+                                            class="pun">[</span></td>
+                                    <td class="com">List of Transaction Ids</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="typ">integer</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">]</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="response stack">
+                        <h5><i class="i-response"></i> Response: </h5>
+                        <h6>Body: </h6>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"ResponseCode"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Response Code of Api Method Service</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"ResponseDesc"</span><span class="pun">: </span><span
+                                            class="typ">string</span><span class="pun">,</span></td>
+                                    <td class="com">Response Desc of Api Method Service</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"TransactionData"</span><span class="pun">: </span><span
+                                            class="typ"><a
+                                            href="javascript:navigateTo({type: 'Transaction'}, ['category', 'method'])">Transaction</a></span>
+                                    </td>
+                                    <td class="com">Transaction Data belonging to the Transaction Ids passed as request
+                                        parameter
+                                    </td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h6>Codes: </h6>
+                        <table class="table table-bordered table-hover table-condensed">
+                            <colgroup>
+                                <col width="50px"></col>
+                                <col></col>
+                                <col width="50%"></col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span
+                                >Code</span></th>
+                                <th><span
+                                >Message</span></th>
+                                <th><span
+                                >Description</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">200</span></td>
+                                <td><span class="str">Success Scenario</span></td>
+                                <td><span class="com">Success</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">404</span></td>
+                                <td><span class="str">No Data found for the parameters passed in the request.</span>
+                                </td>
+                                <td><span class="com">NoDataFound</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">422</span></td>
+                                <td><span class="str">Value of Parameter in Request is invalid.</span></td>
+                                <td><span class="com">InvalidRequestParameter</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="lit">500</span></td>
+                                <td><span class="str">Internal Server Error has occurred.</span></td>
+                                <td><span class="com">InternalError</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="stack sample">
+                        <div data-version="v1.0">
+
+                            <h5><i class="i-sample"></i> Sample: </h5>
+                            <h6>Request: </h6>
+                            <div class="code"><span class="hme">GET</span> <span class="hur">/transactions?transaction_ids=my_transaction_ids</span>
+                                <span class="hpr">HTTP/1.1</span>
+                                <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+                                <span class="pun">{
+</span> <span class="str">"transaction_ids"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="lit">42</span><span class="pun">,
+</span> <span class="lit">42</span>
+                                <span class="pun">]</span>
+                                <span class="pun">}</span></div>
+                            <h6>Response: </h6>
+                            <div class="code"><span class="hpr">HTTP/1.1</span> <span class="lit">200</span> <span
+                                    class="str">OK</span>
+                                <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+                                <span class="pun">{
+</span> <span class="str">"ResponseCode"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ResponseDesc"</span><span class="pun">: </span><span
+                                        class="str">"my_ResponseDesc"</span><span class="pun">,
+</span> <span class="str">"TransactionData"</span><span class="pun">: </span><span class="pun">{
+</span> <span class="str">"BlockId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"LockTime"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfInputs"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"NumberOfOutputs"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"TransactionId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"TransactionInputs"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+                                        class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+                                        class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+                                        class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+                                        class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+                                        class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+                                        class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"TransactionOutputs"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+                                        class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+                                        class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"Version"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span>
+                                <span class="pun">}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="method item" id="m-TransactionOutputAddressDataByTransactionIdAndTransactionOutputId"
+                data-method="GET">
+                <h4>Transactions Output Addresses</h4>
+                <div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+                    <h5 class="title"></h5>
+
+                    <div class="description stack">
+
+                        <div class="diff_version" data-version="v1.0">Query for an all Transaction Output Address data
+                            corresponding to transaction_id and transaction_output_id passed as request paramater
+                        </div>
+                    </div>
+                    <div class="request stack">
+                        <h5><i class="i-request"></i> Request: </h5>
+                        <h6>Resource: </h6>
+
+                        <code class="diff_version" data-version="v1.0"><span class="hur">http://uofmblockchainanalytics.com/bitcoin/transactions/outputs/addresses</span></code>
+                        <h6>Query String Parameters: </h6>
+                        <table class="table table-bordered table-hover table-condensed">
+                            <colgroup>
+                                <col></col>
+                                <col width="160px"></col>
+                                <col width="70px"></col>
+                                <col width="50%"></col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span
+                                >Parameter</span></th>
+                                <th><span
+                                >Type</span></th>
+                                <th><span
+                                >Optional</span></th>
+                                <th><span
+                                >Description</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="str">transaction_id</span></td>
+                                <td><span class="typ">integer
+                                <td><span class="lit"></span></td>
+                                <td><span class="com">Transaction Id</span></td>
+                            </tr>
+                            <tr class="diff_version " data-version="v1.0">
+                                <td><span class="str">transaction_output_id</span></td>
+                                <td><span class="typ">integer
+                                <td><span class="lit"></span></td>
+                                <td><span class="com">Transaction Output Id</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h6>Body: </h6>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"transaction_id"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Transaction Id</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"transaction_output_id"</span><span class="pun">: </span><span
+                                            class="typ">integer</span></td>
+                                    <td class="com">Transaction Output Id</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="response stack">
+                        <h5><i class="i-response"></i> Response: </h5>
+                        <h6>Body: </h6>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"NumberOfOutputAddresses"</span><span
+                                            class="pun">: </span><span class="typ">integer</span><span
+                                            class="pun">,</span></td>
+                                    <td class="com">Numvber of Output addresses linked to a transaction and the
+                                        transaction output id passed as paramaters
+                                    </td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"OutputAddresses"</span><span class="pun">: </span><span
+                                            class="pun">[</span></td>
+                                    <td class="com">Transaction Output Address Data belonging to transaction and the
+                                        transaction output id passed as paramaters
+                                    </td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="typ"><a
+                                            href="javascript:navigateTo({type: 'Address'}, ['category', 'method'])">Address</a></span>
+                                    </td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">]</span><span class="pun">,</span></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"ResponseCode"</span><span class="pun">: </span><span
+                                            class="typ">string</span><span class="pun">,</span></td>
+                                    <td class="com">Response Code of Api Method Service</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"ResponseDesc"</span><span class="pun">: </span><span
+                                            class="typ">string</span><span class="pun">,</span></td>
+                                    <td class="com">Response Desc of Api Method Service</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"TransactionId"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Transaction Id</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"TransactionOutputId"</span><span class="pun">: </span><span
+                                            class="typ">integer</span></td>
+                                    <td class="com">Transaction Output Id</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="stack sample">
+                        <div data-version="v1.0">
+
+                            <h5><i class="i-sample"></i> Sample: </h5>
+                            <h6>Request: </h6>
+                            <div class="code"><span class="hme">GET</span> <span class="hur">/transactions/outputs/addresses?transaction_id=42&amp;transaction_output_id=42</span>
+                                <span class="hpr">HTTP/1.1</span>
+                                <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+                                <span class="pun">{
+</span> <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"transaction_output_id"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span></div>
+                            <h6>Response: </h6>
+                            <div class="code"><span class="hpr">HTTP/1.1</span> <span class="lit">200</span> <span
+                                    class="str">OK</span>
+                                <span class="hat">Content-Type</span><span class="pun">: </span><span class="hva">application/json; charset=utf-8</span>
+
+                                <span class="pun">{
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+                                        class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+                                        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span>
+                                <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"ResponseCode"</span><span class="pun">: </span><span
+                                        class="str">"my_ResponseCode"</span><span class="pun">,
+</span> <span class="str">"ResponseDesc"</span><span class="pun">: </span><span
+                                        class="str">"my_ResponseDesc"</span><span class="pun">,
+</span> <span class="str">"TransactionId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"TransactionOutputId"</span><span class="pun">: </span><span class="lit">42</span>
 <span class="pun">}</span></div></div></div>
                 </div>
             </li>
@@ -328,253 +1808,8 @@
 
 <div class="description stack">
 
-    <div class="diff_version" data-version="v1.0">An address</div></div><div class="configuration stack">
-    <h5><i class="i-presentation"></i> Presentation: </h5>
-    <div class="code"><table class="table-hover">
-        <colgroup>
-            <col width="50%%"></col>
-            <col width="50%%"></col>
-        </colgroup>
-        <tbody>
-
-    <tr class="diff_version" data-version="v1.0">
-        <td><span class="pun">{</span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
-        <td class="com">Hash of the transaction</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="typ">integer</span></td>
-        <td class="com">Transaction identifier</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td><span class="pun">}</span></td>
-        <td></td>
-    </tr>
-        </tbody>
-    </table></div>
-
-
-</div><div class="stack sample"><div data-version="v1.0">
-
-<h5><i class="i-sample"></i> Formats: </h5>
-<h6>Sample: </h6>
-<div class="code"><span class="pun">{
-</span>  <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-<span class="pun">}</span></div></div></div>
-                </div>
-            </li>
-            <li class="type item" id="t-Block">
-                <h4>Block</h4><div class="nocontents">no implementation for this version</div>
-                <div class="contents">
-
-
-<div class="description stack">
-
-    <div class="diff_version" data-version="v1.0">A Block</div></div><div class="configuration stack">
-    <h5><i class="i-presentation"></i> Presentation: </h5>
-    <div class="code"><table class="table-hover">
-        <colgroup>
-            <col width="50%%"></col>
-            <col width="50%%"></col>
-        </colgroup>
-        <tbody>
-
-    <tr class="diff_version" data-version="v1.0">
-        <td><span class="pun">{</span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"block_id"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
-        <td class="com">Block identifier</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
-        <td class="com">Hash of the block</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"transactions"</span><span class="pun">: </span><span class="pun">[</span></td>
-        <td class="com">List of transactions</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>    <span class="typ"><a href="javascript:navigateTo({type: 'Transaction'}, ['category', 'method'])">Transaction</a></span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="pun">]</span></td>
-        <td></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td><span class="pun">}</span></td>
-        <td></td>
-    </tr>
-        </tbody>
-    </table></div>
-
-
-</div><div class="stack sample"><div data-version="v1.0">
-
-<h5><i class="i-sample"></i> Formats: </h5>
-<h6>Sample: </h6>
-<div class="code"><span class="pun">{
-</span>  <span class="str">"block_id"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
-</span>  <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>  <span class="str">"transactions"</span><span class="pun">: </span><span class="pun">[
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span><span class="pun">,
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span>
-      <span class="pun">]</span><span class="pun">,
-</span>      <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span><span class="pun">,
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span>
-      <span class="pun">]</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span><span class="pun">,
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span><span class="pun">,
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span>
-      <span class="pun">]</span><span class="pun">,
-</span>      <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span><span class="pun">,
-</span>        <span class="pun">{
-</span>          <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>          <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-        <span class="pun">}</span>
-      <span class="pun">]</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span>
-  <span class="pun">]</span>
-<span class="pun">}</span></div></div></div>
-                </div>
-            </li>
-            <li class="type item" id="t-Transaction">
-                <h4>Transaction</h4><div class="nocontents">no implementation for this version</div>
-                <div class="contents">
-
-
-<div class="description stack">
-
-    <div class="diff_version" data-version="v1.0">A transaction</div></div><div class="configuration stack">
-    <h5><i class="i-presentation"></i> Presentation: </h5>
-    <div class="code"><table class="table-hover">
-        <colgroup>
-            <col width="50%%"></col>
-            <col width="50%%"></col>
-        </colgroup>
-        <tbody>
-
-    <tr class="diff_version" data-version="v1.0">
-        <td><span class="pun">{</span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">,</span></td>
-        <td class="com">Hash of the transaction</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[</span></td>
-        <td class="com">List of input addresses</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>    <span class="typ"><a href="javascript:navigateTo({type: 'Address'}, ['category', 'method'])">Address</a></span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="pun">]</span><span class="pun">,</span></td>
-        <td></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[</span></td>
-        <td class="com">List of output addresses</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>    <span class="typ"><a href="javascript:navigateTo({type: 'Address'}, ['category', 'method'])">Address</a></span></td>
-        <td class="com"></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="pun">]</span><span class="pun">,</span></td>
-        <td></td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="typ">integer</span></td>
-        <td class="com">Transaction identifier</td>
-    </tr>
-    <tr class="diff_version" data-version="v1.0">
-        <td><span class="pun">}</span></td>
-        <td></td>
-    </tr>
-        </tbody>
-    </table></div>
-
-
-</div><div class="stack sample"><div data-version="v1.0">
-
-<h5><i class="i-sample"></i> Formats: </h5>
-<h6>Sample: </h6>
-<div class="code"><span class="pun">{
-</span>  <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>  <span class="str">"input_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span><span class="pun">,
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span>
-  <span class="pun">]</span><span class="pun">,
-</span>  <span class="str">"output_addresses"</span><span class="pun">: </span><span class="pun">[
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span><span class="pun">,
-</span>    <span class="pun">{
-</span>      <span class="str">"hash"</span><span class="pun">: </span><span class="str">"my_hash"</span><span class="pun">,
-</span>      <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-    <span class="pun">}</span>
-  <span class="pun">]</span><span class="pun">,
-</span>  <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">42</span>
-<span class="pun">}</span></div></div></div>
-                </div>
-            </li>
-            <li class="type item" id="t-TransactionInput">
-                <h4>Transaction Input </h4>
-                <div class="nocontents">no implementation for this version</div>
-                <div class="contents">
-
-
-                    <div class="description stack">
-
-                        <div class="diff_version" data-version="v1.0">A transaction Input</div>
-                    </div>
+    <div class="diff_version" data-version="v1.0">An Address</div>
+</div>
                     <div class="configuration stack">
                         <h5><i class="i-presentation"></i> Presentation: </h5>
                         <div class="code">
@@ -590,70 +1825,24 @@
                                     <td class="com"></td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td><span class="str">"num_of_transaction_inputs"</span><span
-                                            class="pun">: </span><span class="typ">integer</span><span class="pun">,</span></td>
-                                    <td class="com">Number of Transaction Inputs</td>
+                                    <td><span class="str">"Address"</span><span class="pun">: </span><span class="typ">string</span><span
+                                            class="pun">,</span></td>
+                                    <td class="com">Address string</td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td><span class="str">"transaction_inputs"</span><span class="pun">: </span><span
-                                            class="pun">{</span></td>
-                                    <td class="com">Transaction inputs</td>
+                                    <td><span class="str">"AddressId"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Address identifier</td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td><span class="str">"Input-index"</span><span class="pun">:</span><span
-                                            class="pun">[</span></td>
-                                    <td class="com">Index of array of transaction Inputs</td>
+                                    <td><span class="str">"Hash"</span><span class="pun">: </span><span class="typ">string</span><span
+                                            class="pun">,</span></td>
+                                    <td class="com">Hash of the Address</td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td>    <span class="pun">{</span></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"id"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">, </span></td>
-                                    <td class="com">Transaction Input id</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"prevout_hash"</span><span class="pun">: </span><span
-                                            class="typ">string</span><span class="pun">, </span></td>
-                                    <td class="com">Transaction Input id</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"prevout_n"</span><span class="pun">: </span><span
-                                            class="typ">"integer"</span><span class="pun">, </span></td>
-                                    <td class="com">Previous Transaction Output number</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"scriptsig"</span><span class="pun">: </span><span
-                                            class="typ">string</span><span class="pun">, </span></td>
-                                    <td class="com">Pay by Pub Key Script</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"sequence"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">, </span></td>
-                                    <td class="com">Transaction input Sequence Number used to index transaction from same user account</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"prev_output_id"</span><span class="pun">: </span><span
-                                            class="typ">integer</span><span class="pun">, </span></td>
-                                    <td class="com">Previous transaction output id which acts as input for current transaction</td>
-                                </tr>
-
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"transaction_id"</span><span class="pun">: </span><span
-                                            class="typ">integer</span></td>
-                                    <td class="com">Transaction identifier</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>    <span class="pun">}</span><span class="pun"></span></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>    <span class="pun">]</span><span class="pun"></span></td>
-                                    <td></td>
-                                </tr>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>   <span class="pun">}</span><span class="pun"></span></td>
-                                    <td></td>
+                                    <td><span class="str">"PublicKey"</span><span class="pun">: </span><span
+                                            class="typ">string</span></td>
+                                    <td class="com">Public key of Address</td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
                                     <td><span class="pun">}</span></td>
@@ -671,44 +1860,395 @@
                             <h5><i class="i-sample"></i> Formats: </h5>
                             <h6>Sample: </h6>
                             <div class="code"><span class="pun">{
-</span> <span class="str">"num_of_transaction_inputs"</span><span class="pun">: </span><span class="lit">1</span><span
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
                                     class="pun">,
-</span> <span class="str">"transaction_inputs"</span><span class="pun">: </span><span class="pun">{
-</span>
-    <span class="lit">"1" </span> <span class="pun">: </span>
-       <span class="pun">[</span>
-           <span class="pun">{</span>
-           <span class="str">"id"</span><span class="pun">: </span><span class="lit">1</span><span
-                                        class="pun">,
-            <span class="str">"prevout_hash"</span><span class="pun">: </span><span>"0000000000000000000000000000000000000000000000000000000000000000"</span><span
-                                            class="pun">,
-            <span class="str">"prevout_n"</span><span class="pun">: </span><span class="lit">4294967295</span><span
-                                                class="pun">,
-            <span class="str">"scriptsig"</span><span class="pun">: </span><span class="com">"b'04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73'"</span><span
-                                                    class="pun">,
-            <span class="str">"sequence"</span><span class="pun">: </span><span class="lit">4294967295</span><span
-                                                        class="pun">,
-            <span class="str">"prev_output_id"</span><span class="pun">: </span><span class="lit">null</span><span
-                                                            class="pun">
-         <span class="pun">}</span>
-     <span class="pun">]</span>
-   <span class="pun">}</span>
-    </span>
-<span class="pun">}</span>
-                            </div>
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+                                <span class="pun">}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="type item" id="t-Block">
+                <h4>Block</h4>
+                <div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+
+                    <div class="description stack">
+
+                        <div class="diff_version" data-version="v1.0">A Block</div>
+                    </div>
+                    <div class="configuration stack">
+                        <h5><i class="i-presentation"></i> Presentation: </h5>
+                        <div class="code">
+                            <table class="table-hover">
+                                <colgroup>
+                                    <col width="50%%"></col>
+                                    <col width="50%%"></col>
+                                </colgroup>
+                                <tbody>
+
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">{</span></td>
+                                    <td class="com"></td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"BlockId"</span><span class="pun">: </span><span class="typ">integer</span><span
+                                            class="pun">,</span></td>
+                                    <td class="com">Block identifier</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"BlockSizeInBits"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Size of the Block in bits</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"Hash"</span><span class="pun">: </span><span class="typ">string</span><span
+                                            class="pun">,</span></td>
+                                    <td class="com">Hash of the Block</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"HashOfMerkleRoot"</span><span class="pun">: </span><span
+                                            class="typ">string</span><span class="pun">,</span></td>
+                                    <td class="com">Hash of the Merkle tree of Block</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"HashOfPreviousBlock"</span><span class="pun">: </span><span
+                                            class="typ">string</span><span class="pun">,</span></td>
+                                    <td class="com">Hash of the Previous Block</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"NNonce"</span><span class="pun">: </span><span class="typ">integer</span><span
+                                            class="pun">,</span></td>
+                                    <td class="com">Nonce value computed for Block</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"Timestamp"</span><span class="pun">: </span><span
+                                            class="typ">string</span><span class="pun">,</span></td>
+                                    <td class="com">Timestamp of Block Creation</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="str">"Version"</span><span class="pun">: </span><span class="typ">integer</span>
+                                    </td>
+                                    <td class="com">Version of the Blockchain</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">}</span></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <div class="stack sample">
+                        <div data-version="v1.0">
+
+                            <h5><i class="i-sample"></i> Formats: </h5>
+                            <h6>Sample: </h6>
+                            <div class="code"><span class="pun">{
+</span> <span class="str">"BlockId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"BlockSizeInBits"</span><span class="pun">: </span><span class="lit">42</span><span
+                                    class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"HashOfMerkleRoot"</span><span class="pun">: </span><span
+                                    class="str">"my_HashOfMerkleRoot"</span><span class="pun">,
+</span> <span class="str">"HashOfPreviousBlock"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousBlock"</span><span
+                                    class="pun">,
+</span> <span class="str">"NNonce"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Timestamp"</span><span class="pun">: </span><span class="str">"my_Timestamp"</span><span
+                                    class="pun">,
+</span> <span class="str">"Version"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="type item" id="t-Transaction">
+                <h4>Transaction</h4>
+                <div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+
+                    <div class="description stack">
+
+                        <div class="diff_version" data-version="v1.0">A Transaction</div>
+                    </div>
+                    <div class="configuration stack">
+    <h5><i class="i-presentation"></i> Presentation: </h5>
+    <div class="code"><table class="table-hover">
+        <colgroup>
+            <col width="50%%"></col>
+            <col width="50%%"></col>
+        </colgroup>
+        <tbody>
+
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">{</span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"BlockId"</span><span class="pun">: </span><span class="typ">integer</span><span
+                class="pun">,</span></td>
+        <td class="com">Lock Time of Transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"Hash"</span><span class="pun">: </span><span class="typ">string</span><span
+                class="pun">,</span></td>
+        <td class="com">Hash of the Transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"LockTime"</span><span class="pun">: </span><span class="typ">integer</span><span
+                class="pun">,</span></td>
+        <td class="com">Lock Time of Transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"NumberOfInputs"</span><span class="pun">: </span><span class="typ">integer</span><span
+                class="pun">,</span></td>
+        <td class="com">Number of Inputs of a Transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"NumberOfOutputs"</span><span class="pun">: </span><span class="typ">integer</span><span
+                class="pun">,</span></td>
+        <td class="com">Number of Inputs of a Transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"TransactionId"</span><span class="pun">: </span><span class="typ">integer</span><span
+                class="pun">,</span></td>
+        <td class="com">Transaction identifier</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"TransactionInputs"</span><span class="pun">: </span><span class="pun">[</span></td>
+        <td class="com">List of Inputs of a Transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="typ"><a href="javascript:navigateTo({type: 'TransactionInput'}, ['category', 'method'])">TransactionInput</a></span>
+        </td>
+        <td class="com">TransactionInput Level Information</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">]</span><span class="pun">,</span></td>
+        <td></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"TransactionOutputs"</span><span class="pun">: </span><span class="pun">[</span></td>
+        <td class="com">List of Outputs of a Transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="typ"><a href="javascript:navigateTo({type: 'TransactionOutput'}, ['category', 'method'])">TransactionOutput</a></span>
+        </td>
+        <td class="com">TransactionOutput Level Information</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">]</span><span class="pun">,</span></td>
+        <td></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"Version"</span><span class="pun">: </span><span class="typ">integer</span></td>
+        <td class="com">Version of the Blockchain</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">}</span></td>
+        <td></td>
+    </tr>
+        </tbody>
+    </table></div>
+
+
+</div><div class="stack sample"><div data-version="v1.0">
+
+<h5><i class="i-sample"></i> Formats: </h5>
+<h6>Sample: </h6>
+<div class="code"><span class="pun">{
+</span> <span class="str">"BlockId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"LockTime"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfInputs"</span><span class="pun">: </span><span class="lit">42</span><span
+        class="pun">,
+</span> <span class="str">"NumberOfOutputs"</span><span class="pun">: </span><span class="lit">42</span><span
+        class="pun">,
+</span> <span class="str">"TransactionId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"TransactionInputs"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+        class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+        class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+        class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+        class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+            class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+            class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+            class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+            class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span>
+    <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"TransactionOutputs"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+            class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+            class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+    <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+            class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+    <span class="pun">}</span>
+    <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+            class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+            class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+            class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+            class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+    <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+            class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+    <span class="pun">}</span>
+    <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+            class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+            class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+    <span class="pun">}</span>
+    <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"Version"</span><span class="pun">: </span><span class="lit">42</span>
+<span class="pun">}</span></div></div></div>
+                </div>
+            </li>
+            <li class="type item" id="t-TransactionInput">
+                <h4>TransactionInput</h4>
+                <div class="nocontents">no implementation for this version</div>
+                <div class="contents">
+
+
+<div class="description stack">
+
+    <div class="diff_version" data-version="v1.0">A Transaction Input</div>
+</div>
+                    <div class="configuration stack">
+    <h5><i class="i-presentation"></i> Presentation: </h5>
+    <div class="code"><table class="table-hover">
+        <colgroup>
+            <col width="50%%"></col>
+            <col width="50%%"></col>
+        </colgroup>
+        <tbody>
+
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">{</span></td>
+        <td class="com"></td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="typ">string</span><span
+                class="pun">,</span></td>
+        <td class="com">Hash of the Previous Transaction whose output is responsible for this input</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"InputId"</span><span class="pun">: </span><span class="typ">integer</span><span
+                class="pun">,</span></td>
+        <td class="com">Identifier of an Input of a Transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span
+                class="typ">integer</span><span class="pun">,</span></td>
+        <td class="com">Identifier of Output of Previous Transaction that responsible for this input</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+                class="typ">integer</span><span class="pun">,</span></td>
+        <td class="com">Identifier of Output of Previous Transaction that responsible for this input</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"ScriptSignature"</span><span class="pun">: </span><span class="typ">string</span><span
+                class="pun">,</span></td>
+        <td class="com">Pay to script Hash Signature</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="typ">integer</span></td>
+        <td class="com">Sequence Number of this Input of Transaction</td>
+    </tr>
+    <tr class="diff_version" data-version="v1.0">
+        <td><span class="pun">}</span></td>
+        <td></td>
+    </tr>
+        </tbody>
+    </table>
+    </div>
+
+
+                    </div>
+                    <div class="stack sample">
+                        <div data-version="v1.0">
+
+                            <h5><i class="i-sample"></i> Formats: </h5>
+                            <h6>Sample: </h6>
+                            <div class="code"><span class="pun">{
+</span> <span class="str">"HashOfPreviousTransactionOutput"</span><span class="pun">: </span><span class="str">"my_HashOfPreviousTransactionOutput"</span><span
+                                    class="pun">,
+</span> <span class="str">"InputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"PreviousOutputNumber"</span><span class="pun">: </span><span class="lit">42</span><span
+                                    class="pun">,
+</span> <span class="str">"PreviousTransactionOutputId"</span><span class="pun">: </span><span
+                                    class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptSignature"</span><span class="pun">: </span><span
+                                    class="str">"my_ScriptSignature"</span><span class="pun">,
+</span> <span class="str">"SequenceNumber"</span><span class="pun">: </span><span class="lit">42</span>
+                                <span class="pun">}</span></div>
                         </div>
                     </div>
                 </div>
             </li>
             <li class="type item" id="t-TransactionOutput">
-                <h4>Transaction Output </h4>
+                <h4>TransactionOutput</h4>
                 <div class="nocontents">no implementation for this version</div>
                 <div class="contents">
 
 
                     <div class="description stack">
 
-                        <div class="diff_version" data-version="v1.0">A transaction Output</div>
+                        <div class="diff_version" data-version="v1.0">A Transaction Output</div>
                     </div>
                     <div class="configuration stack">
                         <h5><i class="i-presentation"></i> Presentation: </h5>
@@ -725,293 +2265,94 @@
                                     <td class="com"></td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td><span class="str">"num_trans_outputs"</span><span class="pun">: </span><span
-                                            class="typ">integer</span><span class="pun">,</span></td>
-                                    <td class="com">Number of Transaction Outputs</td>
+                                    <td><span class="str">"Index"</span><span class="pun">: </span><span class="typ">integer</span><span
+                                            class="pun">,</span></td>
+                                    <td class="com">Index of Transaction output among the other Transaction Output
+                                        list
+                                    </td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td><span class="str">"transaction_outputs"</span><span class="pun">: </span><span
-                                            class="pun">{</span></td>
-                                    <td class="com">Transaction inputs</td>
+                                    <td><span class="str">"NumberOfOutputAddresses"</span><span
+                                            class="pun">: </span><span class="typ">integer</span><span
+                                            class="pun">,</span></td>
+                                    <td class="com">Number of Output addresses associated with a Transaction Outputs
+                                    </td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td><span class="str">"Output-index"</span><span class="pun">:</span><span
+                                    <td><span class="str">"OutputAddresses"</span><span class="pun">: </span><span
                                             class="pun">[</span></td>
-                                    <td class="com">Index of array of transaction Outputs</td>
+                                    <td class="com">Transaction Output Addresses associated with a Transaction Output
+                                    </td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td>     <span class="pun">{</span></td>
+                                    <td><span class="typ"><a
+                                            href="javascript:navigateTo({type: 'Address'}, ['category', 'method'])">Address</a></span>
+                                    </td>
+                                    <td class="com">Transaction Output Address Level Information</td>
+                                </tr>
+                                <tr class="diff_version" data-version="v1.0">
+                                    <td><span class="pun">]</span><span class="pun">,</span></td>
                                     <td></td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"id"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">, </span></td>
-                                    <td class="com">Transaction Output id</td>
+                                    <td><span class="str">"OutputId"</span><span class="pun">: </span><span class="typ">integer</span><span
+                                            class="pun">,</span></td>
+                                    <td class="com">Identifier of an Output of a Transaction</td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"value"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">, </span></td>
-                                    <td class="com">Transaction amount transferred</td>
+                                    <td><span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span
+                                            class="typ">integer</span><span class="pun">,</span></td>
+                                    <td class="com">Public Key Script associated with Transaction Output</td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"scriptpubkey"</span><span class="pun">: </span><span
-                                            class="typ">"string"</span><span class="pun">, </span></td>
-                                    <td class="com">Pay PubKey script</td>
+                                    <td><span class="str">"ScriptType"</span><span class="pun">: </span><span
+                                            class="typ">string</span><span class="pun">,</span></td>
+                                    <td class="com">Script Type of Transaction Output</td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"transaction_id"</span><span class="pun">: </span><span
-                                            class="typ">integer</span><span class="pun">, </span></td>
-                                    <td class="com">Transaction Identifier</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"index"</span><span class="pun">: </span><span class="typ">integer</span><span class="pun">, </span></td>
-                                    <td class="com">output index of transaction output</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"script_type"</span><span class="pun">: </span><span
-                                            class="typ">string</span><span class="pun">, </span></td>
-                                    <td class="com">Script type</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="str">"addresses"</span><span class="pun">:</span><span class="pun">[</span></td>
-                                    <td class="com">Transaction Output addresses</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="pun">{</span></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>            <span class="str">"address_id"</span><span class="pun">: </span><span
-                                            class="typ">integer</span><span class="pun">, </span></td>
-                                    <td class="com">OutPut Address Id</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>            <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">, </span></td>
-                                    <td class="com">Hash of Output address</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>            <span class="str">"public_key"</span><span class="pun">: </span><span
-                                            class="typ">string</span><span class="pun">, </span></td>
-                                    <td class="com">public Key linked to Output address</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>            <span class="str">"address"</span><span class="pun">: </span><span class="typ">string</span></td>
-                                    <td class="com">Output Address used as account address</td>
-                                </tr>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>        <span class="pun">}</span><span class="pun"></span></td>
-                                    <td></td>
-                                </tr>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>       <span class="pun">]</span><span class="pun"></span></td>
-                                    <td></td>
-                                </tr>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>     <span class="pun">}</span><span class="pun"></span></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>   <span class="pun">]</span><span class="pun"></span></td>
-                                    <td></td>
-                                </tr>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                    <td>  <span class="pun">}</span><span class="pun"></span></td>
-                                    <td></td>
+                                    <td><span class="str">"Value"</span><span class="pun">: </span><span class="typ">integer</span>
+                                    </td>
+                                    <td class="com">Amount Transferred in Satoshis during Transaction</td>
                                 </tr>
                                 <tr class="diff_version" data-version="v1.0">
                                     <td><span class="pun">}</span></td>
                                     <td></td>
                                 </tr>
                                 </tbody>
-                            </table>
-                        </div>
+                            </table></div>
 
 
-                    </div>
-                    <div class="stack sample">
-                        <div data-version="v1.0">
+                    </div><div class="stack sample"><div data-version="v1.0">
 
-                            <h5><i class="i-sample"></i> Formats: </h5>
-                            <h6>Sample: </h6>
-                            <div class="code"><span class="pun">{
-</span> <span class="str">"num_trans_outputs"</span><span class="pun">: </span><span class="lit">1</span><span
-                                    class="pun">,
-</span> <span class="str">"transaction_outputs"</span><span class="pun">: </span>
-   <span class="pun">{</span>
-    <span class="lit">"1" </span> <span class="pun">: </span>
-      <span class="pun">[</span>
-           <span class="pun">{</span>
-            <span class="str">"id"</span><span class="pun">: </span><span class="lit">1</span><span
-                                        class="pun">,
-            <span class="str">"value"</span><span class="pun">: </span><span>"5000000000"</span><span class="pun">,
-            <span class="str">"scriptpubkey"</span><span class="pun">: </span><span class="lit">"b'4104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac""</span><span
-                                                class="pun">,
-            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">1</span><span
-                                                    class="pun">,
-            <span class="str">"index"</span><span class="pun">: </span><span class="lit">0</span><span class="pun">,
-            <span class="str">"script_type"</span><span class="pun">: </span><span>"pubkey"</span><span
-                                                            class="pun"><span class="pun">,</span>
-            <span class="com">"addresses" </span> <span class="pun">: </span>
-                <span class="pun">[</span>
-                    <span class="pun">{</span>
-                        <span class="str">"address_id"</span><span class="pun">: </span><span class="lit">1</span><span
-                                                                class="pun">,
-                        <span class="str">"hash"</span><span class="pun">: </span><span>"62e907b15cbf27d5425399ebf6f0fb50ebb88f18"</span><span
-                                                                    class="pun">,
-                        <span class="str">"public_key"</span><span class="pun">: </span><span>"04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f""</span><span
-                                                                        class="pun">,
-                        <span class="str">"address"</span><span class="pun">: </span><span>"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'"</span><span
-                                                                            class="pun">
-                    <span class="pun">}</span>
-                <span class="pun">]</span>
-         <span class="pun">}</span><span class="pun">,</span>
-        <span class="pun">{</span>
-            <span class="str">"id"</span><span class="pun">: </span><span class="lit">2</span><span class="pun">,
-            <span class="str">"value"</span><span class="pun">: </span><span>"5000000000"</span><span class="pun">,
-            <span class="str">"scriptpubkey"</span><span class="pun">: </span><span class="lit">"b'410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac""</span><span
-                                                                                    class="pun">,
-            <span class="str">"transaction_id"</span><span class="pun">: </span><span class="lit">1</span><span
-                                                                                        class="pun">,
-            <span class="str">"index"</span><span class="pun">: </span><span class="lit">0</span><span class="pun">,
-            <span class="str">"script_type"</span><span class="pun">: </span><span>"pubkey"</span><span
-                                                                                                class="pun"><span
-                                                                                                class="pun">,</span>
-            <span class="com">"addresses" </span> <span class="pun">: </span>
-                <span class="pun">[</span>
-                    <span class="pun">{</span>
-                        <span class="str">"address_id"</span><span class="pun">: </span><span class="lit">2</span><span
-                                                                                                    class="pun">,
-                        <span class="str">"hash"</span><span class="pun">: </span><span>"119b098e2e980a229e139a9ed01a469e518e6f26"</span><span
-                                                                                                        class="pun">,
-                        <span class="str">"public_key"</span><span class="pun">: </span><span>"0496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858ee""</span><span
-                                                                                                            class="pun">,
-                        <span class="str">"address"</span><span class="pun">: </span><span>"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX'"</span><span
-                                                                                                                class="pun">
-                    <span class="pun">}</span>
-                <span class="pun">]</span>
-         <span class="pun">}</span>
-     <span class="pun">]</span>
-   <span class="pun">}</span>
-    </span>
-<span class="pun">}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="type item" id="t-TransactionOutputAddress">
-                <h4>Transaction Output Address </h4>
-                <div class="nocontents">no implementation for this version</div>
-                <div class="contents">
-                    <div class="description stack">
-
-                        <div class="diff_version" data-version="v1.0">A transaction Output Address</div>
-                    </div>
-                    <div class="configuration stack">
-                        <h5><i class="i-presentation"></i> Presentation: </h5>
-                        <div class="code">
-                            <table class="table-hover">
-                                <colgroup>
-                                    <col width="50%%"></col>
-                                    <col width="50%%"></col>
-                                </colgroup>
-                                <tbody>
-                                    <tr class="diff_version" data-version="v1.0">
-                                        <td><span class="pun">{</span></td>
-                                        <td class="com"></td>
-                                    </tr>
-                                    <tr class="diff_version" data-version="v1.0">
-                                        <td>    <span class="str">"transaction_id"</span><span class="pun">: </span><span
-                                                class="typ">integer</span><span class="pun">, </span></td>
-                                        <td class="com">Transaction Identifier</td>
-                                    </tr>
-                                    <tr class="diff_version" data-version="v1.0">
-                                        <td>     <span class="str">"addresses"</span><span class="pun">:</span><span class="pun">[</span></td>
-                                        <td class="com">Transaction Output addresses</td>
-                                    </tr>
-                                    <tr class="diff_version" data-version="v1.0">
-                                        <td>     <span class="pun">{</span></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="diff_version" data-version="v1.0">
-                                        <td>       <span class="str">"address_id"</span><span class="pun">: </span><span
-                                                class="typ">integer</span></td>
-                                        <td class="com">OutPut Address Id</td>
-                                    </tr>
-                                    <tr class="diff_version" data-version="v1.0">
-                                        <td>        <span class="str">"hash"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">, </span></td>
-                                        <td class="com">Hash of Output address</td>
-                                    </tr>
-                                    <tr class="diff_version" data-version="v1.0">
-                                        <td>        <span class="str">"public_key"</span><span class="pun">: </span><span
-                                            class="typ">string</span><span class="pun">, </span></td>
-                                    <td class="com">public Key linked to Output address</td>
-                                </tr>
-                                <tr class="diff_version" data-version="v1.0">
-                                        <td>        <span class="str">"address"</span><span class="pun">: </span><span class="typ">string</span><span class="pun">, </span></td>
-                                        <td class="com">Output Address used as account address</td>
-                                 </tr>
-                                 </tr>
-                                    <tr class="diff_version" data-version="v1.0">
-                                        <td>     <span class="pun">}</span><span class="pun"></span></td>
-                                        <td></td>
-                                    </tr>
-                                    </tr>
-                                    <tr class="diff_version" data-version="v1.0">
-                                        <td>    <span class="pun">]</span><span class="pun"></span></td>
-                                        <td></td>
-                                    </tr>
-                                    </tr>
-                                    <tr class="diff_version" data-version="v1.0">
-                                        <td><span class="pun">}</span><span class="pun"></span></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-
-                    </div>
-                    <div class="stack sample">
-                        <div data-version="v1.0">
-
-                            <h5><i class="i-sample"></i> Formats: </h5>
-                            <h6>Sample: </h6>
-                            <div class="code"><span class="pun">{
-</span>
-          <span class="str">"transaction_id"</span><span class="pun">: </span><span
-          class="lit">1</span><span
-          class="pun">,
-
-            <span class="str">"output_addresses"</span> <span class="pun">: </span>
-            <span class="pun">[</span>
-                <span class="pun">{</span>
-                    <span class="str">"address_id"</span><span class="pun">: </span><span class="lit">1</span><span
-                                            class="pun">,
-                    <span class="str">"hash"</span><span class="pun">: </span><span>"62e907b15cbf27d5425399ebf6f0fb50ebb88f18"</span><span
-                                                class="pun">,
-                    <span class="str">"public_key"</span><span class="pun">: </span><span>"04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f""</span><span
-                                                    class="pun">,
-                     <span class="str">"address"</span><span class="pun">: </span><span>"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'"</span><span
-                                                        class="pun">
-                <span class="pun">}</span><span class="pun">,</span>
-                <span class="pun">{</span>
-                      <span class="str">"address_id"</span><span class="pun">: </span><span class="lit">2</span><span
-                                                        class="pun">,
-                      <span class="str">"hash"</span><span class="pun">: </span><span>"119b098e2e980a229e139a9ed01a469e518e6f26"</span><span
-                                                            class="pun">,
-                      <span class="str">"public_key"</span><span class="pun">: </span><span>"0496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858ee""</span><span
-                                                                class="pun">,
-                      <span class="str">"address"</span><span class="pun">: </span><span>"12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX'"</span><span
-                                                                    class="pun">
-                 <span class="pun">}</span>
-             <span class="pun">]</span>
-<span class="pun">}</span>
-                            </div>
-                        </div>
-                    </div>
+                    <h5><i class="i-sample"></i> Formats: </h5>
+<h6>Sample: </h6>
+<div class="code"><span class="pun">{
+</span> <span class="str">"Index"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"NumberOfOutputAddresses"</span><span class="pun">: </span><span class="lit">42</span><span
+        class="pun">,
+</span> <span class="str">"OutputAddresses"</span><span class="pun">: </span><span class="pun">[
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+        class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+    <span class="pun">}</span><span class="pun">,
+</span> <span class="pun">{
+</span> <span class="str">"Address"</span><span class="pun">: </span><span class="str">"my_Address"</span><span
+            class="pun">,
+</span> <span class="str">"AddressId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"Hash"</span><span class="pun">: </span><span class="str">"my_Hash"</span><span class="pun">,
+</span> <span class="str">"PublicKey"</span><span class="pun">: </span><span class="str">"my_PublicKey"</span>
+    <span class="pun">}</span>
+    <span class="pun">]</span><span class="pun">,
+</span> <span class="str">"OutputId"</span><span class="pun">: </span><span class="lit">42</span><span class="pun">,
+</span> <span class="str">"ScriptPublicKey"</span><span class="pun">: </span><span class="lit">42</span><span
+            class="pun">,
+</span> <span class="str">"ScriptType"</span><span class="pun">: </span><span class="str">"my_ScriptType"</span><span
+            class="pun">,
+</span> <span class="str">"Value"</span><span class="pun">: </span><span class="lit">42</span>
+<span class="pun">}</span></div></div></div>
                 </div>
             </li>
         </ul>

@@ -1,17 +1,19 @@
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 from flask_restful import Resource
 from models.models import Input as  TransactionInput
 from models.models import db_session, Output, OutputAddress, Address
-from webargs import fields
-from webargs.flaskparser import use_kwargs
 from models.ResponseCodes import ResponseCodes
 from models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_transaction_input(trans_input):
-    return {'input_id': int(trans_input.id), 'prevout_hash': trans_input.prevout_hash,
-            'prevout_n': trans_input.prevout_n,
-            'scriptsig': str(trans_input.scriptsig), 'sequence': trans_input.sequence,
-            'prev_output_id': trans_input.prev_output_id
+    return {'InputId': trans_input.id,
+            'HashOfPreviousTransactionOutput': trans_input.prevout_hash.strip(),
+            'PreviousOutputNumber': trans_input.prevout_n,
+            'ScriptSignature': str(trans_input.scriptsig).strip(),
+            'SequenceNumber': trans_input.sequence,
+            'PreviousTransactionOutputId': trans_input.prev_output_id
             }
 
 def serialize_address(address):
@@ -19,99 +21,70 @@ def serialize_address(address):
             'address': address.address}
 
 
-# TODO
-# 1. Verify for the NULL in the prev_output_id for the inputs in the transactions
-
-def CreateErrorResponse(self, code, desc, message):
-    json_data = {}
-    json_data["ResponseCode"] = code
-    json_data["ResponseDesc"] = desc
-    json_data["ErrorMessage"] = message
-    return json_data
-
-
+# Validate Transaction Ids Input of TransactionInputEndpoint endpoint
 def ValidateTransactionIds(self, transaction_ids):
     validationErrorList = []
-
     if len(transaction_ids) == 0:
-        validationErrorList.append(CreateErrorResponse(self, ResponseCodes.TransactionIdsInputMissing.name,
-                                                       str(ResponseCodes.TransactionIdsInputMissing.value),
-                                                       str(ResponseDescriptions.TransactionIdsInputMissing.value)))
+        validationErrorList.append({"ErrorMessage": ResponseDescriptions.TransactionIdsInputMissing.value})
     if len(transaction_ids) > 10:
-        validationErrorList.append(CreateErrorResponse(self, ResponseCodes.NumberOfTransactionIdsLimitExceeded.name,
-                                                       str(ResponseCodes.NumberOfTransactionIdsLimitExceeded.value),
-                                                       str(
-                                                           ResponseDescriptions.NumberOfTransactionIdsLimitExceeded.value)))
+        validationErrorList.append({"ErrorMessage": ResponseDescriptions.NumberOfTransactionIdsLimitExceeded.value})
     if len(transaction_ids) > 0:
         for transaction_id in transaction_ids:
-            if not str.isdigit(transaction_id) or (str.isdigit(str(transaction_id)) and int(transaction_id) <= 0):
+            if transaction_id <= 0:
                 validationErrorList.append(
-                    CreateErrorResponse(self, ResponseCodes.InvalidTransactionIdsInputValues.name,
-                                        str(ResponseCodes.InvalidTransactionIdsInputValues.value),
-                                        str(
-                                            ResponseDescriptions.InvalidTransactionIdsInputValues.value)))
+                    {"ErrorMessage": ResponseDescriptions.InvalidTransactionIdsInputValues.value})
                 break
     return validationErrorList
 
 
 class TransactionInputEndpoint(Resource):
-    args_transaction = {
-        'transaction_ids': fields.List(fields.String())
-    }
+    args_transaction = {'transaction_ids': fields.List(fields.Integer())}
 
     @use_kwargs(args_transaction)
     def get(self, transaction_ids):
-
-        transaction_ids = list(set(list(transaction_ids)))
-        transaction_ids = [transaction_id.strip() for transaction_id in transaction_ids if transaction_id.strip()]
-        validation_errors = {"Errors": []}
+        # Validate User Input
         validations_result = ValidateTransactionIds(self, transaction_ids)
         if validations_result is not None and len(validations_result) > 0:
-            validation_errors["Errors"] = validations_result
-            return validation_errors
+            return {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
+                    "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
+                    "ValidationErrors": validations_result}
         try:
-            total_inputs = 0
             transaction_inputs_dict = {}
-            for trans_id in sorted(transaction_ids):
+            for transaction_id in sorted(transaction_ids):
                 transaction_inputs = db_session.query(TransactionInput).filter(
-                    TransactionInput.transaction_id == int(trans_id)).all()
-
+                    TransactionInput.transaction_id == transaction_id).all()
                 previous_output_ids = []
-                total_inputs = 0
-                trans_input_list = []  # the list of transactions returned by the API
-                for trans_input in transaction_inputs:
-                    trans_input_as_dict = serialize_transaction_input(trans_input)
+                trans_input_list = []
+                total_num_of_inputs = 0
+                for transaction_input in transaction_inputs:
+                    trans_input_as_dict = serialize_transaction_input(transaction_input)
 
-                    prev_output_id = trans_input_as_dict["prev_output_id"]
+                    prev_output_id = trans_input_as_dict["PreviousTransactionOutputId"]
                     if prev_output_id is not None:
                         previous_output_ids.append(prev_output_id)
 
-                        prev_addresses = []
-                        prev_address = db_session.query(OutputAddress, Address).filter(
-                            OutputAddress.output_id == prev_output_id).filter(
+                        prev_address = db_session.query(TransactionInput, Output, OutputAddress, Address).filter(
+                            int(prev_output_id) == OutputAddress.output_id).filter(
                             Address.id == OutputAddress.address_id).all()
-                        for address in prev_address:
-                            address_as_dict = serialize_address(address.Address)
-                            prev_addresses.append(address_as_dict)
-                        trans_input_as_dict["addresses"] = prev_addresses
+
+                        previous_output_address = prev_address["address"]
+                        trans_input_as_dict["PreviousTransactionOutputId"] = previous_output_address
 
                     trans_input_list.append(trans_input_as_dict)
-                    total_inputs = total_inputs + 1
-                transaction_inputs_dict[trans_id] = {"num_of_inputs": total_inputs,
-                                                     "inputs": trans_input_list}
+                    total_num_of_inputs = total_num_of_inputs + 1
+                transaction_inputs_dict[transaction_id] = {"NumberOfInputs": total_num_of_inputs,
+                                                           "TransactionInputs": trans_input_list}
 
-            if total_inputs > 0:
-                return {
-                    'ResponseCode': "0" + str(ResponseCodes.Success.value),
-                    'ResponseDesc': ResponseCodes.Success.name,
-                    'transaction_inputs': transaction_inputs_dict
-                }
+            if total_num_of_inputs > 0:
+                return {'ResponseCode': ResponseCodes.Success.value,
+                        'ResponseDesc': ResponseCodes.Success.name,
+                        'TransactionInputData': transaction_inputs_dict
+                        }
             else:
-                return CreateErrorResponse(self, ResponseCodes.NoDataFound.name,
-                                           str(ResponseCodes.NoDataFound.value),
-                                           ResponseDescriptions.NoDataFound.value)
-
+                return {"ResponseCode": ResponseCodes.NoDataFound.value,
+                        "ResponseDesc": ResponseCodes.NoDataFound.name,
+                        "ErrorMessage": ResponseDescriptions.NoDataFound.value}
         except Exception as ex:
-            return CreateErrorResponse(self, ResponseCodes.InternalError.name,
-                                       str(ResponseCodes.InternalError.value),
-                                       str(ex))
+            return {"ResponseCode": ResponseCodes.InternalError.value,
+                    "ResponseDesc": ResponseCodes.InternalError.name,
+                    "ErrorMessage": str(ex)}
