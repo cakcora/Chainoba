@@ -35,6 +35,32 @@ def ValidateTransactionIds(self, transaction_ids):
     return validationErrorList
 
 
+class TransactionByHashEndpoint(Resource):
+    args_transaction_by_hash = {
+        'transaction_hash': fields.String()
+    }
+
+    @use_kwargs(args_transaction_by_hash)
+    def get(self, transaction_hash):
+        transaction = db_session.query(Transaction).filter(Transaction.hash == transaction_hash).one_or_none()
+        if transaction is None:
+            return {"ResponseCode": ResponseCodes.NoDataFound.value,
+                    "ResponseDesc": ResponseCodes.NoDataFound.name,
+                    "ErrorMessage": ResponseDescriptions.NoDataFound.value}
+
+        input_response = json.loads(requests.get('http://localhost:5000/bitcoin/transactions/inputs',
+                                                 json={'transaction_ids': [transaction.id]}).text)
+
+        output_response = json.loads(requests.get('http://localhost:5000/bitcoin/transactions/outputs',
+                                                  json={'transaction_ids': [transaction.id]}).text)
+        transaction_json = serialize_transaction(transaction, input_response, output_response, transaction.id)
+        return {
+            'ResponseCode': ResponseCodes.Success.value,
+            'ResponseDesc': ResponseCodes.Success.name,
+            'TransactionData': transaction_json
+        }
+
+
 class TransactionEndpoint(Resource):
     args_transaction = {
         'transaction_ids': fields.List(fields.Integer())
