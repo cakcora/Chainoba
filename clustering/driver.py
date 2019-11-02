@@ -1,3 +1,10 @@
+"""
+This file will have all the functions related to clustering
+- clustering
+- clustering-classes
+  - driver.py
+"""
+
 
 def load_data():
     """
