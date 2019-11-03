@@ -14,7 +14,7 @@ versions:
     minor: 1
     methods:
       BlockDataByDate:
-        label: Blocks
+        label: Blocks Data by Day
         method: GET
         description: Query for an existing block(s) based on timestamp
         uri: /blocks
@@ -86,7 +86,7 @@ versions:
             message: Value of Parameter in Request is invalid.
 
       TransactionDataByBlockId:
-        label: Blocks - Transactions
+        label: Transactions Data By BlockId(s)
         method: GET
         description: Query for an all existing transaction corresponding to list of  blockId(s) passed as request parameter
         uri: /blocks/transactions
@@ -122,7 +122,7 @@ versions:
                 Transactions:
                   type: array
                   items:
-                    type: Transaction
+                    type: TransactionData
                     description: Transaction Level Information
         response_codes:
           - code: 200
@@ -139,7 +139,7 @@ versions:
             message: Value of Parameter in Request is invalid.
 
       TransactionDataByTransactionId:
-        label: Transactions
+        label: Transaction Data by Transaction Id(s)
         method: GET
         description: Query for an all transaction data corresponding to list of input transaction_ids(s)
         uri: /transactions
@@ -182,9 +182,53 @@ versions:
             description: InvalidRequestParameter
             message: Value of Parameter in Request is invalid.
 
+      TransactionDataByHash:
+        label: Transaction Data By Transaction Hash
+        method: GET
+        description: Query for an all transaction data corresponding to transaction hash
+        uri: /transaction
+        category: Bitcoin
+        request_parameters:
+          transaction_hash:
+            type: string
+            description: Hash of a Transaction
+        request_body:
+          type: object
+          properties:
+            transaction_ids:
+              type: string
+              description: Hash of a Transaction
+        response_body:
+          type: object
+          properties:
+            ResponseCode:
+              type: integer
+              description: Response Code of Api Method Service
+            ResponseDesc:
+              type: string
+              description: Response Desc of Api Method Service
+            TransactionData:
+              type: object
+              properties:
+                TransactionId:
+                  type: Transaction
+                  description: Transaction Data belonging to the Transaction Ids passed as request parameter
+        response_codes:
+          - code: 200
+            description: Success
+            message: Success Scenario
+          - code: 500
+            description: InternalError
+            message: Internal Server Error has occurred.
+          - code: 404
+            description: NoDataFound
+            message: No Data found for the parameters passed in the request.
+          - code: 422
+            description: InvalidRequestParameter
+            message: Value of Parameter in Request is invalid.
 
       TransactionInputDataByTransactionId:
-        label: Transaction Inputs
+        label: Transaction Inputs By TransactionId(s)
         method: GET
         description: Query for an all Transaction Input data corresponding to transaction_ids(s) passed as request paramater
         uri: /transactions/inputs
@@ -237,7 +281,7 @@ versions:
             message: Value of Parameter in Request is invalid.
 
       TransactionOutputDataByTransactionId:
-        label: Transaction Outputs
+        label: Transaction Outputs By TransactionId(s)
         method: GET
         description: Query for an all Transaction Output data corresponding to transaction_ids(s) passed as request paramater
         uri: /transactions/outputs
@@ -290,7 +334,7 @@ versions:
             message: Value of Parameter in Request is invalid.
 
       TransactionOutputAddressDataByTransactionIdAndTransactionOutputId:
-        label: Transactions Output Addresses
+        label: Transaction Output Addresses By TransactionId and TransactionOutputId
         method: GET
         description: Query for an all Transaction Output Address data corresponding to transaction_id and transaction_output_id passed as request paramater
         uri: /transactions/outputs/addresses
@@ -366,6 +410,27 @@ versions:
             BlockSizeInBits:
               type: integer
               description: Size of the Block in bits
+
+      TransactionData:
+        description: A Transaction
+        item:
+          type: object
+          properties:
+            TransactionId:
+              type: integer
+              description: Transaction identifier
+            Hash:
+              type: string
+              description: Hash of the Transaction
+            Version:
+              type: integer
+              description: Version of the Blockchain
+            LockTime:
+              type: integer
+              description: Lock Time of Transaction
+            BlockId:
+              type: integer
+              description: Lock Time of Transaction
 
       Transaction:
         description: A Transaction

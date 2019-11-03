@@ -46,7 +46,6 @@ class TransactionByHashEndpoint(Resource):
                             "ValidationErrors": validations_result}
             else:
                 transaction = db_session.query(Transaction).filter(Transaction.hash == transaction_hash).one_or_none()
-                response = {"go": 1}
                 if transaction is None:
                     response = {"ResponseCode": ResponseCodes.NoDataFound.value,
                                 "ResponseDesc": ResponseCodes.NoDataFound.name,
