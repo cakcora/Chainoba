@@ -9,16 +9,20 @@ from models.ResponseCodes import ResponseDescriptions
 
 def serialize_transaction_input(trans_input):
     return {'InputId': trans_input.id,
-            'HashOfPreviousTransactionOutput': trans_input.prevout_hash.strip(),
+            'HashOfPreviousTransaction': trans_input.prevout_hash.strip(),
             'PreviousOutputNumber': trans_input.prevout_n,
             'ScriptSignature': str(trans_input.scriptsig).strip(),
             'SequenceNumber': trans_input.sequence,
             'PreviousTransactionOutputId': trans_input.prev_output_id
             }
 
+
 def serialize_address(address):
-    return {'address_id': address.id, 'hash': address.hash, 'public_key': address.public_key,
-            'address': address.address}
+    return {'AddressId': address.id,
+            'Hash': address.hash.strip(),
+            'PublicKey': address.public_key.strip(),
+            'Address': address.address.strip()
+            }
 
 
 # Validate Transaction Ids Input of TransactionInputEndpoint endpoint
@@ -56,19 +60,24 @@ class TransactionInputEndpoint(Resource):
                 previous_output_ids = []
                 trans_input_list = []
                 total_num_of_inputs = 0
+
                 for transaction_input in transaction_inputs:
                     trans_input_as_dict = serialize_transaction_input(transaction_input)
-
                     prev_output_id = trans_input_as_dict["PreviousTransactionOutputId"]
+
                     if prev_output_id is not None:
+                        prev_out = db_session.query(Output).filter(Output.id == prev_output_id).one()
+                        trans_input_as_dict["Value"] = prev_out.value
+
                         previous_output_ids.append(prev_output_id)
-
-                        prev_address = db_session.query(TransactionInput, Output, OutputAddress, Address).filter(
-                            int(prev_output_id) == OutputAddress.output_id).filter(
+                        prev_addresses = []
+                        prev_address = db_session.query(OutputAddress, Address).filter(
+                            OutputAddress.output_id == prev_output_id).filter(
                             Address.id == OutputAddress.address_id).all()
-
-                        previous_output_address = prev_address["address"]
-                        trans_input_as_dict["PreviousTransactionOutputId"] = previous_output_address
+                        for address in prev_address:
+                            address_as_dict = serialize_address(address.Address)
+                            prev_addresses.append(address_as_dict)
+                        trans_input_as_dict["InputAddresses"] = prev_addresses
 
                     trans_input_list.append(trans_input_as_dict)
                     total_num_of_inputs = total_num_of_inputs + 1

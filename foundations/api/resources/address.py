@@ -1,6 +1,6 @@
 from flask_restful import Resource
-from foundations.api.models.models import Address
-from foundations.api.models.models import db_session
+from models.models import Address
+from models.models import db_session
 
 
 class AddressEndpoint(Resource):

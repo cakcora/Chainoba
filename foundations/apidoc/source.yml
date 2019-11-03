@@ -433,7 +433,7 @@ versions:
             InputId:
               type: integer
               description: Identifier of an Input of a Transaction
-            HashOfPreviousTransactionOutput:
+            HashOfPreviousTransaction:
               type: string
               description: Hash of the Previous Transaction whose output is responsible for this input
             PreviousOutputNumber:

@@ -30,9 +30,9 @@
                 }
               },
 				"url": {
-                  "raw": "localhost:5000/bitcoin/blocks",
+                  "raw": "http://159.203.28.234:5000/bitcoin/blocks",
 					"host": [
-                      "localhost"
+                      "http://159.203.28.234"
 					],
 					"port": "5000",
 					"path": [
@@ -69,9 +69,9 @@
                 }
               },
 				"url": {
-                  "raw": "localhost:5000/bitcoin/blocks/transactions",
+                  "raw": "http://159.203.28.234:5000/bitcoin/blocks/transactions",
 					"host": [
-                      "localhost"
+                      "http://159.203.28.234"
 					],
 					"port": "5000",
 					"path": [
@@ -108,14 +108,52 @@
                 }
               },
 				"url": {
-                  "raw": "localhost:5000/bitcoin/transactions",
+                  "raw": "http://159.203.28.234:5000/bitcoin/transactions",
 					"host": [
-                      "localhost"
+                      "http://159.203.28.234"
 					],
 					"port": "5000",
 					"path": [
 						"bitcoin",
 						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+        {
+          "name": "get transaction by transaction hash",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+			"request": {
+				"method": "GET",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "name": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"transaction_hash\" : \"f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+				"url": {
+                  "raw": "st:5000/bitcoin/transaction",
+					"host": [
+                      "http://159.203.28.234"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"transaction"
 					]
 				}
 			},
@@ -146,9 +184,9 @@
                 }
               },
 				"url": {
-                  "raw": "localhost:5000/bitcoin/transactions/inputs",
+                  "raw": "http://159.203.28.234:5000/bitcoin/transactions/inputs",
 					"host": [
-                      "localhost"
+                      "http://159.203.28.234"
 					],
 					"port": "5000",
 					"path": [
@@ -185,9 +223,9 @@
                 }
               },
 				"url": {
-                  "raw": "localhost:5000/bitcoin/transactions/outputs",
+                  "raw": "http://159.203.28.234:5000/bitcoin/transactions/outputs",
 					"host": [
-                      "localhost"
+                      "http://159.203.28.234"
 					],
 					"port": "5000",
 					"path": [
@@ -224,9 +262,9 @@
             }
           },
           "url": {
-            "raw": "localhost:5000/bitcoin/transactions/outputs/addresses",
+            "raw": "http://159.203.28.234:5000/bitcoin/transactions/outputs/addresses",
             "host": [
-              "localhost"
+              "http://159.203.28.234"
             ],
             "port": "5000",
             "path": [

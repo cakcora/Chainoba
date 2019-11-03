@@ -16,6 +16,7 @@ class ResponseDescriptions(Enum):
     TransactionIdsInputMissing = "Value of transaction_ids Input is missing."
     TransactionIdInputMissing = "Value of transaction_id Input is missing."
     TransactionOutputIdInputMissing = "Value of transaction_output_id Input is missing."
+    TransactionHashMissing = "Value of Input Parameter transaction_hash is missing."
     InvalidDayInput = "Value of Input Parameter day is invalid. It must be positive integer  with value range between 1 to 31."
     InvalidYearInput = "Value of Input Parameter year is invalid. It must be positive integer and in YYYY format with value range between 2009 and current year."
     InvalidMonthInput = "Value of Input Parameter month is invalid. It must be positive integer with value range between 1 to 12."
