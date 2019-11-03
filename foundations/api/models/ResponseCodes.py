@@ -14,6 +14,7 @@ class ResponseDescriptions(Enum):
     DateOffsetInputMissing = "Value of Input Parameter data_offset is missing."
     BlockIdsInputMissing = "Value of block_ids Input is missing."
     TransactionIdsInputMissing = "Value of transaction_ids Input is missing."
+    TransactionHashInputMissing = "Value of transaction_hash Input is missing."
     TransactionIdInputMissing = "Value of transaction_id Input is missing."
     TransactionOutputIdInputMissing = "Value of transaction_output_id Input is missing."
     TransactionHashMissing = "Value of Input Parameter transaction_hash is missing."
