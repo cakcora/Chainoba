@@ -14,10 +14,43 @@ def load_data():
     """
     return ""
 
+def handle_missing_values():
+    """
+     get the  number of missing values in the datasets to handle those missing values.
+     :return:
+    """
+    return ""
+
+def feature_engineering():
+    """
+     drop features that have not any impact on our goal
+     :return:
+    """
+
+    return ""
+def data_encoding():
+    """
+    Convert non-numeric data into numeric ones, In order to ease the computation
+
+
+    :return:
+    """
+    return ""
+def data_preprocessing():
+    """
+    scale the values of the features, Principal component analysis (PCA)
+    in order to enhance the performance of the model .
+
+    :return:
+    """
+    return ""
+
+
 
 def cluster():
     """
     This function is going to apply k means clustering on the data set
+
     :return:
     """
     return ""
