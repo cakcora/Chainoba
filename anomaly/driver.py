@@ -22,3 +22,27 @@ def predict_coin_possibility(given_coin):
 # return all the coins with predicted possibilities greater than a chosen threshold (0.0 <= threshold <= 1.0)
 def get_predicted_pumped_coins(threshold: float):
     return []
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Extracting Account Features from the existing Smart Contracts
+def get_account_features():
+    return None
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Extracting Code Features from Transaction Data
+def get_code_features():
+    return None
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Build the classification model using Random Forest
+def classify_contract_as_ponzi():
+    return None
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Apply the model on all Smart Contracts in Ethereum
+def ponzi_scheme_detection():
+    return None
