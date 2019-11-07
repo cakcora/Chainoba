@@ -47,3 +47,25 @@ def re_cluster():
     :return:
     """
     return ""
+
+
+def iterative_levenshtein_distance(address1, address2):
+    """
+    Calculates the distance between two strings address1 and address2 by combining Levenshtein distance and the
+    memoization technique. This is an O(N*M) implementation using Dynamic Programming.
+    :param address1: Blockchain user address
+    :param address2: Blockchain user address
+
+    :return: int: The distance between both strings
+    """
+    return -1
+
+
+def ward_method_clustering(blockchain_transaction_list):
+    """
+    Performs agglomerative hierarchical clustering  of user addresses with similar behavior patterns.
+
+    :param blockchain_transaction_list: object containing entire chain of transactions
+    :return: list: List of labels assigned to clusters of user addresses
+    """
+    return None
