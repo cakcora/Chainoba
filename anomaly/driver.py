@@ -1,5 +1,3 @@
-
-
 # pump and dump prediction
 # get the data price for pump and dump prediction
 def load_price_data():
@@ -22,6 +20,7 @@ def predict_coin_possibility(given_coin):
 # return all the coins with predicted possibilities greater than a chosen threshold (0.0 <= threshold <= 1.0)
 def get_predicted_pumped_coins(threshold: float):
     return []
+
 
 
 # ---- Pump and Dump - Kainth ----

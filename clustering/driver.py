@@ -14,6 +14,34 @@ def load_data():
     """
     return ""
 
+def handle_missing_values():
+    """
+     get the  number of missing values in the datasets to handle those missing values.
+     :return:
+    """
+    return ""
+
+def feature_engineering():
+    """
+     drop features that have not any impact on our goal
+     :return:
+    """
+    return ""
+def data_encoding():
+    """
+    Convert non-numeric data into numeric ones, In order to ease the computation
+    :return:
+    """
+    return ""
+def data_preprocessing():
+    """
+    scale the values of the features, Principal component analysis (PCA)
+    in order to enhance the performance of the model .
+    :return:
+    """
+    return ""
+
+
 
 def cluster():
     """
@@ -47,3 +75,25 @@ def re_cluster():
     :return:
     """
     return ""
+
+
+def iterative_levenshtein_distance(address1, address2):
+    """
+    Calculates the distance between two strings address1 and address2 by combining Levenshtein distance and the
+    memoization technique. This is an O(N*M) implementation using Dynamic Programming.
+    :param address1: Blockchain user address
+    :param address2: Blockchain user address
+
+    :return: int: The distance between both strings
+    """
+    return -1
+
+
+def ward_method_clustering(blockchain_transaction_list):
+    """
+    Performs agglomerative hierarchical clustering  of user addresses with similar behavior patterns.
+
+    :param blockchain_transaction_list: object containing entire chain of transactions
+    :return: list: List of labels assigned to clusters of user addresses
+    """
+    return None
