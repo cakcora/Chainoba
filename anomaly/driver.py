@@ -23,41 +23,32 @@ def get_predicted_pumped_coins(threshold: float):
 
 
 
-# fifth labor
-# get list of transaction within a time period
-def get_transaction_list(start_time, end_time):
-    return []
+# ---- Pump and Dump - Kainth ----
+# Pulls the raw data from exchanges. Returns list of fetched symbols.
+# -- EXAMPLE INPUT --
+# exchange = 'binance'
+# from_date = '2019-04-20 00:00:00'
+# number_candles = 240 - number of candles
+# candle_size = '12h' - candlesticks
+# f_path = '../data' - CSV OHLCV file path for output
+def pull_data(exchange, from_date, number_candles, candle_size, f_path):
+    return 1
 
 
-# fifth labor
-# get list of transactions related to the exchanges within a time period
-def get_exchange_transaction(start_time, end_time):
-    return []
+# ---- Pump and Dump - Kainth ----
+# Gets symbol name from the csv file.
+def get_symbol(f_path):
+    return "XRP-BTC"  # Example
 
 
-# fifth labor
-# build a local graph with the transaction_list, and markdown the transaction related to the exhchanges
-def build_graph(transaction_list, excange_transaction_list):
-    return "Graph edges and nodes"
-
-
-# fifth labor
-# detect the loop linking behaviour from the local graph and return the edges and nodes creating the loop
-def find_loop(edge_list, nodes):
-    return "Subgraph with detected loop"
-
-# fifth labor
-# predict the suspicious addresses from the loop subgraph
-def suspicious_addresses_from_loop(loop_subgraph):
-    return []
-
-
-# fifth labor
-# detect the loop spliting behaviour from the local graph and return the edges and nodes creating the split behaviour
-def find_split_nodes(edge_list, nodes):
-    return "Subgraph with split behaviour"
-
-# fifth labor
-# predict the suspicious addresses from the split subgraph
-def suspicious_addresses_from_split_nodes(split_subgraph):
-    return []
+# ---- Pump and Dump - Kainth ----
+# Main analysis method for pump and dump detection. Returns final dataframe with number of pump and dumps.
+# -- EXAMPLE INPUT --
+# symbol_name : "XRP-BTC" - symbol name provided by the exchange.
+# f_path : '../data' - output file from previously generated.
+# volume_thresh : 5 (500%) - volume threshold
+# price_thresh : 1.05 (5%) -  price threshold
+# window_size : 24 - size of the window for the rolling average (in hours)
+# candle_size = '12h' - candlesticks
+def analyse_symbol(symbol_name, f_path, volume_thresh, price_thresh, window_size, candle_size):
+    return 1
