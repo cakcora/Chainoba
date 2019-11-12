@@ -1,9 +1,9 @@
 # Graph
-To get any graph, import <br>
+To get any graph, import 
 <b>getGraph(dd, mm, yy, dOffset,graphType,dirPath)</b> function from getAPIData 
 <br>
-####Inputs: <br>
-graphType may take one of the three values :<br>
+<h4>Inputs: </h4><br>
+<b>graphType</b> may take one of the three values :<br>
 COMPOSITE<br>
 ADDRESS<br>
 TRANSACTION
@@ -16,7 +16,7 @@ dOffset = 10 <br>
 graphType = COMPOSITE
 dirPath = "../XYZ"
 <br>
-####Output: <br>
+<h4>Output:</h4> <br>
 <ul>
 <li>
 In case of <b>COMPOSITE </b> graph you will get an edge list file at the given directory path("../XYZ")
