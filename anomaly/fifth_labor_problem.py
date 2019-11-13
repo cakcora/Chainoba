@@ -73,3 +73,7 @@ def fifth_labor_problem1():
 
 
 fifth_labor_problem1()
+
+# TODO: If multiple suspicious addresses merge after N block, then the merging address is suspicious.
+def fifth_labor_problem2():
+    return 0
