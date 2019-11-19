@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
-from foundations.EthereumAPI.resources.transaction import GetTransactionDataByDateEndpoint
-from foundations.EthereumAPI.resources.transaction import GetTransactionDataByNodeEndpoint
+from EthereumAPI.resources.transaction import GetTransactionDataByDateEndpoint
+from EthereumAPI.resources.transaction import GetTransactionDataByNodeEndpoint
 
 
 # Flask application initialization

@@ -5,9 +5,9 @@ from webargs import fields
 from webargs.flaskparser import use_kwargs
 import time
 from datetime import datetime, timedelta
-from foundations.EthereumAPI.models.models import Transaction, db_session
-from foundations.EthereumAPI.models.ResponseCodes import ResponseCodes
-from foundations.EthereumAPI.models.ResponseCodes import ResponseDescriptions
+from EthereumAPI.models.models import Transaction, db_session
+from EthereumAPI.models.ResponseCodes import ResponseCodes
+from EthereumAPI.models.ResponseCodes import ResponseDescriptions
 
 
 def serialize_transaction(transaction_data):
