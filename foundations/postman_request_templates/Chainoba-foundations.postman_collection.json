@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e332a362-aeaa-44df-bfaa-fbad8d9ff934",
+		"_postman_id": "51c696fe-2afd-416b-9aaf-fa8893279026",
 		"name": "Chainoba/foundations",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -85,6 +85,49 @@
 					"path": [
 						"bitcoin",
 						"blocks",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get ethereum transactions by node",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"node_address\" : 79820\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://159.203.28.234:5000/ethereum/node/transactions",
+					"protocol": "http",
+					"host": [
+						"159",
+						"203",
+						"28",
+						"234"
+					],
+					"port": "5000",
+					"path": [
+						"ethereum",
+						"node",
 						"transactions"
 					]
 				}

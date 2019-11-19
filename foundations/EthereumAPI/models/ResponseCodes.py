@@ -12,5 +12,6 @@ class ResponseDescriptions(Enum):
     MonthInputMissing = "Value of Input Parameter month is missing."
     YearInputMissing = "Value of Input Parameter year is missing."
     DateOffsetInputMissing = "Value of Input Parameter data_offset is missing."
+    InvalidNodeAddress = "Value of Node Address is invalid.."
     NoDataFound = "No Data found for requested parameters."
     ErrorFromDataBase = "Database Error has occurred."

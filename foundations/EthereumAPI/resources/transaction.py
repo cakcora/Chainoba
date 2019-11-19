@@ -1,3 +1,4 @@
+from sqlalchemy import or_
 from sqlalchemy import and_
 from flask_restful import Resource
 from webargs import fields
@@ -18,11 +19,18 @@ def serialize_transaction(transaction_data):
             }
 
 
+def ValidateNodeInput(self, node_address):
+    validationErrorList = []
+    if node_address <= 0:
+        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidNodeAddress.value})
+    return validationErrorList
+
+
 def ValidateInput(self, year, month, day, date_offset):
     validationErrorList = []
     if day > 31 or day <= 0:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidDayInput.value})
-    if year > int(datetime.now().year) or year < 2009:
+    if year > int(datetime.now().year) or year < 2016:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidYearInput.value})
     if month > 12 or month <= 0:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidMonthInput.value})
@@ -31,7 +39,7 @@ def ValidateInput(self, year, month, day, date_offset):
     return validationErrorList
 
 
-class TransactionEndpoint(Resource):
+class GetTransactionDataByDateEndpoint(Resource):
     args = {"day": fields.Integer(),
             "month": fields.Integer(),
             "year": fields.Integer(),
@@ -82,6 +90,56 @@ class TransactionEndpoint(Resource):
                         "ErrorMessage": str(ex)}
         finally:
             # file = open('/EthereumAPI/Logs/GetTransactionDataByDateLog.txt', 'w')
+            # file.write("Time:" + str(datetime.now()) + "\r\n")
+            # file.write("Request : " + request + "\r\n")
+            # file.write("Response : " + response + "\r\n")
+            # file.write("\r\n")
+            # file.write("\r\n")
+            # file.write("\r\n")
+            # file.close()
+            return response
+
+
+class GetTransactionDataByNodeEndpoint(Resource):
+    args = {"node_address": fields.Integer()
+            }
+
+    @use_kwargs(args)
+    def get(self, node_address):
+        # Validate User Input
+        try:
+            request = {"node_address": node_address}
+            validations_result = ValidateNodeInput(self, node_address)
+            response = {}
+            if validations_result is not None and len(validations_result) > 0:
+                response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
+                            "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
+                            "ValidationErrors": validations_result}
+            else:  # all valid
+
+                # perform the query
+                transaction_data = db_session.query(Transaction).filter(
+                    or_(Transaction.input_address == node_address, Transaction.output_address
+                         == node_address)).order_by(Transaction.input_address.asc())
+                if transaction_data is not None and len(list(transaction_data)) != 0:
+                    transaction_list = []
+                    for transaction in transaction_data:
+                        transaction_list.append(serialize_transaction(transaction))
+                    response = {
+                        "ResponseCode": ResponseCodes.Success.value,
+                        "ResponseDesc": ResponseCodes.Success.name,
+                        "NumberOfTransactions": len(transaction_list),
+                        "Transactions": transaction_list}
+                else:
+                    response = {"ResponseCode": ResponseCodes.NoDataFound.value,
+                                "ResponseDesc": ResponseCodes.NoDataFound.name,
+                                "ErrorMessage": ResponseDescriptions.NoDataFound.value}
+        except Exception as ex:
+            response = {"ResponseCode": ResponseCodes.InternalError.value,
+                        "ResponseDesc": ResponseCodes.InternalError.name,
+                        "ErrorMessage": str(ex)}
+        finally:
+            # file = open('/EthereumAPI/Logs/GetTransactionDataByNodeLog.txt', 'w')
             # file.write("Time:" + str(datetime.now()) + "\r\n")
             # file.write("Request : " + request + "\r\n")
             # file.write("Response : " + response + "\r\n")

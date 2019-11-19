@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Api
-from foundations.EthereumAPI.resources.transaction import TransactionEndpoint
+from foundations.EthereumAPI.resources.transaction import GetTransactionDataByDateEndpoint
+from foundations.EthereumAPI.resources.transaction import GetTransactionDataByNodeEndpoint
 
 
 # Flask application initialization
@@ -8,7 +9,8 @@ app = Flask(__name__)
 api = Api(app)
 
 # Endpoints
-api.add_resource(TransactionEndpoint, '/ethereum/transactions')
+api.add_resource(GetTransactionDataByDateEndpoint, '/ethereum/transactions')
+api.add_resource(GetTransactionDataByNodeEndpoint, '/ethereum/node/transactions')
 
 
 if __name__ == '__main__':
