@@ -41,7 +41,7 @@ Two values will be returned:<br>
         * "From:" Address, "To:" Address, Amount
       
 
-![Image of transaction graph](/graph/images/transaction.png)
+![Image of transaction graph](images/transaction.png)
 
 * To get the <b>TRANSACTION</b> graph object: <br>
  Suppose you want a TRANSACTION graph for 10 days from date February 9, 2009 then :<br>
