@@ -65,7 +65,6 @@ def Extract_AddressGraph(x,dataFobj):
                 OutputAddress = el["TransactionOutputs"][0]["OutputAddresses"][0]["Address"]
                 dataFobj = dataFobj.append({'source': None, 'target': str(OutputAddress)},
                                            ignore_index=True)
-        print(dataFobj)
     except Exception as e:
         return 'Fail', e
 
@@ -94,7 +93,6 @@ def Extract_TransactionGraph(x,dataFobj):
             else:
                 dataFobj = dataFobj.append({'source': None, 'target': str(Hash)},
                                            ignore_index=True)
-        print(dataFobj)
     except Exception as e:
         return 'Fail', e
 
