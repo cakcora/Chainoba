@@ -1,7 +1,8 @@
 import requests
-import os
+import networkx as nx
 from dataExtraction import Extract_MainGraph,Extract_AddressGraph,Extract_TransactionGraph
 from dataProcessing import EdgeListCreation, VertexListCreation
+import pandas as pd
 BLOCK_URL = "http://localhost:5000/bitcoin/blocks"
 TRANSBLOCK_URL = "http://localhost:5000/bitcoin/blocks/transactions"
 TRANSACTION_URL = "http://localhost:5000/bitcoin/transactions"
@@ -72,12 +73,17 @@ def getTransactionDetails(transId):
     return 'Success', response.text
 
 
-def getGraph(dd=9, mm=1, yy=2009, dOffset=1,graphType = 'COMPOSITE',dirPath=""):
+def getGraph(dd=9, mm=1, yy=2009, dOffset=1, graphType = 'COMPOSITE'):
+    dfObj = pd.DataFrame()
+    vertexlist=[]
+
     try:
         """Get block ids"""
         result, blkID = getBlockIds(dd, mm, yy, dOffset)
         transId = []
         bCount = 0
+
+        dfObj = pd.DataFrame(columns=['source', 'target', 'weight'])
 
         if result == 'Success':
             """Get transactions by block ids (block_ids maximum size 5)"""
@@ -92,31 +98,7 @@ def getGraph(dd=9, mm=1, yy=2009, dOffset=1,graphType = 'COMPOSITE',dirPath=""):
                     bCount = counter
                 else:
                     return 'Fail', transacId
-            graphfilepath = ""
-            """Check if path exists, if not then create it"""
-            if not os.path.exists(dirPath):
-                os.makedirs(dirPath)
-            edgelist_file_name = graphType + "_Graph_edgelist" + str(dd) + "_" + str(mm) + "_" + str(yy) + "_" + str(dOffset) + ".csv"
-            edgelist_full_path = os.path.join(dirPath, edgelist_file_name)
-            temp = graphType + "_temp_" + str(dd) + "_" + str(mm) + "_" + str(yy) + "_" + str(dOffset) + ".csv"
-            temp_path = os.path.join(dirPath, temp)
-            if os.path.isfile(edgelist_full_path):
-                os.remove(edgelist_full_path)
-            if graphType != 'COMPOSITE':
-                if os.path.isfile(temp_path):
-                    os.remove(temp_path)
-                f = open(temp_path, "a")
-                f.write("From,To")
-                f.close()
-            if graphType == 'COMPOSITE':
-                f = open(edgelist_full_path, "a")
-                f.write("From,To,Amount")
-                f.close()
-            else:
-                vertexlist_file_name = graphType + "_Graph_vertexlist" + str(dd) + "_" + str(mm) + "_" + str(yy) + "_" + str(dOffset) + ".csv"
-                vertexlist_full_path = os.path.join(dirPath, vertexlist_file_name)
-                if os.path.isfile(vertexlist_full_path):
-                    os.remove(vertexlist_full_path)
+
             bCount = 0
             """Get transactions' details by transaction id (transaction_ids maximum size 10)"""
             while bCount < len(transId):
@@ -125,35 +107,38 @@ def getGraph(dd=9, mm=1, yy=2009, dOffset=1,graphType = 'COMPOSITE',dirPath=""):
                 else:
                     counter = len(transId)
                 result3, transacDetail = getTransactionDetails(transId[bCount: counter])
+
                 if result3 == 'Success':
                     if graphType == 'COMPOSITE':
-                        result4, graphfilepath = Extract_MainGraph(transacDetail,edgelist_full_path)
+                        result4, dfObj = Extract_MainGraph(transacDetail,dfObj)
                         if result4 != 'Success':
-                            return 'Fail', graphfilepath
+                            return 'Fail', dfObj
                     elif graphType == 'ADDRESS':
-                        result4, graphfilepath = Extract_AddressGraph(transacDetail,temp_path)
+                        result4, dfObj = Extract_AddressGraph(transacDetail,dfObj)
                         if result4 != 'Success':
-                            return 'Fail', graphfilepath
+                            return 'Fail', dfObj
                     elif graphType == 'TRANSACTION':
-                        result4, graphfilepath = Extract_TransactionGraph(transacDetail,temp_path)
+                        result4, dfObj = Extract_TransactionGraph(transacDetail,dfObj)
                         if result4 != 'Success':
-                            return 'Fail', graphfilepath
+                            return 'Fail', dfObj
                     else:
-                        os.remove(temp_path)
                         return 'Fail', 'Wrong graph type'
                     bCount = counter
                 else:
                     return 'Fail', transacDetail
             if graphType !='COMPOSITE':
                 """Calling functions to create edge list and vertex list"""
-                result5 = EdgeListCreation(temp_path,edgelist_full_path)
-                result6 = VertexListCreation(temp_path, vertexlist_full_path)
+                result5, vertexlist = VertexListCreation(dfObj, vertexlist)
+                result6,dfObj = EdgeListCreation(dfObj)
                 if result5 != 'Success' and result6 != 'Success':
-                    os.remove(temp_path)
                     return 'Fail', result5 + " " + result6
-                os.remove(temp_path)
         else:
             return 'Fail', blkID
+        if graphType =='COMPOSITE':
+            netxObj = nx.from_pandas_edgelist(dfObj, edge_attr=True, create_using=nx.MultiDiGraph())
+        else:
+            netxObj = nx.from_pandas_edgelist(dfObj, edge_attr=True, create_using=nx.MultiDiGraph())
+            netxObj.add_nodes_from(vertexlist)
     except Exception as e:
         return 'Fail', e
-    return 'Success', 'csv file at its given path'
+    return 'Success', netxObj
