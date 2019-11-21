@@ -135,4 +135,4 @@ def levelOfActivity(edgeListFilePath):
     """
     Number of transactions each address is involved in.
         """
-     return "Success"
+    return "Success"
