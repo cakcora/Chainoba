@@ -1,10 +1,10 @@
 import json
+import math
 
 
-def Extract_MainGraph(x, edgelist):
+def Extract_MainGraph(x, dataFobj):
     """
     # Create an edgelist for Composite Graph where x is the transaction detail as an input
-
     """
     try:
         y = json.loads(x)
@@ -19,61 +19,61 @@ def Extract_MainGraph(x, edgelist):
                 for l in el["TransactionInputs"]:
                     InputAddress = l["InputAddresses"][0]["Address"]
                     InputValue = l["Value"]
-                    csv = csv+ "\n" + str(InputAddress) + "," + str(Hash) + "," + str(InputValue)
+                    dataFobj=dataFobj.append({'source': str(InputAddress),'target': str(Hash),'weight':int(InputValue)}, ignore_index=True)
                 for m in el["TransactionOutputs"]:
                     OutputAddress = m["OutputAddresses"][0]["Address"]
                     OutputValue = m["Value"]
-                    csv = csv + "\n"+ str(Hash) + "," + str(OutputAddress) + "," + str(OutputValue)
+                    dataFobj=dataFobj.append({'source': str(Hash), 'target': str(OutputAddress), 'weight': int(OutputValue)},
+                                    ignore_index=True)
             else:
                 OutputAddress = el["TransactionOutputs"][0]["OutputAddresses"][0]["Address"]
                 OutputValue = el["TransactionOutputs"][0]["Value"]
-                csv = csv + "\n" + str(Hash) + "," + OutputAddress + "," + str(OutputValue)
+                dataFobj=dataFobj.append({'source': str(Hash), 'target': str(OutputAddress), 'weight': int(OutputValue)},
+                                ignore_index=True)
 
-        csvfile = open(edgelist, "a")
-        csvfile.write(csv)
-        csvfile.close()
     except Exception as e:
         return 'Fail', e
 
-    return 'Success',"CSV UPDATED"
+    return 'Success',dataFobj
 
-def Extract_AddressGraph(x,temp_path):
+def Extract_AddressGraph(x,dataFobj):
     """
         # Create an edgelist for Address Graph where x is the transaction detail as an input
-
     """
     try:
         y = json.loads(x)
 
-        csv = " "
-
         for k in y["TransactionData"]:
+            Input= 0
             el = y["TransactionData"][k]
             PreviousTransactionOutputId = ""
             PreviousTransactionOutputId = el["TransactionInputs"][0]["PreviousTransactionOutputId"]
 
             if PreviousTransactionOutputId is not None:
                 for l in el["TransactionInputs"]:
+                    NowInput = l["Value"]
+                    Input = Input + NowInput
+                for l in el["TransactionInputs"]:
                     InputAddress = l["InputAddresses"][0]["Address"]
+                    NowInput = l["Value"]
                     for m in el["TransactionOutputs"]:
                         OutputAddress = m["OutputAddresses"][0]["Address"]
-                        csv = csv + "\n"+str(InputAddress) + "," + str(OutputAddress)
+                        OutPutValue = m["Value"]
+                        OutValue = math.ceil((NowInput / Input) * (OutPutValue))
+                        dataFobj = dataFobj.append({'source': str(InputAddress), 'target': str(OutputAddress),'weight': int(OutValue)}, ignore_index = True)
             else:
                 OutputAddress = el["TransactionOutputs"][0]["OutputAddresses"][0]["Address"]
-                csv = csv + "\n"+"," + str(OutputAddress)
-
-        csvfile = open(temp_path, "a")
-        csvfile.write(csv)
-        csvfile.close()
+                dataFobj = dataFobj.append({'source': None, 'target': str(OutputAddress)},
+                                           ignore_index=True)
+        print(dataFobj)
     except Exception as e:
         return 'Fail', e
 
-    return 'Success', "yes"
+    return 'Success', dataFobj
 
-def Extract_TransactionGraph(x,temp_path):
+def Extract_TransactionGraph(x,dataFobj):
     """
             # Create an edgelist for Transaction Graph where x is the transaction detail as an input
-
     """
     try:
         y = json.loads(x)
@@ -87,17 +87,15 @@ def Extract_TransactionGraph(x,temp_path):
             if PreviousTransactionOutputId is not None:
                 for l in el["TransactionInputs"]:
                     HashOfPreviousTransaction = l["HashOfPreviousTransaction"]
-                    csv = csv+ "\n" + str(HashOfPreviousTransaction) + "," + str(Hash)
+                    Value = l["Value"]
+                    dataFobj = dataFobj.append({'source': str(HashOfPreviousTransaction), 'target': str(Hash),'weight': int(Value)},
+                                               ignore_index=True)
 
             else:
-                csv = csv + "\n"+ "," + str(Hash)
-        # append csv data to file
-        csvfile = open(temp_path, "a")
-        csvfile.write(csv)
-        csvfile.close()
-
-
+                dataFobj = dataFobj.append({'source': None, 'target': str(Hash)},
+                                           ignore_index=True)
+        print(dataFobj)
     except Exception as e:
         return 'Fail', e
 
-    return 'Success', "yes"
+    return 'Success', dataFobj
