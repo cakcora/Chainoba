@@ -74,10 +74,10 @@ mm = 2 <br>
 yy = 2009  <br>
 
 Feature = LEVEL_OF_ACTIVITY<br>
-    * Output:
+*   Output:
 Two values will be returned:<br>
-        * "Success"/"Fail"<br>
-        * The data will be provided in form of dataframe object where each row will corresponds to  ["Address","Value"]<br>
+    * "Success"/"Fail"<br>
+    * The data will be provided in form of dataframe object where each row will corresponds to  ["Address","Value"]<br>
        
 
 Note : Different features are :<br>
