@@ -72,7 +72,6 @@ To get any feature, import
 dd = 9  <br>
 mm = 2 <br>
 yy = 2009  <br>
-
 Feature = LEVEL_OF_ACTIVITY<br>
 *   Output:
 Two values will be returned:<br>
