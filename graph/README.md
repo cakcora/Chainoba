@@ -59,13 +59,11 @@ Two values will be returned:<br>
         * "From:" Transaction, "To:" Transaction, Amount
         
         
-<h6>References</h6>
-[1] Images from "Data Science on Blockchain", UM Learn, Cuneyt Gurcan Akcora
 
 # Analysis
 
 To get any feature, import
-<b>getFeatures(dd,mm,yy,1,"Feature")</b> function from addressFeatures.
+<b>getFeatures(dd,mm,yy,"Feature")</b> function from addressFeatures.
 <br>
 
 * To get the <b>LEVEL_OF_ACTIVITY</b> for each address: <br>
@@ -74,7 +72,7 @@ To get any feature, import
 dd = 9  <br>
 mm = 2 <br>
 yy = 2009  <br>
-dOffset = 1 {since the analysis is on daily basis}<br>
+
 Feature = LEVEL_OF_ACTIVITY<br>
     * Output:
 Two values will be returned:<br>
@@ -83,7 +81,13 @@ Two values will be returned:<br>
        
 
 Note : Different features are :<br>
-    * The Feature :LEVEL_OF_ACTIVITY<br>
-    *The Feature : TOTAL_BTC_RECEIVED<br>
-    *The Feature : TOTAL_BTC_SENT<br>
-    *The Feature :CURRENT_BALANCE
+* The Feature :LEVEL_OF_ACTIVITY<br>
+* The Feature : TOTAL_BTC_RECEIVED<br>
+* The Feature : TOTAL_BTC_SENT<br>
+* The Feature :CURRENT_BALANCE
+
+##Note: The data retrieved will be on daily basis
+
+
+<h6>References</h6>
+[1] Images from "Data Science on Blockchain", UM Learn, Cuneyt Gurcan Akcora
