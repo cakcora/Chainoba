@@ -59,5 +59,34 @@ Two values will be returned:<br>
         * "From:" Transaction, "To:" Transaction, Amount
         
         
+
+# Analysis
+
+To get any feature, import
+<b>getFeatures(dd,mm,yy,"Feature")</b> function from addressFeatures.
+<br>
+
+* To get the <b>LEVEL_OF_ACTIVITY</b> for each address: <br>
+ Suppose you want a LEVEL_OF_ACTIVITY for date February 9, 2009 then :<br>
+    * Inputs: <br>
+dd = 9  <br>
+mm = 2 <br>
+yy = 2009  <br>
+Feature = LEVEL_OF_ACTIVITY<br>
+*   Output:
+Two values will be returned:<br>
+    * "Success"/"Fail"<br>
+    * The data will be provided in form of dataframe object where each row will corresponds to  ["Address","Value"]<br>
+       
+
+Note : Different features are :<br>
+* The Feature :LEVEL_OF_ACTIVITY<br>
+* The Feature : TOTAL_BTC_RECEIVED<br>
+* The Feature : TOTAL_BTC_SENT<br>
+* The Feature :CURRENT_BALANCE
+
+##Note: The data retrieved will be on daily basis
+
+
 <h6>References</h6>
 [1] Images from "Data Science on Blockchain", UM Learn, Cuneyt Gurcan Akcora
