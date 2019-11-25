@@ -101,7 +101,7 @@ def get_suspicious_address():
     print('Processed Address {} .'.format(CONSTANTS['ADDRESS_COUNT']))
 
 
-# def detect_first_level_loop():
 
+# TODO detect loop when multiple level (N number of hops) loop detection
 if __name__ == '__main__':
     get_suspicious_address()
