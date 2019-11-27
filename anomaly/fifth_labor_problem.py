@@ -2,99 +2,31 @@ import requests
 import time
 import pandas as pd
 
+CONSTANTS = {
+    'DATA_FILE': 'chainletElimination.txt',
+    'MERGING_FILE': 'merging_addresses.txt',
+    'ADD_DETAIL_API': 'https://blockchain.info/rawaddr/',
+    'EXCHANGE_FILE_CSV': 'transaction_details_26_10_2019.csv',
+    'EXCHANGE_FILE_TXT': 'exchange_addresses.txt'
+    # 'TX_DETAIL_API': 'https://blockchain.info/rawtx/',
+}
 
-# fifth_labor_problem1 method returns additional suspicious addresses regarding following problem:
-# If an address receives multiple payments from suspicious Ransomware addresses
-# ( i.e. merge address), then it is regarded as suspicious
-def fifth_labor_problem1():
-    url = 'https://blockchain.info/rawaddr/'
-    with open('chainletElimination.txt', 'r') as file:
-        data = file.readlines()
 
-    suspicious_dictionary = dict()
-
-    start = time.time()
-
-    for line in range(1000):  # len(data) is more than 20K
-
-        suspicious_address = data[line].split("\t")[1].split("\n")[0]
-        # in case bad connection, skip one transaction.
-        try:
-            request = requests.get(url + suspicious_address)
-            json_text = request.json()
-        except BaseException as error:
-            print("invalid request or invalid json:{}" + format(error) + "in line" + str(line))
-            line += 1
-            continue
-
-        # store all the transactions containing initial suspicious addresses
-        transaction_list = json_text["txs"]
-
-        # TODO: len(transaction_list) only can get 50 transactions at most.
-        #  However, transaction counts are more.
-        # print(len(transaction_list))
-
-        output_address_set = set()
-
-        # using initial suspicious addresses as inputs return all the output addresses within one transaction
-        print("executing line number:", line)  # line number 83, transaction list 37 +, it is coin based trans
-        for i in range(len(transaction_list)):
-            # print("transaction_list", i)
-            # It is a coinBase transaction without "prev_out" in input address.
-            if "prev_out" not in transaction_list[i]["inputs"][0]:
-                break
-            else:
-                for j in range(len(transaction_list[i]["inputs"])):
-                    # suspicious_address as an input, find out all output addresses.
-                    if transaction_list[i]["inputs"][j]["prev_out"]["addr"] == suspicious_address:
-                        for x in range(len(transaction_list[i]["out"])):
-                            output_address_set.add(transaction_list[i]["out"][x]["addr"])
-
-        suspicious_dictionary[suspicious_address] = output_address_set
-
-    # TEST: SHOW whole suspicious dictionary information
-    # print(str(suspicious_dictionary).replace(", ", "\n"))
-    # print("--------------------------------------------")
-
-    # set of all output addresses
-    output_addresses_set = set()
-    merging_addresses_set = set()
-
-    # iterate suspicious_dictionary to find merging addresses in one transaction.
-    for key, value in suspicious_dictionary.items():
-        address_list = list(value)
-        for i in range(len(address_list)):
-            if address_list[i] not in output_addresses_set:
-                output_addresses_set.add(address_list[i])
-            else:
-                # duplicate output addresses, then add into merging addresses est
-                merging_addresses_set.add(address_list[i])
-
-    end = time.time()
-
-    merging_addresses_file = open("merging_addresses.txt", "a")
-
-    # write to merging_addresses.txt file
-    for addr in merging_addresses_set:
-        merging_addresses_file.write(addr + "\n")
-
-    merging_addresses_file.close()
-
-    # Testing 1000 lines from input require 636 secs, found 1217 merging addresses
-    #                                                   with 4 exchange addresses
-    # TODO: some merging addresses seem to be exchange addresses
-    print("Time elapsed: ", end - start)
-    print(len(output_addresses_set))
-    print("--------------------------------------------")
-    print(len(merging_addresses_set))
-    print(merging_addresses_set)
+# get transaction list by bitCoin address
+def get_transaction_list(address):
+    try:
+        request = requests.get(CONSTANTS['ADD_DETAIL_API'] + address)
+        json_text = request.json()
+        return json_text["txs"]
+    except BaseException as error:
+        print("invalid request or invalid json:{}" + format(error) + "in line" + str(address))
+        return None
 
 
 # preprocessing transaction_details_26_10_2019.csv file - generate exchange_addresses.txt
 def generate_exchange_address():
-
-    data_frame = pd.read_csv('transaction_details_26_10_2019.csv', usecols=['Inputs'])
-    file = open("exchange_addresses.txt", "w+")
+    data_frame = pd.read_csv(CONSTANTS['EXCHANGE_FILE_CSV'], usecols=['Inputs'])
+    file = open(CONSTANTS['EXCHANGE_FILE_TXT'], "w+")
     address_set = set()
 
     for row in data_frame.iterrows():
@@ -111,31 +43,202 @@ def generate_exchange_address():
 
 
 # testing, how many exchange addresses are generated in 1000 initial suspicious addresses.
-# eliminated exchange addresses from merging address list
+# TODO: will eliminate addr from merging_address after all the computation is done.
 def check_exchange_address():
-    with open('merging_addresses.txt', 'r') as file:
+    with open(CONSTANTS['MERGING_FILE'], 'r') as file:
         merging_list = file.readlines()
-    with open('exchange_addresses.txt', 'r') as file:
+    with open(CONSTANTS['EXCHANGE_FILE_TXT'], 'r') as file:
         exchange_list = file.readlines()
 
-    # check if duplicates
-    if len(merging_list) == len(set(merging_list)):
-        print("no duplicates")
-    else:
-        print("duplicates")
-
+    # suspicious address is an exchange address.
     for addr in merging_list:
         if addr in exchange_list:
             print(addr)
 
-    # TODO: will eliminate addr from merging_address after all the computation is done.
+
+# suspicious_address as an input, find out all output addresses in transaction_list
+def get_output_address(transaction_list, input_address):
+    output_address_set = set()
+    for i in range(len(transaction_list)):
+        if "prev_out" not in transaction_list[i]["inputs"][0]:
+            break
+        else:
+            for j in range(len(transaction_list[i]["inputs"])):
+                if transaction_list[i]["inputs"][j]["prev_out"]["addr"] == input_address:
+                    for x in range(len(transaction_list[i]["out"])):
+                        output_address_set.add(transaction_list[i]["out"][x]["addr"])
+
+    return output_address_set
+
+
+# suspicious_address as an input, find out all output addresses in transaction_list
+# with constrain of 1 to 1 and 1 to 2 transactions.
+def get_output_address2(transaction_list, input_address):
+    output_address_set = set()
+    for i in range(len(transaction_list)):
+        if "prev_out" not in transaction_list[i]["inputs"][0]:
+            break
+        else:
+            if len(transaction_list[i]["inputs"]) == 1 and len(transaction_list[i]["out"]) <= 2 and \
+                    transaction_list[i]["inputs"][0]["prev_out"]["addr"] == input_address:
+                for j in range(len(transaction_list[i]["out"])):
+                    output_address_set.add(transaction_list[i]["out"][j]["addr"])
+
+    return output_address_set
+
+
+# fifth_labor_problem1 method returns additional suspicious addresses regarding following problem:
+# If an address receives multiple payments from suspicious Ransomware addresses
+# ( i.e. merge address), then it is regarded as suspicious
+def fifth_labor_problem1():
+    with open(CONSTANTS['DATA_FILE'], 'r') as file:
+        data = file.readlines()
+
+    suspicious_dictionary = dict()
+    start = time.time()
+
+    for line in range(100):  # len(data) is more than 20K
+
+        print("executing line number:", line)
+        suspicious_address = data[line].split("\t")[1].split("\n")[0]
+        transaction_list = get_transaction_list(suspicious_address)  # the size is 50 in maximum
+
+        if transaction_list is None:
+            line += 1
+            continue
+
+        output_address_set = set()
+
+        # using initial suspicious addresses as inputs return all the output addresses within one transaction
+        temp = get_output_address(transaction_list, suspicious_address)
+
+        for items in temp:
+            output_address_set.add(items)
+
+        suspicious_dictionary[suspicious_address] = output_address_set
+
+    # TEST: SHOW whole suspicious dictionary information
+    # print("--------------------------------------------")
+    # print(str(suspicious_dictionary).replace(", ", "\n"))
+
+    address_set = set()
+    merging_address_set = set()
+
+    # iterate suspicious_dictionary to find merging addresses in one transaction.
+    for key, value in suspicious_dictionary.items():
+        address_list = list(value)
+        for i in range(len(address_list)):
+            if address_list[i] not in address_set:
+                address_set.add(address_list[i])
+            else:
+                merging_address_set.add(address_list[i])
+
+    end = time.time()
+
+    # write to merging_addresses.txt file
+    # merging_addresses_file = open(CONSTANTS['MERGING_FILE'], "a")
+    # for addr in merging_addresses_set:
+    #     merging_addresses_file.write(addr + "\n")
+    #
+    # merging_addresses_file.close()
+
+    # Testing 1000 lines from input require 636 secs,
+    # found 1217 merging addresses including 4 exchange addresses
+    print("Time elapsed: ", end - start)
+    print(len(address_set))
+    print("--------------------------------------------")
+    print(len(merging_address_set))
+    print(merging_address_set)
+
+
+# If multiple suspicious addresses merge after N block, then the merging address is suspicious.
+# Only consider 1 to 1, 1 to 2 transactions for now and 3 hops max.
+def fifth_labor_problem2():
+    with open(CONSTANTS['DATA_FILE'], 'r') as file:
+        data = file.readlines()
+
+    suspicious_dictionary = dict()
+
+    start = time.time()
+
+    for line in range(1000):  # len(data) is more than 20K
+        print("executing line number:", line)
+
+        suspicious_address = data[line].split("\t")[1].split("\n")[0]
+        transaction_list = get_transaction_list(suspicious_address)  # the size is 50 in maximum
+
+        if transaction_list is None:
+            line += 1
+            continue
+
+        output_address_set = set()
+
+        hop1_address_list = list(get_output_address2(transaction_list, suspicious_address))
+
+        for i in range(len(hop1_address_list)):
+            output_address_set.add(hop1_address_list[i])
+            hop2_transaction_list = get_transaction_list(hop1_address_list[i])
+            if hop2_transaction_list is not None:
+                hop2_address_list = list(get_output_address2(hop2_transaction_list, hop1_address_list[i]))
+                for j in range(len(hop2_address_list)):
+                    output_address_set.add(hop2_address_list[j])
+        #
+        # for i in range(len(transaction_list)):
+        #     if "prev_out" not in transaction_list[i]["inputs"][0]:
+        #         break
+        #     else:
+        #         # suspicious_address as an input, find out all output addresses.
+        #         # and only 1 to 1 or 1 to 2 transactions
+        #         if len(transaction_list[i]["inputs"]) == 1 and len(transaction_list[i]["out"]) <= 2 and \
+        #                 transaction_list[i]["inputs"][0]["prev_out"]["addr"] == suspicious_address:
+        #             for j in range(len(transaction_list[i]["out"])):
+        #                 output_address_set.add(transaction_list[i]["out"][j]["addr"])
+        #                 # within 2 hops
+        #                 hop2_tl = get_transaction_list(transaction_list[i]["out"][j]["addr"])
+        #                 if hop2_tl is not None:
+        #                     for x in range(len(hop2_tl)):
+        #                         if "prev_out" not in hop2_tl[x]["inputs"][0]:
+        #                             break
+        #                         else:
+        #                             if len(hop2_tl[x]["inputs"]) == 1 and \
+        #                                     len(hop2_tl[x]["out"]) <= 2 and \
+        #                                     hop2_tl[x]["inputs"][0]["prev_out"]["addr"] == \
+        #                                     transaction_list[i]["out"][j]["addr"]:
+        #                                 for y in range(len(hop2_tl[x]["out"])):
+        #                                     output_address_set.add(hop2_tl[x]["out"][y]["addr"])
+        #                                     # 3 hops, running time is too long, omitted.
+
+        suspicious_dictionary[suspicious_address] = output_address_set
+
+    output_addresses_set = set()
+    merging_addresses_set = set()
+
+    # iterate suspicious_dictionary to find merging addresses in one transaction.
+    for key, value in suspicious_dictionary.items():
+        address_list = list(value)
+        for i in range(len(address_list)):
+            if address_list[i] not in output_addresses_set:
+                output_addresses_set.add(address_list[i])
+            else:
+                merging_addresses_set.add(address_list[i])
+
+    end = time.time()
+
+    # write to merging_addresses.txt file
+    merging_addresses_file = open(CONSTANTS['MERGING_FILE'], "a")
+    for addr in merging_addresses_set:
+        merging_addresses_file.write(addr + "\n")
+
+    merging_addresses_file.close()
+
+    print("Time elapsed: ", end - start)
+    print(len(output_addresses_set))
+    print("--------------------------------------------")
+    print(len(merging_addresses_set))
+    print(merging_addresses_set)
 
 
 # generate_exchange_addresses()
 # fifth_labor_problem1()
+fifth_labor_problem2()
 # check_exchange_address()
-
-
-# TODO: If multiple suspicious addresses merge after N block, then the merging address is suspicious.
-def fifth_labor_problem2():
-    return 0
