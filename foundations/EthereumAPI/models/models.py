@@ -84,4 +84,5 @@ if __name__ == '__main__':
     s = Session()
     print(s.query(Transaction).first())
     print(s.query(PonziAnomaly).first())
+    print(s.query(EthereumTokens).first())
     s.close()
