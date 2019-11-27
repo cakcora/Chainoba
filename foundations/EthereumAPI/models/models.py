@@ -30,15 +30,51 @@ class Transaction(Base):
     id = Column(Integer, primary_key=True)
     output_address = Column(BigInteger)
     ntime = Column(BigInteger)
-    token_amount = Column(String)
+    token_amount = Column(String),
+    token_id = Column(BigInteger, ForeignKey('tokens.token_id'))
 
     def __repr__(self):
-        return "<Transaction(id={}, input_address={}, output_address={}, ntime={},token_amount='{}')>".format(
+        return "<Transaction(id={}, input_address={}, output_address={}, ntime={},token_amount='{}',token_id = {})>".format(
             self.id,
             self.input_address,
             self.output_address,
             self.ntime,
-            self.token_amount)
+            self.token_amount,
+            self.token_id)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns()}
+
+
+class PonziAnomaly(Base):
+    __tablename__ = 'ponzi_anomaly'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(Integer, primary_key=True)
+    address = Column(String)
+    name = Column(String)
+    label = Column(String)
+
+    def __repr__(self):
+        return "<PonziAnomaly(id={}, address='{}', name='{}', label='{}')>".format(
+            self.id,
+            self.address,
+            self.name,
+            self.label)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns()}
+
+
+class EthereumToken(Base):
+    __tablename__ = 'tokens'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    token_id = Column(Integer, primary_key=True)
+    tk_name = Column(String)
+
+    def __repr__(self):
+        return "<EthereumTokens(token_id={}, tk_name='{}')>".format(
+            self.token_id,
+            self.tk_name)
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns()}
@@ -47,4 +83,5 @@ class Transaction(Base):
 if __name__ == '__main__':
     s = Session()
     print(s.query(Transaction).first())
+    print(s.query(PonziAnomaly).first())
     s.close()
