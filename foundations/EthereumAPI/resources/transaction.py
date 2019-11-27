@@ -5,17 +5,19 @@ from webargs import fields
 from webargs.flaskparser import use_kwargs
 import time
 from datetime import datetime, timedelta
-from EthereumAPI.models.models import Transaction, db_session
+from EthereumAPI.models.models import Transaction, EthereumToken, db_session
 from EthereumAPI.models.ResponseCodes import ResponseCodes
 from EthereumAPI.models.ResponseCodes import ResponseDescriptions
 
 
-def serialize_transaction(transaction_data):
+def serialize_transaction(transaction_data, token):
     return {"TransactionId": transaction_data.id,
             "InputNodeAddress": transaction_data.input_address,
             "OutputNodeAddress": transaction_data.output_address,
             "Timestamp": datetime.utcfromtimestamp(transaction_data.ntime).strftime('%Y-%m-%d %H:%M:%S'),
-            "TokenAmount": transaction_data.token_amount
+            "TokenAmount": transaction_data.token_amount,
+            'TokenId': token.token_id,
+            'TokenName': token.tkname
             }
 
 
@@ -34,7 +36,7 @@ def ValidateInput(self, year, month, day, date_offset):
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidYearInput.value})
     if month > 12 or month <= 0:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidMonthInput.value})
-    if date_offset > 31 or date_offset <= 0:
+    if date_offset <= 0:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidDateOffsetInput.value})
     return validationErrorList
 
@@ -69,17 +71,23 @@ class GetTransactionDataByDateEndpoint(Resource):
                 transaction_data = db_session.query(Transaction).filter(
                     and_(Transaction.ntime >= from_unixtime, Transaction.ntime
                          <= to_unixtime)).order_by(Transaction.ntime.asc())
+                token_data = db_session.query(EthereumToken).order_by(EthereumToken.token_id.asc())
+                token_data_list = []
+                for token in token_data:
+                    token_data_list.append(serialize_transaction(token))
+
                 if transaction_data is not None and len(list(transaction_data)) != 0:
                     transaction_list = []
                     for transaction in transaction_data:
-                        transaction_list.append(serialize_transaction(transaction))
-                    response = {
-                        "ResponseCode": ResponseCodes.Success.value,
-                        "ResponseDesc": ResponseCodes.Success.name,
-                        "FromDate": from_time.strftime('%Y-%m-%d %H:%M:%S'),
-                        "ToDate": to_time.strftime('%Y-%m-%d %H:%M:%S'),
-                        "NumberOfTransactions": len(transaction_list),
-                        "Transactions": transaction_list}
+                        token_data = token_data_list.filter(EthereumToken.token_id == transaction.token_id)
+                        transaction_list.append(serialize_transaction(transaction, token_data))
+                        response = {
+                            "ResponseCode": ResponseCodes.Success.value,
+                            "ResponseDesc": ResponseCodes.Success.name,
+                            "FromDate": from_time.strftime('%Y-%m-%d %H:%M:%S'),
+                            "ToDate": to_time.strftime('%Y-%m-%d %H:%M:%S'),
+                            "NumberOfTransactions": len(transaction_list),
+                            "Transactions": transaction_list}
                 else:
                     response = {"ResponseCode": ResponseCodes.NoDataFound.value,
                                 "ResponseDesc": ResponseCodes.NoDataFound.name,
@@ -120,7 +128,7 @@ class GetTransactionDataByNodeEndpoint(Resource):
                 # perform the query
                 transaction_data = db_session.query(Transaction).filter(
                     or_(Transaction.input_address == node_address, Transaction.output_address
-                         == node_address)).order_by(Transaction.input_address.asc())
+                        == node_address)).order_by(Transaction.input_address.asc())
                 if transaction_data is not None and len(list(transaction_data)) != 0:
                     transaction_list = []
                     for transaction in transaction_data:

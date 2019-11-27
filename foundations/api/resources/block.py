@@ -34,7 +34,7 @@ def ValidateBlockInput(self, year, month, day, date_offset):
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidYearInput.value})
     if month > 12 or month <= 0:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidMonthInput.value})
-    if date_offset > 31 or date_offset <= 0:
+    if date_offset <= 0:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidDateOffsetInput.value})
     return validationErrorList
 

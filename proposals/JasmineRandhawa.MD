@@ -14,3 +14,4 @@ My contribution in foundations team is mainly creating endpoints for API methods
 5.  Code cleanups 
 6.  Logging and Exceptional Handling
 7.  Api Documentation updations
+8. Writing code for Ethereum ApI for external transactions and Ponzy scheme data
