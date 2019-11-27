@@ -17,7 +17,7 @@ def serialize_transaction(transaction_data, token):
             "Timestamp": datetime.utcfromtimestamp(transaction_data.ntime).strftime('%Y-%m-%d %H:%M:%S'),
             "TokenAmount": transaction_data.token_amount,
             'TokenId': token.token_id,
-            'TokenName': token.tkname
+            'TokenName': token.token_name
             }
 
 
@@ -74,7 +74,7 @@ class GetTransactionDataByDateEndpoint(Resource):
                 token_data = db_session.query(EthereumToken).order_by(EthereumToken.token_id.asc())
                 token_data_list = []
                 for token in token_data:
-                    token_data_list.append(serialize_transaction(token))
+                    token_data_list.append(token)
 
                 if transaction_data is not None and len(list(transaction_data)) != 0:
                     transaction_list = []
@@ -129,10 +129,16 @@ class GetTransactionDataByNodeEndpoint(Resource):
                 transaction_data = db_session.query(Transaction).filter(
                     or_(Transaction.input_address == node_address, Transaction.output_address
                         == node_address)).order_by(Transaction.input_address.asc())
+                token_data = db_session.query(EthereumToken).order_by(EthereumToken.token_id.asc())
+                token_data_list = []
+                for token in token_data:
+                    token_data_list.append(token)
+
                 if transaction_data is not None and len(list(transaction_data)) != 0:
                     transaction_list = []
                     for transaction in transaction_data:
-                        transaction_list.append(serialize_transaction(transaction))
+                        token_data = token_data_list.filter(EthereumToken.token_id == transaction.token_id)
+                        transaction_list.append(serialize_transaction(transaction, token_data))
                     response = {
                         "ResponseCode": ResponseCodes.Success.value,
                         "ResponseDesc": ResponseCodes.Success.name,
