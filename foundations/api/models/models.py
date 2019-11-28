@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, LargeBinary, BigInteger, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, LargeBinary, BigInteger, DateTime, Float
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -144,6 +144,23 @@ class BlockReadableTime(Base):
         return "<Block(hash='{}', id='{}', version={}, hashprev={}, hashmerkleroot={}, ntime={}, nbits={}, nnonce={}, timstamp={}>" \
             .format(self.hash, self.id, self.version, self.hashprev, self.hashmerkleroot, self.ntime, self.nbits,
                     self.nnonce, self.timestamp)
+
+# Graph group date
+class AddressFeature(Base):
+    __tablename__ = 'address_feature'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    address = Column(Integer)
+    date = Column(DateTime)
+    no_of_scc = Column(Integer)
+    no_of_wcc = Column(Integer)
+    btc_received = Column(Integer)
+    btc_sent = Column(Integer)
+    activity_level = Column(Integer)
+    clustering_coeff = Column(Float)
+    pearsoncc = Column(Float)
+    maximal_balance = Column(Integer)
+    current_balance = Column(Integer)
 
 
 if __name__ == '__main__':
