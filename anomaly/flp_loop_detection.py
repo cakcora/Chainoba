@@ -287,7 +287,7 @@ def build_graph():
 
 
 # assert addr_count == CONSTANTS['ADDRESS_COUNT']
-
+# TODO Test for larger number of nodes and hops 3
 
 if __name__ == '__main__':
     build_graph()
