@@ -1,0 +1,594 @@
+"","Id","Name","Symbol","Algorithm","WithdrawFee","MinWithdraw","MaxWithdraw","MinBaseTrade","IsTipEnabled","MinTip","DepositConfirmations","Status","StatusMessage","ListingStatus","pumped","lastpump","lastpumpgroup","withpricedata","rankperc","rank"
+"1",762,"$PAC","$PAC","X11",50,200,2e+07,2e-05,FALSE,0,20,"Maintenance","23 October  - Our $PAC wallet has been placed in maintenance while we work with the developers to resolve network issues. We apologise for any inconvenience and appreciate your patience until this is complete.","Active",FALSE,NA,NA,TRUE,NA,NA
+"2",860,"0x","ZRX","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.0135989879822897,43
+"3",562,"300 Token","300","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"4",427,"42-coin","42","Scrypt",2e-08,2e-07,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.316571790006325,1001
+"5",339,"808","808","SHA256",0.01,0.02,1e+09,2e-05,FALSE,5,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"6",108,"8Bit","8BIT","POS",1,2,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"7",759,"AC3","AC3","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"Maintenance","23-Oct-2018 - AC3 Wallet placed in maintenance at request of the AC3 team. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.334598355471221,1058
+"8",285,"ACoin","ACOIN","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK","9 October 2018 - ACoin (ACOIN) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any ACOIN balances to a compatible wallet at your earliest convenience. ACOIN will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,0.577482605945604,1826
+"9",581,"Adcoin","ACC","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,250,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.583175205566097,1844
+"10",593,"Adshares","ADST","None",30,60,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"11",835,"AdultChain","XXX","None",0.01,0.02,2e+07,2e-05,FALSE,1,20,"Maintenance","Wallet Maintenance - Investigating blockchain issues 26/10/18","Active",FALSE,NA,NA,FALSE,0.593295382669197,1876
+"12",388,"AdvancedTechnologyCoin","ARC","X11",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"13",463,"Alexandrite","ALEX","SHA256",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK","9 October 2018 - Alexandrite (ALEX) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any ALEX balances to a compatible wallet at your earliest convenience. ALEX will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-09-09 14:00:00","ExeCrypto",TRUE,NA,NA
+"14",673,"ALIS","ALIS","None",50,100,2e+07,2e-05,FALSE,0,20,"OK","","Active",TRUE,"2018-10-27 18:00:00","optimus_pump",TRUE,0.211891208096142,670
+"15",475,"Allion","ALL","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1.05485232,480,"OK",NA,"Active",TRUE,"2018-10-14 20:00:00","DonaldPumpCrypto",TRUE,NA,NA
+"16",601,"Alphabit","ABC","None",0.11,0.22,2e+07,2e-05,FALSE,0,20,"OK"," ","Active",FALSE,NA,NA,TRUE,NA,NA
+"17",493,"AltCoin","ALT","None",1,2,2e+07,2e-05,FALSE,0,6,"OK","9 October 2018 - AltCoin (ALT) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any ALT balances to a compatible wallet at your earliest convenience. ALT will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"18",358,"AmigaCoin","AGA","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - AmigaCoin (AGA) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any AGA balances to a compatible wallet at your earliest convenience. AGA will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"19",786,"Amon","AMN","None",800,1600,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.314358001265022,994
+"20",350,"AnarchistsPrime","ACP","SHA256",0.01,0.02,2e+09,2e-05,FALSE,0,200,"Maintenance","08-AUG-2018 - ACP Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.77134724857685,2439
+"21",139,"AnimeCoin","ANI","Other",1e-04,4e-04,500001,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"22",901,"ANON","ANON","Equihash",0.01,0.02,2e+07,2e-05,TRUE,1,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.469955724225174,1486
+"23",654,"APX","APX","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"24",406,"AquariusCoin","ARCO","POS",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.455724225173941,1441
+"25",301,"Argentum","ARG","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,7.8125,480,"Maintenance","6-NOV-2018 - ARG Wallet placed in maintenance while we investigate withdrawal issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.7662871600253,2423
+"26",468,"ArgusCoin","ARGUS","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - ArgusCoin (ARGUS) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any ARGUS balances to a compatible wallet at your earliest convenience. ARGUS will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"27",18,"Aricoin","ARI","Scrypt",0.5,1,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",TRUE,"2018-08-16 16:00:00","crypto_pump_island",TRUE,0.767235926628716,2426
+"28",489,"Ark","ARK","Other",0.1,1,2e+07,2e-05,FALSE,0,400,"Maintenance","25/10/18 - In maintenance briefly for infrastructure upgrades, thank you for your patience during this time!","Active",FALSE,NA,NA,TRUE,0.0610373181530677,193
+"29",596,"ArtByte","ABY","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.768500948766603,2430
+"30",125,"Asiacoin","AC","POS",1,2,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"31",625,"Athenian Warrior Token","ATH","None",0.04,0.08,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - Athenian Warrior Token (ATH) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any ATH balances to a compatible wallet at your earliest convenience. ATH will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-09-12 19:30:00","officialmcafeepumpsignals",FALSE,NA,NA
+"32",508,"Atmos","ATMOS","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"33",381,"Atomiccoin","ATOM","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"34",149,"AudioCoin","ADC","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,11.11111111,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.429158760278305,1357
+"35",845,"Augur Reputation","REP","None",0.1,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"36",216,"AuroraCoin","AUR","Scrypt",1e-04,0.04,2e+09,2e-05,FALSE,0,96,"OK",NA,"Active",TRUE,"2018-09-24 18:00:00","PrivateGroupforpump",TRUE,0.380455407969639,1203
+"37",335,"AurumCoin","AU","SHA256",0.01,0.02,2e+09,2e-05,FALSE,0,20,"Maintenance","9-Nov-2018 Our investigations have concluded that the AU network was victim to a 51% attack. We have been in contact with the AU team trying to reconcile the resulting issues, and will provide further updates in the near future.We apologize for the inconvenience and appreciate your patience while we work to resolve the issue","Active",FALSE,NA,NA,TRUE,NA,NA
+"38",215,"BATA","BTA","Other",1e-04,4e-04,2e+09,2e-05,FALSE,0,160,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.561037318153068,1774
+"39",289,"BatCoin","BAT","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,320,"OK","9 October 2018 - BatCoin (BAT) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any BAT balances to a compatible wallet at your earliest convenience. BAT will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"40",586,"BCash","BCH","SHA256",8e-04,0.02,2e+07,2e-05,FALSE,0,6,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"41",825,"BCShop.io Token","BCS","None",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK","","Active",TRUE,"2018-09-13 20:30:00","cryptoflashsignals",FALSE,NA,NA
+"42",536,"BeachCoin","SAND","X11",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"43",253,"Bean Cash","BEAN","POS",1e-04,4e-04,2e+09,2e-05,FALSE,6.09756097,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"44",276,"BeezerCoin","BEEZ","Scrypt",1e-04,1,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - BeezerCoin (BEEZ) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any BEEZ balances to a compatible wallet at your earliest convenience. BEEZ will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-10-03 16:00:00","crypto_pump_island",TRUE,NA,NA
+"45",370,"BenjiRolls","BENJI","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,480,"OK","9 October 2018 - BenjiRolls (BENJI) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any BENJI balances to a compatible wallet at your earliest convenience. BENJI will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,0.632511068943707,2000
+"46",309,"BERNcash","BERN","Other",0.01,0.02,2e+09,2e-05,FALSE,20,200,"OK",NA,"Active",TRUE,"2018-08-27 16:00:00","crypto_pump_island",TRUE,0.539531941808982,1706
+"47",829,"BiFrost","FROST","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,480,"OK",NA,"Active",TRUE,"2018-10-05 20:00:00","DonaldPumpCrypto",FALSE,NA,NA
+"48",647,"Billionaire Token","XBL","None",50,100,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,0.779569892473118,2465
+"49",391,"BipCoin","BIP","CryptoNight",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK","9 October 2018 - BipCoin (BIP) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any BIP balances to a compatible wallet at your earliest convenience. BIP will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-08-16 19:00:00","Cryptopumps55",FALSE,NA,NA
+"50",871,"Birake","BIR","Quark",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.381404174573055,1206
+"51",212,"BirdCoin","BIRD","Scrypt",1e-04,4e-04,2e+07,2e-05,FALSE,0,240,"OK","9 October 2018 - BirdCoin (BIRD) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any BIRD balances to a compatible wallet at your earliest convenience. BIRD will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"52",666,"Bismuth","BIS","Other",0.02,0.02,2e+07,2e-05,FALSE,0,100,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.231182795698925,731
+"53",233,"BitBar","BTB","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0.00282425,96,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.488614800759013,1545
+"54",569,"BitBay","BAY","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.135989879822897,430
+"55",852,"BitBoost Token","BBT","None",20,40,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"56",668,"Bitcloud","BTDX","Quark",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.563251106894371,1781
+"57",379,"Bitcoal","COAL","CryptoNight",0.01,0.02,2e+09,2e-05,FALSE,0,20,"Maintenance","01 November 2018 - Our COAL wallet has been placed in maintenance while we investigate potential network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",TRUE,"2018-08-13 20:01:00","rocketpumptrader",TRUE,0.645161290322581,2040
+"58",1,"Bitcoin","BTC","SHA256",1e-04,0.001,50.00100001,5e-04,TRUE,1e-06,2,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.000316255534471853,1
+"59",19,"Bitcoin Fast","BCF","Scrypt",0.5,1,50000,2e-05,FALSE,0.29069767,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"60",782,"Bitcoin Green","BITG","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"61",203,"Bitcoin Scrypt","BTCS","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.449082858950032,1420
+"62",283,"BitcoinPlus","XBC","POS",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"63",512,"BitCore","BTX","Other",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.18437697659709,583
+"64",628,"BitDeal","BDL","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,200,"OK",NA,"Active",TRUE,"2018-09-03 16:00:00","crypto_pump_island",TRUE,0.577166350411132,1825
+"65",776,"Bitmark","MARKS","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"66",43,"BitSend","BSD","Other",0.005,0.01,2e+09,2e-05,FALSE,0,100,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.516445287792536,1633
+"67",810,"Bitstar","BITS","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,960,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.446869070208729,1413
+"68",773,"BitZeny","ZNY","Yescrypt",0.01,0.02,2e+07,2e-05,FALSE,0,320,"Maintenance","06-Nov-2018 - ZNY Wallet placed in maintenance at request of the ZNY team. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.452877925363694,1432
+"69",180,"BlackCoin","BLK","POS",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.184060721062619,582
+"70",298,"Blakecoin","BLC","Blake256",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.591397849462366,1870
+"71",101,"BlazeCoin","BLZ","Scrypt",10,20,2e+09,2e-05,FALSE,429,960,"OK",NA,"Active",FALSE,"2018-09-22 06:24:00","palmvenicebeach",FALSE,NA,NA
+"72",808,"BlitzPredict","XBP","None",1000,2000,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,0.417457305502846,1320
+"73",638,"BlockCat","BKCAT","None",20,40,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,FALSE,NA,NA
+"74",718,"BlockMason","BCPT","None",30,60,2e+07,2e-05,FALSE,0,20,"OK","","Active",TRUE,"2018-09-28 19:00:00","cryptobullspumpvip",TRUE,0.174889310562935,553
+"75",777,"Blocknet","BLOCK","Quark",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.142947501581278,452
+"76",842,"BLOCKNODE","BND","SHA256",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.580645161290323,1836
+"77",839,"Blockpass","PASS","None",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.379506641366224,1200
+"78",701,"Blockpool","BPL","Other",0.1,0.2,2e+07,2e-05,FALSE,0,20,"Maintenance","17-Oct-2018 - BPL Wallet placed in maintenance due to a resync of the wallet. We apologise for this and seek your patience while we work to resolve the matter","Active",FALSE,NA,NA,TRUE,NA,NA
+"79",672,"Blocktix","TIX","None",20,40,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.436432637571158,1380
+"80",150,"BnrtxCoin","BNX","X11",1e-04,4e-04,2e+09,2e-05,FALSE,50,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"81",202,"BolivarCoin","BOLI","X11",1e-04,4e-04,2e+09,2e-05,FALSE,1,200,"Maintenance","29-Oct-2018 - BOLI has been placed into maintenance while we carry out an network infrastructure upgrade. We apologize for the inconvenience and trust that you will bear with us while we carry out the works","Active",FALSE,NA,NA,TRUE,0.437381404174573,1383
+"82",22,"Bongger","BGR","Scrypt",100,200,2e+09,2e-05,FALSE,0,645,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"83",727,"Bonpay","BON","None",30,60,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,FALSE,0.480708412397217,1520
+"84",293,"BorgCoin","BRG","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"85",213,"BottleCaps","CAP","POS",1e-04,4e-04,2e+09,2e-05,FALSE,1.4,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"86",832,"Boxx","BOXX","None",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.397849462365591,1258
+"87",576,"BraveNewCoin","BNC","None",6,12,2e+07,2e-05,FALSE,0,20,"OK","","Active",TRUE,"2018-09-06 20:15:00","cryptoflashsignals",TRUE,NA,NA
+"88",779,"Budbo Token","BUBO","None",100,200,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"89",71,"Bullion","CBX","POS",1e-05,0.002,2e+09,2e-05,FALSE,0.0018,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"90",737,"Bulwark","BWK","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.385515496521189,1219
+"91",211,"Bumbacoin","BUMBA","X11",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.614800759013283,1944
+"92",104,"BunnyCoin","BUN","Scrypt",100,200,1e+08,2e-05,FALSE,500,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"93",362,"BVBCoin","BVB","X11",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"94",501,"Byteball Bytes","GBYTE","Scrypt",2e-05,4e-05,2e+07,2e-05,FALSE,0,1,"OK","
+","Active",FALSE,NA,NA,TRUE,NA,NA
+"95",533,"CacheCoin","CACH","Scrypt_jane",0.01,0.02,2e+07,2e-05,FALSE,0,96,"OK",NA,"Delisting",TRUE,"2018-08-18 18:00:00","DonaldPumpCrypto",TRUE,NA,NA
+"96",615,"CampusCoin","CMPCO","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"97",196,"Canada eCoin","CDN","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,1.4,960,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"98",194,"Cannabiscoin","CANN","X11",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.361480075901328,1143
+"99",387,"CannabisIndustryCoin","XCI","CryptoNight",0.01,0.02,5000,2e-05,FALSE,0,20,"Maintenance","24-SEP-2018 - XCI Wallet placed in maintenance at the request of the Coin Developer. We apologise for this and seek your patience while we work to resolve the matter.","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"100",376,"CannaCoin","CCN","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,480,"OK","9 October 2018 - CannaCoin (CCN) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any CCN balances to a compatible wallet at your earliest convenience. CCN will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"101",757,"CanYa","CAN","None",40,80,2e+07,2e-05,FALSE,0,20,"OK","","Active",TRUE,"2018-09-30 19:30:00","PrivateGroupforpump",TRUE,NA,NA
+"102",750,"Cappasity","CAPP","None",300,600,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.321631878557875,1017
+"103",802,"Cardano","ADA","None",0.2,1,2e+07,2e-05,FALSE,0,40,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.00379506641366224,12
+"104",418,"CareerCoin","CAR","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"105",247,"Catcoin","CAT","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,48,"OK","9 October 2018 - Catcoin (CAT) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any CAT balances to a compatible wallet at your earliest convenience. CAT will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-08-31 15:00:00","pumpn",TRUE,0.587602783048703,1858
+"106",256,"C-bit","XCT","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"107",763,"Centrality","CENNZ","None",30,60,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,FALSE,0.0139152435167615,44
+"108",151,"ChainCoin","CHC","C11",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"Maintenance","19/10/2018- CHC Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"109",553,"ChanCoin","CHAN","Other",0.01,0.02,2e+07,2e-05,FALSE,0,20,"Maintenance","16-Oct-2018- CHAN Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"110",417,"ChessCoin","CHESS","POS",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","","Active",FALSE,NA,NA,TRUE,0.519291587602783,1642
+"111",314,"Citadel","CTL","CryptoNight",0.1,0.2,15000,2e-05,FALSE,0,20,"Maintenance","05-Nov-2018 - CTL Wallet placed in maintenance at request of the CTL Team. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.5955091714105,1883
+"112",192,"ClamCoin","CLAM","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"113",717,"ClearPoll","POLL","None",9,18,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.444339025932954,1405
+"114",316,"CloakCoin","CLOAK","POS",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.196078431372549,620
+"115",160,"CoffeeCoin","CFC","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,1440,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"116",674,"Coimatic 3","CTIC3","None",2000,4000,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"117",518,"Coin2","C2","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,10,480,"OK",NA,"Active",TRUE,"2018-10-10 21:00:00","ExeCrypto",TRUE,NA,NA
+"118",754,"Coinlancer","CL","None",200,400,2e+07,2e-05,FALSE,5,20,"OK","","Active",TRUE,"2018-10-28 17:59:00","officialmcafeepumpsignals",TRUE,0.456356736242884,1443
+"119",691,"Coino","CNO","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-09-16 18:00:00","hitpumpsandsignals",TRUE,NA,NA
+"120",520,"Coinonat","CXT","Nist5",0.01,0.02,2e+07,2e-05,FALSE,1.5,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.63472485768501,2007
+"121",597,"CoinonatX","XCXT","X11",0.01,0.02,2e+07,2e-05,FALSE,1,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.778621125869703,2462
+"122",770,"ColossusXT","COLX","Quark",0.01,10,2e+07,2e-05,FALSE,0,50,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.186590765338393,590
+"123",353,"CometCoin","CMT","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",TRUE,"2018-09-06 20:00:00","DonaldPumpCrypto",TRUE,NA,NA
+"124",686,"Compound Coin","COMP","X11",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"125",153,"CompuCoin","CPN","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"126",516,"Condensate","RAIN","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.775458570524984,2452
+"127",830,"Condominium","CDM","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"128",402,"ConquestCoin","CQST","X13",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",TRUE,"2018-10-09 20:59:00","ExeCrypto",TRUE,NA,NA
+"129",837,"ContractNet","CNET","Ethash",0.01,0.02,2e+07,2e-05,FALSE,1,20,"Maintenance","23-OCT- 2018 CNET - Wallet placed in maintenance while we investigate network issues","Active",FALSE,NA,NA,FALSE,0.755534471853257,2389
+"130",322,"CoolInDarkCoin","CC","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,480,"OK","9 October 2018 - CoolInDarkCoin (CC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any CC balances to a compatible wallet at your earliest convenience. CC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"131",683,"CopperCoin","COPPER","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.961733080328906,3041
+"132",649,"Corion","COR","None",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"133",764,"Crave","CRAVE","SHA256",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.434535104364326,1374
+"134",626,"CREAMcoin","CRM","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"135",519,"CreativeCoin","CREA","Keccak",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"136",744,"CrowdCoin","CRC","NeoScrypt",1e-04,2e-04,2e+07,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"137",540,"CryptCoin","CRYPT","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - CryptCoin (CRYPT) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any CRYPT balances to a compatible wallet at your earliest convenience. CRYPT will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"138",33,"CryptoClub","CCB","X11",50,100,1e+07,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"139",342,"CryptoJacks","CJ","X13",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.52561669829222,1662
+"140",664,"CryptopiaFeeShare","CEFS","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"141",103,"Cthulhu Offerings","OFF","Quark",1,2,2e+09,2e-05,FALSE,0.465,20,"Maintenance","25-MAY-2018 - OFF Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"142",338,"Cubits","QBT","POS",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-08-07 19:11:00","TheCryptoAnalysts",TRUE,NA,NA
+"143",95,"Cypherfunks","FUNK","Scrypt",100,200,500000100,2e-05,FALSE,0,480,"Maintenance","23 October 2018 - Our FUNK wallet has been placed in maintenance while we investigate network issues. We apologise for any inconvenience and appreciate your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"144",687,"DA Power Play","DPP","None",200,205,2e+07,2e-05,FALSE,1,20,"OK","9 October 2018 - DA Power Play (DPP) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any DPP balances to a compatible wallet at your earliest convenience. DPP will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"145",599,"DA$","DAS","None",200,400,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - DA$ (DAS) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any DAS balances to a compatible wallet at your earliest convenience. DAS will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"146",603,"DALECOIN","DALC","None",30,60,2e+07,2e-05,FALSE,0.20193861,20,"OK","9 October 2018 - DALECOIN (DALC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any DALC balances to a compatible wallet at your earliest convenience. DALC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,0.630297280202403,1993
+"147",841,"DAPS Token","DAPS","None",0.01,0.02,2e+07,2e-05,TRUE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.145161290322581,459
+"148",12,"DARK","DARK","SHA256",1,2,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",TRUE,"2018-10-27 16:59:00","superpumpssignalkings",TRUE,NA,NA
+"149",280,"Darsek","KED","Scrypt",1e-04,0.01,2e+09,2e-05,FALSE,0,240,"Maintenance","10-OCT-2018 - KED Wallet placed in maintenance while we carry out a routine upgrade
+. We apologise for this and seek your patience while we work to resolve the matter.
+
+","Active",FALSE,NA,NA,TRUE,NA,NA
+"150",497,"Dash","DASH","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.00695762175838077,22
+"151",542,"DaxxCoin","DAXX","Ethash",0.01,0.02,2e+07,2e-05,FALSE,0,20,"Maintenance","17-JUN-2018 - DAXX Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"152",719,"Decision Token","HST","None",10,20,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.61100569259962,1932
+"153",264,"Decred","DCR","Blake256",0.03,0.04,2e+09,2e-05,FALSE,0,20,"Maintenance","Investigating Wallet Issues - 6/11/18","Active",FALSE,NA,NA,TRUE,0.0120177103099304,38
+"154",692,"DeepOnion","ONION","X13",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.208728652751423,660
+"155",558,"Denarius","DNR","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,960,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"156",589,"Dentacoin","DCN","None",20000,40000,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.0800126502213789,253
+"157",713,"Deuscoin","DEUS","Other",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"158",120,"Deutsche eMark","DEM","SHA256",1,2,2e+09,2e-05,FALSE,0,20,"Maintenance","08-NOV-2018 - DEM Wallet placed in maintenance while we investigate deposit issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.538899430740038,1704
+"159",824,"Deviant","DEV","POS",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"160",15,"DigiByte","DGB","Scrypt",0.5,1.5,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0205566097406705,65
+"161",241,"Digitalcoin","DGC","X11",1e-04,4e-04,2e+09,2e-05,FALSE,0,720,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.574636306135357,1817
+"162",644,"DigitalPrice","DP","SHA256",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,0.770082226438963,2435
+"163",838,"DIMCOIN","DIM","Other",100,200,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-08-19 19:00:00","hitpumpsandsignals",TRUE,0.442757748260595,1400
+"164",183,"Dimecoin","DIME","Quark",1e-04,0.1,4.99e+08,2e-05,FALSE,0,200,"Maintenance","27/10/2018 - DIME is in maintenance as we investigate some deposit issues, thanks for your patience!","Active",FALSE,NA,NA,TRUE,0.273244781783681,864
+"165",541,"DinastyCoin","DCY","CryptoNight",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.347248576850095,1098
+"166",823,"Divi","DIVI","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0664136622390892,210
+"167",724,"Divi Exchange Token","DIVX","None",3,6,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"168",4,"Dogecoin","DOGE","Scrypt",3,6,2e+09,100,TRUE,4.5,6,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0104364326375712,33
+"169",432,"DonationCoin","DON","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - DonationCoin (DON) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any DON balances to a compatible wallet at your earliest convenience. DON will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"170",577,"DopeCoin","DOPE","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,320,"OK",NA,"Active",TRUE,"2018-10-06 20:30:00","PrivateGroupforpump",TRUE,0.412080961416825,1303
+"171",2,"Dotcoin","DOT","None",0,10,2e+09,2e-05,TRUE,9,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"172",588,"Droxne","DRXNE","POS",0.01,20,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-10-16 16:00:00","crypto_pump_island",TRUE,NA,NA
+"173",753,"DRP Utility","DRPU","None",5,10,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"174",620,"DubaiCoin","DBIX","Dagger",0.04,0.05,2e+07,2e-05,FALSE,1,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.368753953194181,1166
+"175",856,"D-Zone Coin","DZC","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"176",500,"Eclipse","EC","POS",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"177",546,"EcoBit","ECOB","None",20,40,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - EcoBit (ECOB) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any ECOB balances to a compatible wallet at your earliest convenience. ECOB will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,0.180581910183428,571
+"178",704,"Eddiecoin","EDDIE","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,160,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"179",291,"EDRcoin","EDRC","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.484187223276407,1531
+"180",345,"EducoinV","EDC","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",TRUE,"2018-10-21 19:59:00","pumpsxxx",TRUE,NA,NA
+"181",364,"E-Gulden","EFL","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.271663504111322,859
+"182",543,"Einsteinium","EMC2","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,1100,"Maintenance","24-SEP-2018 - EMC2 Wallet placed in maintenance at the request of the devs. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.101834282099937,322
+"183",162,"ElaCoin","ELC","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,"2018-10-18 18:00:00","bombabitcoin1",TRUE,NA,NA
+"184",775,"Electra","ECA","Nist5",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.117647058823529,372
+"185",695,"Electroneum","ETN","CryptoNight",5,10,50000,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0401644528779254,127
+"186",669,"Elements","ELM","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,960,"OK","9 October 2018 - Elements (ELM) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any ELM balances to a compatible wallet at your earliest convenience. ELM will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-08-07 16:00:00","crypto_pump_island",TRUE,NA,NA
+"187",331,"Elite","1337","POS",0.01,20000,9e+07,2e-05,FALSE,166.66666666,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.288741302972802,913
+"188",736,"Ellaism","ELLA","Ethash",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.586337760910816,1854
+"189",205,"EmbargoCoin","EBG","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"Maintenance","30-AUG-2018 - EBG Wallet placed in maintenance while we investigate deposit issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"190",385,"EmberCoin","EMB","X13",0.01,0.02,8e+08,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.752371916508539,2379
+"191",623,"Embers","MBRS","None",400,800,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"192",236,"Emerald Crypto","EMD","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,9.09090909,1440,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.487033523086654,1540
+"193",102,"EmerCoin","EMC","SHA256",0.03,2,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.166666666666667,527
+"194",734,"EncrypGen","DNA","None",60,120,2e+07,2e-05,FALSE,0.29377203,20,"OK","","Active",FALSE,NA,NA,TRUE,0.275142314990512,870
+"195",610,"EncryptoTel","ETT","None",27,54,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.427577482605946,1352
+"196",817,"Energi","NRG","Ethash",0.01,0.02,2e+07,2e-05,FALSE,1,20,"Maintenance","06/11/2018 - NRG in maintenance as we investigate network issues, thanks for your patience in the meantime!","Active",FALSE,NA,NA,FALSE,0.036685641998735,116
+"197",680,"Enjin Coin","ENJ","None",80,160,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,0.0341555977229602,108
+"198",805,"EOS","EOS","Other",0.01,0.02,2e+07,2e-05,FALSE,0,50,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.00221378874130297,7
+"199",643,"Equitrade","EQT","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"Maintenance","20/10/2018 - EQT Wallet placed in maintenance at the request of the Equitrade. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,"2018-09-16 17:00:00","massivepump1",TRUE,NA,NA
+"200",433,"Eryllium","ERY","X11",0.01,0.02,2e+09,2e-05,FALSE,2.5,200,"OK",NA,"Active",TRUE,"2018-09-24 21:00:00","superpumpssignalkings",TRUE,0.642314990512334,2031
+"201",530,"Ethereum","ETH","Ethash",0.004,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.000632511068943707,2
+"202",348,"Ethereum Classic","ETC","Dagger",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.00759013282732448,24
+"203",707,"Ethereum Dark","ETHD","None",90,180,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"204",598,"Etheriya","RIYA","None",9,18,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,0.651486401012018,2060
+"205",795,"EtherZero","ETZ","Ethash",0.01,0.02,2e+07,2e-05,FALSE,0,20,"Maintenance","08/10/2018 - UPDATE: Your patience is very much appreciated as we work to resolve anomalous deposit activity with ETZ, we realise this is important to you!","Active",FALSE,NA,NA,TRUE,NA,NA
+"206",232,"EverGreenCoin","EGC","POS",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-10-02 20:00:00","PrivateGroupforpump",TRUE,0.423782416192283,1340
+"207",670,"Everus","EVR","None",90,180,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,0.0480708412397217,152
+"208",246,"Evilcoin","EVIL","X11",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - Evilcoin (EVIL) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any EVIL balances to a compatible wallet at your earliest convenience. EVIL will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-08-29 15:00:00","pumpn",TRUE,NA,NA
+"209",231,"Evotion","EVO","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - Evotion (EVO) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any EVO balances to a compatible wallet at your earliest convenience. EVO will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-09-13 16:00:00","crypto_pump_island",TRUE,NA,NA
+"210",351,"Expanse","EXP","Dagger",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.301391524351676,953
+"211",778,"Experience Points","XP","SHA256",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.333333333333333,1054
+"212",219,"ExperienceCoin","EPC","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,1720,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"213",772,"EZToken","EZT","None",20,40,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"214",799,"Fabric Token","FT","None",120,240,2e+07,2e-05,FALSE,1,20,"OK","","Active",TRUE,"2018-10-12 20:29:00","officialmcafeepumpsignals",TRUE,0.450664136622391,1425
+"215",368,"Factom","FCT","Scrypt",0.1,0.2,2e+09,2e-05,FALSE,0,50,"Maintenance","25/10/18 - In maintenance briefly for infrastructure upgrades, thank you for your patience during this time!","Active",FALSE,NA,NA,TRUE,0.0518659076533839,164
+"216",631,"Fantasy Cash","FANS","POS",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-10-22 20:29:00","officialmcafeepumpsignals",FALSE,NA,NA
+"217",867,"Fantasy Gold Coin","FGC","Nist5",0.01,0.02,2e+07,2e-05,TRUE,0,20,"Maintenance","08/11/2018 - FGC Wallet placed in maintenance at request of the FGC team while we perform an update to the wallet. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,FALSE,NA,NA
+"218",248,"FastCoin","FST","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,2400,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"219",7,"Feathercoin","FTC","NeoScrypt",1,2,2e+09,2e-05,FALSE,0.2,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.181214421252372,573
+"220",65,"FeatherCoinClassic","FTCC","Scrypt",10,20,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"221",292,"FireFlyCoin","FFC","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"Maintenance","30-AUG-2018 - FFC Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"222",544,"FLASH","FLASH","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.182795698924731,578
+"223",136,"Flaxscript","FLAX","C11",1e-04,2e-04,2e+09,2e-05,FALSE,1.7,20,"OK",NA,"Active",TRUE,"2018-10-23 16:00:00","crypto_pump_island",TRUE,NA,NA
+"224",112,"FloripaCoin","FLN","Scrypt",100,200,1e+07,2e-05,FALSE,0,666,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"225",377,"FlutterCoin","FLT","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"226",77,"FonzieCoin","FONZ","SHA256",1,2,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"227",286,"Francs","FRN","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,480,"OK","9 October 2018 - Francs (FRN) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any FRN balances to a compatible wallet at your earliest convenience. FRN will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-10-05 18:00:00","massivepump1",TRUE,0.751106894370651,2375
+"228",859,"FTEC","FTEC","None",100,200,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"229",525,"FuelCoin","FC2","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,480,"OK",NA,"Active",TRUE,"2018-08-10 16:00:00","crypto_pump_island",TRUE,NA,NA
+"230",363,"FujiCoin","FJC","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.398165717900063,1259
+"231",279,"FuzzBalls","FUZZ","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,960,"OK",NA,"Active",TRUE,"2018-10-08 17:59:00","PrivateGroupforpump",TRUE,0.556925996204934,1761
+"232",767,"Gainer","GNR","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,420,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"233",769,"Galactrum","ORE","Lyra2RE",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.532890575585073,1685
+"234",156,"GameCredits","GAME","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,300,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.134408602150538,425
+"235",365,"Gapcoin","GAP","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"236",818,"GazeCoin","GZE","None",0.04,0.08,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,FALSE,0.759645793801392,2402
+"237",73,"GCN","GCN","Scrypt",100,200,2e+09,2e-05,FALSE,10000,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.473118279569892,1496
+"238",477,"GeertCoin","GEERT","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK","9 October 2018 - GeertCoin (GEERT) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any GEERT balances to a compatible wallet at your earliest convenience. GEERT will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"239",864,"Gentarium","GTM","Lyra2Zoin",0.01,0.02,2e+07,2e-05,FALSE,0,20,"Maintenance","06-Nov-2018 - GTM has been placed into maintenance while we carry out a network infrastructure upgrade. Please accept our apologies for any inconvenience this may cause and bear with us while we complete the work","Active",FALSE,NA,NA,FALSE,0.443074003795066,1401
+"240",758,"GeoCoin","GEO","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.31404174573055,993
+"241",811,"GINcoin","GIN","Lyra2Zoin",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.497786211258697,1574
+"242",794,"Global Cryptocurrency","GCC","X13",0.01,0.02,2e+07,2e-05,FALSE,0,20,"Maintenance","11-OCT-18 GCC- Wallet in Maintenance at the request of Coin Dev.","Active",FALSE,NA,NA,FALSE,0.207463630613536,656
+"243",50,"GlobalBoost-Y","BSTY","Yescrypt",1,2,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.428526249209361,1355
+"244",531,"Gnosis","GNO","None",0.11,0.22,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-10-28 20:00:00","PrivateLionGroup",TRUE,0.0727387729285262,230
+"245",715,"GoByte","GBX","NeoScrypt",0.01,0.02,2e+07,2e-05,FALSE,0,40,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.466160657811512,1474
+"246",208,"GoldCoin","GLD","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0.14,240,"Maintenance","05-SEP-18 - GLD Wallet in maintenance while we are working with the GLD developer to investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"247",176,"GoldPieces","GP","X11",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - GoldPieces (GP) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any GP balances to a compatible wallet at your earliest convenience. GP will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"248",300,"GoldPressedLatinum ","GPL","Scrypt_jane",1e-04,4e-04,2e+09,2e-05,FALSE,0,480,"OK","9 October 2018 - GoldPressedLatinum  (GPL) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any GPL balances to a compatible wallet at your earliest convenience. GPL will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"249",532,"Golem","GNT","None",20,40,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.0382669196710942,121
+"250",822,"GRAFT","GRFT","CryptoNight",1,0.02,2e+07,2e-05,FALSE,1,20,"Maintenance","31-OCT-2018 - GRFT Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.381720430107527,1207
+"251",133,"GrandCoin","GDC","Scrypt",10,20,2e+09,2e-05,FALSE,0,640,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"252",346,"Granite","GRN","X11",0.01,0.02,2e+09,2e-05,FALSE,0,20,"Maintenance","24-SEP-2018 - GRN Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",TRUE,"2018-08-30 16:00:00","crypto_pump_island",TRUE,NA,NA
+"253",374,"Groestlcoin","GRS","Groestl",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,"2018-10-24 20:00:00","Whalesguide",TRUE,0.0755850727387729,239
+"254",63,"GroinCoin","GXG","X11",100,200,2e+09,2e-05,FALSE,0,200,"Maintenance","31-AUG-18 -GXG  Wallet placed in maintenance while we are working with the GXG developer to investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"255",583,"Growers Intl","GRWI","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"256",142,"GrowthCoin","GRW","Scrypt",1e-04,1,2e+09,2e-05,FALSE,0,640,"OK",NA,"Active",TRUE,"2018-10-16 16:29:00","ExeCrypto",TRUE,NA,NA
+"257",72,"GunCoin","GUN","NeoScrypt",1,2,2e+09,2e-05,FALSE,0,240,"Maintenance","09-Oct-2018 GUN has been placed into maintenance while we carry out a routine upgrade. We appreciate your patience while we work to resolve this","Active",FALSE,NA,NA,TRUE,NA,NA
+"258",650,"Hackspace","HAC","None",400,800,2e+07,2e-05,FALSE,0,20,"OK","","Active",TRUE,"2018-10-27 16:00:00","crypto_pump_island",TRUE,NA,NA
+"259",261,"Halcyon","HAL","NeoScrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"260",714,"HarvestCoin","HC","Other",0.01,0.02,2e+07,2e-05,FALSE,0,40,"OK","","Active",FALSE,"2018-09-27 15:00:00","bestpumpss",TRUE,NA,NA
+"261",702,"Havecoin","HAV","Other",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"262",728,"HeatLedger","HEAT","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,960,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"263",667,"Helium","HLM","Quark",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.416192283364959,1316
+"264",484,"HexxCoin","HXX","Other",0.005,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"265",84,"HoboNickels","HBN","Scrypt",0.5,1,2e+06,2e-05,FALSE,0,960,"OK","9 October 2018 - HoboNickels (HBN) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any HBN balances to a compatible wallet at your earliest convenience. HBN will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"266",651,"HodlBucks","HDLB","None",300,600,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - HodlBucks (HDLB) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any HDLB balances to a compatible wallet at your earliest convenience. HDLB will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"267",629,"Horizen","ZEN","Equihash",0.01,0.02,2e+07,2e-05,FALSE,0,100,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0357368753953194,113
+"268",660,"HSHARE","HSR","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,50,"Maintenance","07-AUG-2018 - HSR Wallet placed in maintenance for the HSR Mainnet launch. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"269",400,"Hush","HUSH","Equihash",0.01,0.02,2e+09,2e-05,FALSE,0,200,"Maintenance","21-Sep-2018 - HUSH Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.335863377609108,1062
+"270",865,"HUZU","HUZU","Quark",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"271",119,"HyperStake","HYP","POS",1,2,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.769449715370019,2433
+"272",135,"I0Coin","I0C","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"273",760,"IgnitionCoin","IC","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"274",145,"Incakoin","NKA","SHA256",1e-04,1,2e+09,0,FALSE,62.5,200,"Maintenance","19-SEP-2018 - NKA Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"275",416,"InCoin","IN","X11",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"276",788,"indaHash","IDH","None",300,600,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.243200506008855,769
+"277",585,"InflationCoin","IFLT","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.530993042378242,1679
+"278",193,"Influxcoin","INFX","X11",1e-04,4e-04,2e+09,0,FALSE,0.014,200,"OK",NA,"Active",FALSE,"2018-07-21 16:59:00","CryptoMegaPumps",TRUE,NA,NA
+"279",699,"Innova","INN","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0.01392757,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.578115117014548,1828
+"280",521,"Insane","INSN","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"281",605,"investFeed","IFT","None",100,200,2e+07,2e-05,FALSE,0,10,"OK","","Active",FALSE,NA,NA,TRUE,0.500948766603416,1584
+"282",828,"IQ Cash","IQ","NeoScrypt",0.01,0.02,2e+07,2e-05,FALSE,1,240,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"283",646,"Iquant Chain","IQT","None",90,180,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - Iquant Chain (IQT) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any IQT balances to a compatible wallet at your earliest convenience. IQT will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"284",122,"IrishCoin","IRL","Scrypt",1,2,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.771030993042378,2438
+"285",487,"ItiCoin","ITI","POS",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK","9 October 2018 - ItiCoin (ITI) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any ITI balances to a compatible wallet at your earliest convenience. ITI will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,0.546805819101834,1729
+"286",826,"IVY","IVY","None",0.01,0.02,2e+07,2e-05,TRUE,1,20,"OK","","Active",TRUE,"2018-10-02 20:29:00","cryptoflashsignals",TRUE,0.214737507906388,679
+"287",282,"IXCoin","IXC","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-10-19 12:00:00","cryptopiaPumpp",TRUE,0.355471220746363,1124
+"288",329,"JouleCoin","XJO","SHA256",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"289",323,"Karbo","KRB","CryptoNight",0.2,1,2e+09,2e-05,FALSE,0,20,"Maintenance","01 November 2018 - Our KRB wallet has been placed in maintenance while we investigate potential network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.33965844402277,1074
+"290",371,"KashCoin","KASH","POS",0.01,0.02,2e+09,2e-05,FALSE,10,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"291",567,"Kekcoin","KEK","POS",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.404807084123972,1280
+"292",655,"King93","KING","None",500,1000,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - King93 (KING) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any KING balances to a compatible wallet at your earliest convenience. KING will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-10-08 19:59:00","PrivateLionGroup",TRUE,NA,NA
+"293",343,"KlondikeCoin","KDC","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,480,"OK","9 October 2018 - KlondikeCoin (KDC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any KDC balances to a compatible wallet at your earliest convenience. KDC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"294",419,"KoboCoin","KOBO","X15",0.01,0.02,2e+09,2e-05,FALSE,0,480,"OK",NA,"Active",TRUE,"2018-10-18 21:29:00","superpumpssignalkings",TRUE,0.489247311827957,1547
+"295",448,"Komodo","KMD","Equihash",0.01,0.02,2e+09,2e-05,FALSE,0,120,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0202403542061986,64
+"296",607,"Kronecoin","KRONE","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,200,"OK",NA,"Active",TRUE,"2018-10-28 19:00:00","CryptoMoonPumpGroup",TRUE,NA,NA
+"297",732,"Kubera","KBR","None",3000,6000,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"298",268,"KumaCoin","KUMA","Quark",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"299",453,"KushCoin","KUSH","POS",0.01,0.02,2e+09,2e-05,FALSE,0,6,"OK","9 October 2018 - KushCoin (KUSH) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any KUSH balances to a compatible wallet at your earliest convenience. KUSH will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"300",652,"KyberNetworkCrystal","KNC","None",6,12,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"301",359,"LADACoin","LDC","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - LADACoin (LDC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any LDC balances to a compatible wallet at your earliest convenience. LDC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-10-03 20:07:00","cryptocoinsultants07",FALSE,NA,NA
+"302",437,"LanaCoin","LANA","SHA256",0.01,0.02,2e+09,2e-05,FALSE,10,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.450347881087919,1424
+"303",367,"LBRY Credits","LBC","Other",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.188488298545225,596
+"304",97,"LeaCoin","LEA","SHA256",10,20,2e+09,2e-05,FALSE,0,200,"Maintenance","31-AUG-2018 - LEA Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"305",273,"Leafcoin","LEAF","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"306",294,"LemonCoin","LEMON","Other",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - LemonCoin (LEMON) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any LEMON balances to a compatible wallet at your earliest convenience. LEMON will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"307",634,"Leviar","XLC","CryptoNight",0.015,0.02,2e+07,2e-05,FALSE,0,100,"Maintenance","29/10/18 - In maintenance briefly pending an update to the latest XLC version (18.06.4), thank you for your patience during this time!","Active",FALSE,NA,NA,TRUE,NA,NA
+"308",849,"Light Pay Coin","LPC","Quark",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"309",785,"Lina","LINA","None",130,260,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,FALSE,0.0600885515496521,190
+"310",552,"LindaCoin","LINDA","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,50,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"311",584,"Linx","LINX","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.776723592662872,2456
+"312",792,"Lisk","LSK","Other",0.2,0.2,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0208728652751423,66
+"313",271,"LiteBar","LTB","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0.04528575,160,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"314",608,"LiteBitcoin","LBTC","NeoScrypt",0.01,0.02,2e+07,2e-05,FALSE,3,200,"Maintenance","31-AUG-2018 - LBTC Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.623339658444023,1971
+"315",3,"Litecoin","LTC","Scrypt",0.002,0.1,5000,0.01,TRUE,3e-04,6,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.00189753320683112,6
+"316",700,"litecoinPlus","LCP","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,960,"Maintenance","02-NOV-2018 - LCP Withdraws Disabled while we look into Network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"317",609,"LitecoinUltra","LTCU","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,96,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"318",115,"LiteDoge","LDOGE","Scrypt",1,2,2e+09,2e-05,FALSE,387,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.427893738140417,1353
+"319",297,"Lithiumcoin","LIT","Blake256",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"320",790,"Live Stars Token","LIVE","None",200,400,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"321",858,"Logis Coin","LGS","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"Maintenance","6-NOV-2018 - LGS Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,FALSE,NA,NA
+"322",800,"Loki","LOKI","CryptoNight",0.02,0.04,15000.02,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0724225173940544,229
+"323",408,"LookCoin","LOOK","X11",1,2,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - LookCoin (LOOK) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any LOOK balances to a compatible wallet at your earliest convenience. LOOK will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"324",26,"Lottocoin","LOT","Scrypt",10,20,2e+09,2e-05,FALSE,0,500,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"325",796,"LoyalCoin","LYL","None",90,180,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.212839974699557,673
+"326",689,"Luxcoin","LUX","Other",0.004,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.264705882352941,837
+"327",793,"LWF","LWF","Scrypt",0.2,0.3,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"328",313,"Lycancoin","LYC","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"329",245,"Lynx","LYNX","Scrypt",1e-04,4e-04,5e+07,2e-05,FALSE,0,360,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.250474383301708,792
+"330",355,"MachineCoin","MAC","Other",0.01,0.02,2e+09,2e-05,FALSE,0,20,"Maintenance","17 October 2018 - Our MAC wallet has been placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",TRUE,"2018-10-11 20:00:00","PrivateLionGroup",TRUE,NA,NA
+"331",30,"Magi","XMG","M7M",2e-04,1,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,"2018-09-18 17:00:00","massivepump1",TRUE,0.400695762175838,1267
+"332",739,"MagicCoin","MAGE","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,1440,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"333",771,"Magnet","MAG","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","We are supporting the upcoming Magnet $MAG coin swap. Please complete any MAG deposits and trades on Cryptopia before 12 November at 2:00 AM UTC. Find out more about the MAG swap here: https://support.cryptopia.co.nz/csm?id=kb_article&sys_id=7eb0d4e8dbe1a780d7e096888a961908 ","Active",FALSE,NA,NA,TRUE,0.78336495888678,2477
+"334",557,"MagnetCoin","MAGN","SHA256",0.01,0.02,2e+07,2e-05,FALSE,0,100,"Maintenance","23/10/18 - MagnetCoin is in maintenance briefly, please bear with us during this time.","Active",TRUE,"2018-07-24 19:00:00","DonaldPumpCrypto",TRUE,NA,NA
+"335",486,"MaidSafeCoin","MAID","None",29,58,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0309930423782416,98
+"336",458,"MarijuanaCoin","MAR","X11",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"337",126,"Mars","MARS","Scrypt",1,2,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"338",442,"MarxCoin","MARX","X11",0.01,0.02,2e+09,2e-05,FALSE,500,200,"Maintenance","17-Oct-2018 - MARX placed into maintenance while we investigate network issues. Please accept our apologies for any inconvenience caused and bear with us while we work to resolve the problem","Active",FALSE,NA,NA,TRUE,NA,NA
+"339",863,"Masari","MSR","CryptoNight",0.01,0.02,2e+07,2e-05,TRUE,1,30,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.336495888678052,1064
+"340",622,"MasterNodeCoin","MTNC","SHA256",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"341",742,"MatrixCoin","MATRX","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK",NA,"Active",TRUE,"2018-10-22 19:59:00","superpumpssignalkings",TRUE,NA,NA
+"342",201,"Maza","MAZA","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,62.5,200,"Maintenance","05/09/18 - MAZA Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,FALSE,NA,NA
+"343",127,"MegaCoin","MEC","Scrypt",0.05,0.1,20000,2e-05,FALSE,0,2000,"Maintenance","22/7/18 - In maintenance while we investigate issues. 01/09/2018 Update: We apologise for the length of time this investigation has taken, and would like to thank all those affected for their continued patience!","Active",FALSE,NA,NA,TRUE,0.497153700189753,1572
+"344",709,"MegaX","MGX","None",4,8,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - MegaX (MGX) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any MGX balances to a compatible wallet at your earliest convenience. MGX will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-09-04 20:07:00","cryptocoinsultants07",TRUE,NA,NA
+"345",636,"Metal","MTL","None",4,8,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.0733712839974699,232
+"346",548,"Minereum","MNE","None",60,120,2e+07,2e-05,FALSE,0,20,"OK","","Active",TRUE,"2018-07-29 19:00:00","DonaldPumpCrypto",TRUE,0.533206831119545,1686
+"347",571,"Minex","MINEX","None",900,1800,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - Minex (MINEX) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any MINEX balances to a compatible wallet at your earliest convenience. MINEX will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,0.778304870335231,2461
+"348",240,"Mintcoin","MINT","Scrypt",1e-04,10,2e+09,2e-05,FALSE,0,960,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.142314990512334,450
+"349",853,"MIRAI","MRI","Quark",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.633776091081594,2004
+"350",575,"MobileGo","MGO","None",30,60,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.270082226438963,854
+"351",278,"MOIN","MOIN","POS",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.548070841239722,1733
+"352",476,"MojoCoin","MOJO","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,100,"OK","9 October 2018 - MojoCoin (MOJO) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any MOJO balances to a compatible wallet at your earliest convenience. MOJO will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,0.592030360531309,1872
+"353",257,"Monero","XMR","CryptoNight",0.02,0.1,2e+09,2e-05,TRUE,5e-04,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.00442757748260595,14
+"354",38,"Money","$$$","Scrypt",10,20,5e+05,0,FALSE,25,500,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"355",851,"Monkey Project","MONK","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.343453510436433,1086
+"356",642,"Monoeci","XMCC","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.575901328273245,1821
+"357",572,"Mothership","MSP","None",40,80,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"358",75,"MotoCoin","MOTO","Scrypt",1,2,2e+09,2e-05,FALSE,0,480,"OK","9 October 2018 - MotoCoin (MOTO) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any MOTO balances to a compatible wallet at your earliest convenience. MOTO will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,0.358633776091082,1134
+"359",482,"Musicoin","MUSIC","Ethash",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"360",648,"Musiconomi","MCI","None",200,400,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"361",382,"Mustangcoin","MST","X11",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - Mustangcoin (MST) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any MST balances to a compatible wallet at your earliest convenience. MST will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-09-23 15:00:00","ExeCrypto",TRUE,0.59392789373814,1878
+"362",225,"Myriad","XMY","Other",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.241619228336496,764
+"363",749,"MyWishToken","WISH","None",50,100,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"364",250,"NameCoin","NMC","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.116382036685642,368
+"365",604,"NAMO COIN","NAMO","Nist5",0.01,0.02,2e+07,2e-05,FALSE,0.71428571,20,"Maintenance","24-SEP-2018 - NAMO Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"366",263,"NavCoin","NAV","X13",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,"2018-09-22 20:00:00","bigpumpsignal",TRUE,0.104364326375712,330
+"367",639,"Neblio","NEBL","POS",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.10752688172043,340
+"368",528,"NEM","XEM","Other",1,2,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.00885515496521189,28
+"369",621,"Neo","NEO","Scrypt",0,1,2e+07,2e-05,FALSE,0,200,"Maintenance","5 November 2018 - NEO Wallet placed in maintenance due to a resync of the wallet. We apologise for this and seek your patience while we work to resolve the matter","Active",FALSE,NA,NA,TRUE,0.00569259962049336,18
+"370",199,"NetCoin","NET","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,10,240,"Maintenance","27-AUG-2018 - NET Wallet placed in maintenance at request of the NET team. We do apologise for this and do seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"371",471,"Netko","NETKO","Blake2s",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.431056293485136,1363
+"372",277,"Neutron","NTRN","POS",0.1,0.2,2e+09,2e-05,FALSE,0.29308323,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.426312460468058,1348
+"373",435,"NevaCoin","NEVA","Blake2s",0.01,0.02,2e+09,2e-05,FALSE,2.5,20,"OK",NA,"Active",TRUE,"2018-10-15 19:29:00","superpumpssignalkings",TRUE,0.567678684376977,1795
+"374",816,"New Power Coin","NPW","NeoScrypt",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"375",340,"Nexus","NXS","SHA3",0.15,1,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0809614168247944,256
+"376",872,"NIX Platform","NIX","SHA256",0.01,0.02,2e+07,2e-05,FALSE,0,20,"Maintenance","09-NOV-2018 - NIX Wallet placed in maintenance while we investigate deposit issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,FALSE,NA,NA
+"377",506,"NobleCoin","NOBL","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,320,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"378",396,"Noir","NOR","Lyra2RE",0.004,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.4146110056926,1311
+"379",578,"NoLimitCoin","NLC2","POS",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.358950031625553,1135
+"380",179,"NovaCoin","NVC","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,48,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.30550284629981,966
+"381",840,"NulleX","NLX","Quark",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"382",746,"Numus","NMS","Skein",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"383",204,"NyanCoin","NYAN","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,20,480,"Maintenance","5 - Oct - 2018 - Nyancoin (NYAN) Wallet placed in maintenance while we investigate deposit issues. We apologise for this and seek your patience while we work to resolve the matter.
+
+","Active",FALSE,NA,NA,TRUE,NA,NA
+"384",514,"NZed","NZDT","None",2,25,250000,1,FALSE,1,20,"Offline",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"385",658,"Obsidian","ODN","POS",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,0.474067046173308,1499
+"386",337,"OctoCoin","888","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,350,"OK","9 October 2018 - OctoCoin (888) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any 888 balances to a compatible wallet at your earliest convenience. 888 will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"387",44,"OKCash","OK","POS",0.005,0.01,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,"2018-08-08 08:30:00","whalezcrypt",TRUE,0.229601518026565,726
+"388",426,"Om","OOO","SHA256",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"389",617,"OmiseGo","OMG","None",0.6,1.2,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0173940543959519,55
+"390",720,"OP Coin","OPC","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.588235294117647,1860
+"391",361,"Opalcoin","OPAL","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,320,"OK","9 October 2018 - Opalcoin (OPAL) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any OPAL balances to a compatible wallet at your earliest convenience. OPAL will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"392",235,"Open Source Coin","OSC","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"393",684,"Open Trading Network","OTN","None",3,6,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.588867805186591,1862
+"394",64,"OrbitCoin","ORB","NeoScrypt",0.001,2,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.285262492093612,902
+"395",637,"OrmeusCoin","ORME","None",8,16,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"396",831,"OverPowered CoinX","OPCX","Quark",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-08-31 20:07:00","bombabitcoin1",FALSE,NA,NA
+"397",868,"Oxycoin","OXY","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-09-29 19:30:00","PrivateGroupforpump",TRUE,0.487349778621126,1541
+"398",752,"OysterPearl","PRL","None",30,60,2e+07,2e-05,FALSE,0,20,"Maintenance","30th October, Oyster (PRL) wallets and markets have been paused due to smart contract irregularities. Sorry for the inconvenience.","Active",FALSE,NA,NA,TRUE,NA,NA
+"399",94,"OzzieCoin","OZC","X11",1,2,2e+09,2e-05,FALSE,0,200,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"400",182,"PakCoin","PAK","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"Maintenance","05-Nov-2018 - PAK has been placed into maintenance while we carry out a network infrastructure upgrade. Please accept our apologies for any inconvenience this may cause and bear with us while we complete the work","Active",FALSE,NA,NA,TRUE,0.572422517394054,1810
+"401",117,"PandaCoin","PND","POS",10,20,2e+09,2e-05,FALSE,666,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.326059456040481,1031
+"402",141,"Parallelcoin","DUO","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.357052498418722,1129
+"403",478,"PascalLite","PASL","Other",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"404",35,"PayCon","CON","X13",1,2,2e+09,2e-05,FALSE,0.585,200,"OK",NA,"Active",TRUE,"2018-10-09 20:37:00","nederlandsecryptopumps",TRUE,NA,NA
+"405",815,"Peepcoin","PCN","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.414927261227071,1312
+"406",177,"PeerCoin","PPC","SHA256",1e-04,1,2e+09,5e-04,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.129032258064516,408
+"407",857,"Penguin Coin","PENG","Quark",100,200,2e+07,2e-05,FALSE,0,40,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"408",509,"PepeCoin","PEPE","X11",0.01,10,2e+07,2e-05,FALSE,0.30959752,20,"OK","9 October 2018 - PepeCoin (PEPE) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any PEPE balances to a compatible wallet at your earliest convenience. PEPE will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-10-08 20:59:00","superpumpssignalkings",TRUE,NA,NA
+"409",186,"PesetaCoin","PTC","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.295382669196711,934
+"410",137,"PetroDollar","XPD","SHA256",1,2,10000,2e-05,FALSE,2.12,200,"Maintenance","01-11-2018 - XPD Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.284313725490196,899
+"411",234,"PhilosopherStone","PHS","Scrypt",1e-04,1,2e+09,2e-05,FALSE,0,240,"OK","9 October 2018 - PhilosopherStone (PHS) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any PHS balances to a compatible wallet at your earliest convenience. PHS will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"412",86,"PhoenixCoin","PXC","NeoScrypt",1,2,2e+09,2e-05,FALSE,12.19512195,320,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.421252371916509,1332
+"413",710,"Phore","PHR","POS",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.242884250474383,768
+"414",296,"Photon","PHO","Blake256",1e-04,4e-04,9e+07,2e-05,FALSE,500,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.480075901328273,1518
+"415",663,"PickleRicks","RICKS","None",0.01,0.02,2e+07,2e-05,FALSE,7.24637681,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"416",92,"PiggyCoin","PIGGY","X11",1,2,2e+09,2e-05,FALSE,2,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"417",591,"Pillar","PLR","None",30,60,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,"2018-09-30 18:00:00","massivepump1",TRUE,0.108159392789374,342
+"418",510,"PinkCoin","PINK","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,100,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.298861480075901,945
+"419",738,"PioneerCoin","PCOIN","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK",NA,"Active",TRUE,"2018-10-20 16:00:00","crypto_pump_island",TRUE,NA,NA
+"420",690,"Pirl","PIRL","Dagger",0.01,0.02,2e+07,2e-05,FALSE,0,20,"Maintenance","15-OCT- 2018- PIRL Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.33617963314358,1063
+"421",375,"PIVX","PIVX","Quark",0.01,2,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0768500948766603,243
+"422",565,"PlatinumBar","XPTX","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,240,"OK",NA,"Active",TRUE,"2018-10-25 20:29:00","CryptoFamilyPumps",TRUE,0.59898798228969,1894
+"423",143,"Polcoin","PLC","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"424",768,"Polis","POLIS","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0857052498418722,271
+"425",191,"PolishCoin","PCC","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,480,"NoConnections","9 October 2018 - PolishCoin (PCC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any PCC balances to a compatible wallet at your earliest convenience. PCC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"426",9,"PopularCoin","POP","Scrypt",50,100,2e+09,2e-05,FALSE,424,200,"Maintenance","10-Oct-2018 - Our PopularCoin (POP) wallet has been placed in maintenance while we review swapping to POP v2. We apologise for any inconvenience and appreciate your patience in the meantime. ","Delisting",FALSE,NA,NA,TRUE,0.420619860847565,1330
+"427",357,"PostCoin","POST","POS",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - PostCoin (POST) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any POST balances to a compatible wallet at your earliest convenience. POST will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-09-02 20:07:00","cryptocoinsultants07",TRUE,0.566413662239089,1791
+"428",6,"Potcoin","POT","Scrypt",1,2,2e+09,2e-05,FALSE,0,720,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.255850727387729,809
+"429",696,"PowerLedger","POWR","None",20,40,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"430",195,"PrimeCoin","XPM","Other",1e-04,0.02,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.205249841872233,649
+"431",443,"Prime-XI","PXI","X11",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - Prime-XI (PXI) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any PXI balances to a compatible wallet at your earliest convenience. PXI will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,0.630929791271347,1995
+"432",511,"ProCurrency","PROC","POS",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.594244149272612,1879
+"433",861,"ProjectCoin","PRJ","Keccak",0.01,0.02,2e+07,2e-05,TRUE,0.02,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"434",812,"PROOF","PF","None",350,700,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"435",170,"Prototanium","PR","SHA256",1e-04,4e-04,3000,0,FALSE,0,20,"OK","9 October 2018 - Prototanium (PR) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any PR balances to a compatible wallet at your earliest convenience. PR will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"436",334,"ProudMoney","PROUD","POS",0.01,0.02,2e+09,2e-05,FALSE,0.2,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"437",726,"Publica","PBL","None",50,100,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.365275142314991,1155
+"438",685,"Pura","PURA","X11",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,0.770398481973435,2436
+"439",502,"PutinCoin","PUT","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.491144845034788,1553
+"440",803,"Qtum","QTUM","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0132827324478178,42
+"441",855,"Quanta","QNTU","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"442",244,"Quark","QRK","Quark",1e-04,4e-04,2e+09,2e-05,FALSE,0,960,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.214104996837445,677
+"443",807,"Quasarcoin","QAC","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,500,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.325743200506009,1030
+"444",40,"Quatloo","QTL","Scrypt",0.5,1,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"445",389,"Qubitcoin","Q2C","Qubit",0.01,0.02,2e+09,2e-05,FALSE,0,40,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"446",653,"Qwark","QWARK","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"447",287,"Rabbitcoin","RBBT","Scrypt",1e-04,4e-04,5e+08,2e-05,FALSE,0,200,"Maintenance","02/11/18 - RBBT Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.750158127767236,2372
+"448",315,"RateCoin","XRA","POS",0.01,0.02,2e+09,2e-05,FALSE,25,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.518026565464896,1638
+"449",843,"RAVENCOIN","RVN","Other",0.01,0.02,2e+07,2e-05,FALSE,0,120,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0158127767235927,50
+"450",32,"RedCoin","RED","Scrypt",1,2,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"451",11,"Reddcoin","RDD","POS",0.5,1,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0635673624288425,201
+"452",473,"RenosCoin","RNS","POS",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"453",662,"Revain","R","None",10,20,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.0607210626185958,192
+"454",318,"Revolvercoin","XRE","Other",0.01,0.02,2e+09,2e-05,FALSE,5,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"455",222,"Rimbit","RBT","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,55.55555555,1000,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.518659076533839,1640
+"456",266,"RonPaulCoin","RPC","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.545540796963947,1725
+"457",870,"Rotharium","RTH","Keccak",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.212207463630614,671
+"458",624,"RoyalKingdomCoin","RKC","None",700,1400,2e+07,2e-05,FALSE,1,20,"OK","","Active",TRUE,"2018-10-27 21:01:00","CryptoMoonPumpGroup",TRUE,NA,NA
+"459",556,"Royalties","XRY","CryptoNight",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK","9 October 2018 - Royalties (XRY) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any XRY balances to a compatible wallet at your earliest convenience. XRY will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G ","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"460",175,"RubyCoin","RBY","POS",1e-04,4e-04,2e+09,2e-05,FALSE,0.0035,20,"OK",NA,"Active",TRUE,"2018-09-05 13:47:00","bombabitcoin1",TRUE,0.256483238456673,811
+"461",132,"RussiaCoin","RC","Scrypt",1,2,2e+09,2e-05,FALSE,0,480,"OK",NA,"Active",TRUE,"2018-09-19 20:11:00","PrivateLionGroup",TRUE,NA,NA
+"462",900,"Ryo","RYO","CryptoNight",0.03,0.05,2e+07,2e-05,FALSE,0,50,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.37887413029728,1198
+"463",741,"SagaCoin","SAGA","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"464",299,"SakuraCoin","SKR","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,400,"OK",NA,"Active",TRUE,"2018-10-10 16:00:00","crypto_pump_island",TRUE,NA,NA
+"465",224,"Sativacoin","STV","POS",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - Sativacoin (STV) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any STV balances to a compatible wallet at your earliest convenience. STV will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-09-02 21:00:00","superpumpssignalkings",TRUE,NA,NA
+"466",579,"SecureCoin","SRC","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,500,"OK",NA,"Active",TRUE,"2018-10-25 20:00:00","robingoodsignal",TRUE,0.766603415559772,2424
+"467",423,"Selencoin","SEL","POS",0.01,0.02,2e+09,2e-05,FALSE,0.00653765,200,"OK","9 October 2018 - Selencoin (SEL) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any SEL balances to a compatible wallet at your earliest convenience. SEL will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,"2018-09-15 17:00:00","massivepump1",TRUE,NA,NA
+"468",671,"Senderon","SDRN","None",1000,2000,2e+07,2e-05,FALSE,0,20,"OK","","Active",TRUE,"2018-10-17 19:30:00","Cryptopia_PumpCommunity",TRUE,NA,NA
+"469",27,"Sexcoin","SXC","Scrypt",1,2,2e+09,2e-05,FALSE,1.65016501,200,"Maintenance","16-AUG-2018 - SXC Wallet placed in maintenance while we investigate wallet issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.735926628716003,2327
+"470",121,"SHACoin2","SHA","SHA256",10,20,2e+09,2e-05,FALSE,38.46153846,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"471",847,"Shard Coin","SHARD","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"472",819,"Shivers","SHVR","None",120,240,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,FALSE,0.598355471220746,1892
+"473",580,"Shrooms","SHRM","Other",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - Shrooms (SHRM) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any SHRM balances to a compatible wallet at your earliest convenience. SHRM will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-08-26 20:00:00","DonaldPumpCrypto",TRUE,NA,NA
+"474",405,"SiberianChervonets","SIB","X11",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-10-05 20:30:00","cryptoflashsignals",TRUE,NA,NA
+"475",797,"Sirin Labs Token","SRN","None",30,60,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,"2018-10-13 18:00:00","bombabitcoin1",TRUE,0.173308032890576,548
+"476",804,"Sirius","SIRX","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"477",566,"SixEleven","611","SHA256",0.0611,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",TRUE,"2018-09-07 20:00:00","Signalsgram",TRUE,0.772612270714737,2443
+"478",144,"SJWCoin","SJW","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,121,500,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"479",123,"SkeinCoin","SKC","Skein",1,2,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.76786843769766,2428
+"480",612,"SkinCoin","SKIN","None",400,800,2e+07,2e-05,FALSE,1,20,"OK","","Active",FALSE,NA,NA,TRUE,0.526249209361164,1664
+"481",783,"Skrilla","SKRL","None",200,400,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,FALSE,NA,NA
+"482",504,"Skycoin","SKY","Other",0,4,2e+07,2e-05,FALSE,0,1,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.097090449082859,307
+"483",165,"SlothCoin","SLOTH","Keccak",1e-04,4e-04,9e+07,2e-05,FALSE,420,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"484",582,"SmartCash","SMART","Other",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.165085388994307,522
+"485",321,"SmartCoin","SMC","X11",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.555028462998102,1755
+"486",675,"Sociall","SCL","None",30,60,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.464895635673624,1470
+"487",735,"SocialSend","SEND","Quark",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"488",551,"SoilCoin","SOIL","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,80,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"489",446,"SolarflareCoin","SFC","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,500,200,"Maintenance","04-AUG-2018 - SFC Wallet temporarily in maintenance as we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"490",756,"Soma","SCT","None",40,80,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.46078431372549,1457
+"491",24,"Songcoin","SONG","Scrypt",0.005,0.01,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.652751423149905,2064
+"492",862,"Soniq","SONIQ","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"493",107,"SoonCoin","SOON","SHA256",1,2,50000,2e-05,FALSE,0.95,200,"OK",NA,"Active",TRUE,"2018-10-27 20:00:00","cryptobullspumpvip",TRUE,NA,NA
+"494",372,"SpaceCoin","SPACE","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,480,"OK","9 October 2018 - SpaceCoin (SPACE) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any SPACE balances to a compatible wallet at your earliest convenience. SPACE will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"495",747,"SpankChain","SPANK","None",50,100,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.263124604680582,832
+"496",79,"SpartanCoin","SPN","Scrypt",100,200,2e+09,2e-05,FALSE,10000,1000,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"497",438,"SpectreCoin","XSPEC","POS",0.01,0.02,2e+09,2e-05,FALSE,0.03333333,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.222960151802657,705
+"498",574,"Sphre AIR","XID","None",30,60,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"499",163,"Spots","SPT","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,1000,"OK",NA,"Active",TRUE,"2018-09-07 17:59:00","Sharkpumpsignals",TRUE,NA,NA
+"500",630,"SpreadCoin","SPR","X11",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","","Active",TRUE,"2018-09-25 20:29:00","cryptoflashsignals",TRUE,0.55629348513599,1759
+"501",82,"SquallCoin","SQL","X11",0.05,0.1,2e+09,2e-05,FALSE,0,20,"OK","9 October 2018 - SquallCoin (SQL) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any SQL balances to a compatible wallet at your earliest convenience. SQL will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"502",787,"StakeNet","XSN","X11",0.01,0.02,2e+07,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.122074636306135,386
+"503",632,"StarCredits","STRC","None",30,60,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - StarCredits (STRC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any STRC balances to a compatible wallet at your earliest convenience. STRC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"504",172,"StartCoin","START","X11",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.418406072106262,1323
+"505",606,"Stealth","XST","X13",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.197343453510436,624
+"506",748,"Steneum","STN","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,1000,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"507",209,"Sterlingcoin","SLG","POS",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - Sterlingcoin (SLG) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any SLG balances to a compatible wallet at your earliest convenience. SLG will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"508",398,"Stratis","STRAT","POS",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0464895635673624,147
+"509",517,"Sumokoin","SUMO","CryptoNight",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.261859582542694,828
+"510",239,"Swingcoin","SWING","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - Swingcoin (SWING) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any SWING balances to a compatible wallet at your earliest convenience. SWING will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"511",806,"Syndicate","SYNX","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,480,"OK",NA,"Active",TRUE,"2018-09-30 20:00:00","hitpumpsandsignals",TRUE,NA,NA
+"512",485,"Synereo AMP","AMP","None",44,88,999999,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"513",441,"Tajcoin","TAJ","Blake2s",0.01,0.02,2e+09,2e-05,FALSE,10,20,"OK",NA,"Active",TRUE,"2018-10-18 19:55:00","PrivateLionGroup",TRUE,0.591714104996837,1871
+"514",167,"TEKcoin","TEK","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,1,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"515",619,"TenX","PAY","None",6,12,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.104996837444655,332
+"516",255,"TerraCoin","TRC","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0.22,150,"OK","","Active",FALSE,NA,NA,TRUE,0.28494623655914,901
+"517",527,"TerraNova","TER","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.735610373181531,2326
+"518",130,"TeslaCoin","TES","Scrypt",1,2,2e+09,2e-05,FALSE,0,960,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"519",469,"Tether","USDT","None",5,10,2e+07,1,TRUE,0.1,6,"OK",NA,"Active",FALSE,NA,NA,FALSE,0.00126502213788741,4
+"520",420,"TheChiefCoin","CHIEF","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,33.33333333,200,"OK","9 October 2018 - TheChiefCoin (CHIEF) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any CHIEF balances to a compatible wallet at your earliest convenience. CHIEF will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"521",304,"TigerCoin","TGC","SHA256",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK","9 October 2018 - TigerCoin (TGC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any TGC balances to a compatible wallet at your earliest convenience. TGC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"522",53,"TitCoin","TIT","SHA256",1,2,20000,2e-05,FALSE,0,20,"Maintenance","17 October 2018 - Our TIT wallet has been placed in maintenance while we work with the developers towards an update. We apologise for any inconvenience caused by this and appreciate your patience.","Active",FALSE,NA,NA,TRUE,0.555977229601518,1758
+"523",78,"TittieCoin","TTC","Scrypt",1,2,2e+09,2e-05,FALSE,0,20,"Maintenance","17 October 2018 - Our TTC wallet has been placed in maintenance while we work with the developers towards an update. We apologise for any inconvenience caused by this and appreciate your patience.","Active",FALSE,NA,NA,TRUE,NA,NA
+"524",550,"TOACoin","TOA","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.373497786211259,1181
+"525",813,"TokenPay","TPAY","None",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.224225173940544,709
+"526",731,"TokugawaCoin","TOK","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,320,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"527",60,"TopCoin","TOP","Scrypt",1,2,2e+09,2e-05,FALSE,0,480,"Maintenance","11-10-2018 - TOP Wallet placed in maintenance while we investigate deposit issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"528",254,"TransferCoin","TX","X11",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,"2018-08-13 09:44:00","officialmcafeesignals",TRUE,0.496204933586338,1569
+"529",694,"Trezarcoin","TZC","NeoScrypt",0.01,0.02,2e+07,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.420936116382037,1331
+"530",173,"Triangles","TRI","POS",1e-04,4e-04,2e+09,2e-05,FALSE,9e-04,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"531",56,"Trinity","TTY","SHA256",1,2,2e+09,0,FALSE,1,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"532",834,"Tron","TRX","None",0.1,1,2e+07,2e-05,FALSE,0,100,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.00347881087919039,11
+"533",152,"TruckCoin","TRK","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0.8,320,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"534",801,"TrueUSD","TUSD","None",3,6,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,"2018-09-02 02:15:00","BigCryptoPump",TRUE,0.012966476913346,41
+"535",310,"Trumpcoin","TRUMP","Blake256",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.461100569259962,1458
+"536",226,"TurboStake","TRBO","POS",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"537",814,"TWIST","TWIST","X13",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"538",481,"Ubiq","UBQ","Dagger",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.168564199873498,533
+"539",460,"Ultracoin","UTC","Scrypt_jane",0.01,0.02,2e+09,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"540",848,"Unibright Token","UBT","None",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK","","Active",TRUE,"2018-09-17 16:00:00","crypto_pump_island",FALSE,NA,NA
+"541",90,"UniCoin","UNIC","SHA256",1,2,2e+09,2e-05,FALSE,0,20,"OK","9 October 2018 - UniCoin (UNIC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any UNIC balances to a compatible wallet at your earliest convenience. UNIC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"542",554,"Unify","UNIFY","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.461416824794434,1459
+"543",252,"Unitus","UIS","Other",0.01,0.04,2e+09,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.472169512966477,1493
+"544",721,"UniversalCurrency","UNIT","SHA256",0.01,0.02,2e+07,2e-05,FALSE,0.12376237,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"545",251,"UniversalMolecule","UMO","Blake256",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",TRUE,"2018-10-27 20:00:00","robingoodsignal",TRUE,NA,NA
+"546",91,"Unobtanium","UNO","SHA256",0.01,0.1,2e+09,2e-05,TRUE,4e-04,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0939278937381404,297
+"547",751,"Upfiring","UFR","None",40,80,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,"2018-10-19 18:00:00","cryptosignalsvipr",TRUE,0.328589500316256,1039
+"548",237,"Vade","VADE","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,250,960,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
+"549",397,"VaderCorpCoin","VCC","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,11.11111111,480,"OK","9 October 2018 - VaderCorpCoin (VCC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any VCC balances to a compatible wallet at your earliest convenience. VCC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"550",356,"VapersCoin","VPRC","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,480,"Maintenance","6-11-2018 - VPRC Wallet placed in maintenance while we investigate deposit issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,NA,NA
+"551",57,"Verge","XVG","Other",1,2,5e+06,2e-05,FALSE,9,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.023719165085389,75
+"552",184,"VeriCoin","VRC","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.286211258697027,905
+"553",373,"Verium","VRM","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"554",146,"Version","V","SHA256",1e-04,4e-04,2e+09,2e-05,FALSE,0,200,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.454459203036053,1437
+"555",781,"Vice Industry Token","VIT","None",300,600,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"556",836,"Vitae","VITAE","Quark",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.0784313725490196,248
+"557",693,"Vivo","VIVO","NeoScrypt",0.01,0.02,2e+07,2e-05,FALSE,0,240,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.637254901960784,2015
+"558",723,"VOISE","VOISE","None",1200,2400,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.511068943706515,1616
+"559",445,"WarCoin","WRC","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,0,450,"NoConnections","9 October 2018 - WarCoin (WRC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any WRC balances to a compatible wallet at your earliest convenience. WRC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,FALSE,NA,NA
+"560",393,"WayaWolfCoin","WW","Scrypt",0.01,0.02,2e+09,2e-05,FALSE,7.69230769,200,"OK",NA,"Active",TRUE,"2018-09-21 03:00:00","ExeCrypto",TRUE,NA,NA
+"561",8,"WeAreSatoshi","WSX","X11",10,20,2e+09,2e-05,FALSE,0,30,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"562",587,"Weed","WEED","None",0.5,2,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - Weed (WEED) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any WEED balances to a compatible wallet at your earliest convenience. WEED will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"563",820,"WhaleCoin","WHL","Ethash",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",TRUE,"2018-09-05 19:30:00","officialmcafeepumpsignals",TRUE,NA,NA
+"564",827,"WhiteCoin","XWC","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,480,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.252688172043011,799
+"565",635,"WildCrypto","WILD","None",200,400,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,NA,NA
+"566",697,"Wincoin","WC","Scrypt",0.02,0.1,2e+07,2e-05,FALSE,0,20,"OK","2 October 2018 - We have re-enabled the Wincoin (WC) markets and withdrawals. Deposits remain disabled at this time. We will provide further updates regarding deposits as they become available.","Active",FALSE,NA,NA,TRUE,0.753004427577483,2381
+"567",495,"WirelessCoin","WLC","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK","9 October 2018 - WirelessCoin (WLC) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any WLC balances to a compatible wallet at your earliest convenience. WLC will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"568",766,"Wispr","WSP","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,1,480,"Maintenance","09-NOV-2018 - WSP Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",TRUE,"2018-09-24 16:00:00","crypto_pump_island",FALSE,0.633459835547122,2003
+"569",166,"WorldCoin","WDC","Scrypt",1e-04,4e-04,2e+09,2e-05,FALSE,0,1000,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.765970904490829,2422
+"570",866,"X-CASH","XCASH","CryptoNight",0.01,0.02,2e+07,2e-05,FALSE,0,180,"Maintenance","15/10/2018 - XCASH Wallet placed in maintenance at request of the XCASH team. We apologise for this and seek your patience while we work to resolve the matter.
+","Active",FALSE,NA,NA,TRUE,0.238772928526249,755
+"571",560,"Xcoin","XCO","SHA256",0.01,0.02,2e+07,2e-05,FALSE,2.12765957,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"572",844,"XDNA","XDNA","Other",0.01,0.02,2e+07,2e-05,FALSE,1,20,"Maintenance","2 November 2018 - XDNA Wallet placed in maintenance due to a resync of the wallet. We apologise for this and seek your patience while we work to resolve the matter","Active",FALSE,NA,NA,TRUE,0.503162555344719,1591
+"573",661,"XGOX","XGOX","Scrypt",0.01,0.02,2e+07,2e-05,FALSE,0,550,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.565464895635674,1788
+"574",522,"XTRABYTES","XBY","Scrypt",1,100,2e+07,2e-05,FALSE,0.75,60,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.775142314990512,2451
+"575",284,"YobitCoin","YOVI","POS",1e-04,4e-04,2e+09,2e-05,FALSE,0.42,200,"OK","9 October 2018 - YobitCoin (YOVI) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any YOVI balances to a compatible wallet at your earliest convenience. YOVI will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",TRUE,"2018-09-24 20:00:00","thecryptoyoda",TRUE,NA,NA
+"576",708,"Zap","ZAP","None",120,240,2e+07,2e-05,FALSE,0,20,"OK","","Active",FALSE,NA,NA,TRUE,0.31056293485136,982
+"577",384,"ZCash","ZEC","Equihash",2e-04,0.001,10000,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.010752688172043,34
+"578",395,"Zclassic","ZCL","Equihash",0.01,0.02,2e+09,2e-05,FALSE,0,50,"OK","07-Nov-2018 Please be advised that deposits are currently inactive for ZCL while we await a blockchain resync. We apologize for the inconvenience and trust that you will bear with us while this operation completes","Active",FALSE,NA,NA,TRUE,0.196710942441493,622
+"579",380,"ZCoin","XZC","Lyra2RE",0.01,0.02,2e+09,2e-05,FALSE,0,20,"OK","","Active",FALSE,"2018-10-20 21:05:00","bigpumpsignal",TRUE,0.0426944971537002,135
+"580",88,"ZeitCoin","ZEIT","Scrypt",10,20,2e+09,2e-05,FALSE,0,960,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.484819734345351,1533
+"581",464,"Zero","ZER","Equihash",0.01,0.02,2e+09,2e-05,FALSE,0,6,"OK",NA,"Active",FALSE,NA,NA,TRUE,0.304554079696395,963
+"582",809,"Zest","ZEST","Quark",0.01,0.02,2e+07,2e-05,FALSE,1,20,"OK",NA,"Active",FALSE,NA,NA,TRUE,NA,NA
+"583",330,"ZetaCoin","ZET","SHA256",0.01,0.02,2e+09,2e-05,FALSE,0,20,"Maintenance","03-AUG-2018 - ZET Wallet placed in maintenance while we investigate network issues. We apologise for this and seek your patience while we work to resolve the matter.","Active",FALSE,NA,NA,TRUE,0.44876660341556,1419
+"584",821,"Zixx","XZX","NeoScrypt",0.01,0.02,2e+07,2e-05,FALSE,1,240,"OK",NA,"Active",TRUE,"2018-10-09 20:00:00","Signal_Plug",FALSE,NA,NA
+"585",491,"ZSEcoin","ZSE","X11",0.01,0.02,2e+07,2e-05,FALSE,0,200,"OK","9 October 2018 - ZSEcoin (ZSE) is in the process of being delisted from Cryptopia, and trade markets are now closed. Please cancel all open orders and withdraw any ZSE balances to a compatible wallet at your earliest convenience. ZSE will be fully delisted on 9 November 2018. For additional information on this delisting, please refer to this delisting notice on Help Centre here: http://ow.ly/UccO30m9r3G","Delisting",FALSE,NA,NA,TRUE,NA,NA
+"586",869,"Zulu Republic Token","ZTX","None",0.01,0.02,2e+07,2e-05,FALSE,0,20,"OK",NA,"Active",FALSE,NA,NA,FALSE,NA,NA
