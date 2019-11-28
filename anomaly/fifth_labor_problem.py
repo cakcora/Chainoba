@@ -182,31 +182,11 @@ def fifth_labor_problem2():
                 hop2_address_list = list(get_output_address2(hop2_transaction_list, hop1_address_list[i]))
                 for j in range(len(hop2_address_list)):
                     output_address_set.add(hop2_address_list[j])
-        #
-        # for i in range(len(transaction_list)):
-        #     if "prev_out" not in transaction_list[i]["inputs"][0]:
-        #         break
-        #     else:
-        #         # suspicious_address as an input, find out all output addresses.
-        #         # and only 1 to 1 or 1 to 2 transactions
-        #         if len(transaction_list[i]["inputs"]) == 1 and len(transaction_list[i]["out"]) <= 2 and \
-        #                 transaction_list[i]["inputs"][0]["prev_out"]["addr"] == suspicious_address:
-        #             for j in range(len(transaction_list[i]["out"])):
-        #                 output_address_set.add(transaction_list[i]["out"][j]["addr"])
-        #                 # within 2 hops
-        #                 hop2_tl = get_transaction_list(transaction_list[i]["out"][j]["addr"])
-        #                 if hop2_tl is not None:
-        #                     for x in range(len(hop2_tl)):
-        #                         if "prev_out" not in hop2_tl[x]["inputs"][0]:
-        #                             break
-        #                         else:
-        #                             if len(hop2_tl[x]["inputs"]) == 1 and \
-        #                                     len(hop2_tl[x]["out"]) <= 2 and \
-        #                                     hop2_tl[x]["inputs"][0]["prev_out"]["addr"] == \
-        #                                     transaction_list[i]["out"][j]["addr"]:
-        #                                 for y in range(len(hop2_tl[x]["out"])):
-        #                                     output_address_set.add(hop2_tl[x]["out"][y]["addr"])
-        #                                     # 3 hops, running time is too long, omitted.
+                    hop3_transaction_list = get_transaction_list(hop2_address_list[j])
+                    if hop3_transaction_list is not None:
+                        hop3_address_list = list(get_output_address2(hop3_transaction_list, hop2_address_list[j]))
+                        for x in range(len(hop3_address_list)):
+                            output_address_set.add(hop3_address_list[x])
 
         suspicious_dictionary[suspicious_address] = output_address_set
 
@@ -240,5 +220,5 @@ def fifth_labor_problem2():
 
 # generate_exchange_addresses()
 # fifth_labor_problem1()
-fifth_labor_problem2()
+# fifth_labor_problem2()
 # check_exchange_address()
