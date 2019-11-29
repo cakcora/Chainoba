@@ -116,16 +116,20 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
 def StronglyConnectedComponents(curDate,ntObj,dfSCC):
     """Number of Strongly Connected Components in the graph"""
     try:
-        l=nx.number_strongly_connected_components(ntObj)
-        dfSCC = dfSCC.append({"Date":curDate,"Number of Strongly connected components":l},ignore_index=True)
+        count=0
+        for i in nx.strongly_connected_components(ntObj):
+            count += 1
+        dfSCC = dfSCC.append({"Date":curDate,"Number of Strongly connected components":count},ignore_index=True)
         return "Success", dfSCC
     except Exception as e:
         return 'Fail', e
 def WeaklyConnectedComponents(curDate,ntObj,dfWCC):
     """Number of Weakly Connected Components in the graph"""
     try:
-        a = nx.number_weakly_connected_components(ntObj)
-        dfWCC = dfWCC.append({"Date": curDate, "Number of Weakly connected components": a},ignore_index=True)
+        count = 0
+        for i in nx.strongly_connected_components(ntObj):
+            count += 1
+        dfWCC = dfWCC.append({"Date": curDate, "Number of Weakly connected components": count},ignore_index=True)
         return "Success", dfWCC
     except Exception as e:
         return 'Fail', e
