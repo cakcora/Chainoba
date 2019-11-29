@@ -1,3 +1,5 @@
+import numpy as np
+
 """
 This file will have all the functions related to clustering
 - clustering
@@ -14,6 +16,7 @@ def load_data():
     """
     return ""
 
+
 def handle_missing_values():
     """
      get the  number of missing values in the datasets to handle those missing values.
@@ -21,18 +24,23 @@ def handle_missing_values():
     """
     return ""
 
+
 def feature_engineering():
     """
      drop features that have not any impact on our goal
      :return:
     """
     return ""
+
+
 def data_encoding():
     """
     Convert non-numeric data into numeric ones, In order to ease the computation
     :return:
     """
     return ""
+
+
 def data_preprocessing():
     """
     scale the values of the features, Principal component analysis (PCA)
@@ -40,7 +48,6 @@ def data_preprocessing():
     :return:
     """
     return ""
-
 
 
 def cluster():
@@ -77,23 +84,16 @@ def re_cluster():
     return ""
 
 
-def iterative_levenshtein_distance(address1, address2):
+def ward_method_clustering(G):
     """
-    Calculates the distance between two strings address1 and address2 by combining Levenshtein distance and the
-    memoization technique. This is an O(N*M) implementation using Dynamic Programming.
-    :param address1: Blockchain user address
-    :param address2: Blockchain user address
+    Performs agglomerative hierarchical clustering  of user or transaction addresses with similar behavior patterns.
 
-    :return: int: The distance between both strings
+    :param G: Networkx MultiDiGraph object
+    :return: dict: A dictionary of addresses where keys are the cluster labels and values are members of the same
+    cluster
     """
-    return -1
 
+    if G[0] == 'Fail':
+        return None
 
-def ward_method_clustering(blockchain_transaction_list):
-    """
-    Performs agglomerative hierarchical clustering  of user addresses with similar behavior patterns.
-
-    :param blockchain_transaction_list: object containing entire chain of transactions
-    :return: list: List of labels assigned to clusters of user addresses
-    """
-    return None
+    return ward_method_clustering(G[1].nodes)
