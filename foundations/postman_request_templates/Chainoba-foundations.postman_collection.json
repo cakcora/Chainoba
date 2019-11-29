@@ -135,7 +135,7 @@
 			"response": []
 		},
 		{
-			"name": "get ethereum transactions by date",
+          "name": "get ethereum transactions by date and token_name",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -151,7 +151,7 @@
 				],
 				"body": {
 					"mode": "raw",
-                  "raw": "{\n\t\"day\": 24,\n\t\"month\":4,\n\t\"year\":2018,\n\t\"date_offset\":3650\n}",
+                  "raw": "{\n\t\"day\": 24,\n\t\"month\":4,\n\t\"year\":2018,\n\t\"date_offset\":1,\n\t\"token_name\" : \"zrx\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

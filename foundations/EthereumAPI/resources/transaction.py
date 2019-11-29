@@ -10,7 +10,16 @@ from EthereumAPI.models.ResponseCodes import ResponseCodes
 from EthereumAPI.models.ResponseCodes import ResponseDescriptions
 
 
-def serialize_transaction(transaction_data, token):
+def serialize_transaction(transaction_data):
+    return {"TransactionId": transaction_data.id,
+            "InputNodeAddress": transaction_data.from_node,
+            "OutputNodeAddress": transaction_data.to_node,
+            "Timestamp": datetime.utcfromtimestamp(transaction_data.ntime).strftime('%Y-%m-%d %H:%M:%S'),
+            "TokenAmount": transaction_data.tk_amount
+            }
+
+
+def serialize_transaction_with_token_data(transaction_data, token):
     return {"TransactionId": transaction_data.id,
             "InputNodeAddress": transaction_data.from_node,
             "OutputNodeAddress": transaction_data.to_node,
@@ -19,7 +28,6 @@ def serialize_transaction(transaction_data, token):
             'TokenId': token is not None and token.token_id or '',
             'TokenName': token is not None and token.token_name or '',
             }
-
 
 def ValidateNodeInput(self, node_address):
     validationErrorList = []
@@ -41,18 +49,19 @@ def ValidateInput(self, year, month, day, date_offset):
     return validationErrorList
 
 
-class GetTransactionDataByDateEndpoint(Resource):
+class GetTransactionDataByDateAndTokenNameEndpoint(Resource):
     args = {"day": fields.Integer(),
             "month": fields.Integer(),
             "year": fields.Integer(),
-            "date_offset": fields.Integer()
+            "date_offset": fields.Integer(),
+            "token_name": fields.String()
             }
 
     @use_kwargs(args)
-    def get(self, year, month, day, date_offset):
+    def get(self, year, month, day, date_offset, token_name):
         # Validate User Input
         try:
-            request = {"day": day, "month": month, "year": year, "date_offset": date_offset}
+            request = {"day": day, "month": month, "year": year, "date_offset": date_offset, "token_name": token_name}
             validations_result = ValidateInput(self, year, month, day, date_offset)
             response = {}
             if validations_result is not None and len(validations_result) > 0:
@@ -67,6 +76,9 @@ class GetTransactionDataByDateEndpoint(Resource):
                 from_unixtime = time.mktime(from_time.timetuple())  # get the unix time to form the query
                 to_unixtime = time.mktime(to_time.timetuple())
 
+                token_data = db_session.query(EthereumToken).filter(
+                    EthereumToken.token_name == token_name).first()
+
                 # perform the query
                 transaction_data = db_session.query(Transaction).filter(
                     and_(Transaction.ntime >= from_unixtime, Transaction.ntime
@@ -75,14 +87,14 @@ class GetTransactionDataByDateEndpoint(Resource):
                 if transaction_data is not None and len(list(transaction_data)) != 0:
                     transaction_list = []
                     for transaction in transaction_data:
-                        token_data = db_session.query(EthereumToken).filter(
-                            EthereumToken.token_id == transaction.token_id).first()
-                        transaction_list.append(serialize_transaction(transaction, token_data))
+                        transaction_list.append(serialize_transaction(transaction))
                         response = {
                             "ResponseCode": ResponseCodes.Success.value,
                             "ResponseDesc": ResponseCodes.Success.name,
                             "FromDate": from_time.strftime('%Y-%m-%d %H:%M:%S'),
                             "ToDate": to_time.strftime('%Y-%m-%d %H:%M:%S'),
+                            "TokenId": token_data.token_id,
+                            "TokenName": token_data.token_name,
                             "NumberOfTransactions": len(transaction_list),
                             "Transactions": transaction_list}
                 else:
@@ -131,7 +143,7 @@ class GetTransactionDataByNodeEndpoint(Resource):
                     for transaction in transaction_data:
                         token_data = db_session.query(EthereumToken).filter(
                             EthereumToken.token_id == transaction.token_id).first()
-                        transaction_list.append(serialize_transaction(transaction, token_data))
+                        transaction_list.append(serialize_transaction_with_token_data(transaction, token_data))
                     response = {
                         "ResponseCode": ResponseCodes.Success.value,
                         "ResponseDesc": ResponseCodes.Success.name,

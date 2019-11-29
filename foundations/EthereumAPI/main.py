@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api
-from EthereumAPI.resources.transaction import GetTransactionDataByDateEndpoint
+from EthereumAPI.resources.transaction import GetTransactionDataByDateAndTokenNameEndpoint
 from EthereumAPI.resources.transaction import GetTransactionDataByNodeEndpoint
 from EthereumAPI.resources.ponzy_schemes import GetPonziAnomalyDataEndpoint
 
@@ -10,7 +10,7 @@ app = Flask(__name__)
 api = Api(app)
 
 # Endpoints
-api.add_resource(GetTransactionDataByDateEndpoint, '/ethereum/transactions')
+api.add_resource(GetTransactionDataByDateAndTokenNameEndpoint, '/ethereum/transactions')
 api.add_resource(GetTransactionDataByNodeEndpoint, '/ethereum/node/transactions')
 api.add_resource(GetPonziAnomalyDataEndpoint, '/ethereum/ponzi/data')
 
