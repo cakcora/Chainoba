@@ -14,32 +14,33 @@ def load_data():
     """
     return ""
 
-def handle_missing_values():
+def CommonSpending():
     """
-     get the  number of missing values in the datasets to handle those missing values.
+    This function  is for implementing CommonSpending Heuristic: If two or more addresses are inputs of the same transaction
+    with one output, then all these addresses are controlled by the same user. this function return CSV file that store all
+    addresses that belong to a certain user in one row.
      :return:
     """
     return ""
 
-def feature_engineering():
+def ChangeAddress():
     """
-     drop features that have not any impact on our goal
+    This function  is for implementing ChangeAddress Heuristic: If a transaction has one input and two or more  output
+    of the same transaction with one output, then all these addresses are controlled by the same user.
+
      :return:
     """
     return ""
-def data_encoding():
+def TransitiveClosure():
     """
-    Convert non-numeric data into numeric ones, In order to ease the computation
+    Transitive closure is for over all the transactions. For example, if there is one transaction in which 1 and 2 are
+    used as sending addresses, and another transaction in which 2 and 3 are used as sending addresses, we conclude that
+    all three addresses are jointly owned.
+
     :return:
     """
     return ""
-def data_preprocessing():
-    """
-    scale the values of the features, Principal component analysis (PCA)
-    in order to enhance the performance of the model .
-    :return:
-    """
-    return ""
+
 
 
 
