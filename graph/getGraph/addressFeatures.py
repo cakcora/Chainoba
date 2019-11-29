@@ -1,7 +1,7 @@
 import pandas as pd
-from getAPIData import getGraph
-from graphanalysisSrija import CurrentBalance,BitcoinSent
-from graphAnalysis import levelOfActivity,amountToAddress
+from graph.getGraph.getAPIData import getGraph
+from graph.getGraph.graphanalysisSrija import CurrentBalance,BitcoinSent
+from graph.getGraph.graphAnalysis import levelOfActivity,amountToAddress
 import numpy as np
 
 def getFeatures(day,month,year,feature):
