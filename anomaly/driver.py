@@ -1,5 +1,3 @@
-
-
 # pump and dump prediction
 # get the data price for pump and dump prediction
 def load_price_data():
