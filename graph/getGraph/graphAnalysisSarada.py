@@ -127,7 +127,7 @@ def WeaklyConnectedComponents(curDate,ntObj,dfWCC):
     """Number of Weakly Connected Components in the graph"""
     try:
         count = 0
-        for i in nx.strongly_connected_components(ntObj):
+        for i in nx.weakly_connected_components(ntObj):
             count += 1
         dfWCC = dfWCC.append({"Date": curDate, "Number of Weakly connected components": count},ignore_index=True)
         return "Success", dfWCC
