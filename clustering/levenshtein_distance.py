@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def levenshtein_distance(string1, string2):
     """
         Calculates the distance between two strings string1 and string2 by combining Levenshtein distance and the
@@ -8,7 +7,7 @@ def levenshtein_distance(string1, string2):
         :param string1: Blockchain user or transaction address
         :param string2: Blockchain user or transaction address
 
-        :return: int: The distance between both strings
+        :return: matrix: A matrix of distances between the strings following Wagner-Fischer’s algorithm.
         """
     size_x = len(string1) + 1
     size_y = len(string2) + 1
@@ -33,5 +32,4 @@ def levenshtein_distance(string1, string2):
                     matrix[x - 1, y - 1] + 1,
                     matrix[x, y - 1] + 1
                 )
-    print(matrix)
     return matrix[size_x - 1, size_y - 1]
