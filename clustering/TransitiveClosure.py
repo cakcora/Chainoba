@@ -1,6 +1,7 @@
 import csv
-import pandas as pd
 import numpy as np
+import pandas as pd
+from clustering.LoadDataBaha import TransactionsWithoutDuplications
 
 def TransitiveClosure(d, m, y, Offset):
     """
