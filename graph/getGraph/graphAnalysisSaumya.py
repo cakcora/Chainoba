@@ -5,6 +5,8 @@ from collections import defaultdict
 
 def BTCirculation(date, ntObj, dbobj):
 
+    ''' Analyse the Total Bitcoin In Circulation on Daily Basis'''
+
     try:
         count = 0
         count1 = 0
@@ -32,6 +34,8 @@ def BTCirculation(date, ntObj, dbobj):
 
 def MostActiveEntity(Date, ntObj,dfObj):
 
+    ''' Analyse the Most Active Entity on Daily Basis'''
+
     try:
         outdegree = dict(ntObj.out_degree)
         indegree = dict(ntObj.in_degree)
@@ -42,15 +46,18 @@ def MostActiveEntity(Date, ntObj,dfObj):
                 tot[key].append(total)
                 dfObj = dfObj.append({"Date": Date,"Node": key,"Total Number of Transaction": total}, ignore_index=True)
         dfObj.sort_values(by=['Total Number of Transaction'], inplace=True, ascending=False)
-        df = dfObj.head()
+        dfObj = dfObj.head()
 
-        return "Success", df
+        return "Success", dfObj
     except Exception as e:
         return 'Fail', e
 
 
 
 def clusteringCoefficientNode(ntObj):
+
+    ''' Analyse the Clustering Co-efficient on Address on Daily Basis'''
+
     try:
         df = pd.DataFrame(columns=["Node", "ClusteringCoefficient"])
         G = nx.Graph()
@@ -69,7 +76,12 @@ def clusteringCoefficientNode(ntObj):
         return 'Fail', e
     return "Success", df
 
+
+
 def clusteringCoefficientonGraph(date,ntObj,dfObj ):
+
+    ''' Analyse the Clustering Co-efficient on Daily Basis'''
+
     try:
         G = nx.Graph()
         for u, v, data in ntObj.edges(data=True):
@@ -89,6 +101,9 @@ def clusteringCoefficientonGraph(date,ntObj,dfObj ):
 
 
 def PearsonCoefficient(date,ntObj,dfObj):
+
+    ''' Analyse the Pearson Co-efficient on Daily Basis'''
+
     try:
         Pearcoef = 0.0
         G = nx.Graph()
