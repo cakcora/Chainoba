@@ -18,10 +18,9 @@ def create_ohlcv_df(data):
 # number_candles = 240 - number of candles
 # candle_size = '12h' - candlesticks
 # f_path = '../data' - CSV OHLCV file path for output
-
 def pull_data(exchange, from_date, n_candles, c_size, f_path, skip=False):
     count = 1
-    msec = 1000
+    millisec = 1000
     hold = 5
 
     missing_symbols = []
@@ -52,7 +51,6 @@ def pull_data(exchange, from_date, n_candles, c_size, f_path, skip=False):
 
                 # -- save CSV --
                 symbol = symbol.replace("/", "-")
-
                 filename = newpath + '{}_{}_[{}]-TO-[{}].csv'.format(exchange, symbol, df['Timestamp'].iloc[0],
                                                                      df['Timestamp'].iloc[-1])
                 filename = filename.replace(":", ".")
@@ -70,8 +68,8 @@ def pull_data(exchange, from_date, n_candles, c_size, f_path, skip=False):
             continue
 
         count += 1
-
-        time.sleep((exc_instance.rateLimit / msec) + 5)  # add 5 seconds to rate limit just to be safe
+        # -- wait for rate limit --
+        time.sleep((exc_instance.rateLimit / millisec) + 5)  # rate limit +5 seconds to just to be safe
 
     # print out any symbols we could not obtain
     if len(missing_symbols) is not 0:
@@ -80,10 +78,16 @@ def pull_data(exchange, from_date, n_candles, c_size, f_path, skip=False):
     return missing_symbols
 
 
+# Specify the exchanges and from date and other parameters here.
+# exchanges = 'binance'
+# from_date = '2019-04-20 00:00:00'
+# number_candles = 240 - number of candles
+# candle_size = '1h' - candlesticks
+# f_path = '../data' - CSV OHLCV file path for output
+
 from_date = '2019-11-20 00:00:00'
 # exchanges = ['binance', 'kraken', 'kucoin', 'lbank']
 exchanges = ['lbank']
-
 
 for e in exchanges:
     pull_data(e, from_date, 480, '1h', '../data')
