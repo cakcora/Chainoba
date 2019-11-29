@@ -432,6 +432,93 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "insert Address Feature",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Date\": \"2019-11-11\",\n\t\"Address\":\"sssddsswwwwwwwsdfgssgwsw\",\n\t        \"No_of_SCC\": 1,\n        \"No_of_WCC\": 2,\n        \"BTC_Received\": 3,\n        \"BTC_Sent\": 4,\n        \"Activity_Level\":5,\n        \"Clustering_Coeff\": 6.3,\n        \"PearsonCC\": 5.5,\n        \"Maximal_Balance\": 1,\n        \"Current_Balance\": 11\n}"
+				},
+				"url": {
+					"raw": "http://159.203.28.234:5000/bitcoin/address_feature/date",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"address_feature",
+						"date"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "sss",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+				{
+			"name": "get AAddress Feature by Date",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"date\": \"2019-11-11\",\n\t\"address\":\"sssddsswwwwwwwsdfgssgwsw\"\n\n}"
+				},
+				"url": {
+					"raw": "http://159.203.28.234:5000/bitcoin/address_feature/date",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"bitcoin",
+						"address_feature",
+						"date"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "sss",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
