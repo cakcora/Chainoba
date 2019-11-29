@@ -1,12 +1,13 @@
 import requests
 import networkx as nx
+
 from graph.getGraph.dataExtraction import Extract_MainGraph, Extract_AddressGraph, Extract_TransactionGraph
 from graph.getGraph.dataProcessing import EdgeListCreation, VertexListCreation
 import pandas as pd
+BLOCK_URL = "http://159.203.28.234:5000/bitcoin/blocks"
+TRANSBLOCK_URL = "http://159.203.28.234:5000/bitcoin/blocks/transactions"
+TRANSACTION_URL = "http://159.203.28.234:5000/bitcoin/transactions"
 
-BLOCK_URL = "http://localhost:5000/bitcoin/blocks"
-TRANSBLOCK_URL = "http://localhost:5000/bitcoin/blocks/transactions"
-TRANSACTION_URL = "http://localhost:5000/bitcoin/transactions"
 BLOCK_SIZE = 5
 TRANSACTION_SIZE = 10
 
