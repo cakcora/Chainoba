@@ -10,10 +10,10 @@ from resources.transaction_output_address import GetTransactionOutputAddressByTr
 
 
 # Flask application initialization
-from api.resources.address_distribution import AddressDistributionByDateEndpoint
-from api.resources.address_feature import AddressFeatureByDateEndpoint
-from api.resources.level_of_activity import ActivityLevelByDateEndpoint
-from api.resources.total_btc_received import TotalBtcReceivedByDateEndpoint
+from api.resources.Graph.address_distribution import AddressDistributionByDateEndpoint
+from api.resources.Graph.address_feature import AddressFeatureByDateEndpoint
+from api.resources.Graph.level_of_activity import ActivityLevelByDateEndpoint
+from api.resources.Graph.total_btc_received import TotalBtcReceivedByDateEndpoint
 
 app = Flask(__name__)
 api = Api(app)
