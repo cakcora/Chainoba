@@ -12,6 +12,7 @@ from resources.transaction_output_address import GetTransactionOutputAddressByTr
 # Flask application initialization
 from api.resources.Graph.address_distribution import AddressDistributionByDateEndpoint
 from api.resources.Graph.address_feature import AddressFeatureByDateEndpoint
+from api.resources.Graph.assortivity_coefficient import AssortativityCoefficientByDateEndpoint
 from api.resources.Graph.current_balance import CurrentBalanceByDateEndpoint
 from api.resources.Graph.level_of_activity import ActivityLevelByDateEndpoint
 from api.resources.Graph.strongly_connected_component import StronglyConnectedComponentByDateEndpoint
@@ -39,6 +40,7 @@ api.add_resource(StronglyConnectedComponentByDateEndpoint, '/bitcoin/strongly_co
 api.add_resource(WeaklyConnectedComponentByDateEndpoint, '/bitcoin/weakly_connected_component/date')
 api.add_resource(TransactionSizeByDateEndpoint, '/bitcoin/transaction_size/date')
 api.add_resource(CurrentBalanceByDateEndpoint, '/bitcoin/current_balance/date')
+api.add_resource(AssortativityCoefficientByDateEndpoint, '/bitcoin/assortativity_coefficient/date')
 
 if __name__ == '__main__':
     # debug=True in development mode, for production set debug=False

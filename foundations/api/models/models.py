@@ -230,6 +230,15 @@ class TransactionSize(Base):
     transsizelt50000 = Column(Integer)
     transsizegt50000 = Column(Integer)
 
+
+class AssortivityCoefficient(Base):
+    __tablename__ = 'assortativity_coefficient'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    assortcoeff = Column(Float)
+
+
 class CurrentBalance(Base):
     __tablename__ = 'current_balance'
     __table_args__ = {'schema': CONSTANTS['schema']}
