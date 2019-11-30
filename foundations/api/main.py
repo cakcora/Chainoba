@@ -10,6 +10,7 @@ from resources.transaction_output_address import GetTransactionOutputAddressByTr
 
 
 # Flask application initialization
+from api.resources.address_distribution import AddressDistributionByDateEndpoint
 from api.resources.address_feature import AddressFeatureByDateEndpoint
 
 app = Flask(__name__)
@@ -25,6 +26,7 @@ api.add_resource(TransactionInputEndpoint, '/bitcoin/transactions/inputs')
 api.add_resource(TransactionOutputEndpoint, '/bitcoin/transactions/outputs')
 api.add_resource(GetTransactionOutputAddressByTransactionOutputId, '/bitcoin/transactions/outputs/addresses')
 api.add_resource(AddressFeatureByDateEndpoint, '/bitcoin/address_feature/date')
+api.add_resource(AddressDistributionByDateEndpoint, '/bitcoin/address_distribution/date')
 
 if __name__ == '__main__':
     # debug=True in development mode, for production set debug=False

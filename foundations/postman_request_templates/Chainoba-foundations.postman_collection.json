@@ -475,7 +475,7 @@
 			},
 			"response": []
 		},
-				{
+		{
 			"name": "get AAddress Feature by Date",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true

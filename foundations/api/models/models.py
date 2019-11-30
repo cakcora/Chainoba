@@ -162,6 +162,14 @@ class AddressFeature(Base):
     maximal_balance = Column(Integer)
     current_balance = Column(Integer)
 
+class AddressDistribution(Base):
+    __tablename__ = 'address_distribution'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    receiveonlyper = Column(Float)
+    sendreceiveper = Column(Float)
+
 
 if __name__ == '__main__':
     s = Session()
