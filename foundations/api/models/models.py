@@ -283,6 +283,15 @@ class ChainletsOccurance(Base):
     merge_chlt = Column(Integer)
     transition_chlt = Column(Integer)
 
+class ChainletsOccuranceAmount(Base):
+    __tablename__ = 'graph_chainlets_occurance_amount'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    split_chlt_amt = Column(Float)
+    merge_chlt_amt = Column(Float)
+    transition_chlt_amt = Column(Float)
+
 
 class CurrentBalance(Base):
     __tablename__ = 'graph_current_balance'

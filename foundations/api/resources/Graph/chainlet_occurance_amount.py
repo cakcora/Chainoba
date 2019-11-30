@@ -5,45 +5,45 @@ from webargs.flaskparser import use_kwargs
 from webargs import fields
 from models.ResponseCodes import ResponseCodes
 from models.ResponseCodes import ResponseDescriptions
-from api.models.models import db_session, ChainletsOccurance
+from api.models.models import db_session, ChainletsOccuranceAmount
 
 
-def serialize_chainlets_occurance(chainlets_occurance: ChainletsOccurance):
-    return {"Id": chainlets_occurance.id,
-            "Date": chainlets_occurance.date.strftime('%Y-%m-%d'),
-            "SplitChlt": chainlets_occurance.split_chlt,
-            "MergeChlt": chainlets_occurance.merge_chlt,
-            "TransitionChlt": chainlets_occurance.transition_chlt
+def serialize_chainlets_occurance_amount(chainlets_occurance_amount: ChainletsOccuranceAmount):
+    return {"Id": chainlets_occurance_amount.id,
+            "Date": chainlets_occurance_amount.date.strftime('%Y-%m-%d'),
+            "SplitChltAmt": chainlets_occurance_amount.split_chlt_amt,
+            "MergeChltAmt": chainlets_occurance_amount.merge_chlt_amt,
+            "TransitionChltAmt": chainlets_occurance_amount.transition_chlt_amt
             }
 
 
-class ChainletsOccuranceByDateEndpoint(Resource):
+class ChainletsOccuranceAmountByDateEndpoint(Resource):
     get_args = {"Date": fields.Date()
                 }
     insert_args = {
         "Date": fields.Date(),
-        "SplitChlt": fields.Integer(),
-        "MergeChlt": fields.Integer(),
-        "TransitionChlt": fields.Integer()
+        "SplitChltAmt": fields.Float(),
+        "MergeChltAmt": fields.Float(),
+        "TransitionChltAmt": fields.Float()
     }
 
     @use_kwargs(insert_args)
     def post(self, Date,
-             SplitChlt=None,
-             MergeChlt=None,
-             TransitionChlt=None):
+             SplitChltAmt=None,
+             MergeChltAmt=None,
+             TransitionChltAmt=None):
 
-        chainlets_occurance = ChainletsOccurance(date=Date,
-                                                 split_chlt=SplitChlt,
-                                                 merge_chlt=MergeChlt,
-                                                 transition_chlt=TransitionChlt
+        chainlets_occurance_amount = ChainletsOccuranceAmount(date=Date,
+                                                 split_chlt_amt=SplitChltAmt,
+                                                 merge_chlt_amt=MergeChltAmt,
+                                                 transition_chlt_amt=TransitionChltAmt
                                                  )
-        db_session.add(chainlets_occurance)
+        db_session.add(chainlets_occurance_amount)
         try:
             db_session.commit()
             response = {"ResponseCode": ResponseCodes.Success.value,
                         "ResponseDesc": ResponseCodes.Success.name,
-                        "ChainletsOccurance": serialize_chainlets_occurance(chainlets_occurance)}
+                        "ChainletsOccuranceAmount": serialize_chainlets_occurance_amount(chainlets_occurance_amount)}
         except SQLAlchemyError as e:
             print(str(e))
             db_session.rollback()
@@ -56,27 +56,27 @@ class ChainletsOccuranceByDateEndpoint(Resource):
     @use_kwargs(get_args)
     def get(self, Date=None):
 
-        error = self.validateChainletsOccuranceInput(Date)
+        error = self.validateChainletsOccuranceAmountInput(Date)
         if error is not None:
             return {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                     "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
                     "ErrorMessage": error.value}
 
-        chainlets_occurance = db_session.query(ChainletsOccurance).filter(
-            and_(ChainletsOccurance.date == Date)).one_or_none()
+        chainlets_occurance_amount = db_session.query(ChainletsOccuranceAmount).filter(
+            and_(ChainletsOccuranceAmount.date == Date)).one_or_none()
 
-        if chainlets_occurance is None:
+        if chainlets_occurance_amount is None:
             response = {"ResponseCode": ResponseCodes.NoDataFound.value,
                         "ResponseDesc": ResponseCodes.NoDataFound.name,
                         "ErrorMessage": ResponseDescriptions.NoDataFound.value}
         else:
             response = {"ResponseCode": ResponseCodes.Success.value,
                         "ResponseDesc": ResponseCodes.Success.name,
-                        "ChainletsOccurance": serialize_chainlets_occurance(chainlets_occurance)}
+                        "ChainletsOccuranceAmount": serialize_chainlets_occurance_amount(chainlets_occurance_amount)}
 
         return response
 
-    def validateChainletsOccuranceInput(self, date):
+    def validateChainletsOccuranceAmountInput(self, date):
         error = None
 
         if date is None:
