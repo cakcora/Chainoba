@@ -14,6 +14,7 @@ from api.resources.Graph.address_distribution import AddressDistributionByDateEn
 from api.resources.Graph.address_feature import AddressFeatureByDateEndpoint
 from api.resources.Graph.assortivity_coefficient import AssortativityCoefficientByDateEndpoint
 from api.resources.Graph.bitcoin_circulation import BitcoinCirculationByDateEndpoint
+from api.resources.Graph.chainlet_occurance import ChainletsOccuranceByDateEndpoint
 from api.resources.Graph.clustring_coefficient import ClusteringCoefficientByDateEndpoint
 from api.resources.Graph.current_balance import CurrentBalanceByDateEndpoint
 from api.resources.Graph.level_of_activity import ActivityLevelByDateEndpoint
@@ -51,6 +52,7 @@ api.add_resource(PearsonCoefficientByDateEndpoint, '/bitcoin/pearson_coefficient
 api.add_resource(ClusteringCoefficientByDateEndpoint, '/bitcoin/clustering_coefficient/date')
 api.add_resource(BitcoinCirculationByDateEndpoint, '/bitcoin/bitcoin_circulation/date')
 api.add_resource(MostActiveEntityByDateEndpoint, '/bitcoin/most_active_entity/date')
+api.add_resource(ChainletsOccuranceByDateEndpoint, '/bitcoin/chainlets_occurance/date')
 
 if __name__ == '__main__':
     # debug=True in development mode, for production set debug=False

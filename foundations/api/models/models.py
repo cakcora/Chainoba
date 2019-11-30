@@ -273,6 +273,17 @@ class MostActiveEntity(Base):
     addr = Column(String)
     no_of_trans = Column(Integer)
 
+
+class ChainletsOccurance(Base):
+    __tablename__ = 'graph_chainlets_occurance'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    split_chlt = Column(Integer)
+    merge_chlt = Column(Integer)
+    transition_chlt = Column(Integer)
+
+
 class CurrentBalance(Base):
     __tablename__ = 'graph_current_balance'
     __table_args__ = {'schema': CONSTANTS['schema']}
