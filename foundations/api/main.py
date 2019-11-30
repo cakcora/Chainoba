@@ -13,6 +13,7 @@ from resources.transaction_output_address import GetTransactionOutputAddressByTr
 from api.resources.Graph.address_distribution import AddressDistributionByDateEndpoint
 from api.resources.Graph.address_feature import AddressFeatureByDateEndpoint
 from api.resources.Graph.level_of_activity import ActivityLevelByDateEndpoint
+from api.resources.Graph.strongly_connected_component import StronglyConnectedComponentByDateEndpoint
 from api.resources.Graph.total_btc_received import TotalBtcReceivedByDateEndpoint
 
 app = Flask(__name__)
@@ -31,6 +32,7 @@ api.add_resource(AddressFeatureByDateEndpoint, '/bitcoin/address_feature/date')
 api.add_resource(AddressDistributionByDateEndpoint, '/bitcoin/address_distribution/date')
 api.add_resource(TotalBtcReceivedByDateEndpoint, '/bitcoin/total_btc_received/date')
 api.add_resource(ActivityLevelByDateEndpoint, '/bitcoin/activity_level/date')
+api.add_resource(StronglyConnectedComponentByDateEndpoint, '/bitcoin/strongly_connected_component/date')
 
 if __name__ == '__main__':
     # debug=True in development mode, for production set debug=False

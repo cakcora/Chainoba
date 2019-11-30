@@ -200,6 +200,13 @@ class ActivityLevel(Base):
         loagt5000 = Column(Integer)
 
 
+class StronglyConnectedComponent(Base):
+    __tablename__ = 'strongly_connected_component'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    scc = Column(Integer)
+
 if __name__ == '__main__':
     s = Session()
     print(s.query(Block).first())
