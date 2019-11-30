@@ -148,7 +148,7 @@ class BlockReadableTime(Base):
 
 # Graph group date
 class AddressFeature(Base):
-    __tablename__ = 'address_feature'
+    __tablename__ = 'graph_address_feature'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     address = Column(Integer)
@@ -165,7 +165,7 @@ class AddressFeature(Base):
 
 
 class AddressDistribution(Base):
-    __tablename__ = 'address_distribution'
+    __tablename__ = 'graph_address_distribution'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
@@ -174,7 +174,7 @@ class AddressDistribution(Base):
 
 
 class TotalBtcReceived(Base):
-    __tablename__ = 'total_btc_received'
+    __tablename__ = 'graph_total_btc_received'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
@@ -188,7 +188,7 @@ class TotalBtcReceived(Base):
 
 
 class ActivityLevel(Base):
-    __tablename__ = 'activity_level'
+    __tablename__ = 'graph_activity_level'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
@@ -202,7 +202,7 @@ class ActivityLevel(Base):
 
 
 class StronglyConnectedComponent(Base):
-    __tablename__ = 'strongly_connected_component'
+    __tablename__ = 'graph_strongly_connected_component'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
@@ -210,7 +210,7 @@ class StronglyConnectedComponent(Base):
 
 
 class WeaklyConnectedComponent(Base):
-    __tablename__ = 'weakly_connected_component'
+    __tablename__ = 'graph_weakly_connected_component'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
@@ -218,7 +218,7 @@ class WeaklyConnectedComponent(Base):
 
 
 class TransactionSize(Base):
-    __tablename__ = 'transaction_size'
+    __tablename__ = 'graph_transaction_size'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
@@ -232,7 +232,7 @@ class TransactionSize(Base):
 
 
 class AssortativityCoefficient(Base):
-    __tablename__ = 'assortativity_coefficient'
+    __tablename__ = 'graph_assortativity_coefficient'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
@@ -240,7 +240,7 @@ class AssortativityCoefficient(Base):
 
 
 class PearsonCoefficient(Base):
-    __tablename__ = 'pearson_coefficient'
+    __tablename__ = 'graph_pearson_coefficient'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
@@ -248,7 +248,7 @@ class PearsonCoefficient(Base):
 
 
 class ClusteringCoefficient(Base):
-    __tablename__ = 'clustering_coefficient'
+    __tablename__ = 'graph_clustering_coefficient'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
@@ -256,7 +256,7 @@ class ClusteringCoefficient(Base):
 
 
 class CurrentBalance(Base):
-    __tablename__ = 'current_balance'
+    __tablename__ = 'graph_current_balance'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
