@@ -145,6 +145,7 @@ class BlockReadableTime(Base):
             .format(self.hash, self.id, self.version, self.hashprev, self.hashmerkleroot, self.ntime, self.nbits,
                     self.nnonce, self.timestamp)
 
+
 # Graph group date
 class AddressFeature(Base):
     __tablename__ = 'address_feature'
@@ -162,6 +163,7 @@ class AddressFeature(Base):
     maximal_balance = Column(Integer)
     current_balance = Column(Integer)
 
+
 class AddressDistribution(Base):
     __tablename__ = 'address_distribution'
     __table_args__ = {'schema': CONSTANTS['schema']}
@@ -169,6 +171,33 @@ class AddressDistribution(Base):
     date = Column(DateTime)
     receiveonlyper = Column(Float)
     sendreceiveper = Column(Float)
+
+
+class TotalBtcReceived(Base):
+    __tablename__ = 'total_btc_received'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    btcreclt1 = Column(Integer)
+    btcreclt10 = Column(Integer)
+    btcreclt100 = Column(Integer)
+    btcreclt1000 = Column(Integer)
+    btcreclt10000 = Column(Integer)
+    btcreclt50000 = Column(Integer)
+    btcrecgt50000 = Column(Integer)
+
+class ActivityLevel(Base):
+        __tablename__ = 'activity_level'
+        __table_args__ = {'schema': CONSTANTS['schema']}
+        id = Column(BigInteger, primary_key=True)
+        date = Column(DateTime)
+        loalt2 = Column(Integer)
+        loalt5 = Column(Integer)
+        loalt10 = Column(Integer)
+        loalt100 = Column(Integer)
+        loalt1000 = Column(Integer)
+        loalt5000 = Column(Integer)
+        loagt5000 = Column(Integer)
 
 
 if __name__ == '__main__':
