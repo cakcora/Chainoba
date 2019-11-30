@@ -265,6 +265,14 @@ class BitcoinCirculation(Base):
     not_circu_percent = Column(Float)
 
 
+class MostActiveEntity(Base):
+    __tablename__ = 'graph_most_active_entity'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    addr = Column(String)
+    no_of_trans = Column(Integer)
+
 class CurrentBalance(Base):
     __tablename__ = 'graph_current_balance'
     __table_args__ = {'schema': CONSTANTS['schema']}
