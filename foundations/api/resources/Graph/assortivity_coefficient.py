@@ -11,7 +11,7 @@ from api.models.models import db_session, AssortativityCoefficient
 def serialize_assortativity_coefficient(assortativity_coefficient: AssortativityCoefficient):
     return {"Id": assortativity_coefficient.id,
             "Date": assortativity_coefficient.date.strftime('%Y-%m-%d'),
-            "AssortCoeff": assortativity_coefficient.assortcoeff
+            "AssortCoeff": assortativity_coefficient.assort_coeff
 
             }
 
@@ -29,7 +29,7 @@ class AssortativityCoefficientByDateEndpoint(Resource):
              AssortCoeff=None):
 
         assortativity_coefficient = AssortativityCoefficient(date=Date,
-                                                             assortcoeff=AssortCoeff)
+                                                             assort_coeff=AssortCoeff)
         db_session.add(assortativity_coefficient)
         try:
             db_session.commit()

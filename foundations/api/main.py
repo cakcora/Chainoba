@@ -8,7 +8,6 @@ from resources.transaction_input import TransactionInputEndpoint
 from resources.transaction_output import TransactionOutputEndpoint
 from resources.transaction_output_address import GetTransactionOutputAddressByTransactionOutputId
 
-
 # Flask application initialization
 from api.resources.Graph.address_distribution import AddressDistributionByDateEndpoint
 from api.resources.Graph.address_feature import AddressFeatureByDateEndpoint

@@ -34,10 +34,10 @@ class ChainletsOccuranceAmountByDateEndpoint(Resource):
              TransitionChltAmt=None):
 
         chainlets_occurance_amount = ChainletsOccuranceAmount(date=Date,
-                                                 split_chlt_amt=SplitChltAmt,
-                                                 merge_chlt_amt=MergeChltAmt,
-                                                 transition_chlt_amt=TransitionChltAmt
-                                                 )
+                                                              split_chlt_amt=SplitChltAmt,
+                                                              merge_chlt_amt=MergeChltAmt,
+                                                              transition_chlt_amt=TransitionChltAmt
+                                                              )
         db_session.add(chainlets_occurance_amount)
         try:
             db_session.commit()

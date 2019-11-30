@@ -1,4 +1,3 @@
-from datetime import datetime
 from flask_restful import Resource
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
@@ -12,8 +11,8 @@ from api.models.models import db_session, AddressDistribution
 def serialize_address_distribution(address_distribution: AddressDistribution):
     return {"Id": address_distribution.id,
             "Date": address_distribution.date.strftime('%Y-%m-%d'),
-            "ReceiveOnlyPer": address_distribution.receiveonlyper,
-            "SendReceivePer": address_distribution.sendreceiveper
+            "ReceiveOnlyPer": address_distribution.receive_only_per,
+            "SendReceivePer": address_distribution.send_receive_per
             }
 
 
@@ -32,9 +31,9 @@ class AddressDistributionByDateEndpoint(Resource):
              SendReceivePer=None):
 
         address_distribution = AddressDistribution(date=Date,
-                                              receiveonlyper=ReceiveOnlyPer,
-                                              sendreceiveper=SendReceivePer
-                                              )
+                                                   receive_only_per=ReceiveOnlyPer,
+                                                   send_receive_per=SendReceivePer
+                                                   )
         db_session.add(address_distribution)
         try:
             db_session.commit()

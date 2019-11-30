@@ -169,8 +169,8 @@ class AddressDistribution(Base):
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
-    receiveonlyper = Column(Float)
-    sendreceiveper = Column(Float)
+    receive_only_per = Column(Float)
+    send_receive_per = Column(Float)
 
 
 class TotalBtcReceived(Base):
@@ -222,13 +222,13 @@ class TransactionSize(Base):
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
-    transsizelt1 = Column(Integer)
-    transsizelt10 = Column(Integer)
-    transsizelt100 = Column(Integer)
-    transsizelt5000 = Column(Integer)
-    transsizelt20000 = Column(Integer)
-    transsizelt50000 = Column(Integer)
-    transsizegt50000 = Column(Integer)
+    trans_size_lt1 = Column(Integer)
+    trans_size_lt10 = Column(Integer)
+    trans_size_lt100 = Column(Integer)
+    trans_size_lt5000 = Column(Integer)
+    trans_size_lt20000 = Column(Integer)
+    trans_size_lt50000 = Column(Integer)
+    trans_size_gt50000 = Column(Integer)
 
 
 class AssortativityCoefficient(Base):
@@ -236,7 +236,7 @@ class AssortativityCoefficient(Base):
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
-    assortcoeff = Column(Float)
+    assort_coeff = Column(Float)
 
 
 class PearsonCoefficient(Base):
@@ -244,7 +244,7 @@ class PearsonCoefficient(Base):
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
-    pearcoeff = Column(Float)
+    pear_coeff = Column(Float)
 
 
 class ClusteringCoefficient(Base):
@@ -252,7 +252,7 @@ class ClusteringCoefficient(Base):
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
-    clustcoeff = Column(Float)
+    clust_coeff = Column(Float)
 
 
 class BitcoinCirculation(Base):
@@ -282,6 +282,7 @@ class ChainletsOccurance(Base):
     split_chlt = Column(Integer)
     merge_chlt = Column(Integer)
     transition_chlt = Column(Integer)
+
 
 class ChainletsOccuranceAmount(Base):
     __tablename__ = 'graph_chainlets_occurance_amount'

@@ -11,7 +11,7 @@ from api.models.models import db_session, ClusteringCoefficient
 def serialize_clustering_coefficient(clustering_coefficient: ClusteringCoefficient):
     return {"Id": clustering_coefficient.id,
             "Date": clustering_coefficient.date.strftime('%Y-%m-%d'),
-            "ClustCoeff": clustering_coefficient.clustcoeff
+            "ClustCoeff": clustering_coefficient.clust_coeff
 
             }
 
@@ -29,7 +29,7 @@ class ClusteringCoefficientByDateEndpoint(Resource):
              ClustCoeff=None):
 
         clustering_coefficient = ClusteringCoefficient(date=Date,
-                                                     clustcoeff=ClustCoeff)
+                                                       clust_coeff=ClustCoeff)
         db_session.add(clustering_coefficient)
         try:
             db_session.commit()

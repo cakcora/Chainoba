@@ -11,7 +11,7 @@ from api.models.models import db_session, PearsonCoefficient
 def serialize_pearson_coefficient(pearson_coefficient: PearsonCoefficient):
     return {"Id": pearson_coefficient.id,
             "Date": pearson_coefficient.date.strftime('%Y-%m-%d'),
-            "PearCoeff": pearson_coefficient.pearcoeff
+            "PearCoeff": pearson_coefficient.pear_coeff
 
             }
 
