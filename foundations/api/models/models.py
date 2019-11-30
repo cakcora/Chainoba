@@ -238,12 +238,21 @@ class AssortativityCoefficient(Base):
     date = Column(DateTime)
     assortcoeff = Column(Float)
 
+
 class PearsonCoefficient(Base):
-        __tablename__ = 'pearson_coefficient'
-        __table_args__ = {'schema': CONSTANTS['schema']}
-        id = Column(BigInteger, primary_key=True)
-        date = Column(DateTime)
-        pearcoeff = Column(Float)
+    __tablename__ = 'pearson_coefficient'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    pearcoeff = Column(Float)
+
+
+class ClusteringCoefficient(Base):
+    __tablename__ = 'clustering_coefficient'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    clustcoeff = Column(Float)
 
 
 class CurrentBalance(Base):

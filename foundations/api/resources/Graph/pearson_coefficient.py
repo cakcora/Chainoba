@@ -29,7 +29,7 @@ class PearsonCoefficientByDateEndpoint(Resource):
              PearCoeff=None):
 
         pearson_coefficient = PearsonCoefficient(date=Date,
-                                                                  pearcoeff=PearCoeff)
+                                                 pearcoeff=PearCoeff)
         db_session.add(pearson_coefficient)
         try:
             db_session.commit()
