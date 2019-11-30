@@ -255,6 +255,16 @@ class ClusteringCoefficient(Base):
     clustcoeff = Column(Float)
 
 
+class BitcoinCirculation(Base):
+    __tablename__ = 'graph_bitcoin_circulation'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    tot_btc = Column(Float)
+    circ_percent = Column(Float)
+    not_circu_percent = Column(Float)
+
+
 class CurrentBalance(Base):
     __tablename__ = 'graph_current_balance'
     __table_args__ = {'schema': CONSTANTS['schema']}
