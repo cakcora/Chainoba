@@ -186,18 +186,19 @@ class TotalBtcReceived(Base):
     btcreclt50000 = Column(Integer)
     btcrecgt50000 = Column(Integer)
 
+
 class ActivityLevel(Base):
-        __tablename__ = 'activity_level'
-        __table_args__ = {'schema': CONSTANTS['schema']}
-        id = Column(BigInteger, primary_key=True)
-        date = Column(DateTime)
-        loalt2 = Column(Integer)
-        loalt5 = Column(Integer)
-        loalt10 = Column(Integer)
-        loalt100 = Column(Integer)
-        loalt1000 = Column(Integer)
-        loalt5000 = Column(Integer)
-        loagt5000 = Column(Integer)
+    __tablename__ = 'activity_level'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    loalt2 = Column(Integer)
+    loalt5 = Column(Integer)
+    loalt10 = Column(Integer)
+    loalt100 = Column(Integer)
+    loalt1000 = Column(Integer)
+    loalt5000 = Column(Integer)
+    loagt5000 = Column(Integer)
 
 
 class StronglyConnectedComponent(Base):
@@ -207,12 +208,27 @@ class StronglyConnectedComponent(Base):
     date = Column(DateTime)
     scc = Column(Integer)
 
+
 class WeaklyConnectedComponent(Base):
     __tablename__ = 'weakly_connected_component'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
     wcc = Column(Integer)
+
+
+class TransactionSize(Base):
+    __tablename__ = 'transaction_size'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    transsizelt1 = Column(Integer)
+    transsizelt10 = Column(Integer)
+    transsizelt100 = Column(Integer)
+    transsizelt5000 = Column(Integer)
+    transsizelt20000 = Column(Integer)
+    transsizelt50000 = Column(Integer)
+    transsizegt50000 = Column(Integer)
 
 
 if __name__ == '__main__':
