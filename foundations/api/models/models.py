@@ -230,6 +230,19 @@ class TransactionSize(Base):
     transsizelt50000 = Column(Integer)
     transsizegt50000 = Column(Integer)
 
+class CurrentBalance(Base):
+    __tablename__ = 'current_balance'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    currbal1 = Column(Integer)
+    currbal10 = Column(Integer)
+    currbal100 = Column(Integer)
+    currbal1000 = Column(Integer)
+    currbal10000 = Column(Integer)
+    currbal50000 = Column(Integer)
+    currbalgt50000 = Column(Integer)
+
 
 if __name__ == '__main__':
     s = Session()
