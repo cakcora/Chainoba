@@ -15,6 +15,7 @@ from api.resources.Graph.address_feature import AddressFeatureByDateEndpoint
 from api.resources.Graph.assortivity_coefficient import AssortativityCoefficientByDateEndpoint
 from api.resources.Graph.current_balance import CurrentBalanceByDateEndpoint
 from api.resources.Graph.level_of_activity import ActivityLevelByDateEndpoint
+from api.resources.Graph.pearson_coefficient import PearsonCoefficientByDateEndpoint
 from api.resources.Graph.strongly_connected_component import StronglyConnectedComponentByDateEndpoint
 from api.resources.Graph.total_btc_received import TotalBtcReceivedByDateEndpoint
 from api.resources.Graph.transaction_size import TransactionSizeByDateEndpoint
@@ -32,6 +33,8 @@ api.add_resource(TransactionEndpoint, '/bitcoin/transactions')
 api.add_resource(TransactionInputEndpoint, '/bitcoin/transactions/inputs')
 api.add_resource(TransactionOutputEndpoint, '/bitcoin/transactions/outputs')
 api.add_resource(GetTransactionOutputAddressByTransactionOutputId, '/bitcoin/transactions/outputs/addresses')
+
+## Graph Analysis API
 api.add_resource(AddressFeatureByDateEndpoint, '/bitcoin/address_feature/date')
 api.add_resource(AddressDistributionByDateEndpoint, '/bitcoin/address_distribution/date')
 api.add_resource(TotalBtcReceivedByDateEndpoint, '/bitcoin/total_btc_received/date')
@@ -41,6 +44,7 @@ api.add_resource(WeaklyConnectedComponentByDateEndpoint, '/bitcoin/weakly_connec
 api.add_resource(TransactionSizeByDateEndpoint, '/bitcoin/transaction_size/date')
 api.add_resource(CurrentBalanceByDateEndpoint, '/bitcoin/current_balance/date')
 api.add_resource(AssortativityCoefficientByDateEndpoint, '/bitcoin/assortativity_coefficient/date')
+api.add_resource(PearsonCoefficientByDateEndpoint, '/bitcoin/pearson_coefficient/date')
 
 if __name__ == '__main__':
     # debug=True in development mode, for production set debug=False

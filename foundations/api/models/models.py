@@ -231,12 +231,19 @@ class TransactionSize(Base):
     transsizegt50000 = Column(Integer)
 
 
-class AssortivityCoefficient(Base):
+class AssortativityCoefficient(Base):
     __tablename__ = 'assortativity_coefficient'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     date = Column(DateTime)
     assortcoeff = Column(Float)
+
+class PearsonCoefficient(Base):
+        __tablename__ = 'pearson_coefficient'
+        __table_args__ = {'schema': CONSTANTS['schema']}
+        id = Column(BigInteger, primary_key=True)
+        date = Column(DateTime)
+        pearcoeff = Column(Float)
 
 
 class CurrentBalance(Base):
