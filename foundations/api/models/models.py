@@ -207,6 +207,14 @@ class StronglyConnectedComponent(Base):
     date = Column(DateTime)
     scc = Column(Integer)
 
+class WeaklyConnectedComponent(Base):
+    __tablename__ = 'weakly_connected_component'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    wcc = Column(Integer)
+
+
 if __name__ == '__main__':
     s = Session()
     print(s.query(Block).first())
