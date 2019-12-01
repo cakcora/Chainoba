@@ -1,3 +1,4 @@
+
 # pump and dump prediction
 # get the data price for pump and dump prediction
 def load_price_data():
@@ -20,7 +21,6 @@ def predict_coin_possibility(given_coin):
 # return all the coins with predicted possibilities greater than a chosen threshold (0.0 <= threshold <= 1.0)
 def get_predicted_pumped_coins(threshold: float):
     return []
-
 
 
 # ---- Pump and Dump - Kainth ----
@@ -52,3 +52,27 @@ def get_symbol(f_path):
 # candle_size = '12h' - candlesticks
 def analyse_symbol(symbol_name, f_path, volume_thresh, price_thresh, window_size, candle_size):
     return 1
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Extracting Account Features from the existing Smart Contracts
+def get_account_features():
+    return None
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Extracting Code Features from Transaction Data
+def get_code_features():
+    return None
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Build the classification model using Random Forest
+def classify_contract_as_ponzi():
+    return None
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Apply the model on all Smart Contracts in Ethereum
+def ponzi_scheme_detection():
+    return None

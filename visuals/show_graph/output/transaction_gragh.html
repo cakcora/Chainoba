@@ -1,0 +1,77 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.css" type="text/css" />
+<script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 750px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "T1", "label": "T1", "level": 1, "shape": "square"}, {"id": "T3", "label": "T3", "level": 2, "shape": "square"}, {"id": "T2", "label": "T2", "level": 3, "shape": "square"}, {"id": "T6", "label": "T6", "level": 5, "shape": "square"}, {"id": "T4", "label": "T4", "level": 2, "shape": "square"}, {"id": "T5", "label": "T5", "level": 1, "shape": "square"}, {"id": "T7", "label": "T7", "level": 1, "shape": "square"}, {"id": "T9", "label": "T9", "level": 2, "shape": "square"}, {"id": "T11", "label": "T11", "level": 4, "shape": "square"}, {"id": "T10", "label": "T10", "level": 2, "shape": "square"}, {"id": "T12", "label": "T12", "level": 4, "shape": "square"}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "T1", "title": 2, "to": "T3", "value": 2}, {"arrows": "to", "from": "T2", "title": 2, "to": "T6", "value": 2}, {"arrows": "to", "from": "T4", "title": 5, "to": "T2", "value": 5}, {"arrows": "to", "from": "T3", "title": 2, "to": "T2", "value": 2}, {"arrows": "to", "from": "T5", "title": 3, "to": "T6", "value": 3}, {"arrows": "to", "from": "T7", "title": 2, "to": "T6", "value": 2}, {"arrows": "to", "from": "T9", "title": 5, "to": "T11", "value": 5}, {"arrows": "to", "from": "T10", "title": 2, "to": "T12", "value": 2}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {"nodes": {"size": 20, "shape": "square", "color": {"color": "rgb(116,204,244)", "highlight": "#F9A602", "hover": "#F9A602", "inherit": "from", "opacity": 1.0}}, "edges": {"arrows": {"to": {"enable": true, "type": "vee", "scaleFactor": 0.5}}, "color": {"color": "rgb(116,204,244)", "highlight": "#F9A602", "hover": "#F9A602", "inherit": "from", "opacity": 1.0}, "smooth": false, "arrowStrikethrough": false}, "layout": {"hierarchical": {"enabled": true, "direction": "LR", "sortMethod": "directed"}}, "interaction": {"navigationButtons": true}, "physics": {"hierarchicalRepulsion": {"centralGravity": 0, "springLength": 75, "nodeDistance": 145, "damping": 0.2}, "maxVelocity": 28, "minVelocity": 0.75, "solver": "hierarchicalRepulsion"}};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

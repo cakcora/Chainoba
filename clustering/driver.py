@@ -1,3 +1,5 @@
+import numpy as np
+
 """
 This file will have all the functions related to clustering
 - clustering
@@ -14,7 +16,10 @@ def load_data():
     """
     return ""
 
-def CommonSpending():
+
+
+def handle_missing_values():
+ 
     """
     This function  is for implementing CommonSpending Heuristic: If two or more addresses are inputs of the same transaction
     with one output, then all these addresses are controlled by the same user. this function return CSV file that store all
@@ -23,7 +28,10 @@ def CommonSpending():
     """
     return ""
 
-def ChangeAddress():
+
+
+def feature_engineering():
+
     """
     This function  is for implementing ChangeAddress Heuristic: If a transaction has one input and two or more  output
     of the same transaction with one output, then all these addresses are controlled by the same user.
@@ -31,16 +39,30 @@ def ChangeAddress():
      :return:
     """
     return ""
+
 def TransitiveClosure():
     """
     Transitive closure is for over all the transactions. For example, if there is one transaction in which 1 and 2 are
     used as sending addresses, and another transaction in which 2 and 3 are used as sending addresses, we conclude that
     all three addresses are jointly owned.
 
+
+
+
+def data_encoding():
+    """
+    Convert non-numeric data into numeric ones, In order to ease the computation
     :return:
     """
     return ""
 
+
+def data_preprocessing():
+    """
+    scale the values of the features, Principal component analysis (PCA)
+    in order to enhance the performance of the model .
+    """
+    return ""
 
 
 
@@ -78,23 +100,16 @@ def re_cluster():
     return ""
 
 
-def iterative_levenshtein_distance(address1, address2):
+def ward_method_clustering(G):
     """
-    Calculates the distance between two strings address1 and address2 by combining Levenshtein distance and the
-    memoization technique. This is an O(N*M) implementation using Dynamic Programming.
-    :param address1: Blockchain user address
-    :param address2: Blockchain user address
+    Performs agglomerative hierarchical clustering  of user or transaction addresses with similar behavior patterns.
 
-    :return: int: The distance between both strings
+    :param G: Networkx MultiDiGraph object
+    :return: dict: A dictionary of addresses where keys are the cluster labels and values are members of the same
+    cluster
     """
-    return -1
 
+    if G[0] == 'Fail':
+        return None
 
-def ward_method_clustering(blockchain_transaction_list):
-    """
-    Performs agglomerative hierarchical clustering  of user addresses with similar behavior patterns.
-
-    :param blockchain_transaction_list: object containing entire chain of transactions
-    :return: list: List of labels assigned to clusters of user addresses
-    """
-    return None
+    return ward_method_clustering(G[1].nodes)

@@ -1,0 +1,3 @@
+numpy
+pandas
+git+https://github.com/ahmed-shariff/pyvis.git

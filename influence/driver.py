@@ -1,8 +1,14 @@
+from graph.getGraph.getAPIData import getGraph
 
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+import math
+import random
+import pandas as pd
+import networkx as nx
 
 # The functions written below will provide any external team access to influence teams implementation.
-
-
 
 """
  k-core decomposition | Dilawer | Requires Etherium Data  ---
@@ -11,20 +17,29 @@
  k-core decomposition.
 """
 
-# returns set of graphs for visualization team to represent as different k-core decompositions
-def get_k_cores():
-    return "Set of all k-core graphs"
+# Get k-core subgraph for a given graph 'G' and of specified coreness 'k'
+def get_k_cores(G, k):
+    return nx.k_core(G, k)
 
-# Generate an adjacency list from the ethereum graph
-def generate_adjacency_list(ethereum_graph):
-    return 0
+# Maximum k-core subgraph for a given graph 'G'
+def max_k_core_graph(G):
+    return nx.k_core(G)
 
-# Create decompositions and use bucket
-def find_kcore_decomposition(graphList):
-    return 0
+# Get the maximum K value for a given vertex
+def get_max_k_value(G, vertex):
+    return G.number_of_edges(vertex)
 
-# Checks to see if one or more nodes exist in a network with a given degree
-def check_existence(G, d):
-    return 0
+# Import the ethereum graph from 'graph' team.
+def generate_undirected_graph():
 
-# -- end of k-core decomposition | Dilawer ---
+    G = nx.Graph()
+
+    G.add_nodes_from([i+1 for i in range(100)])
+
+    for i in range(500):
+        first_vertex = random.choice(list(G.nodes()))
+        sec_vertex = random.choice(list(G.nodes()))
+        if (first_vertex != sec_vertex):
+            if (not G.has_edge(first_vertex, sec_vertex)):
+                G.add_edge(first_vertex, sec_vertex)
+    return G
