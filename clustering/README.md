@@ -18,7 +18,7 @@ Clustering is done based on four node features
 - `Current balance`
 
 
-The architecture of the code is three-tier:
+# 3-tier architecture for K means clustering:
 
 `src` directory has the implementation for k-means clustering
 and t-sne plot. The data for clustering comes from `graph` 
@@ -30,6 +30,7 @@ can be called to get the results.
 - `cluster()` - gets a cluster fit for the data
 
 - `tsne_plotter` - processes the data and plots the t-sne plot
+
 
 
 Here is a visual representation of the architecture for more clarity:
