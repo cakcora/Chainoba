@@ -1,3 +1,5 @@
+pandas
+scikit-learn
 altgraph==0.10.2
 bdist-mpkg==0.5.0
 bonjour-py==0.3
