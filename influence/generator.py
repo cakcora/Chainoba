@@ -14,3 +14,9 @@ def generate_undirected_graph():
             if (not G.has_edge(first_vertex, sec_vertex)):
                 G.add_edge(first_vertex, sec_vertex)
     return G
+
+def generate_undirected_graph_from_citeseer():
+    # https://networkx.github.io/documentation/networkx-1.9/reference/generated/networkx.readwrite.edgelist.read_edgelist.html
+    G = nx.read_edgelist("./dataset/citeseer/citeseer.edges.nx_edgelist")
+
+    return G
