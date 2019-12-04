@@ -4,9 +4,12 @@ import matplotlib.pyplot as plt
 import random
 import networkx as nx
 
+# ======= Dilawer's Functions =============
+
 # Get k-core subgraph for a given graph 'G' and of specified coreness 'k'
 def get_k_cores(G, k):
     """
+    Gets y
     """
     return ""
 
@@ -36,7 +39,6 @@ def generate_undirected_graph():
     :return:
     """
 
-
 def generate_edges(graph):
 
     edges = []
@@ -46,10 +48,8 @@ def generate_edges(graph):
 
     return edges
 
-message, G = getGraph(9, 2, 2009, 2, 'ADDRESS')
+# ======= End of Dilawer's Functions =============
 
-nx.draw(G)
-plt.show()
 
 # H = max_k_core_graph(G)
 # maxGdeg = max_deg(G)
