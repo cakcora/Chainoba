@@ -12,5 +12,7 @@ import networkx as nx
 # Generate a random graph for testing functions
 G = generate_undirected_graph()
 
-nx.draw(G)
+nx.draw(G, width=2, edge_color='b', node_color='r')
 plt.show()
+
+print(nx.core_number(G))
