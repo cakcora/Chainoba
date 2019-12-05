@@ -88,8 +88,9 @@ Note : Different features are :<br>
 ##Note: The data retrieved will be on daily basis
 
 # Ethereum Graph
-To get Ethereum graph, import 
-<b>getEthereumgraph(24, 4, 2018, 1, "zrx")</b> function from graph.getGraph.ethereumGraph.getAPIData import getEthereumgraph. 
+To get Ethereum graph, call 
+<b>getEthereumgraph(24, 4, 2018, 1, "zrx")</b> function from graph.getGraph.ethereumGraph.getAPIData import getEthereumgraph, 
+where the function signature is getEthereumgraph(day,month,year,dOffset,tokename)
 <br>
 
 
