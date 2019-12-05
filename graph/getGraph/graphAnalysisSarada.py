@@ -2,7 +2,14 @@
 import networkx as nx
 import pandas as pd
 import numpy as np
+import requests
 from graph.getGraph.getAPIData import getGraph
+BTC_REC_URL="http://159.203.28.234:5000/bitcoin/total_btc_received"
+LOA_URL="http://159.203.28.234:5000/bitcoin/activity_level"
+SCC_URL="http://159.203.28.234:5000/bitcoin/strongly_connected_component"
+WCC_URL="http://159.203.28.234:5000/bitcoin/weakly_connected_component"
+ChianletsOCC_URL="http://159.203.28.234:5000/bitcoin/chainlets_occurance"
+ChianletsOCCAmt_URL="http://159.203.28.234:5000/bitcoin/chainlets_occurance_amount"
 def TotalBTCreceived(curDate,ntObj,dfTotRec):
     """ Total the number of BTC received by the addresses in the graph on daily basis"""
     try:
@@ -36,11 +43,15 @@ def TotalBTCreceived(curDate,ntObj,dfTotRec):
                  "Number of addresses with Total BTC received [1000,10000)": e,
                  "Number of addresses with Total BTC received [10000,50000)": f,
                  "Number of addresses with Total BTC received greater than equal to 50000": g}, ignore_index=True)
-        return "success",dfTotRec
 
+        data = {"Date" : curDate,"BTCrecLT1": a,"BTCrecLT10":b,"BTCrecLT100": c,"BTCrecLT1000": d,
+                "BTCrecLT10000": e,"BTCrecLT50000":f,"BTCrecGT50000":g
+        }
+        r = requests.post(url=BTC_REC_URL, data=data)
+        print(r.text)
     except Exception as e:
         return 'Fail', e
-
+    return "success", dfTotRec
 def diffChainlets(curDate,ntObj,dfChainletsOcc):
     """total number of different chainlets(Split,Merge and Transition) in a graph"""
     try:
@@ -67,6 +78,10 @@ def diffChainlets(curDate,ntObj,dfChainletsOcc):
         dfChainletsOcc = dfChainletsOcc.append({"Date":curDate, "Occurrence of split Chainlets":splitNumber,
                            "Occurrence of merge Chainlets":mergeNumber,
                            "Occurrence of transition Chainlets":transitionNumber},ignore_index=True)
+        data = {"Date": curDate,"SplitChlt": splitNumber,"MergeChlt": mergeNumber,"TransitionChlt": transitionNumber
+                }
+        r = requests.post(url=ChianletsOCC_URL, data=data)
+        print(r.text)
         return "Success",dfChainletsOcc
     except Exception as e:
         return 'Fail', e
@@ -84,7 +99,7 @@ def diffChainletMatrix(curDate,dbObject):
                 amt = aind[ele]
                 if (value > 0):
                     occ[int(value)][int(out)] += 1
-                    aocc[int(value)][int(out)] += amt
+                    aocc[int(value)][int(out)] += amt/100000000
         print("Date:",curDate)
         return occ,aocc
     except Exception as e:
@@ -108,7 +123,14 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
 
         dfChainletsAocc = dfChainletsAocc.append({"Date": curDate,"Amount of split Chainlets": format((splitAmt/100000000), '.2f'),
                                                 "Amount of merge Chainlets": format((mergeAmt/100000000), '.2f'),
-                                                "Amount of transition Chainlets": format((transitionAmt/100000000), '.2f')},ignore_index=True)
+                                                "Amount of transition Chainlets": format((transitionAmt/100000000), '.2f')}
+                                                 ,ignore_index=True)
+        data = {"Date": curDate, "SplitChAmt": (format((splitAmt/100000000), '.2f')),
+                "MergeChAmt": (format((mergeAmt/100000000), '.2f')),
+                "TransitionChAmt":(format((transitionAmt/100000000), '.2f') )               }
+
+        r = requests.post(url=ChianletsOCCAmt_URL, data=data)
+        print(r.text)
         return "Success", dfChainletsAocc
     except Exception as e:
         return 'Fail', e
@@ -116,21 +138,24 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
 def StronglyConnectedComponents(curDate,ntObj,dfSCC):
     """Number of Strongly Connected Components in the graph"""
     try:
-        count=0
-        for i in nx.strongly_connected_components(ntObj):
-            count += 1
-        dfSCC = dfSCC.append({"Date":curDate,"Number of Strongly connected components":count},ignore_index=True)
+        l=nx.number_strongly_connected_components(ntObj)
+        dfSCC = dfSCC.append({"Date":curDate,"Number of Strongly connected components":l},ignore_index=True)
+        data = {"Date": curDate, "SCC": l }
+        r = requests.post(url=SCC_URL, data=data)
+        print(r.text)
         return "Success", dfSCC
     except Exception as e:
         return 'Fail', e
 def WeaklyConnectedComponents(curDate,ntObj,dfWCC):
     """Number of Weakly Connected Components in the graph"""
     try:
-        count = 0
-        for i in nx.weakly_connected_components(ntObj):
-            count += 1
-        dfWCC = dfWCC.append({"Date": curDate, "Number of Weakly connected components": count},ignore_index=True)
+        a = nx.number_weakly_connected_components(ntObj)
+        dfWCC = dfWCC.append({"Date": curDate, "Number of Weakly connected components": a},ignore_index=True)
+        data = {"Date": curDate, "WCC": a}
+        r = requests.post(url=WCC_URL, data=data)
+        print(r.text)
         return "Success", dfWCC
+
     except Exception as e:
         return 'Fail', e
 
@@ -172,9 +197,12 @@ def LevelOfActivity(curDate,ntObj,dfLOActivity):
                                              "Number of addresses with Level of activity [100,1000)":e,
                                              "Number of addresses with Level of activity [1000,5000)":f,
                                              "Number of addresses with Level of activity greater than equal to 5000":g},ignore_index=True)
+        data={"Date": curDate,"LOALT2": a,"LOALT5": b,"LOALT10": c,"LOALT100":d,"LOALT1000":e,"LOALT5000":f,
+              "LOAGT5000":g}
+        r=requests.post(url=LOA_URL, data=data)
+        print(r.text)
         return "Success", dfLOActivity
     except Exception as e:
         return 'Fail', e
-
 
 
