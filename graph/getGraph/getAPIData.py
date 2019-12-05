@@ -1,7 +1,7 @@
 import requests
 import networkx as nx
-from dataExtraction import Extract_MainGraph,Extract_AddressGraph,Extract_TransactionGraph
-from dataProcessing import EdgeListCreation, VertexListCreation
+from graph.getGraph.dataExtraction import Extract_MainGraph,Extract_AddressGraph,Extract_TransactionGraph
+from graph.getGraph.dataProcessing import EdgeListCreation, VertexListCreation
 import pandas as pd
 BLOCK_URL = "http://localhost:5000/bitcoin/blocks"
 TRANSBLOCK_URL = "http://localhost:5000/bitcoin/blocks/transactions"

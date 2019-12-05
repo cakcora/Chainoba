@@ -1,10 +1,16 @@
 import networkx as nx
 import pandas as pd
 from datetime import date, datetime, timedelta
+import requests
 from graph.getGraph.getAPIData import getGraph
 
+ADD_URL="http://159.203.28.234:5000/bitcoin/address_distribution"
+TRANS_URL="http://159.203.28.234:5000/bitcoin/transaction_size"
+ASSORT_URL ="http://159.203.28.234:5000/bitcoin/assortativity_coefficient"
+CURRENT_URL ="http://159.203.28.234:5000/bitcoin/current_balance"
 
 def CurrentBalance(ntObj):
+    """To get current balance feature of addresses"""
     df = pd.DataFrame(columns=["Node", "Current Balance"])
     try:
 
@@ -14,13 +20,13 @@ def CurrentBalance(ntObj):
             if len(ele) != 64:
                 current = (inval - outdegree[ele])
                 df = df.append({"Node": ele, "Current Balance": current}, ignore_index=True)
-                # print(ele+":"+str(current))
     except Exception as e:
         return 'Fail', e
     return "Success", df
 
 
 def BitcoinSent(ntObj):
+    """To get Bitcoin sent feature of addresses"""
     dfObj = pd.DataFrame(columns=["Node", "Bitcoin Sent"])
     try:
         outdegree = dict(ntObj.out_degree(weight='weight'))
@@ -38,7 +44,6 @@ def AddressDistAnalysis(date, netxObj, dfObj):
         totalAddr = 0
         count = 0
         outdegree = list(netxObj.out_degree)
-        # print(outdegree)
         for ele in outdegree:
             if len(ele[0]) != 64:
                 totalAddr += 1
@@ -47,6 +52,14 @@ def AddressDistAnalysis(date, netxObj, dfObj):
         dfObj = dfObj.append({"Date": date, "Total Addresses": totalAddr,
                               "Receive-only Address %": (count / totalAddr) * 100,
                               "Send/receive Address %": ((totalAddr - count) / totalAddr) * 100}, ignore_index=True)
+
+        data = {
+            'Date': date,
+            'ReceiveOnlyPer': ((count / totalAddr) * 100),
+            'SendReceivePer': (((totalAddr - count) / totalAddr) * 100)
+        }
+        r = requests.post(url=ADD_URL, data=data)
+
     except Exception as e:
         return 'Fail', e
     return "Success", dfObj
@@ -107,12 +120,26 @@ def CurrentBalanceAnalysis(year, month, day):
                                   "Number of addresses with Current balance greater than equal to 50000": gt50000
                                   },
                                  ignore_index=True)
+            dates=str(year) + "-" + str(m) + "-" + str(d)
+            data = {
+                'Date': dates,
+                'CurrBal1': lt1,
+                'CurrBal10': lt10,
+                'CurrBal100': lt100,
+                'CurrBal1000': lt1000,
+                'CurrBal10000': lt10000,
+                'CurrBal50000': lt50000,
+                'CurrBalGT50000': gt50000
+            }
+            r = requests.post(url=CURRENT_URL, data=data)
+
             x = str(year) + "-" + str(m) + "-" + str(d)
             res = (datetime.strptime(x, '%Y-%m-%d') + timedelta(days=1)).strftime('%Y-%m-%d')
             res = datetime.strptime(res, '%Y-%m-%d')
             d = res.day
             m = res.month
             diff -= 1
+
     except Exception as e:
         return 'Fail', e
     return "Success", dfObj
@@ -146,6 +173,17 @@ def TransactionSizeAnalysis(date, netxObj, dfObj):
              "Number of transaction of size  [5000,20000)": lt20000,
              "Number of transaction of size  [20000,50000)": lt50000,
              "Number of transaction of size  greater than equal to 50000": gt50000}, ignore_index=True)
+        data = {
+            'Date': date,
+            'TransSizeLT1': lt1,
+            'TransSizeLT10': lt10,
+            'TransSizeLT100': lt100,
+            'TransSizeLT5000': lt5000,
+            'TransSizeLT20000': lt20000,
+            'TransSizeLT50000':lt50000,
+            'TransSizeGT50000': gt50000
+        }
+        r = requests.post(url=TRANS_URL, data=data)
     except Exception as e:
         return 'Fail', e
     return "Success", dfObj
@@ -157,14 +195,12 @@ def assortativityCoefficientAnalysis(date, netxObj, dfObj):
 
         assortCoeff = nx.degree_assortativity_coefficient(netxObj)
         dfObj = dfObj.append({"Date": date, "Assortativity coefficient": assortCoeff}, ignore_index=True)
-
+        data = {
+            'Date': date,
+            'AssortCoeff': assortCoeff
+        }
+        r = requests.post(url=ASSORT_URL, data=data)
     except Exception as e:
         return 'Fail', e
     return "Success", dfObj
 
-
-"""
-if __name__ == '__main__':
-    CurrentBalanceAnalysis(2009,1,9)
-    #AddressDistAnalysis(2009,11,1,2009,11,2)
-"""
