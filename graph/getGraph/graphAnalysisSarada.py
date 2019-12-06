@@ -1,9 +1,22 @@
-"""Graph Analysis by Tadepalli Sarada Kiranmayee"""
+""" Aurthor: Tadepalli Sarada Kiranmayee """
+""" Reference Papers are listed below:"""
+"""1. Akcora, Cuneyt Gurcan, Yulia R. Gel, and Murat Kantarcioglu. "Blockchain: A
+graph primer." arXiv preprint arXiv:1708.08749 (2017).
+2. Akcora, C. G., Dey, A. K., Gel, Y. R., & Kantarcioglu, M. (2018, June). Forecasting
+bitcoin price with graph chainlets. In Pacific-Asia Conference on Knowledge
+Discovery and Data Mining (pp. 765-776). Springer, Cham.
+3. Chen, Ting, Yuxiao Zhu, Zihao Li, Jiachi Chen, Xiaoqi Li, Xiapu Luo, Xiaodong
+Lin, and Xiaosong Zhange. "Understanding ethereum via graph analysis."
+In IEEE INFOCOM 2018-IEEE Conference on Computer Communications, pp.
+1484-1492. IEEE, 2018.
+4. Ron, Dorit, and Adi Shamir. "Quantitative analysis of the full bitcoin transaction
+graph." In International Conference on Financial Cryptography and Data
+Security, pp. 6-24. Springer, Berlin, Heidelberg, 2013."""
 import networkx as nx
 import pandas as pd
 import numpy as np
 import requests
-from graph.getGraph.getAPIData import getGraph
+from getAPIData import getGraph
 BTC_REC_URL="http://159.203.28.234:5000/bitcoin/total_btc_received"
 LOA_URL="http://159.203.28.234:5000/bitcoin/activity_level"
 SCC_URL="http://159.203.28.234:5000/bitcoin/strongly_connected_component"
@@ -81,7 +94,6 @@ def diffChainlets(curDate,ntObj,dfChainletsOcc):
         data = {"Date": curDate,"SplitChlt": splitNumber,"MergeChlt": mergeNumber,"TransitionChlt": transitionNumber
                 }
         r = requests.post(url=ChianletsOCC_URL, data=data)
-        print(r.text)
         return "Success",dfChainletsOcc
     except Exception as e:
         return 'Fail', e
@@ -125,12 +137,12 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
                                                 "Amount of merge Chainlets": format((mergeAmt/100000000), '.2f'),
                                                 "Amount of transition Chainlets": format((transitionAmt/100000000), '.2f')}
                                                  ,ignore_index=True)
-        data = {"Date": curDate, "SplitChAmt": (format((splitAmt/100000000), '.2f')),
-                "MergeChAmt": (format((mergeAmt/100000000), '.2f')),
-                "TransitionChAmt":(format((transitionAmt/100000000), '.2f') )               }
+        data = {"Date": curDate, "SplitChAmt": splitAmt,
+                "MergeChAmt": mergeAmt,
+                "TransitionChAmt":transitionAmt
+                }
 
         r = requests.post(url=ChianletsOCCAmt_URL, data=data)
-        print(r.text)
         return "Success", dfChainletsAocc
     except Exception as e:
         return 'Fail', e
@@ -142,7 +154,6 @@ def StronglyConnectedComponents(curDate,ntObj,dfSCC):
         dfSCC = dfSCC.append({"Date":curDate,"Number of Strongly connected components":l},ignore_index=True)
         data = {"Date": curDate, "SCC": l }
         r = requests.post(url=SCC_URL, data=data)
-        print(r.text)
         return "Success", dfSCC
     except Exception as e:
         return 'Fail', e
@@ -153,7 +164,6 @@ def WeaklyConnectedComponents(curDate,ntObj,dfWCC):
         dfWCC = dfWCC.append({"Date": curDate, "Number of Weakly connected components": a},ignore_index=True)
         data = {"Date": curDate, "WCC": a}
         r = requests.post(url=WCC_URL, data=data)
-        print(r.text)
         return "Success", dfWCC
 
     except Exception as e:
@@ -200,7 +210,6 @@ def LevelOfActivity(curDate,ntObj,dfLOActivity):
         data={"Date": curDate,"LOALT2": a,"LOALT5": b,"LOALT10": c,"LOALT100":d,"LOALT1000":e,"LOALT5000":f,
               "LOAGT5000":g}
         r=requests.post(url=LOA_URL, data=data)
-        print(r.text)
         return "Success", dfLOActivity
     except Exception as e:
         return 'Fail', e
