@@ -308,16 +308,3 @@ def predict_results(X_reg, Y_reg, X_1, Y_1, X_2, Y_2):
 
     # for model 2
     test_model(scores_2, X_reg, Y_reg, 50001, rf_classifier_2, 2)
-
-
-""" Below is an example of the main program, on how to get the data, then train and test the models """
-
-pumps, pumps_unique = get_pump_activities()
-pump_exchange, dexs = get_coin_list(pumps)
-pumps_binance, pumps_bittrex, pumps_cryptopia, pumps_yobit = get_listing_status(pumps, pumps_unique, dexs)
-plot_pumps(pumps_binance, pumps_bittrex, pumps_cryptopia, pumps_yobit)
-create_regression_table()
-reg_cryptopia_new = load_data()
-X_reg, Y_reg, X_1, Y_1, X_2, Y_2 = split_data(reg_cryptopia_new)
-predict_results(X_reg, Y_reg, X_1, Y_1, X_2, Y_2)
-
