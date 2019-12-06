@@ -1,11 +1,11 @@
 from flask_restful import Resource
-from sqlalchemy import and_
-from sqlalchemy.exc import SQLAlchemyError
-from webargs.flaskparser import use_kwargs
-from webargs import fields
 from models.ResponseCodes import ResponseCodes
 from models.ResponseCodes import ResponseDescriptions
-from api.models.models import db_session, MostActiveEntity
+from models.models import db_session, MostActiveEntity
+from sqlalchemy import and_
+from sqlalchemy.exc import SQLAlchemyError
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 
 def serialize_most_active_entity(most_active_entity: MostActiveEntity):
@@ -31,8 +31,8 @@ class MostActiveEntityByDateEndpoint(Resource):
              NoOfTrans=None):
 
         most_active_entity = MostActiveEntity(date=Date,
-                                                 addr=Addr,
-                                                 no_of_trans=NoOfTrans)
+                                              addr=Addr,
+                                              no_of_trans=NoOfTrans)
         db_session.add(most_active_entity)
         try:
             db_session.commit()

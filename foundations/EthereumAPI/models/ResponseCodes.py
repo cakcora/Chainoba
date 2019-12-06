@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class ResponseCodes(Enum):
     Success = 200
     InvalidRequestParameter = 422

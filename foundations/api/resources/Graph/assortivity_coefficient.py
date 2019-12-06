@@ -1,18 +1,17 @@
 from flask_restful import Resource
-from sqlalchemy import and_
-from sqlalchemy.exc import SQLAlchemyError
-from webargs.flaskparser import use_kwargs
-from webargs import fields
 from models.ResponseCodes import ResponseCodes
 from models.ResponseCodes import ResponseDescriptions
-from api.models.models import db_session, AssortativityCoefficient
+from models.models import db_session, AssortativityCoefficient
+from sqlalchemy import and_
+from sqlalchemy.exc import SQLAlchemyError
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 
 def serialize_assortativity_coefficient(assortativity_coefficient: AssortativityCoefficient):
     return {"Id": assortativity_coefficient.id,
             "Date": assortativity_coefficient.date.strftime('%Y-%m-%d'),
             "AssortCoeff": assortativity_coefficient.assort_coeff
-
             }
 
 

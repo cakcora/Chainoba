@@ -1,12 +1,13 @@
 import json
+
 import requests
-from webargs import fields
-from webargs.flaskparser import use_kwargs
 from flask_restful import Resource
-from models.models import Output as TransactionOutput
-from models.models import db_session
 from models.ResponseCodes import ResponseCodes
 from models.ResponseCodes import ResponseDescriptions
+from models.models import Output as TransactionOutput
+from models.models import db_session
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 
 def serialize_transaction_output(trans_output, num_of_output_addresses, output_address_as_dict):

@@ -1,11 +1,11 @@
 from flask_restful import Resource
-from sqlalchemy import and_
-from sqlalchemy.exc import SQLAlchemyError
-from webargs.flaskparser import use_kwargs
-from webargs import fields
 from models.ResponseCodes import ResponseCodes
 from models.ResponseCodes import ResponseDescriptions
-from api.models.models import db_session, AddressFeature
+from models.models import db_session, AddressFeature
+from sqlalchemy import and_
+from sqlalchemy.exc import SQLAlchemyError
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 
 def serialize_feature_address(address_feature: AddressFeature):

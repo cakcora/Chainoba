@@ -1,18 +1,17 @@
 from flask_restful import Resource
-from sqlalchemy import and_
-from sqlalchemy.exc import SQLAlchemyError
-from webargs.flaskparser import use_kwargs
-from webargs import fields
 from models.ResponseCodes import ResponseCodes
 from models.ResponseCodes import ResponseDescriptions
-from api.models.models import db_session, ClusteringCoefficient
+from models.models import db_session, ClusteringCoefficient
+from sqlalchemy import and_
+from sqlalchemy.exc import SQLAlchemyError
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 
 def serialize_clustering_coefficient(clustering_coefficient: ClusteringCoefficient):
     return {"Id": clustering_coefficient.id,
             "Date": clustering_coefficient.date.strftime('%Y-%m-%d'),
             "ClustCoeff": clustering_coefficient.clust_coeff
-
             }
 
 

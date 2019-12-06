@@ -1,13 +1,14 @@
-from sqlalchemy import or_
-from sqlalchemy import and_
-from flask_restful import Resource
-from webargs import fields
-from webargs.flaskparser import use_kwargs
 import time
 from datetime import datetime, timedelta
-from EthereumAPI.models.models import Transaction, EthereumToken, db_session
-from EthereumAPI.models.ResponseCodes import ResponseCodes
-from EthereumAPI.models.ResponseCodes import ResponseDescriptions
+
+from flask_restful import Resource
+from models.ResponseCodes import ResponseCodes
+from models.ResponseCodes import ResponseDescriptions
+from models.models import Transaction, EthereumToken, db_session
+from sqlalchemy import and_
+from sqlalchemy import or_
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 
 def serialize_transaction(transaction_data):
@@ -28,6 +29,7 @@ def serialize_transaction_with_token_data(transaction_data, token):
             'TokenId': token is not None and token.token_id or '',
             'TokenName': token is not None and token.token_name or '',
             }
+
 
 def ValidateNodeInput(self, node_address):
     validationErrorList = []
@@ -118,8 +120,7 @@ class GetTransactionDataByDateAndTokenNameEndpoint(Resource):
 
 
 class GetTransactionDataByNodeEndpoint(Resource):
-    args = {"node_address": fields.Integer()
-            }
+    args = {"node_address": fields.Integer()}
 
     @use_kwargs(args)
     def get(self, node_address):

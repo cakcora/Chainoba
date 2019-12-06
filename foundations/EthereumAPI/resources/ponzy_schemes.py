@@ -1,7 +1,7 @@
 from flask_restful import Resource
-from EthereumAPI.models.models import PonziAnomaly, db_session
-from EthereumAPI.models.ResponseCodes import ResponseCodes
-from EthereumAPI.models.ResponseCodes import ResponseDescriptions
+from models.ResponseCodes import ResponseCodes
+from models.ResponseCodes import ResponseDescriptions
+from models.models import PonziAnomaly, db_session
 
 
 def serialize_ponzi_data(ponzi_Anomaly_data):

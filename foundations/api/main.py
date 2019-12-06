@@ -1,14 +1,5 @@
 from flask import Flask
 from flask_restful import Api
-from resources.address import AddressEndpoint
-from resources.block import GetBlockDataByDateEndpoint, GetTransactionDataByBlockID
-from resources.transaction import TransactionEndpoint
-from resources.transaction import TransactionByHashEndpoint
-from resources.transaction_input import TransactionInputEndpoint
-from resources.transaction_output import TransactionOutputEndpoint
-from resources.transaction_output_address import GetTransactionOutputAddressByTransactionOutputId
-
-# Flask application initialization
 from resources.Graph.address_distribution import AddressDistributionByDateEndpoint
 from resources.Graph.address_feature import AddressFeatureByDateEndpoint
 from resources.Graph.assortivity_coefficient import AssortativityCoefficientByDateEndpoint
@@ -24,6 +15,13 @@ from resources.Graph.strongly_connected_component import StronglyConnectedCompon
 from resources.Graph.total_btc_received import TotalBtcReceivedByDateEndpoint
 from resources.Graph.transaction_size import TransactionSizeByDateEndpoint
 from resources.Graph.weakly_connected_component import WeaklyConnectedComponentByDateEndpoint
+from resources.address import AddressEndpoint
+from resources.block import GetBlockDataByDateEndpoint, GetTransactionDataByBlockID
+from resources.transaction import TransactionByHashEndpoint
+from resources.transaction import TransactionEndpoint
+from resources.transaction_input import TransactionInputEndpoint
+from resources.transaction_output import TransactionOutputEndpoint
+from resources.transaction_output_address import GetTransactionOutputAddressByTransactionOutputId
 
 app = Flask(__name__)
 api = Api(app)

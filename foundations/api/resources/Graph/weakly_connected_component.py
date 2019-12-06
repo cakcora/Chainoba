@@ -1,18 +1,17 @@
 from flask_restful import Resource
-from sqlalchemy import and_
-from sqlalchemy.exc import SQLAlchemyError
-from webargs.flaskparser import use_kwargs
-from webargs import fields
 from models.ResponseCodes import ResponseCodes
 from models.ResponseCodes import ResponseDescriptions
-from api.models.models import db_session, WeaklyConnectedComponent
+from models.models import db_session, WeaklyConnectedComponent
+from sqlalchemy import and_
+from sqlalchemy.exc import SQLAlchemyError
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 
 def serialize_weakly_connected_component(weakly_connected_component: WeaklyConnectedComponent):
     return {"Id": weakly_connected_component.id,
             "Date": weakly_connected_component.date.strftime('%Y-%m-%d'),
             "WCC": weakly_connected_component.wcc
-
             }
 
 
@@ -29,7 +28,7 @@ class WeaklyConnectedComponentByDateEndpoint(Resource):
              WCC=None):
 
         weakly_connected_component = WeaklyConnectedComponent(date=Date,
-                                                                  wcc=WCC)
+                                                              wcc=WCC)
         db_session.add(weakly_connected_component)
         try:
             db_session.commit()

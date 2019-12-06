@@ -1,12 +1,12 @@
-from webargs import fields
-from webargs.flaskparser import use_kwargs
 from flask_restful import Resource
+from models.ResponseCodes import ResponseCodes
+from models.ResponseCodes import ResponseDescriptions
 from models.models import Address
 from models.models import Output as TransactionOutput
 from models.models import OutputAddress as TransactionOutputAddress
 from models.models import db_session
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 
 def serialize_address(address):

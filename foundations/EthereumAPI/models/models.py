@@ -1,7 +1,8 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, LargeBinary, BigInteger, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, BigInteger
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+
 from .config import cfg as CONFIG
 
 Base = declarative_base()

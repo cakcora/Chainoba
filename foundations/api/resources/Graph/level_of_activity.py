@@ -1,12 +1,11 @@
-
 from flask_restful import Resource
-from sqlalchemy import and_
-from sqlalchemy.exc import SQLAlchemyError
-from webargs.flaskparser import use_kwargs
-from webargs import fields
 from models.ResponseCodes import ResponseCodes
 from models.ResponseCodes import ResponseDescriptions
-from api.models.models import db_session, ActivityLevel
+from models.models import db_session, ActivityLevel
+from sqlalchemy import and_
+from sqlalchemy.exc import SQLAlchemyError
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 
 def serialize_activity_level(activity_level: ActivityLevel):
@@ -47,14 +46,14 @@ class ActivityLevelByDateEndpoint(Resource):
              LOAGT5000=None):
 
         activity_level = ActivityLevel(date=Date,
-                                              loalt2=LOALT2,
-                                              loalt5=LOALT5,
-                                              loalt10=LOALT10,
-                                              loalt100=LOALT100,
-                                              loalt1000=LOALT1000,
-                                              loalt5000=LOALT5000,
-                                              loagt5000=LOAGT5000
-                                              )
+                                       loalt2=LOALT2,
+                                       loalt5=LOALT5,
+                                       loalt10=LOALT10,
+                                       loalt100=LOALT100,
+                                       loalt1000=LOALT1000,
+                                       loalt5000=LOALT5000,
+                                       loagt5000=LOAGT5000
+                                       )
         db_session.add(activity_level)
         try:
             db_session.commit()

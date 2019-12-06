@@ -136,3 +136,4 @@ foundations/dataparser/dependencies/
 
 # db configuration
 foundations/api/models/config.py
+foundations/EthereumAPI/models/config.py

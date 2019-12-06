@@ -1,12 +1,11 @@
-
 from flask_restful import Resource
-from sqlalchemy import and_
-from sqlalchemy.exc import SQLAlchemyError
-from webargs.flaskparser import use_kwargs
-from webargs import fields
 from models.ResponseCodes import ResponseCodes
 from models.ResponseCodes import ResponseDescriptions
-from api.models.models import db_session, CurrentBalance
+from models.models import db_session, CurrentBalance
+from sqlalchemy import and_
+from sqlalchemy.exc import SQLAlchemyError
+from webargs import fields
+from webargs.flaskparser import use_kwargs
 
 
 def serialize_current_balance(current_balance: CurrentBalance):
@@ -47,14 +46,14 @@ class CurrentBalanceByDateEndpoint(Resource):
              CurrBalGT50000=None):
 
         current_balance = CurrentBalance(date=Date,
-                                              currbal1=CurrBal1,
-                                              currbal10=CurrBal10,
-                                              currbal100=CurrBal100,
-                                              currbal1000=CurrBal1000,
-                                              currbal10000=CurrBal10000,
-                                              currbal50000=CurrBal50000,
-                                              currbalgt50000=CurrBalGT50000
-                                              )
+                                         currbal1=CurrBal1,
+                                         currbal10=CurrBal10,
+                                         currbal100=CurrBal100,
+                                         currbal1000=CurrBal1000,
+                                         currbal10000=CurrBal10000,
+                                         currbal50000=CurrBal50000,
+                                         currbalgt50000=CurrBalGT50000
+                                         )
         db_session.add(current_balance)
         try:
             db_session.commit()
