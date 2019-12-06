@@ -6,44 +6,14 @@
 import json
 
 import requests
-from common.utils import serialize_transactions
 from flask_restful import Resource
 from models.models import Transaction, db_session
 from models.response_codes import ResponseCodes
 from models.response_codes import ResponseDescriptions
+from utils.serialize import serialize_transactions
+from utils.validate import validate_transaction_hash, validate_transaction_ids
 from webargs import fields
 from webargs.flaskparser import use_kwargs
-
-
-def ValidateTransactionHash(transaction_hash):
-    """
-    Validate transaction hash data
-    :param self:
-    :param transaction_hash:
-    """
-    validationErrorList = []
-    if not transaction_hash or len(transaction_hash) == 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.TransactionHashInputMissing.value})
-    return validationErrorList
-
-
-def ValidateTransactionIds(transaction_ids):
-    """
-    Method to validate transaction ids
-    :param transaction_ids:
-    """
-    validationErrorList = []
-    if len(transaction_ids) == 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.TransactionIdsInputMissing.value})
-    if len(transaction_ids) > 10:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.NumberOfTransactionIdsLimitExceeded.value})
-    if len(transaction_ids) > 0:
-        for transaction_id in transaction_ids:
-            if transaction_id <= 0:
-                validationErrorList.append(
-                    {"ErrorMessage": ResponseDescriptions.InvalidTransactionIdsInputValues.value})
-                break
-    return validationErrorList
 
 
 class TransactionByHashEndpoint(Resource):
@@ -66,7 +36,7 @@ class TransactionByHashEndpoint(Resource):
             request = {"transaction_hash": transaction_hash}
             response = {}
             # Validate User Input
-            validations_result = ValidateTransactionHash(transaction_hash)
+            validations_result = validate_transaction_hash(transaction_hash)
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                             "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
@@ -143,7 +113,7 @@ class TransactionEndpoint(Resource):
             request = {"transaction_ids": transaction_ids}
             response = {}
             # Validate User Input
-            validations_result = ValidateTransactionIds(transaction_ids)
+            validations_result = validate_transaction_ids(transaction_ids)
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                             "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,

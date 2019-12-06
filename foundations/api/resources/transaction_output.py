@@ -6,33 +6,15 @@
 import json
 
 import requests
-from common.utils import serialize_transaction_output
 from flask_restful import Resource
 from models.models import Output as TransactionOutput
 from models.models import db_session
 from models.response_codes import ResponseCodes
 from models.response_codes import ResponseDescriptions
+from utils.serialize import serialize_transaction_output
+from utils.validate import validate_transaction_ids
 from webargs import fields
 from webargs.flaskparser import use_kwargs
-
-
-def ValidateTransactionIds(transaction_ids):
-    """
-    Method to validate transaction ids
-    :param transaction_ids:
-    """
-    validationErrorList = []
-    if len(transaction_ids) == 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.TransactionIdsInputMissing.value})
-    if len(transaction_ids) > 10:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.NumberOfTransactionIdsLimitExceeded.value})
-    if len(transaction_ids) > 0:
-        for transaction_id in transaction_ids:
-            if transaction_id <= 0:
-                validationErrorList.append(
-                    {"ErrorMessage": ResponseDescriptions.InvalidTransactionIdsInputValues.value})
-                break
-    return validationErrorList
 
 
 class TransactionOutputEndpoint(Resource):
@@ -52,7 +34,7 @@ class TransactionOutputEndpoint(Resource):
             request = {"transaction_ids": transaction_ids}
             response = {}
             # Validate User Input
-            validations_result = ValidateTransactionIds(transaction_ids)
+            validations_result = validate_transaction_ids(transaction_ids)
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                             "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,

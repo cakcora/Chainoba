@@ -1,26 +1,18 @@
-from common.utils import serialize_transaction_output_address
+#!/usr/bin/env python3
+# Name: transaction_output_address.py
+# Usecase: Bitcoin transaction output address API
+# Functionality: GET
+
 from flask_restful import Resource
 from models.models import Output as TransactionOutput
 from models.models import OutputAddress as TransactionOutputAddress
 from models.models import db_session
 from models.response_codes import ResponseCodes
 from models.response_codes import ResponseDescriptions
+from utils.serialize import serialize_transaction_output_address
+from utils.validate import validate_transaction_id_and_transaction_output_id
 from webargs import fields
 from webargs.flaskparser import use_kwargs
-
-
-def ValidateTransactionIdAndTransactionOutputId(transaction_id, transaction_output_id):
-    """
-    Method to validate transaction id and transaction output id
-    :param transaction_id:
-    :param transaction_output_id:
-    """
-    validationErrorList = []
-    if transaction_id <= 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidTransactionIdInputValue.value})
-    if transaction_output_id <= 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidTransactionOutputIdInputValue.value})
-    return validationErrorList
 
 
 class GetTransactionOutputAddressByTransactionOutputId(Resource):
@@ -42,8 +34,8 @@ class GetTransactionOutputAddressByTransactionOutputId(Resource):
             request = {"transaction_id": transaction_id, "transaction_output_id": transaction_output_id}
             response = {}
             # Validate User Input
-            validations_result = ValidateTransactionIdAndTransactionOutputId(transaction_id,
-                                                                             transaction_output_id)
+            validations_result = validate_transaction_id_and_transaction_output_id(transaction_id,
+                                                                                   transaction_output_id)
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                             "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,

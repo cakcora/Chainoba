@@ -6,53 +6,16 @@
 import time
 from datetime import datetime, timedelta
 
-from common.utils import serialize_block, serialize_transaction
 from flask_restful import Resource
 from models.models import Block, Transaction
 from models.models import db_session
 from models.response_codes import ResponseCodes
 from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
+from utils.serialize import serialize_block, serialize_transaction
+from utils.validate import validate_block_input, validate_block_ids
 from webargs import fields
 from webargs.flaskparser import use_kwargs
-
-
-def ValidateBlockInput(year, month, day, date_offset):
-    """
-    Method to validate block input parameters
-    :param year:
-    :param month:
-    :param day:
-    :param date_offset:
-    """
-    validationErrorList = []
-    if day > 31 or day <= 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidDayInput.value})
-    if year > int(datetime.now().year) or year < 2009:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidYearInput.value})
-    if month > 12 or month <= 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidMonthInput.value})
-    if date_offset <= 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidDateOffsetInput.value})
-    return validationErrorList
-
-
-def ValidateBlockIds(block_ids):
-    """
-    Method to validate block ids sent as input parameters
-    :param block_ids:
-    """
-    validationErrorList = []
-    if len(block_ids) == 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.BlockIdsInputMissing.value})
-    if len(block_ids) > 5:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.NumberOfBlockIdsLimitExceeded.value})
-    if len(block_ids) > 0:
-        for block_id in block_ids:
-            if block_id <= 0:
-                validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidBlockIdsInputValues.value})
-                break
-    return validationErrorList
 
 
 class GetBlockDataByDateEndpoint(Resource):
@@ -77,7 +40,7 @@ class GetBlockDataByDateEndpoint(Resource):
         # Validate User Input
         try:
             request = {"day": day, "month": month, "year": year, "date_offset": date_offset}
-            validations_result = ValidateBlockInput(year, month, day, date_offset)
+            validations_result = validate_block_input(year, month, day, date_offset)
             response = {}
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
@@ -129,13 +92,13 @@ class GetTransactionDataByBlockID(Resource):
     def get(self, block_ids):
         """
         Method for GET request
-        :param block_ids: 
+        :param block_ids:
         """
         try:
             # Validate User Input
             request = {"block_ids": block_ids}
             response = {}
-            validations_result = ValidateBlockIds(block_ids)
+            validations_result = validate_block_ids(block_ids)
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                             "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
