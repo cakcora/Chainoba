@@ -7,7 +7,7 @@ class ShowPath:
 
     def __init__(self):
         self.graph = Network(height="750px", width="100%", directed=True)
-        with open('layouts/undirected_layout.json') as f:
+        with open(os.path.join(os.path.dirname(__file__), 'layouts', 'undirected_layout.json')) as f:
             self.options = json.load(f)
 
     def show_graph(self):
@@ -26,15 +26,3 @@ class ShowPath:
             self.graph.add_node(outputs)
             self.graph.add_edge(inputs, outputs, value=weights, title=weights)
         self.graph.options = self.options
-
-
-def main():
-    graph2 = ShowPath()
-    path = ["a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10"]
-    amount = [19, 18, 18, 18, 17, 16, 16, 19, 20]
-    graph2.add_path(path, amount)
-    graph2.show_graph()
-
-
-if __name__ == "__main__":
-    main()

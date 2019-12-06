@@ -7,7 +7,7 @@ class ShowTransactionGraph:
 
     def __init__(self):
         self.graph = Network(height="750px", width="100%", directed=True)
-        with open('layouts/directed_layout.json') as f:
+        with open(os.path.join(os.path.dirname(__file__), 'layouts', 'directed_layout.json')) as f:
             self.options = json.load(f)
 
     def show_graph(self):
@@ -28,14 +28,3 @@ class ShowTransactionGraph:
             self.graph.add_node(output_node, level=time_out, shape="square")
             self.graph.add_edge(input_node, output_node, value=weights, title=weights)
         self.graph.options = self.options
-
-
-def main():
-
-    graph2 = ShowTransactionGraph()
-    graph2.add_transaction(["T1","T2","T4","T3"],["T3","T6","T2","T2"], [1,3,2,2], [2,5,4,4], [2,2,5,2])
-    graph2.add_transaction(["T5", "T7", "T9", "T10"], ["T6", "T6", "T11", "T12"], [1, 1, 2, 2], [2, 2, 4, 4], [3, 2, 5, 2])
-    graph2.show_graph()
-
-if __name__== "__main__":
-    main()

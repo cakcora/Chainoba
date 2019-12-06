@@ -8,7 +8,7 @@ class ShowCluster:
 
     def __init__(self):
         self.graph = Network(height="750px", width="100%", directed=True)
-        with open('layouts/undirected_layout.json') as f:
+        with open(os.path.join(os.path.dirname(__file__), 'layouts', 'undirected_layout.json')) as f:
             self.options = json.load(f)
 
     def show_graph(self):
@@ -54,19 +54,3 @@ class ShowCluster:
                 i["color"] = "rgb" + str(colors[value - 1])
             except Exception:
                 pass
-
-def main():
-
-    graph2 = ShowCluster()
-    input =["a1", "a2", "a3", "a4","a21", "a22", "a23", "a24","a11", "a12", "a13", "a14"]
-    cluster_input = [1,2,3,1,2,3,1,2,3,1,2,3]
-    output = [ "a220", "a23", "a240", "a110", "a120", "a13", "a140", "a1", "a20", "a30", "a4", "a210"]
-    amount = [1,2,3,1,2,3,1,3,1,2,1]
-    graph2.add_address_graph(input,output,amount)
-    graph2.cluster_addresses(["a1","a2","a3","a4","a13"],[2,2,1,1,1])
-    graph2.cluster_addresses(input,cluster_input)
-
-    graph2.show_graph()
-
-if __name__== "__main__":
-    main()

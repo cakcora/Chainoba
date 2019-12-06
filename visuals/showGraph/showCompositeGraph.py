@@ -7,7 +7,7 @@ class ShowCompositeGraph:
 
     def __init__(self):
         self.graph = Network(height="750px", width="100%", directed=True)
-        with open('layouts/directed_layout.json') as f:
+        with open(os.path.join(os.path.dirname(__file__), 'layouts', 'directed_layout.json')) as f:
             self.options = json.load(f)
 
     def show_graph(self):
@@ -39,27 +39,3 @@ class ShowCompositeGraph:
             self.graph.add_node(outputs, level=level_output, label=label)
             self.graph.add_edge(transaction_node, outputs, value=weight, title=weight)
         self.graph.options = self.options
-
-
-def main():
-    graph2 = ShowCompositeGraph()
-
-    # call add_composite_node(nodes that are sending transactions ,amount of bitcoin corresponding nodes, output addresses,
-    # the amount each node recieve, time )
-    # for time you dont necessarily need to add the exact time just add natural numbers. the graph is represented based on
-    # the order of numbers from left to right
-
-    # address a2 and a3 have send 200 and 400 bitcoins to address a5 a6 a6 each one has received 300,100,100 bitcoins
-    graph2.add_composite_nodes(["a2", "a3"], [200, 400], ["a5", "a6", "a7"], [300, 100, 100], 1)
-    graph2.add_composite_nodes(["a6", "a7"], [10, 400], ["a12", "a13"], [400, 10], 2)
-    graph2.add_composite_nodes(["a12", "a15"], [10, 400], ["a16"], [410], 3)
-    graph2.add_composite_nodes(["a2", "a15"], [10, 400], ["a2"], [410], 3)
-    graph2.add_composite_nodes(["a2", "a12"], [10, 400], ["a2"], [410], 4)
-    graph2.add_composite_nodes(["a2", "a1"], [10, 400], ["a2"], [410], 5)
-    graph2.add_composite_nodes(["a2", "a15"], [10, 400], ["a2"], [410], 6)
-
-    graph2.show_graph()
-
-
-if __name__ == "__main__":
-    main()
