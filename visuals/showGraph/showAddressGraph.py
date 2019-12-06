@@ -2,6 +2,7 @@ import json
 from pyvis.network import Network
 import os
 
+
 class ShowAddressGraph:
 
     def __init__(self):
@@ -29,7 +30,6 @@ class ShowAddressGraph:
 
 def main():
     graph2 = ShowAddressGraph()
-
     # the fist list, represents input addresses the second is output addresses and the last list represents the corresponding bitcoin amount
     # transferred. address a1 has sent 1 bitcoin to a1. a2 has sent 1 bitcoin to a1
 

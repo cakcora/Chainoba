@@ -3,6 +3,7 @@ from pyvis.network import Network
 import os
 import random
 
+
 class ShowCluster:
 
     def __init__(self):
@@ -27,7 +28,8 @@ class ShowCluster:
             self.graph.add_edge(inputs, outputs, value=weight, title=weight)
         self.graph.options = self.options
 
-    def rand_colors(self, n):
+    @staticmethod
+    def rand_colors(n):
         ret = []
         r = int(random.random() * 256)
         g = int(random.random() * 256)

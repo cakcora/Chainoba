@@ -2,11 +2,12 @@ import json
 from pyvis.network import Network
 import os
 
+
 class ShowTransactionGraph:
 
     def __init__(self):
         self.graph = Network(height="750px", width="100%", directed=True)
-        with open('layouts/transaction_graph_layout.json') as f:
+        with open('layouts/address_graph_layout.json') as f:
             self.options = json.load(f)
 
     def show_graph(self):
@@ -15,8 +16,8 @@ class ShowTransactionGraph:
             os.makedirs("output")
         self.graph.show("output/transaction_graph.html")
 
-    def add_transaction(self,input, output, in_time, out_time, amount):
-        input_edge = zip(input, in_time, output, out_time, amount)
+    def add_transaction(self, inputs, outputs, in_time, out_time, amounts):
+        input_edge = zip(inputs, in_time, outputs, out_time, amounts)
         for i in input_edge:
             input_node = i[0]
             time_in = i[1]
@@ -26,7 +27,6 @@ class ShowTransactionGraph:
             self.graph.add_node(input_node, level=time_in, shape="square")
             self.graph.add_node(output_node, level=time_out, shape="square")
             self.graph.add_edge(input_node, output_node, value=weights, title=weights)
-
         self.graph.options = self.options
 
 
