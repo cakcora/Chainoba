@@ -3,7 +3,7 @@ from pyvis.network import Network
 import os
 
 
-class composite_graph:
+class ShowCompositeGraph:
 
     def __init__(self):
         self.graph = Network(height="750px", width="100%", directed=True)
@@ -20,7 +20,7 @@ class composite_graph:
 
     def add_composite_nodes(self, input,amount_in, output,amount_out,time):
 
-        level_input =time + time - 1
+        level_input = time + time - 1
         level_trans = level_input + 1
         level_output = level_input + 2
         T = "T"+str(level_trans)
@@ -50,7 +50,7 @@ class composite_graph:
 
 
 
-'''
+
 def main():
 
     graph2 = composite_graph()
@@ -74,4 +74,3 @@ def main():
 
 if __name__== "__main__":
     main()
-    '''

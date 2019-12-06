@@ -1,7 +1,7 @@
 {
   "nodes": {
     "size": 20,
-    "color" : {
+     "color" : {
       "color" : "rgb(116,204,244)",
       "highlight": "#F9A602",
       "hover": "#F9A602",
@@ -14,9 +14,8 @@
       "to": {
         "enable":true,
         "type" : "vee",
-        "scaleFactor": 0.2
+        "scaleFactor": 1
       }
-
     },
     "color" : {
       "color" : "rgb(116,204,244)",
@@ -25,16 +24,13 @@
       "inherit": "from",
       "opacity" :1.0
     },
-    "smooth": {
-      "enabled" : true,
-      "type": "continuous",
-      "roundness": 0.5
-    },
+    "smooth": false,
     "arrowStrikethrough" : false
   },
   "layout": {
     "hierarchical": {
-      "enabled": false,
+      "enabled": true,
+      "direction": "LR",
       "sortMethod": "directed"
     }
   },

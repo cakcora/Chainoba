@@ -14,9 +14,8 @@
       "to": {
         "enable":true,
         "type" : "vee",
-        "scaleFactor": 1
+        "scaleFactor": 0.2
       }
-
     },
     "color" : {
       "color" : "rgb(116,204,244)",

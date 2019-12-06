@@ -1,3 +1,5 @@
+git+https://github.com/ahmed-shariff/pyvis.git
+pyvis
 pandas
 scikit-learn
 altgraph==0.10.2

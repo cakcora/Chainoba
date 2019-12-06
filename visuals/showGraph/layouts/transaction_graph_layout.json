@@ -1,6 +1,7 @@
 {
   "nodes": {
     "size": 20,
+    "shape": "square",
     "color" : {
       "color" : "rgb(116,204,244)",
       "highlight": "#F9A602",
@@ -9,33 +10,28 @@
       "opacity" :1.0
     }
   },
-
   "edges": {
     "arrows": {
       "to": {
         "enable":true,
         "type" : "vee",
-        "scaleFactor": 0.2
+        "scaleFactor": 0.5
       }
-
     },
     "color" : {
-      "color" : "rgb(28,163,236)",
+      "color" : "rgb(116,204,244)",
       "highlight": "#F9A602",
       "hover": "#F9A602",
       "inherit": "from",
       "opacity" :1.0
     },
-    "smooth": {
-      "enabled" : true,
-      "type": "curvedCCW",
-      "roundness": 0.2
-    },
+    "smooth": false,
     "arrowStrikethrough" : false
   },
   "layout": {
     "hierarchical": {
-      "enabled": false,
+      "enabled": true,
+      "direction": "LR",
       "sortMethod": "directed"
     }
   },
