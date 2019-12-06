@@ -1,26 +1,47 @@
+import anomaly.pump_prediction
 
-# pump and dump prediction
-# get the data price for pump and dump prediction
-def load_price_data():
-    return 0
-
-
-# pump and dump prediction
-# predict the pump possibilities of all the coins in the exchange
-def generate_possibilities():
-    return []
+"""
+----- Pump and Dump prediction -----
+Given all information about all the necessary features, apply random forest
+to predict which coin is going to be pumped.
+"""
 
 
-# pump and dump prediction
-# predict the pump possibility of the given coin using Random Forest, 0.0 <= return value <= 1.0
-def predict_coin_possibility(given_coin):
-    return 0
+# get the pump activities from telegram channels
+# # return all the pumps and all the (unique) coins that have been pumped
+def get_pump_activities():
+    return anomaly.pump_prediction.get_pump_activities()
 
 
-# pump and dump prediction
-# return all the coins with predicted possibilities greater than a chosen threshold (0.0 <= threshold <= 1.0)
-def get_predicted_pumped_coins(threshold: float):
-    return []
+# get information about the involved exchanges in the known pumps
+# return the information about those exchanges
+def get_coin_list(pumps):
+    return anomaly.pump_prediction.get_coin_list(pumps)
+
+
+# get the data for all coins listed on Cryptopia.
+# return the data so we can train the random forest models with it.
+def load_pump_data():
+    anomaly.pump_prediction.load_data()
+
+
+# prepare the data for training and testing
+# the data is split with different ratios for different random forest models
+# return all these set of X and Y in training data so we can use them to train the models
+def split_data(data):
+    return anomaly.pump_prediction.split_data(data)
+
+
+# train a given random forest model with given training data and cross validation
+# return the predictions and the scores of the model, using built in sklearn random
+# forest library
+def train_rf_model(X_data, Y_data, rf_classifier, cross_validation):
+    return anomaly.pump_prediction.run_random_forest(X_data, Y_data, rf_classifier, cross_validation)
+
+
+# given the data, we create, train and test the random forest models
+def get_pump_predictions(X_reg, Y_reg, X_1, Y_1, X_2, Y_2):
+    return anomaly.pump_prediction.predict_results(X_reg, Y_reg, X_1, Y_1, X_2, Y_2)
 
 
 # ---- Pump and Dump - Kainth ----
