@@ -8,53 +8,43 @@ class ShowCompositeGraph:
     def __init__(self):
         self.graph = Network(height="750px", width="100%", directed=True)
 
-        with open('layouts\composite_graph_layout.json') as f:
-            self.composite_options = json.load(f)
+        with open('layouts/composite_graph_layout.json') as f:
+            self.options = json.load(f)
 
 
     def show_graph(self):
-        dirOutput = "output"
-        if not os.path.exists(dirOutput):
+        dir_output = "output"
+        if not os.path.exists(dir_output):
             os.makedirs("output")
-        self.graph.show("output\composite_graph.html")
+        self.graph.show("output/composite_graph.html")
 
-    def add_composite_nodes(self, input,amount_in, output,amount_out,time):
-
+    def add_composite_nodes(self, inputs, amount_in, outputs, amount_out, time):
         level_input = time + time - 1
         level_trans = level_input + 1
         level_output = level_input + 2
         T = "T"+str(level_trans)
-        self.graph.add_node(T, level=level_trans, shape="square", color ="rgb(28,163,236)")
-        input_edge = zip(input, amount_in)
+        self.graph.add_node(T, level=level_trans, shape="square", color="rgb(28,163,236)")
+        input_edge = zip(inputs, amount_in)
 
         for i in input_edge:
-            input = i[0] + str(level_input)
+            inputs = i[0] + str(level_input)
             label = i[0]
             weight = i[1]
-            self.graph.add_node(input, level=level_input, label =label)
-            self.graph.add_edge(input, T, value = weight)
+            self.graph.add_node(inputs, level=level_input, label=label)
+            self.graph.add_edge(inputs, T, value=weight)
 
-        output_edge = zip(output, amount_out)
+        output_edge = zip(outputs, amount_out)
         for j in output_edge:
             label = j[0]
-            output = j[0] + str(level_output)
+            outputs = j[0] + str(level_output)
             weight = j[1]
-            self.graph.add_node(output, level=level_output, label = label)
-            self.graph.add_edge(T, output, value=weight, title = weight)
-
-        self.graph.options = self.composite_options
-
-
-    def show(self):
-        self.show_graph()
-
-
-
+            self.graph.add_node(outputs, level=level_output, label=label)
+            self.graph.add_edge(T, outputs, value=weight, title=weight)
+        self.graph.options = self.options
 
 def main():
 
-    graph2 = composite_graph()
-
+    graph2 = ShowCompositeGraph()
     
     #call add_composite_node(nodes that are sending transactions ,amount of bitcoin corresponding nodes, output addresses, 
     #the amount each node recieve, time )

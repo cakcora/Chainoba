@@ -8,14 +8,14 @@ class ShowPath:
     def __init__(self):
         self.graph = Network(height="750px", width="100%", directed=True)
 
-        with open('layouts\path_layout.json') as f:
-            self.composite_options = json.load(f)
+        with open('layouts/path_layout.json') as f:
+            self.options = json.load(f)
 
     def show_graph(self):
-        dirOutput = "output"
-        if not os.path.exists(dirOutput):
+        dir_output = "output"
+        if not os.path.exists(dir_output):
             os.makedirs("output")
-        self.graph.show("output\path_graph.html")
+        self.graph.show("output/path_graph.html")
 
     def add_path(self, input, amount):
 
@@ -29,7 +29,7 @@ class ShowPath:
             self.graph.add_node(output)
             self.graph.add_edge(input, output, value=weight, title=weight)
 
-        self.graph.options = self.composite_options
+        self.graph.options = self.options
 
     def show(self):
         self.show_graph()

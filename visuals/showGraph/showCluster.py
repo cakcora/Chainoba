@@ -7,27 +7,27 @@ class ShowCluster:
 
     def __init__(self):
         self.graph = Network(height="750px", width="100%", directed=True)
-        with open('layouts\\cluster_layout.json') as f:
-            self.composite_options = json.load(f)
+        with open('layouts/cluster_layout.json') as f:
+            self.options = json.load(f)
 
     def show_graph(self):
-        dirOutput = "output"
-        if not os.path.exists(dirOutput):
+        dir_output = "output"
+        if not os.path.exists(dir_output):
             os.makedirs("output")
-        self.graph.show("output\\cluster_gragh.html")
+        self.graph.show("output/cluster_graph.html")
 
-    def add_address_graph(self, input, output, amount):
-        input_edge = zip(input, output, amount)
+    def add_address_graph(self, inputs, outputs, amounts):
+        input_edge = zip(inputs, outputs, amounts)
         for i in input_edge:
-            input = i[0]
-            output = i[1]
+            inputs = i[0]
+            outputs = i[1]
             weight = i[2]
-            self.graph.add_node(input)
-            self.graph.add_node(output)
-            self.graph.add_edge(input, output, value=weight,title = weight)
-        self.graph.options = self.composite_options
+            self.graph.add_node(inputs)
+            self.graph.add_node(outputs)
+            self.graph.add_edge(inputs, outputs, value=weight, title=weight)
+        self.graph.options = self.options
 
-    def colors(self, n):
+    def rand_colors(self, n):
         ret = []
         r = int(random.random() * 256)
         g = int(random.random() * 256)
@@ -44,7 +44,8 @@ class ShowCluster:
         return ret
 
     def cluster_addresses(self, address, cluster):
-        colors = self.colors(4)
+        num_clusters = max(cluster)
+        colors = self.rand_colors(num_clusters)
         for i in self.graph.nodes:
             try:
                 value = cluster[address.index(i["id"])]
@@ -54,7 +55,7 @@ class ShowCluster:
 
 def main():
 
-    graph2 = showCluster()
+    graph2 = ShowCluster()
     input =["a1", "a2", "a3", "a4","a21", "a22", "a23", "a24","a11", "a12", "a13", "a14"]
     cluster_input = [1,2,3,1,2,3,1,2,3,1,2,3]
     output = [ "a220", "a23", "a240", "a110", "a120", "a13", "a140", "a1", "a20", "a30", "a4", "a210"]
