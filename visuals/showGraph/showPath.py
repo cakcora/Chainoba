@@ -1,17 +1,9 @@
-import json
-from pyvis.network import Network
-import os
+from visuals.showGraph._show_graph import ShowGraphABC
 
 
-class ShowPath:
-
+class ShowPath(ShowGraphABC):
     def __init__(self):
-        self.graph = Network(height="750px", width="100%", directed=True)
-        with open(os.path.join(os.path.dirname(__file__), 'layouts', 'undirected_layout.json')) as f:
-            self.options = json.load(f)
-
-    def show_graph(self):
-        self.graph.show("path_graph.html")
+        super().__init__(ShowGraphABC.UNDIRECTED, "path")
 
     def add_path(self, inputs, amount):
         input_edge = zip(inputs[0:len(inputs) - 1], inputs[1:len(inputs)], amount)

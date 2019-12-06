@@ -1,19 +1,11 @@
-import json
-from pyvis.network import Network
-import os
+from visuals.showGraph._show_graph import ShowGraphABC
 
 
-class ShowCompositeGraph:
-
+class ShowCompositeGraph(ShowGraphABC):
     def __init__(self):
-        self.graph = Network(height="750px", width="100%", directed=True)
-        with open(os.path.join(os.path.dirname(__file__), 'layouts', 'directed_layout.json')) as f:
-            self.options = json.load(f)
+        super().__init__(ShowGraphABC.DIRECTED, "composite")
 
-    def show_graph(self):
-        self.graph.show("composite_graph.html")
-
-    def add_composite_nodes(self, inputs, amount_in, outputs, amount_out, time):
+    def add_node(self, inputs, amount_in, outputs, amount_out, time):
         level_input = time + time - 1
         level_trans = level_input + 1
         level_output = level_input + 2

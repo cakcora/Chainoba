@@ -1,19 +1,11 @@
-import json
-from pyvis.network import Network
-import os
+from visuals.showGraph._show_graph import ShowGraphABC
 
 
-class ShowTransactionGraph:
-
+class ShowTransactionGraph(ShowGraphABC):
     def __init__(self):
-        self.graph = Network(height="750px", width="100%", directed=True)
-        with open(os.path.join(os.path.dirname(__file__), 'layouts', 'directed_layout.json')) as f:
-            self.options = json.load(f)
+        super().__init__(ShowGraphABC.DIRECTED, "transaction")
 
-    def show_graph(self):
-        self.graph.show("transaction_graph.html")
-
-    def add_transaction(self, inputs, outputs, in_time, out_time, amounts):
+    def add_node(self, inputs, outputs, in_time, out_time, amounts):
         input_edge = zip(inputs, in_time, outputs, out_time, amounts)
         for i in input_edge:
             input_node = i[0]

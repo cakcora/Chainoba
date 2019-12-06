@@ -1,19 +1,11 @@
-import json
-from pyvis.network import Network
-import os
+from visuals.showGraph._show_graph import ShowGraphABC
 
 
-class ShowAddressGraph:
-
+class ShowAddressGraph(ShowGraphABC):
     def __init__(self):
-        self.graph = Network(height="750px", width="100%", directed=True)
-        with open(os.path.join(os.path.dirname(__file__), 'layouts', 'undirected_layout.json')) as f:
-            self.options = json.load(f)
+        super().__init__(ShowGraphABC.UNDIRECTED, "address")
 
-    def show_graph(self):
-        self.graph.show("address_graph.html")
-
-    def add_address_node(self, inputs, outputs, amounts):
+    def add_node(self, inputs, outputs, amounts):
         input_edge = zip(inputs, outputs, amounts)
         for i in input_edge:
             inputs = i[0]
