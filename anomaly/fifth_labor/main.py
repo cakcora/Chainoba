@@ -4,10 +4,13 @@ import textwrap
 
 sys.path.append("../..")
 
-import anomaly.fifth_labor.build_graph as Graph
-import anomaly.fifth_labor.graph_util as GraphHelper
-import anomaly.fifth_labor.load_data as db
+import anomaly.fifth_labor.DataLoader as dl
+import anomaly.fifth_labor.GraphHelper as gh
+import anomaly.fifth_labor.GraphX as gx
 
+"""
+CLI for the fifth labor project
+"""
 
 def run(args):
     """
@@ -33,32 +36,35 @@ def run(args):
     print("-------------------------------------------------------------------------")
 
     try:
-        ransomware_data = db.load_ransomware_data(num_of_address=__number_of_ransomware__,
-                                                  file_name=__ransomware_file_name__)
+        data_loader = dl.DataLoader(number_of_address=__number_of_ransomware__,
+                                    file_name=__ransomware_file_name__)
+        ransomware_data = data_loader.load_ransomware_data()
         print('Ransomware address loading complete.\n')
+
     except Exception as e:
         print(e)
         return
+    graph_helper = gh.GraphHelper(ransomware_df=ransomware_data)
+    edge_list = graph_helper.get_edge_list()
 
-    edge_list = GraphHelper.get_edge_list(ransomware_df=ransomware_data)
-
-    graph = Graph.build_graph(edge_list_df=edge_list)
+    graph = gx.GraphX(edge_list=edge_list)
+    graph_ref = graph.build_graph()
     print("Graph building successful!!!!\n")
 
-    number_of_nodes = graph.number_of_nodes()
-    number_of_edges = graph.number_of_edges()
+    number_of_nodes = graph_ref.number_of_nodes()
+    number_of_edges = graph_ref.number_of_edges()
 
     print('Number of nodes: {}'.format(number_of_nodes))
     print('Number of edges: {}'.format(number_of_edges))
 
     if __find_loop__ is True:
         print('\nFinding loops..')
-        loop_list = Graph.get_loop(graph=graph)
+        loop_list = graph.get_loop()
         print('Number of loop detected: {}'.format(str(len(loop_list))))
 
     if __find_split_address__ is True:
         print('\nFinding Split address..')
-        split_node_list = Graph.get_split_nodes(graph=graph, output_address_threshold=__output_address_threshold__)
+        split_node_list = graph.get_split_nodes(output_address_threshold=__output_address_threshold__)
         print('Number of split node detected: {}'.format(str(len(split_node_list))))
 
 
