@@ -16,13 +16,14 @@ import networkx as nx
 import pandas as pd
 import numpy as np
 import requests
-from getAPIData import getGraph
+from graph.getGraph.getAPIData import getGraph
 BTC_REC_URL="http://159.203.28.234:5000/bitcoin/total_btc_received"
 LOA_URL="http://159.203.28.234:5000/bitcoin/activity_level"
 SCC_URL="http://159.203.28.234:5000/bitcoin/strongly_connected_component"
 WCC_URL="http://159.203.28.234:5000/bitcoin/weakly_connected_component"
 ChianletsOCC_URL="http://159.203.28.234:5000/bitcoin/chainlets_occurance"
 ChianletsOCCAmt_URL="http://159.203.28.234:5000/bitcoin/chainlets_occurance_amount"
+
 def TotalBTCreceived(curDate,ntObj,dfTotRec):
     """ Total the number of BTC received by the addresses in the graph on daily basis"""
     try:
@@ -65,6 +66,8 @@ def TotalBTCreceived(curDate,ntObj,dfTotRec):
     except Exception as e:
         return 'Fail', e
     return "success", dfTotRec
+
+
 def diffChainlets(curDate,ntObj,dfChainletsOcc):
     """total number of different chainlets(Split,Merge and Transition) in a graph"""
     try:
@@ -97,6 +100,8 @@ def diffChainlets(curDate,ntObj,dfChainletsOcc):
         return "Success",dfChainletsOcc
     except Exception as e:
         return 'Fail', e
+
+
 def diffChainletMatrix(curDate,dbObject):
     """Occurrence matrix and Amount Matrix of 20X20 Occurrence Matrix"""
     try:
@@ -116,6 +121,8 @@ def diffChainletMatrix(curDate,dbObject):
         return occ,aocc
     except Exception as e:
         return 'Fail', e
+
+
 def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
     """total amount of different chainlets(Split,Merge and Transition) in a graph """
     try:
@@ -147,6 +154,7 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
     except Exception as e:
         return 'Fail', e
 
+
 def StronglyConnectedComponents(curDate,ntObj,dfSCC):
     """Number of Strongly Connected Components in the graph"""
     try:
@@ -157,6 +165,8 @@ def StronglyConnectedComponents(curDate,ntObj,dfSCC):
         return "Success", dfSCC
     except Exception as e:
         return 'Fail', e
+
+
 def WeaklyConnectedComponents(curDate,ntObj,dfWCC):
     """Number of Weakly Connected Components in the graph"""
     try:
@@ -168,6 +178,7 @@ def WeaklyConnectedComponents(curDate,ntObj,dfWCC):
 
     except Exception as e:
         return 'Fail', e
+
 
 def LevelOfActivity(curDate,ntObj,dfLOActivity):
     """Analysis of level of Activity for the all the addresses on daily basis """
