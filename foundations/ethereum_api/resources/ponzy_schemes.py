@@ -1,26 +1,31 @@
+#!/usr/bin/env python3
+# Name: ponzi_scheme.py
+# Usecase: Ethereum Ponzi Scheme API
+# Functionality: GET
+
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import PonziAnomaly, db_session
-
-
-def serialize_ponzi_data(ponzi_Anomaly_data):
-    return {"Id": ponzi_Anomaly_data.id,
-            "Address": ponzi_Anomaly_data.address,
-            "Name": ponzi_Anomaly_data.name,
-            "Label": ponzi_Anomaly_data.label
-            }
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
+from utils.serialize import serialize_ponzi_data
 
 
 class GetPonziAnomalyDataEndpoint(Resource):
+    """
+    Class implementing get ponzi anomaly data API
+    """
+
     def get(self):
+        """
+        Method for GET request
+        """
         # Validate User Input
         try:
             # perform the query
-            ponzi_Anomaly_data = db_session.query(PonziAnomaly).order_by(PonziAnomaly.id.asc()).all()
-            if ponzi_Anomaly_data is not None and len(list(ponzi_Anomaly_data)) != 0:
+            ponzi_anomaly_data = db_session.query(PonziAnomaly).order_by(PonziAnomaly.id.asc()).all()
+            if ponzi_anomaly_data is not None and len(list(ponzi_anomaly_data)) != 0:
                 ponzi_Anomaly_list = []
-                for ponzi_Anomaly in ponzi_Anomaly_data:
+                for ponzi_Anomaly in ponzi_anomaly_data:
                     ponzi_Anomaly_list.append(serialize_ponzi_data(ponzi_Anomaly))
                 response = {
                     "ResponseCode": ResponseCodes.Success.value,
@@ -36,12 +41,4 @@ class GetPonziAnomalyDataEndpoint(Resource):
                         "ResponseDesc": ResponseCodes.InternalError.name,
                         "ErrorMessage": str(ex)}
         finally:
-            # file = open('/EthereumAPI/Logs/GetPonziAnomalyDataLog.txt', 'w')
-            # file.write("Time:" + str(datetime.now()) + "\r\n")
-            # file.write("Request : " + request + "\r\n")
-            # file.write("Response : " + response + "\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.close()
             return response

@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# Name: models.py
+# Usecase: Contains the table definitions for Ethereum data
+
 from sqlalchemy import Column, Integer, String, ForeignKey, BigInteger
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base

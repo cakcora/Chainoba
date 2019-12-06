@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# Name: serialize.py
+# Usecase: Serialize bitcoin data
+
 from datetime import datetime
 
 from models.models import Address

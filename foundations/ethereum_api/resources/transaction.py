@@ -1,57 +1,26 @@
+#!/usr/bin/env python3
+# Name: transactions.py
+# Usecase: Transaction API
+# Functionality: GET
+
 import time
 from datetime import datetime, timedelta
 
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import Transaction, EthereumToken, db_session
-from sqlalchemy import and_
-from sqlalchemy import or_
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
+from sqlalchemy import and_, or_
+from utils.serialize import *
+from utils.validate import *
 from webargs import fields
 from webargs.flaskparser import use_kwargs
 
 
-def serialize_transaction(transaction_data):
-    return {"TransactionId": transaction_data.id,
-            "InputNodeAddress": transaction_data.from_node,
-            "OutputNodeAddress": transaction_data.to_node,
-            "Timestamp": datetime.utcfromtimestamp(transaction_data.ntime).strftime('%Y-%m-%d %H:%M:%S'),
-            "TokenAmount": transaction_data.tk_amount
-            }
-
-
-def serialize_transaction_with_token_data(transaction_data, token):
-    return {"TransactionId": transaction_data.id,
-            "InputNodeAddress": transaction_data.from_node,
-            "OutputNodeAddress": transaction_data.to_node,
-            "Timestamp": datetime.utcfromtimestamp(transaction_data.ntime).strftime('%Y-%m-%d %H:%M:%S'),
-            "TokenAmount": transaction_data.tk_amount,
-            'TokenId': token is not None and token.token_id or '',
-            'TokenName': token is not None and token.token_name or '',
-            }
-
-
-def ValidateNodeInput(self, node_address):
-    validationErrorList = []
-    if node_address <= 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidNodeAddress.value})
-    return validationErrorList
-
-
-def ValidateInput(self, year, month, day, date_offset):
-    validationErrorList = []
-    if day > 31 or day <= 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidDayInput.value})
-    if year > int(datetime.now().year) or year < 2016:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidYearInput.value})
-    if month > 12 or month <= 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidMonthInput.value})
-    if date_offset <= 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidDateOffsetInput.value})
-    return validationErrorList
-
-
 class GetTransactionDataByDateAndTokenNameEndpoint(Resource):
+    """
+    Class implementing get transaction data by date and token name API
+    """
     args = {"day": fields.Integer(),
             "month": fields.Integer(),
             "year": fields.Integer(),
@@ -61,10 +30,18 @@ class GetTransactionDataByDateAndTokenNameEndpoint(Resource):
 
     @use_kwargs(args)
     def get(self, year, month, day, date_offset, token_name):
+        """
+        Method for GET request
+        :param year:
+        :param month:
+        :param day:
+        :param date_offset:
+        :param token_name:
+        """
         # Validate User Input
         try:
             request = {"day": day, "month": month, "year": year, "date_offset": date_offset, "token_name": token_name}
-            validations_result = ValidateInput(self, year, month, day, date_offset)
+            validations_result = validate_input(year, month, day, date_offset)
             response = {}
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
@@ -108,26 +85,25 @@ class GetTransactionDataByDateAndTokenNameEndpoint(Resource):
                         "ResponseDesc": ResponseCodes.InternalError.name,
                         "ErrorMessage": str(ex)}
         finally:
-            # file = open('/EthereumAPI/Logs/GetTransactionDataByDateLog.txt', 'w')
-            # file.write("Time:" + str(datetime.now()) + "\r\n")
-            # file.write("Request : " + request + "\r\n")
-            # file.write("Response : " + response + "\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.close()
             return response
 
 
 class GetTransactionDataByNodeEndpoint(Resource):
+    """
+    Class implementing get transaction data by node API
+    """
     args = {"node_address": fields.Integer()}
 
     @use_kwargs(args)
     def get(self, node_address):
+        """
+        Method for GET request
+        :param node_address:
+        """
         # Validate User Input
         try:
             request = {"node_address": node_address}
-            validations_result = ValidateNodeInput(self, node_address)
+            validations_result = validate_node_input(node_address)
             response = {}
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
@@ -159,12 +135,4 @@ class GetTransactionDataByNodeEndpoint(Resource):
                         "ResponseDesc": ResponseCodes.InternalError.name,
                         "ErrorMessage": str(ex)}
         finally:
-            # file = open('/EthereumAPI/Logs/GetTransactionDataByNodeLog.txt', 'w')
-            # file.write("Time:" + str(datetime.now()) + "\r\n")
-            # file.write("Request : " + request + "\r\n")
-            # file.write("Response : " + response + "\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.close()
             return response

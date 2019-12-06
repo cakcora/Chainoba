@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# Name: validate.py
+# Usecase: Validate bitcoin data
+
 from datetime import datetime
 
 from models.response_codes import ResponseDescriptions

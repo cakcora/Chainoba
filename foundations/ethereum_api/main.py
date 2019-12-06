@@ -1,3 +1,12 @@
+#!/usr/bin/env python3
+# Name: main.py
+# Usecase: Contains all Ethereum API definitions
+# Functionalities:
+#   1. Query Ethereum data
+#       a. get transactions by date and token name
+#       b. get transactions by date
+#       c. get ponzi schemes
+
 from flask import Flask
 from flask_restful import Api
 from resources.ponzy_schemes import GetPonziAnomalyDataEndpoint
