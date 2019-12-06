@@ -1,7 +1,12 @@
+#!/usr/bin/env python3
+# Name: address_feature.py
+# Usecase: Graph APIs: Address Feature
+# Functionality: GET & POST
+
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import db_session, AddressFeature
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
 from webargs import fields
@@ -9,6 +14,10 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_feature_address(address_feature: AddressFeature):
+    """
+    Method to serialize feature address data
+    :param address_feature:
+    """
     return {"id": address_feature.id,
             "date": address_feature.date.strftime('%Y-%m-%d'),
             "Address": address_feature.address.strip(),
@@ -25,6 +34,9 @@ def serialize_feature_address(address_feature: AddressFeature):
 
 
 class AddressFeatureByDateEndpoint(Resource):
+    """
+    Class implementing address feature by date
+    """
     get_args = {"date": fields.Date(),
                 "address": fields.String()
                 }
@@ -43,28 +55,26 @@ class AddressFeatureByDateEndpoint(Resource):
     }
 
     @use_kwargs(insert_args)
-    def post(self, Date,
-             Address,
-             No_of_SCC=None,
-             No_of_WCC=None,
-             BTC_Received=None,
-             BTC_Sent=None,
-             Activity_Level=None,
-             Clustering_Coeff=None,
-             PearsonCC=None,
-             Maximal_Balance=None,
-             Current_Balance=None):
-        address_feature = AddressFeature(date=Date,
-                                         address=Address,
-                                         no_of_scc=No_of_SCC,
-                                         no_of_wcc=No_of_WCC,
-                                         btc_received=BTC_Received,
-                                         btc_sent=BTC_Sent,
-                                         activity_level=Activity_Level,
-                                         clustering_coeff=Clustering_Coeff,
-                                         pearsoncc=PearsonCC,
-                                         maximal_balance=Maximal_Balance,
-                                         current_balance=Current_Balance)
+    def post(self, Date, Address, No_of_SCC=None, No_of_WCC=None, BTC_Received=None, BTC_Sent=None, Activity_Level=None,
+             Clustering_Coeff=None, PearsonCC=None, Maximal_Balance=None, Current_Balance=None):
+        """
+        Method for POST request
+        :param Date:
+        :param Address:
+        :param No_of_SCC:
+        :param No_of_WCC:
+        :param BTC_Received:
+        :param BTC_Sent:
+        :param Activity_Level:
+        :param Clustering_Coeff:
+        :param PearsonCC:
+        :param Maximal_Balance:
+        :param Current_Balance:
+        """
+        address_feature = AddressFeature(date=Date, address=Address, no_of_scc=No_of_SCC, no_of_wcc=No_of_WCC,
+                                         btc_received=BTC_Received, btc_sent=BTC_Sent, activity_level=Activity_Level,
+                                         clustering_coeff=Clustering_Coeff, pearsoncc=PearsonCC,
+                                         maximal_balance=Maximal_Balance, current_balance=Current_Balance)
         db_session.add(address_feature)
         try:
             db_session.commit()
@@ -82,6 +92,11 @@ class AddressFeatureByDateEndpoint(Resource):
 
     @use_kwargs(get_args)
     def get(self, date=None, address=None):
+        """
+        Method for GET request
+        :param date:
+        :param address:
+        """
 
         error = self.validateAddressFeatureInput(address, date)
         if error is not None:
@@ -104,6 +119,11 @@ class AddressFeatureByDateEndpoint(Resource):
         return response
 
     def validateAddressFeatureInput(self, address, date):
+        """
+        Method to validate address feature input data
+        :param address:
+        :param date:
+        """
         error = None
         if address is None:
             error = ResponseDescriptions.AddressInputMissing

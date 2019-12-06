@@ -1,7 +1,12 @@
+#!/usr/bin/env python3
+# Name: clustering_coefficient.py
+# Usecase: Graph APIs: Clustering Coefficient
+# Functionality: GET & POST
+
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import db_session, ClusteringCoefficient
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
 from webargs import fields
@@ -9,6 +14,10 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_clustering_coefficient(clustering_coefficient: ClusteringCoefficient):
+    """
+    Method to serialize clustering coefficient data
+    :param clustering_coefficient:
+    """
     return {"Id": clustering_coefficient.id,
             "Date": clustering_coefficient.date.strftime('%Y-%m-%d'),
             "ClustCoeff": clustering_coefficient.clust_coeff
@@ -16,16 +25,22 @@ def serialize_clustering_coefficient(clustering_coefficient: ClusteringCoefficie
 
 
 class ClusteringCoefficientByDateEndpoint(Resource):
-    get_args = {"Date": fields.Date()
-                }
+    """
+    Class implementing clustering coefficient by date
+    """
+    get_args = {"Date": fields.Date()}
     insert_args = {
         "Date": fields.Date(),
         "ClustCoeff": fields.Float()
     }
 
     @use_kwargs(insert_args)
-    def post(self, Date,
-             ClustCoeff=None):
+    def post(self, Date, ClustCoeff=None):
+        """
+        Method for POST request
+        :param Date:
+        :param ClustCoeff:
+        """
 
         clustering_coefficient = ClusteringCoefficient(date=Date,
                                                        clust_coeff=ClustCoeff)
@@ -47,6 +62,10 @@ class ClusteringCoefficientByDateEndpoint(Resource):
 
     @use_kwargs(get_args)
     def get(self, Date=None):
+        """
+        Method for GET request
+        :param Date:
+        """
 
         error = self.validateClusteringCoefficientInput(Date)
         if error is not None:
@@ -70,6 +89,10 @@ class ClusteringCoefficientByDateEndpoint(Resource):
         return response
 
     def validateClusteringCoefficientInput(self, date):
+        """
+        Method to validate clustering coefficient input date
+        :param date:
+        """
         error = None
 
         if date is None:

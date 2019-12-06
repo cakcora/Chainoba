@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# Name: response_codes.py
+# Usecase: Contains all the API response codes for Bitcoin APIs
+
 from enum import Enum
 
 

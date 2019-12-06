@@ -1,7 +1,12 @@
+#!/usr/bin/env python3
+# Name: most_active_entity.py
+# Usecase: Graph APIs: Most Active Entity
+# Functionality: GET & POST
+
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import db_session, MostActiveEntity
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
 from webargs import fields
@@ -9,6 +14,10 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_most_active_entity(most_active_entity: MostActiveEntity):
+    """
+    Method to serialize most active entity
+    :param most_active_entity:
+    """
     return {"Id": most_active_entity.id,
             "Date": most_active_entity.date.strftime('%Y-%m-%d'),
             "Addr": most_active_entity.addr,
@@ -17,8 +26,10 @@ def serialize_most_active_entity(most_active_entity: MostActiveEntity):
 
 
 class MostActiveEntityByDateEndpoint(Resource):
-    get_args = {"Date": fields.Date()
-                }
+    """
+    Class implementing most active entity by date
+    """
+    get_args = {"Date": fields.Date()}
     insert_args = {
         "Date": fields.Date(),
         "Addr": fields.String(),
@@ -26,9 +37,13 @@ class MostActiveEntityByDateEndpoint(Resource):
     }
 
     @use_kwargs(insert_args)
-    def post(self, Date,
-             Addr=None,
-             NoOfTrans=None):
+    def post(self, Date, Addr=None, NoOfTrans=None):
+        """
+        Method for POSt request
+        :param Date:
+        :param Addr:
+        :param NoOfTrans:
+        """
 
         most_active_entity = MostActiveEntity(date=Date,
                                               addr=Addr,
@@ -51,7 +66,10 @@ class MostActiveEntityByDateEndpoint(Resource):
 
     @use_kwargs(get_args)
     def get(self, Date=None):
-
+        """
+        Method for GET request
+        :param Date:
+        """
         error = self.validateMostActiveEntityInput(Date)
         if error is not None:
             return {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
@@ -74,6 +92,10 @@ class MostActiveEntityByDateEndpoint(Resource):
         return response
 
     def validateMostActiveEntityInput(self, date):
+        """
+        Method to validate active entity input
+        :param date:
+        """
         error = None
 
         if date is None:

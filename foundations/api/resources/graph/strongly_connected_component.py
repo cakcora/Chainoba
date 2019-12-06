@@ -1,7 +1,12 @@
+#!/usr/bin/env python3
+# Name: strongly_connected_component.py
+# Usecase: Graph APIs: Strongly Connected Component
+# Functionality: GET & POST
+
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import db_session, StronglyConnectedComponent
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
 from webargs import fields
@@ -9,6 +14,10 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_strongly_connected_component(strongly_connected_component: StronglyConnectedComponent):
+    """
+    Method to serialize strongly connected component
+    :param strongly_connected_component:
+    """
     return {"Id": strongly_connected_component.id,
             "Date": strongly_connected_component.date.strftime('%Y-%m-%d'),
             "SCC": strongly_connected_component.scc
@@ -16,16 +25,22 @@ def serialize_strongly_connected_component(strongly_connected_component: Strongl
 
 
 class StronglyConnectedComponentByDateEndpoint(Resource):
-    get_args = {"Date": fields.Date()
-                }
+    """
+    Class implementing strongly connected component by date
+    """
+    get_args = {"Date": fields.Date()}
     insert_args = {
         "Date": fields.Date(),
         "SCC": fields.Integer()
     }
 
     @use_kwargs(insert_args)
-    def post(self, Date,
-             SCC=None):
+    def post(self, Date, SCC=None):
+        """
+        Method for POST request
+        :param Date:
+        :param SCC:
+        """
 
         strongly_connected_component = StronglyConnectedComponent(date=Date,
                                                                   scc=SCC)
@@ -47,6 +62,10 @@ class StronglyConnectedComponentByDateEndpoint(Resource):
 
     @use_kwargs(get_args)
     def get(self, Date=None):
+        """
+        Method for GET request
+        :param Date:
+        """
 
         error = self.validateStronglyConnectedComponentInput(Date)
         if error is not None:
@@ -70,6 +89,10 @@ class StronglyConnectedComponentByDateEndpoint(Resource):
         return response
 
     def validateStronglyConnectedComponentInput(self, date):
+        """
+        Method to validate strongly connected component input date
+        :param date:
+        """
         error = None
 
         if date is None:

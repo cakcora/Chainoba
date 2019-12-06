@@ -1,46 +1,72 @@
+#!/usr/bin/env python3
+# Name: transaction.py
+# Usecase: Bitcoin transaction API
+# Functionality: GET
+
 import json
 
 import requests
+from common.utils import serialize_transactions
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import Transaction, db_session
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from webargs import fields
 from webargs.flaskparser import use_kwargs
 
 
-def serialize_transaction(transaction_data, input_response, output_response, transaction_id):
-    return {"TransactionId": transaction_id,
-            "Hash": transaction_data.hash.strip(), "Version": transaction_data.version,
-            "LockTime": transaction_data.locktime, "BlockId": transaction_data.block_id,
-            "NumberOfInputs": (input_response["TransactionInputData"][str(transaction_id)])["NumberOfInputs"],
-            "TransactionInputs": (input_response["TransactionInputData"][str(transaction_id)])["TransactionInputs"],
-            "NumberOfOutputs": (output_response["TransactionOutputData"][str(transaction_id)])["NumberOfOutputs"],
-            "TransactionOutputs": (output_response["TransactionOutputData"][str(transaction_id)])["TransactionOutputs"]
-            }
-
-
-# Validate Transaction hash Input of TransactionByHashEndpoint endpoint
-def ValidateTransactionHash(self, transaction_hash):
+def ValidateTransactionHash(transaction_hash):
+    """
+    Validate transaction hash data
+    :param self:
+    :param transaction_hash:
+    """
     validationErrorList = []
     if not transaction_hash or len(transaction_hash) == 0:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.TransactionHashInputMissing.value})
     return validationErrorList
 
 
+def ValidateTransactionIds(transaction_ids):
+    """
+    Method to validate transaction ids
+    :param transaction_ids:
+    """
+    validationErrorList = []
+    if len(transaction_ids) == 0:
+        validationErrorList.append({"ErrorMessage": ResponseDescriptions.TransactionIdsInputMissing.value})
+    if len(transaction_ids) > 10:
+        validationErrorList.append({"ErrorMessage": ResponseDescriptions.NumberOfTransactionIdsLimitExceeded.value})
+    if len(transaction_ids) > 0:
+        for transaction_id in transaction_ids:
+            if transaction_id <= 0:
+                validationErrorList.append(
+                    {"ErrorMessage": ResponseDescriptions.InvalidTransactionIdsInputValues.value})
+                break
+    return validationErrorList
+
+
 class TransactionByHashEndpoint(Resource):
+    """
+    Class implementing transaction by hash API
+    """
     args_transaction_by_hash = {
         "transaction_hash": fields.String()
     }
 
     @use_kwargs(args_transaction_by_hash)
     def get(self, transaction_hash):
+        """
+        Method for GET request
+        :param transaction_hash:
+        :return:
+        """
         try:
             transaction_hash = transaction_hash.strip()
             request = {"transaction_hash": transaction_hash}
             response = {}
             # Validate User Input
-            validations_result = ValidateTransactionHash(self, transaction_hash)
+            validations_result = ValidateTransactionHash(transaction_hash)
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                             "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
@@ -60,8 +86,8 @@ class TransactionByHashEndpoint(Resource):
 
                     if input_response["ResponseCode"] == ResponseCodes.Success.value and \
                             output_response["ResponseCode"] == ResponseCodes.Success.value:
-                        transaction_json = serialize_transaction(transaction, input_response, output_response,
-                                                                 transaction.id)
+                        transaction_json = serialize_transactions(transaction, input_response, output_response,
+                                                                  transaction.id)
                         response = {
                             "ResponseCode": ResponseCodes.Success.value,
                             "ResponseDesc": ResponseCodes.Success.name,
@@ -90,52 +116,34 @@ class TransactionByHashEndpoint(Resource):
                                                     + output_response["ErrorMessage"]
                                     }
 
-
         except Exception as ex:
             response = {"ResponseCode": ResponseCodes.InternalError.value,
                         "ResponseDesc": ResponseCodes.InternalError.name,
                         "ErrorMessage": str(ex)}
         finally:
-            # file = open('/Logs/TransactionByHashLog.txt', 'w')
-            # file.write("Time:" + str(datetime.now()) + "\r\n")
-            # file.write("Request : " + request + "\r\n")
-            # file.write("Response : " + response + "\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.close()
             return response
 
 
-# Validate Transaction Ids Input of TransactionEndpoint endpoint
-def ValidateTransactionIds(self, transaction_ids):
-    validationErrorList = []
-    if len(transaction_ids) == 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.TransactionIdsInputMissing.value})
-    if len(transaction_ids) > 10:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.NumberOfTransactionIdsLimitExceeded.value})
-    if len(transaction_ids) > 0:
-        for transaction_id in transaction_ids:
-            if transaction_id <= 0:
-                validationErrorList.append(
-                    {"ErrorMessage": ResponseDescriptions.InvalidTransactionIdsInputValues.value})
-                break
-    return validationErrorList
-
-
 class TransactionEndpoint(Resource):
+    """
+    Class implementing transactions API
+    """
     args_transaction = {
         'transaction_ids': fields.List(fields.Integer())
     }
 
     @use_kwargs(args_transaction)
     def get(self, transaction_ids):
+        """
+        Method for GET request
+        :param transaction_ids:
+        """
         try:
             transaction_ids = list(set(list(transaction_ids)))
             request = {"transaction_ids": transaction_ids}
             response = {}
             # Validate User Input
-            validations_result = ValidateTransactionIds(self, transaction_ids)
+            validations_result = ValidateTransactionIds(transaction_ids)
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                             "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
@@ -155,9 +163,10 @@ class TransactionEndpoint(Resource):
 
                     if input_response["ResponseCode"] == ResponseCodes.Success.value and \
                             output_response["ResponseCode"] == ResponseCodes.Success.value:
-                        block_transactions_dict[transaction_id] = serialize_transaction(transaction_data[0],
-                                                                                        input_response,
-                                                                                        output_response, transaction_id)
+                        block_transactions_dict[transaction_id] = serialize_transactions(transaction_data[0],
+                                                                                         input_response,
+                                                                                         output_response,
+                                                                                         transaction_id)
                         if trans_as_dict is None or (
                                 trans_as_dict is not None and
                                 (input_response["TransactionInputData"][str(transaction_id)])["NumberOfInputs"] == 0 and
@@ -195,12 +204,4 @@ class TransactionEndpoint(Resource):
                         "ResponseDesc": ResponseCodes.InternalError.name,
                         "ErrorMessage": str(ex)}
         finally:
-            # file = open('/Logs/TransactionLog.txt', 'w')
-            # file.write("Time:" + str(datetime.now()) + "\r\n")
-            # file.write("Request : " + request + "\r\n")
-            # file.write("Response : " + response + "\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.close()
             return response

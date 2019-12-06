@@ -1,32 +1,20 @@
+from common.utils import serialize_transaction_output_address
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
-from models.models import Address
 from models.models import Output as TransactionOutput
 from models.models import OutputAddress as TransactionOutputAddress
 from models.models import db_session
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from webargs import fields
 from webargs.flaskparser import use_kwargs
 
 
-def serialize_address(address):
-    return {"AddressId": address.id,
-            "Hash": address.hash.strip(),
-            "PublicKey": address.public_key.strip(),
-            "Address": address.address.strip()
-            }
-
-
-def serialize_transaction_output_address(address_id):
-    address_list = db_session.query(Address).filter(
-        Address.id == address_id).order_by(Address.id.asc())
-    for address in address_list:
-        address_as_dict = serialize_address(address)
-        return address_as_dict
-
-
-# Validate Transaction Ids Input of GetTransactionOutputAddressByTransactionOutputId endpoint
-def ValidateTransactionIdAndTransactionOutputId(self, transaction_id, transaction_output_id):
+def ValidateTransactionIdAndTransactionOutputId(transaction_id, transaction_output_id):
+    """
+    Method to validate transaction id and transaction output id
+    :param transaction_id:
+    :param transaction_output_id:
+    """
     validationErrorList = []
     if transaction_id <= 0:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidTransactionIdInputValue.value})
@@ -36,17 +24,25 @@ def ValidateTransactionIdAndTransactionOutputId(self, transaction_id, transactio
 
 
 class GetTransactionOutputAddressByTransactionOutputId(Resource):
+    """
+    Class implementing get transaction output address by transaction output id
+    """
     args_transactionoutput = {"transaction_id": fields.Integer(),
                               "transaction_output_id": fields.Integer()
                               }
 
     @use_kwargs(args_transactionoutput)
     def get(self, transaction_id, transaction_output_id):
+        """
+        Method for GET request
+        :param transaction_id:
+        :param transaction_output_id:
+        """
         try:
             request = {"transaction_id": transaction_id, "transaction_output_id": transaction_output_id}
             response = {}
             # Validate User Input
-            validations_result = ValidateTransactionIdAndTransactionOutputId(self, transaction_id,
+            validations_result = ValidateTransactionIdAndTransactionOutputId(transaction_id,
                                                                              transaction_output_id)
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
@@ -90,12 +86,4 @@ class GetTransactionOutputAddressByTransactionOutputId(Resource):
                         "ResponseDesc": ResponseCodes.InternalError.name,
                         "ErrorMessage": str(ex)}
         finally:
-            # file = open('/Logs/GetTransactionOutputAddressByTransactionOutputIdLog.txt', 'w')
-            # file.write("Time:" + str(datetime.now()) + "\r\n")
-            # file.write("Request : " + request + "\r\n")
-            # file.write("Response : " + response + "\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.close()
             return response

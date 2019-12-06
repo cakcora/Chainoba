@@ -1,22 +1,49 @@
+#!/usr/bin/env python3
+# Name: main.py
+# Usecase: Contains all Bitcoin API definitions
+# Functionalities:
+#   1. Query Bitcoin data
+#       a. get blocks by date
+#       b. get blocks by block ID
+#       c. get transactions by block ID
+#       d. get transactions by transaction hash ID
+#       e. get transactions inputs
+#       f. get transactions outputs
+#   2. Query and Store Graph team's results
+#       a. get/post address distribution by date
+#       b. get/post address feature by date
+#       c. get/post assortivity coefficient by date
+#       d. get/post bitcoin circulation by date
+#       e. get/post chainlet occurrence by date
+#       f. get/post clustering coefficient by date
+#       g. get/post current balance by date
+#       h. get/post activity level by date
+#       i. get/post most active entity by date
+#       j. get/post pearson coefficient by date
+#       k. get/post strongly connected component by date
+#       l. get/post total BTC received by date
+#       m. get/post transaction size by date
+#       n. get/post weakly connected component by date
+
 from flask import Flask
 from flask_restful import Api
-from resources.Graph.address_distribution import AddressDistributionByDateEndpoint
-from resources.Graph.address_feature import AddressFeatureByDateEndpoint
-from resources.Graph.assortivity_coefficient import AssortativityCoefficientByDateEndpoint
-from resources.Graph.bitcoin_circulation import BitcoinCirculationByDateEndpoint
-from resources.Graph.chainlet_occurance import ChainletsOccuranceByDateEndpoint
-from resources.Graph.chainlet_occurance_amount import ChainletsOccuranceAmountByDateEndpoint
-from resources.Graph.clustring_coefficient import ClusteringCoefficientByDateEndpoint
-from resources.Graph.current_balance import CurrentBalanceByDateEndpoint
-from resources.Graph.level_of_activity import ActivityLevelByDateEndpoint
-from resources.Graph.most_active_entity import MostActiveEntityByDateEndpoint
-from resources.Graph.pearson_coefficient import PearsonCoefficientByDateEndpoint
-from resources.Graph.strongly_connected_component import StronglyConnectedComponentByDateEndpoint
-from resources.Graph.total_btc_received import TotalBtcReceivedByDateEndpoint
-from resources.Graph.transaction_size import TransactionSizeByDateEndpoint
-from resources.Graph.weakly_connected_component import WeaklyConnectedComponentByDateEndpoint
 from resources.address import AddressEndpoint
 from resources.block import GetBlockDataByDateEndpoint, GetTransactionDataByBlockID
+from resources.graph.address_distribution import AddressDistributionByDateEndpoint
+from resources.graph.address_feature import AddressFeatureByDateEndpoint
+from resources.graph.assortivity_coefficient import AssortativityCoefficientByDateEndpoint
+from resources.graph.bitcoin_circulation import BitcoinCirculationByDateEndpoint
+from resources.graph.chainlet_occurance import ChainletsOccuranceByDateEndpoint
+from resources.graph.chainlet_occurance_amount import ChainletsOccuranceAmountByDateEndpoint
+from resources.graph.clustring_coefficient import ClusteringCoefficientByDateEndpoint
+from resources.graph.current_balance import CurrentBalanceByDateEndpoint
+from resources.graph.level_of_activity import ActivityLevelByDateEndpoint
+from resources.graph.most_active_entity import MostActiveEntityByDateEndpoint
+from resources.graph.pearson_coefficient import PearsonCoefficientByDateEndpoint
+from resources.graph.strongly_connected_component import StronglyConnectedComponentByDateEndpoint
+from resources.graph.total_btc_received import TotalBtcReceivedByDateEndpoint
+from resources.graph.transaction_size import TransactionSizeByDateEndpoint
+from resources.graph.weakly_connected_component import WeaklyConnectedComponentByDateEndpoint
 from resources.transaction import TransactionByHashEndpoint
 from resources.transaction import TransactionEndpoint
 from resources.transaction_input import TransactionInputEndpoint

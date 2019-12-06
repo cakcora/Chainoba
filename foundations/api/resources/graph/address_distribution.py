@@ -1,7 +1,12 @@
+#!/usr/bin/env python3
+# Name: address_distribution.py
+# Usecase: Graph APIs: Address Distribution
+# Functionality: GET & POST
+
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import db_session, AddressDistribution
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
 from webargs import fields
@@ -9,6 +14,9 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_address_distribution(address_distribution: AddressDistribution):
+    """
+    Method to serialize address distribution data
+    """
     return {"Id": address_distribution.id,
             "Date": address_distribution.date.strftime('%Y-%m-%d'),
             "ReceiveOnlyPer": address_distribution.receive_only_per,
@@ -17,8 +25,10 @@ def serialize_address_distribution(address_distribution: AddressDistribution):
 
 
 class AddressDistributionByDateEndpoint(Resource):
-    get_args = {"Date": fields.Date()
-                }
+    """
+    Class implementing address distribution by date
+    """
+    get_args = {"Date": fields.Date()}
     insert_args = {
         "Date": fields.Date(),
         "ReceiveOnlyPer": fields.Float(),
@@ -26,15 +36,20 @@ class AddressDistributionByDateEndpoint(Resource):
     }
 
     @use_kwargs(insert_args)
-    def post(self, Date,
-             ReceiveOnlyPer=None,
-             SendReceivePer=None):
+    def post(self, Date, ReceiveOnlyPer=None, SendReceivePer=None):
+        """
+        Method for POST request
+        :param Date:
+        :param ReceiveOnlyPer:
+        :param SendReceivePer:
+        """
 
         address_distribution = AddressDistribution(date=Date,
                                                    receive_only_per=ReceiveOnlyPer,
                                                    send_receive_per=SendReceivePer
                                                    )
         db_session.add(address_distribution)
+
         try:
             db_session.commit()
             response = {"ResponseCode": ResponseCodes.Success.value,
@@ -51,6 +66,10 @@ class AddressDistributionByDateEndpoint(Resource):
 
     @use_kwargs(get_args)
     def get(self, Date=None):
+        """
+        Method for GET request
+        :param Date:
+        """
 
         error = self.validateAddressDistributionInput(Date)
         if error is not None:
@@ -73,6 +92,10 @@ class AddressDistributionByDateEndpoint(Resource):
         return response
 
     def validateAddressDistributionInput(self, date):
+        """
+        Method to validate input date
+        :param date:
+        """
         error = None
 
         if date is None:

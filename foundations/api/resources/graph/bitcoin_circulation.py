@@ -1,7 +1,12 @@
+#!/usr/bin/env python3
+# Name: bitcoin_circulation.py
+# Usecase: Graph APIs: Bitcoin Circulation
+# Functionality: GET & POST
+
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import db_session, BitcoinCirculation
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
 from webargs import fields
@@ -9,6 +14,10 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_bitcoin_circulation(bitcoin_circulation: BitcoinCirculation):
+    """
+    Method to seralize bitcoin circulation data
+    :param bitcoin_circulation:
+    """
     return {"Id": bitcoin_circulation.id,
             "Date": bitcoin_circulation.date.strftime('%Y-%m-%d'),
             "TotBTC": bitcoin_circulation.tot_btc,
@@ -18,8 +27,10 @@ def serialize_bitcoin_circulation(bitcoin_circulation: BitcoinCirculation):
 
 
 class BitcoinCirculationByDateEndpoint(Resource):
-    get_args = {"Date": fields.Date()
-                }
+    """
+    Class implementing bitcoin circulation by date
+    """
+    get_args = {"Date": fields.Date()}
     insert_args = {
         "Date": fields.Date(),
         "TotBTC": fields.Float(),
@@ -28,10 +39,14 @@ class BitcoinCirculationByDateEndpoint(Resource):
     }
 
     @use_kwargs(insert_args)
-    def post(self, Date,
-             TotBTC=None,
-             CircPercent=None,
-             NotCircuPercent=None):
+    def post(self, Date, TotBTC=None, CircPercent=None, NotCircuPercent=None):
+        """
+        Method for POST request
+        :param Date:
+        :param TotBTC:
+        :param CircPercent:
+        :param NotCircuPercent:
+        """
 
         bitcoin_circulation = BitcoinCirculation(date=Date,
                                                  tot_btc=TotBTC,
@@ -55,6 +70,10 @@ class BitcoinCirculationByDateEndpoint(Resource):
 
     @use_kwargs(get_args)
     def get(self, Date=None):
+        """
+        Method for GET request
+        :param Date:
+        """
 
         error = self.validateBitcoinCirculationInput(Date)
         if error is not None:
@@ -78,6 +97,10 @@ class BitcoinCirculationByDateEndpoint(Resource):
         return response
 
     def validateBitcoinCirculationInput(self, date):
+        """
+        Method to validate bitcoin circulation input date
+        :param date:
+        """
         error = None
 
         if date is None:

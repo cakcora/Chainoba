@@ -1,41 +1,53 @@
+#!/usr/bin/env python3
+# Name: pearson_coefficient.py
+# Usecase: Graph APIs: Pearson Coefficient
+# Functionality: GET & POST
+
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
-from models.models import db_session, AssortativityCoefficient
+from models.models import db_session, PearsonCoefficient
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
 from webargs import fields
 from webargs.flaskparser import use_kwargs
 
 
-def serialize_assortativity_coefficient(assortativity_coefficient: AssortativityCoefficient):
-    return {"Id": assortativity_coefficient.id,
-            "Date": assortativity_coefficient.date.strftime('%Y-%m-%d'),
-            "AssortCoeff": assortativity_coefficient.assort_coeff
+def serialize_pearson_coefficient(pearson_coefficient: PearsonCoefficient):
+    """
+    Method to serialize pearson coefficient
+    :param pearson_coefficient:
+    """
+    return {"Id": pearson_coefficient.id,
+            "Date": pearson_coefficient.date.strftime('%Y-%m-%d'),
+            "PearCoeff": pearson_coefficient.pear_coeff
             }
 
 
-class AssortativityCoefficientByDateEndpoint(Resource):
-    get_args = {"Date": fields.Date()
-                }
+class PearsonCoefficientByDateEndpoint(Resource):
+    get_args = {"Date": fields.Date()}
     insert_args = {
         "Date": fields.Date(),
-        "AssortCoeff": fields.Float()
+        "PearCoeff": fields.Float()
     }
 
     @use_kwargs(insert_args)
-    def post(self, Date,
-             AssortCoeff=None):
+    def post(self, Date, PearCoeff=None):
+        """
+        Method for POST request
+        :param Date:
+        :param PearCoeff:
+        """
 
-        assortativity_coefficient = AssortativityCoefficient(date=Date,
-                                                             assort_coeff=AssortCoeff)
-        db_session.add(assortativity_coefficient)
+        pearson_coefficient = PearsonCoefficient(date=Date,
+                                                 pearcoeff=PearCoeff)
+        db_session.add(pearson_coefficient)
         try:
             db_session.commit()
             response = {"ResponseCode": ResponseCodes.Success.value,
                         "ResponseDesc": ResponseCodes.Success.name,
-                        "AssortativityCoefficient": serialize_assortativity_coefficient(
-                            assortativity_coefficient)}
+                        "PearsonCoefficient": serialize_pearson_coefficient(
+                            pearson_coefficient)}
         except SQLAlchemyError as e:
             print(str(e))
             db_session.rollback()
@@ -47,29 +59,36 @@ class AssortativityCoefficientByDateEndpoint(Resource):
 
     @use_kwargs(get_args)
     def get(self, Date=None):
-
-        error = self.validateAssortativityCoefficientInput(Date)
+        """
+        Method for GET request
+        :param Date:
+        """
+        error = self.validatePearsonCoefficientInput(Date)
         if error is not None:
             return {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                     "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
                     "ErrorMessage": error.value}
 
-        assortativity_coefficient = db_session.query(AssortativityCoefficient).filter(
-            and_(AssortativityCoefficient.date == Date)).one_or_none()
+        pearson_coefficient = db_session.query(PearsonCoefficient).filter(
+            and_(PearsonCoefficient.date == Date)).one_or_none()
 
-        if assortativity_coefficient is None:
+        if pearson_coefficient is None:
             response = {"ResponseCode": ResponseCodes.NoDataFound.value,
                         "ResponseDesc": ResponseCodes.NoDataFound.name,
                         "ErrorMessage": ResponseDescriptions.NoDataFound.value}
         else:
             response = {"ResponseCode": ResponseCodes.Success.value,
                         "ResponseDesc": ResponseCodes.Success.name,
-                        "AssortativityCoefficient": serialize_assortativity_coefficient(
-                            assortativity_coefficient)}
+                        "PearsonCoefficient": serialize_pearson_coefficient(
+                            pearson_coefficient)}
 
         return response
 
-    def validateAssortativityCoefficientInput(self, date):
+    def validatePearsonCoefficientInput(self, date):
+        """
+        Method to validate pearson coefficient input date
+        :param date:
+        """
         error = None
 
         if date is None:

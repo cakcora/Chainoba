@@ -1,32 +1,23 @@
+#!/usr/bin/env python3
+# Name: transaction_input.py
+# Usecase: Bitcoin transaction input API
+# Functionality: GET
+
+from common.utils import serialize_transaction_input, serialize_address
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import Input as  TransactionInput
 from models.models import db_session, Output, OutputAddress, Address
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from webargs import fields
 from webargs.flaskparser import use_kwargs
 
 
-def serialize_transaction_input(trans_input):
-    return {'InputId': trans_input.id,
-            'HashOfPreviousTransaction': trans_input.prevout_hash.strip(),
-            'PreviousOutputNumber': trans_input.prevout_n,
-            'ScriptSignature': str(trans_input.scriptsig).strip(),
-            'SequenceNumber': trans_input.sequence,
-            'PreviousTransactionOutputId': trans_input.prev_output_id
-            }
-
-
-def serialize_address(address):
-    return {'AddressId': address.id,
-            'Hash': address.hash.strip(),
-            'PublicKey': address.public_key.strip(),
-            'Address': address.address.strip()
-            }
-
-
-# Validate Transaction Ids Input of TransactionInputEndpoint endpoint
-def ValidateTransactionIds(self, transaction_ids):
+def ValidateTransactionIds(transaction_ids):
+    """
+    Method to validate transaction ids
+    :param transaction_ids:
+    """
     validationErrorList = []
     if len(transaction_ids) == 0:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.TransactionIdsInputMissing.value})
@@ -42,16 +33,23 @@ def ValidateTransactionIds(self, transaction_ids):
 
 
 class TransactionInputEndpoint(Resource):
+    """
+    Class implementing transaction input API
+    """
     args_transaction = {'transaction_ids': fields.List(fields.Integer())}
 
     @use_kwargs(args_transaction)
     def get(self, transaction_ids):
+        """
+        Method for GET request
+        :param transaction_ids:
+        """
         try:
             transaction_ids = list(set(list(transaction_ids)))
             request = {"transaction_ids": transaction_ids}
             response = {}
             # Validate User Input
-            validations_result = ValidateTransactionIds(self, transaction_ids)
+            validations_result = ValidateTransactionIds(transaction_ids)
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                             "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
@@ -102,12 +100,4 @@ class TransactionInputEndpoint(Resource):
                         "ResponseDesc": ResponseCodes.InternalError.name,
                         "ErrorMessage": str(ex)}
         finally:
-            # file = open('/Logs/TransactionInputLog.txt', 'w')
-            # file.write("Time:" + str(datetime.now()) + "\r\n")
-            # file.write("Request : " + request + "\r\n")
-            # file.write("Response : " + response + "\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.close()
             return response

@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# Name: models.py
+# Usecase: Contains all the table model definitions for Bitcoin APIs
+
 from sqlalchemy import Column, Integer, String, ForeignKey, LargeBinary, BigInteger, DateTime, Float
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -16,15 +20,18 @@ engine = create_engine(DB_URI)
 
 # Session to connect to the postgres sqlalchemy engine
 Session = sessionmaker(bind=engine)
-
 db_session = Session()
 
+# Constants
 CONSTANTS = {
     'schema': 'bitcoin'
 }
 
 
 class Block(Base):
+    """
+    Class implementing Block table
+    """
     __tablename__ = 'block'
     __table_args__ = {'schema': CONSTANTS['schema']}
     hash = Column(String, primary_key=True)
@@ -46,6 +53,9 @@ class Block(Base):
 
 
 class Address(Base):
+    """
+    Class implementing Address table
+    """
     __tablename__ = 'address'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(Integer, primary_key=True)
@@ -59,6 +69,9 @@ class Address(Base):
 
 
 class Transaction(Base):
+    """
+    Class implementing Transaction table
+    """
     __tablename__ = 'transaction'
     __table_args__ = {'schema': CONSTANTS['schema']}
     hash = Column(String, primary_key=True)
@@ -78,6 +91,9 @@ class Transaction(Base):
 
 
 class Input(Base):
+    """
+    Class implementing transaction inputs table
+    """
     __tablename__ = 'input'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(Integer, primary_key=True)
@@ -98,6 +114,9 @@ class Input(Base):
 
 
 class Output(Base):
+    """
+    Class implementing transaction outputs table
+    """
     __tablename__ = 'output'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -113,6 +132,9 @@ class Output(Base):
 
 
 class OutputAddress(Base):
+    """
+    Class implementing output address table
+    """
     __tablename__ = 'output_address'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -128,6 +150,9 @@ class OutputAddress(Base):
 
 
 class BlockReadableTime(Base):
+    """
+    Class implementing BlockReadableTime table
+    """
     __tablename__ = 'block_readable_time'
     __table_args__ = {'schema': CONSTANTS['schema']}
     hash = Column(String)
@@ -148,6 +173,9 @@ class BlockReadableTime(Base):
 
 # Graph group date
 class AddressFeature(Base):
+    """
+    Class implementing AddressFeature table
+    """
     __tablename__ = 'graph_address_feature'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -165,6 +193,9 @@ class AddressFeature(Base):
 
 
 class AddressDistribution(Base):
+    """
+    Class implementing AddressDistribution table
+    """
     __tablename__ = 'graph_address_distribution'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -174,6 +205,9 @@ class AddressDistribution(Base):
 
 
 class TotalBtcReceived(Base):
+    """
+    Class implementing TotalBtcReceived table
+    """
     __tablename__ = 'graph_total_btc_received'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -188,6 +222,9 @@ class TotalBtcReceived(Base):
 
 
 class ActivityLevel(Base):
+    """
+    Class implementing ActivityLevel table
+    """
     __tablename__ = 'graph_activity_level'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -202,6 +239,9 @@ class ActivityLevel(Base):
 
 
 class StronglyConnectedComponent(Base):
+    """
+    Class implementing StronglyConnectedComponent table
+    """
     __tablename__ = 'graph_strongly_connected_component'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -210,6 +250,9 @@ class StronglyConnectedComponent(Base):
 
 
 class WeaklyConnectedComponent(Base):
+    """
+    Class implementing WeaklyConnectedComponent table
+    """
     __tablename__ = 'graph_weakly_connected_component'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -218,6 +261,9 @@ class WeaklyConnectedComponent(Base):
 
 
 class TransactionSize(Base):
+    """
+    Class implementing TransctionSize table
+    """
     __tablename__ = 'graph_transaction_size'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -232,6 +278,9 @@ class TransactionSize(Base):
 
 
 class AssortativityCoefficient(Base):
+    """
+    Class implementing AssortativityCoefficient table
+    """
     __tablename__ = 'graph_assortativity_coefficient'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -240,6 +289,9 @@ class AssortativityCoefficient(Base):
 
 
 class PearsonCoefficient(Base):
+    """
+    Class implementing PearsonCoefficient table
+    """
     __tablename__ = 'graph_pearson_coefficient'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -248,6 +300,9 @@ class PearsonCoefficient(Base):
 
 
 class ClusteringCoefficient(Base):
+    """
+    Class implementing ClusteringCoefficient table
+    """
     __tablename__ = 'graph_clustering_coefficient'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -256,6 +311,9 @@ class ClusteringCoefficient(Base):
 
 
 class BitcoinCirculation(Base):
+    """
+    Class implementing BitcoinCirculation table
+    """
     __tablename__ = 'graph_bitcoin_circulation'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -266,6 +324,9 @@ class BitcoinCirculation(Base):
 
 
 class MostActiveEntity(Base):
+    """
+    Class implementing MostActiveEntity table
+    """
     __tablename__ = 'graph_most_active_entity'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -275,6 +336,9 @@ class MostActiveEntity(Base):
 
 
 class ChainletsOccurance(Base):
+    """
+    class implementing ChainletsOccurance table
+    """
     __tablename__ = 'graph_chainlets_occurance'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -285,6 +349,9 @@ class ChainletsOccurance(Base):
 
 
 class ChainletsOccuranceAmount(Base):
+    """
+    class implementing ChainletsOccuranceAmount table
+    """
     __tablename__ = 'graph_chainlets_occurance_amount'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
@@ -295,6 +362,9 @@ class ChainletsOccuranceAmount(Base):
 
 
 class CurrentBalance(Base):
+    """
+    class implementing CurrentBalance table
+    """
     __tablename__ = 'graph_current_balance'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)

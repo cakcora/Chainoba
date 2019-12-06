@@ -1,7 +1,12 @@
+#!/usr/bin/env python3
+# Name: chainlet_coefficient.py
+# Usecase: Graph APIs: Chainlet Coefficient
+# Functionality: GET & POST
+
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import db_session, ChainletsOccurance
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
 from webargs import fields
@@ -9,6 +14,10 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_chainlets_occurance(chainlets_occurance: ChainletsOccurance):
+    """
+    Method to seralize chainlet data
+    :param chainlets_occurance:
+    """
     return {"Id": chainlets_occurance.id,
             "Date": chainlets_occurance.date.strftime('%Y-%m-%d'),
             "SplitChlt": chainlets_occurance.split_chlt,
@@ -18,8 +27,10 @@ def serialize_chainlets_occurance(chainlets_occurance: ChainletsOccurance):
 
 
 class ChainletsOccuranceByDateEndpoint(Resource):
-    get_args = {"Date": fields.Date()
-                }
+    """
+    Class implementing chainlets by date
+    """
+    get_args = {"Date": fields.Date()}
     insert_args = {
         "Date": fields.Date(),
         "SplitChlt": fields.Integer(),
@@ -28,10 +39,14 @@ class ChainletsOccuranceByDateEndpoint(Resource):
     }
 
     @use_kwargs(insert_args)
-    def post(self, Date,
-             SplitChlt=None,
-             MergeChlt=None,
-             TransitionChlt=None):
+    def post(self, Date, SplitChlt=None, MergeChlt=None, TransitionChlt=None):
+        """
+        Method for POST request
+        :param Date:
+        :param SplitChlt:
+        :param MergeChlt:
+        :param TransitionChlt:
+        """
 
         chainlets_occurance = ChainletsOccurance(date=Date,
                                                  split_chlt=SplitChlt,
@@ -55,6 +70,10 @@ class ChainletsOccuranceByDateEndpoint(Resource):
 
     @use_kwargs(get_args)
     def get(self, Date=None):
+        """
+        Method for GET request
+        :param Date:
+        """
 
         error = self.validateChainletsOccuranceInput(Date)
         if error is not None:
@@ -77,6 +96,10 @@ class ChainletsOccuranceByDateEndpoint(Resource):
         return response
 
     def validateChainletsOccuranceInput(self, date):
+        """
+        Method to validate chainlets input date
+        :param date:
+        """
         error = None
 
         if date is None:

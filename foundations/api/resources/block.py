@@ -1,33 +1,30 @@
+#!/usr/bin/env python3
+# Name: block.py
+# Usecase: Bitcoin block API
+# Functionality: GET
+
 import time
 from datetime import datetime, timedelta
 
+from common.utils import serialize_block, serialize_transaction
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import Block, Transaction
 from models.models import db_session
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
 from webargs import fields
 from webargs.flaskparser import use_kwargs
 
 
-def serialize_block(block):
-    return {"BlockId": block.id, "Hash": block.hash.strip(), "HashOfPreviousBlock": block.hashprev.strip(),
-            "Timestamp": datetime.utcfromtimestamp(block.ntime).strftime('%Y-%m-%d %H:%M:%S'),
-            "Nnonce": block.nnonce, "Version": block.version, "HashOfMerkleRoot": block.hashmerkleroot.strip(),
-            "BlockSizeInBits": block.nbits}
-
-
-def serialize_transaction(transaction):
-    return {"TransactionId": transaction.id,
-            "Hash": transaction.hash.strip(),
-            "Version": transaction.version,
-            "LockTime": transaction.locktime,
-            "BlockId": transaction.block_id}
-
-
-# Validate Block Input of GetBlockDataByDateEndpoint endpoint
-def ValidateBlockInput(self, year, month, day, date_offset):
+def ValidateBlockInput(year, month, day, date_offset):
+    """
+    Method to validate block input parameters
+    :param year:
+    :param month:
+    :param day:
+    :param date_offset:
+    """
     validationErrorList = []
     if day > 31 or day <= 0:
         validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidDayInput.value})
@@ -40,8 +37,28 @@ def ValidateBlockInput(self, year, month, day, date_offset):
     return validationErrorList
 
 
-# Returns the blocks by day of the year
+def ValidateBlockIds(block_ids):
+    """
+    Method to validate block ids sent as input parameters
+    :param block_ids:
+    """
+    validationErrorList = []
+    if len(block_ids) == 0:
+        validationErrorList.append({"ErrorMessage": ResponseDescriptions.BlockIdsInputMissing.value})
+    if len(block_ids) > 5:
+        validationErrorList.append({"ErrorMessage": ResponseDescriptions.NumberOfBlockIdsLimitExceeded.value})
+    if len(block_ids) > 0:
+        for block_id in block_ids:
+            if block_id <= 0:
+                validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidBlockIdsInputValues.value})
+                break
+    return validationErrorList
+
+
 class GetBlockDataByDateEndpoint(Resource):
+    """
+    Class implementing get block by date API
+    """
     args = {"day": fields.Integer(),
             "month": fields.Integer(),
             "year": fields.Integer(),
@@ -50,10 +67,17 @@ class GetBlockDataByDateEndpoint(Resource):
 
     @use_kwargs(args)
     def get(self, year, month, day, date_offset):
+        """
+        Method for GET request
+        :param year:
+        :param month:
+        :param day:
+        :param date_offset:
+        """
         # Validate User Input
         try:
             request = {"day": day, "month": month, "year": year, "date_offset": date_offset}
-            validations_result = ValidateBlockInput(self, year, month, day, date_offset)
+            validations_result = ValidateBlockInput(year, month, day, date_offset)
             response = {}
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
@@ -90,45 +114,28 @@ class GetBlockDataByDateEndpoint(Resource):
                         "ResponseDesc": ResponseCodes.InternalError.name,
                         "ErrorMessage": str(ex)}
         finally:
-            # file = open('/Logs/GetBlockDataByDateLog.txt', 'w')
-            # file.write("Time:" + str(datetime.now()) + "\r\n")
-            # file.write("Request : " + request + "\r\n")
-            # file.write("Response : " + response + "\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.close()
             return response
 
 
-# Validate Block Ids Input of GetTransactionDataByBlockID endpoint
-def ValidateBlockIds(self, block_ids):
-    validationErrorList = []
-    if len(block_ids) == 0:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.BlockIdsInputMissing.value})
-    if len(block_ids) > 5:
-        validationErrorList.append({"ErrorMessage": ResponseDescriptions.NumberOfBlockIdsLimitExceeded.value})
-    if len(block_ids) > 0:
-        for block_id in block_ids:
-            if block_id <= 0:
-                validationErrorList.append({"ErrorMessage": ResponseDescriptions.InvalidBlockIdsInputValues.value})
-                break
-    return validationErrorList
-
-
-# Get Transaction Data belonging to list of Block Ids
 class GetTransactionDataByBlockID(Resource):
+    """
+    Class implementing get transaction data by block ID API
+    """
     args_block = {
         "block_ids": fields.List(fields.Integer())
     }
 
     @use_kwargs(args_block)
     def get(self, block_ids):
+        """
+        Method for GET request
+        :param block_ids: 
+        """
         try:
             # Validate User Input
             request = {"block_ids": block_ids}
             response = {}
-            validations_result = ValidateBlockIds(self, block_ids)
+            validations_result = ValidateBlockIds(block_ids)
             if validations_result is not None and len(validations_result) > 0:
                 response = {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
                             "ResponseDesc": ResponseCodes.InvalidRequestParameter.name,
@@ -161,12 +168,4 @@ class GetTransactionDataByBlockID(Resource):
                         "ResponseDesc": ResponseCodes.InternalError.name,
                         "ErrorMessage": str(ex)}
         finally:
-            # file = open('/Logs/GetTransactionDataByBlockIDLog.txt', 'w')
-            # file.write("Time:" + str(datetime.now()) + "\r\n")
-            # file.write("Request : " + request + "\r\n")
-            # file.write("Response : " + response + "\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.write("\r\n")
-            # file.close()
             return response

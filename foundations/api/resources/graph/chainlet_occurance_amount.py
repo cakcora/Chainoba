@@ -1,7 +1,12 @@
+#!/usr/bin/env python3
+# Name: chainlet_occurrence_amount.py
+# Usecase: Graph APIs: Chainlet occurrence amount
+# Functionality: GET & POST
+
 from flask_restful import Resource
-from models.ResponseCodes import ResponseCodes
-from models.ResponseCodes import ResponseDescriptions
 from models.models import db_session, ChainletsOccuranceAmount
+from models.response_codes import ResponseCodes
+from models.response_codes import ResponseDescriptions
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError
 from webargs import fields
@@ -9,6 +14,10 @@ from webargs.flaskparser import use_kwargs
 
 
 def serialize_chainlets_occurance_amount(chainlets_occurance_amount: ChainletsOccuranceAmount):
+    """
+    Method to serialize chainlets data
+    :param chainlets_occurance_amount:
+    """
     return {"Id": chainlets_occurance_amount.id,
             "Date": chainlets_occurance_amount.date.strftime('%Y-%m-%d'),
             "SplitChltAmt": chainlets_occurance_amount.split_chlt_amt,
@@ -18,8 +27,10 @@ def serialize_chainlets_occurance_amount(chainlets_occurance_amount: ChainletsOc
 
 
 class ChainletsOccuranceAmountByDateEndpoint(Resource):
-    get_args = {"Date": fields.Date()
-                }
+    """
+    Class implementing chainlets occurrence by date
+    """
+    get_args = {"Date": fields.Date()}
     insert_args = {
         "Date": fields.Date(),
         "SplitChltAmt": fields.Float(),
@@ -28,10 +39,14 @@ class ChainletsOccuranceAmountByDateEndpoint(Resource):
     }
 
     @use_kwargs(insert_args)
-    def post(self, Date,
-             SplitChltAmt=None,
-             MergeChltAmt=None,
-             TransitionChltAmt=None):
+    def post(self, Date, SplitChltAmt=None, MergeChltAmt=None, TransitionChltAmt=None):
+        """
+        Method for POST request
+        :param Date:
+        :param SplitChltAmt:
+        :param MergeChltAmt:
+        :param TransitionChltAmt:
+        """
 
         chainlets_occurance_amount = ChainletsOccuranceAmount(date=Date,
                                                               split_chlt_amt=SplitChltAmt,
@@ -55,7 +70,10 @@ class ChainletsOccuranceAmountByDateEndpoint(Resource):
 
     @use_kwargs(get_args)
     def get(self, Date=None):
-
+        """
+        Method for GET request
+        :param Date:
+        """
         error = self.validateChainletsOccuranceAmountInput(Date)
         if error is not None:
             return {"ResponseCode": ResponseCodes.InvalidRequestParameter.value,
@@ -77,6 +95,10 @@ class ChainletsOccuranceAmountByDateEndpoint(Resource):
         return response
 
     def validateChainletsOccuranceAmountInput(self, date):
+        """
+        Method to validate chainlet occurrence amount input date
+        :param date:
+        """
         error = None
 
         if date is None:
