@@ -258,6 +258,9 @@ def run_random_forest(X_data, Y_data, rf_classifier, cross_validation):
     return predictions, scores
 
 
+# run the random forest model with the test data, and print out the result
+# need to pass in the split point as parameter as which part of the data is
+# considered the test data, that the model has not seen yet.
 def test_model(scores, X_reg, Y_reg, split_point, rf_classifier, model_num):
     print(scores)
     print("Shape of test data: For X: " + str(X_reg[split_point:].shape) + " - For Y: " + str(Y_reg[split_point:].shape))
