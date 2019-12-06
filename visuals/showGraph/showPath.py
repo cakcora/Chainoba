@@ -11,10 +11,7 @@ class ShowPath:
             self.options = json.load(f)
 
     def show_graph(self):
-        dir_output = "output"
-        if not os.path.exists(dir_output):
-            os.makedirs("output")
-        self.graph.show("output/path_graph.html")
+        self.graph.show("path_graph.html")
 
     def add_path(self, inputs, amount):
         input_edge = zip(inputs[0:len(inputs) - 1], inputs[1:len(inputs)], amount)

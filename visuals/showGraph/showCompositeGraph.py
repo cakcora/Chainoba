@@ -11,10 +11,7 @@ class ShowCompositeGraph:
             self.options = json.load(f)
 
     def show_graph(self):
-        dir_output = "output"
-        if not os.path.exists(dir_output):
-            os.makedirs("output")
-        self.graph.show("output/composite_graph.html")
+        self.graph.show("composite_graph.html")
 
     def add_composite_nodes(self, inputs, amount_in, outputs, amount_out, time):
         level_input = time + time - 1

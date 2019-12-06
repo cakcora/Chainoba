@@ -11,10 +11,7 @@ class ShowAddressGraph:
             self.options = json.load(f)
 
     def show_graph(self):
-        dir_output = "output"
-        if not os.path.exists(dir_output):
-            os.makedirs("output")
-        self.graph.show("output/address_graph.html")
+        self.graph.show("address_graph.html")
 
     def add_address_node(self, inputs, outputs, amounts):
         input_edge = zip(inputs, outputs, amounts)

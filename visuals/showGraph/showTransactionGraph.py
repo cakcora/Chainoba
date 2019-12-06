@@ -11,10 +11,7 @@ class ShowTransactionGraph:
             self.options = json.load(f)
 
     def show_graph(self):
-        dir_output = "output"
-        if not os.path.exists(dir_output):
-            os.makedirs("output")
-        self.graph.show("output/transaction_graph.html")
+        self.graph.show("transaction_graph.html")
 
     def add_transaction(self, inputs, outputs, in_time, out_time, amounts):
         input_edge = zip(inputs, in_time, outputs, out_time, amounts)

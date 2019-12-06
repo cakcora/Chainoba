@@ -12,10 +12,7 @@ class ShowCluster:
             self.options = json.load(f)
 
     def show_graph(self):
-        dir_output = "output"
-        if not os.path.exists(dir_output):
-            os.makedirs("output")
-        self.graph.show("output/cluster_graph.html")
+        self.graph.show("cluster_graph.html")
 
     def add_address_graph(self, inputs, outputs, amounts):
         input_edge = zip(inputs, outputs, amounts)
