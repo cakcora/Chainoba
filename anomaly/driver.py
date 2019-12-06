@@ -56,6 +56,7 @@ def analyse_symbol(symbol_name, f_path, volume_thresh, price_thresh, window_size
 
 # Ponzi Scheme - Ethereum - Karan
 # Extracting Account Features from the existing Smart Contracts
+from anomaly.karan_ponzi.graph_comparison_ponzi import graph
 def implement_random_forest_ponzi():
     '''graph_comparison() gives the graph analysis of the features of the schemes. random_forest_ponzi_evaluation() is called, which in turn is calling get_account_data(). get_account_data() gets the data from Etherscan.io'''
-    return graph_comparison()
+    return graph.graph_comparison()
