@@ -17,8 +17,8 @@ def run(args):
     - parse the parameters
     - load ransomware data
     - build the graph
-    - calculate the loops
-    - calculate split addresses
+    - find the loops
+    - find split addresses
 
     :param args:
     """

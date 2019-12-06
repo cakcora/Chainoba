@@ -1,4 +1,3 @@
-
 # pump and dump prediction
 # get the data price for pump and dump prediction
 def load_price_data():
@@ -76,3 +75,16 @@ def classify_contract_as_ponzi():
 # Apply the model on all Smart Contracts in Ethereum
 def ponzi_scheme_detection():
     return None
+
+# Fifth Labor - Tanbir
+# Run the commands on UNIX System to find the loop count in the bitcoin blockchain for ransomware linkage behavior
+# cd fifth_labor
+# python3 main.py -n 1 -l True -s False -o 100
+
+
+# Fifth Labor - Tanbir
+# Run the commands on UNIX System to find the split address count in the bitcoin blockchain for ransomware linkage behavior
+# cd fifth_labor
+# python3 main.py -n 1 -l False -s True -o 100
+
+# Parameter details on fifth_labor/README.md
