@@ -70,7 +70,7 @@ if __name__ == '__main__':
                     Submitted as COMP7570 Blockchain Analysis Course Project
                                     by Tanbir Ahmed
                     Code available at:
-                    https://github.com/cakcora/Chainoba/tree/master/anomaly
+                    https://github.com/cakcora/Chainoba/tree/fifth_labor_nx/anomaly/fifth_labor
             
         '''),
         description=textwrap.dedent('''\

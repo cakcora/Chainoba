@@ -3,7 +3,7 @@ The Fifth Labor: How to launder the coins gained from a BitcoinHeist
 
 ## Run
 
-> Run the following command to see the project information running configuration
+> Run the following command to see the project configuration
 ```
 python3 main.py -h
 ```
