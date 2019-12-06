@@ -7,7 +7,7 @@ class ShowPath:
 
     def __init__(self):
         self.graph = Network(height="750px", width="100%", directed=True)
-        with open('layouts/path_layout.json') as f:
+        with open('layouts/undirected_layout.json') as f:
             self.options = json.load(f)
 
     def show_graph(self):
