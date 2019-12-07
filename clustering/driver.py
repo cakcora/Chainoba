@@ -97,15 +97,19 @@ def behaviour_pattern_clustering(G, k):
             Behavior pattern clustering in blockchain networks by Huang et. al (2017)
             DOI 10.1007/s11042-017-4396-4
 
+        Parameters
+        ----------
         :param G: Networkx MultiDiGraph object
-        :param k: The number of clusters the user wants
-        :return: (message, resultList)
-            * message:
+            A transaction network where each edge represents: {fromUserAddress, toUserAddress, amountOfTransaction}
+        :param k: int
+            The number of clusters the user wants
+        :return: (message, resultList): tuple
+            * message: string
                 "Success" - if successfully performed clustering
                 "Fail: with error in the same message string" - if unsuccessful
-            * resultList:
+            * resultList: list
                 [[0], [0, 1], [0, 1, 2, 3, 0, 1, 0, 1, 2]] - cluster labels if successful (i.e.) message == "Success"
                 None - if unsuccessful
-        The cluster labels for all user addresses where the label represents their transaction pattern
+                The cluster labels represent the transaction behaviour pattern of each node in the transaction graph (G)
         """
     return bpc(G, k)

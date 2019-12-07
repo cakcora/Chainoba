@@ -125,7 +125,21 @@ def assign_cluster(list_centroids, seq):
 
 
 
-def equality_check(a, b):
+def subset_check(a, b):
+    """Utility function that checks that all contents of a are in b.
+
+        Parameters
+        ----------
+        a: list
+            list of items
+        b: list
+            list of items
+
+        Returns
+        -------
+        True/False: boolean
+            true if all a is a subset of b, false otherwise
+        """
     for item in a:
         if item not in b:
             return False
@@ -133,15 +147,25 @@ def equality_check(a, b):
 
 
 def bpc(G, k):
-    """
-            Performs Behavior pattern clustering (BPC) of users with similar behavior patterns based on their spending
-            patterns.
+    """Performs Behavior pattern clustering (BPC) of users with similar behavior patterns based on their spending
+        patterns.
 
-            :param G: Networkx MultiDiGraph object
-            :param k: The number of clusters the user wants
-            :return: The cluster labels for all user addresses where the label represents their transaction pattern
+        Parameters
+        ----------
+        :param G: Networkx MultiDiGraph object
+            A transaction network where each edge represents: {fromUserAddress, toUserAddress, amountOfTransaction}
+        :param k: int
+            The number of clusters the user wants
+        :return: (message, resultList): tuple
+            * message: string
+                "Success" - if successfully performed clustering
+                "Fail: with error in the same message string" - if unsuccessful
+            * resultList: list
+                [[0], [0, 1], [0, 1, 2, 3, 0, 1, 0, 1, 2]] - cluster labels if successful (i.e.) message == "Success"
+                None - if unsuccessful
+                The cluster labels represent the transaction behaviour pattern of each node in the transaction graph (G)
 
-            """
+        """
     edges = G.edges
     nodes = G.nodes
 
@@ -164,7 +188,6 @@ def bpc(G, k):
         sequences.append(s.get_transactions())
     # Sort the sequences with respect to their distances to their nearest neighbors
     sequences.sort()
-    print(sequences)
 
     # Before clustering, ensure there are at least k distinct features in the dataset
     num_features, unique_items = unique_items_count(sequences)
@@ -176,18 +199,15 @@ def bpc(G, k):
     # Pick k centroids from uniform distribution
     cluster_centroids = generate_cluster_centers(k, unique_items)
 
-    # For keeping track of previous cluster centroid values after update
     # Cluster labels look like this: ( [[0], [0, 1], [0, 1, 2, 3, 0, 1, 0, 1, 2]] ) for 3 labels
     cluster_labels = []
     clusters = []
     iter_count = 0
     while iter_count < MAX_ITER_NUM:
         for i in range(len(sequences)):
-            the_cluster = assign_cluster(cluster_centroids, sequences[i])
-            clusters.append(the_cluster)
-
             cluster_labels.append(assign_cluster(cluster_centroids, sequences[i]))
-        # Store old centroid values
+
+        # For keeping track of previous cluster centroid values after update
         cluster_centroids_prev = deepcopy(cluster_centroids)
 
         # For each new cluster, select a centroid that minimizes the distances
@@ -200,13 +220,10 @@ def bpc(G, k):
         cluster_centroids = [x for x in cluster_centroids]
         cluster_labels.clear()
         for i in range(len(sequences)):
-            the_cluster = assign_cluster(cluster_centroids, sequences[i])
-            clusters.append(the_cluster)
-
             cluster_labels.append(assign_cluster(cluster_centroids, sequences[i]))
 
-        if equality_check(cluster_centroids, cluster_centroids_prev) and \
-                equality_check(cluster_centroids_prev, cluster_centroids) and \
+        if subset_check(cluster_centroids, cluster_centroids_prev) and \
+                subset_check(cluster_centroids_prev, cluster_centroids) and \
                 len(cluster_centroids) == len(cluster_centroids_prev):
             break
 
