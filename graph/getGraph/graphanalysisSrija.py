@@ -1,3 +1,17 @@
+""" Author: Srija Srivastava"""
+"""To perform statistical and structural analysis on Bitcoin composite graph and store the results simultaneously"""
+""" Reference Papers are listed below:"""
+"""1. Akcora, Cuneyt Gurcan, Yulia R. Gel, and Murat Kantarcioglu. "Blockchain: A
+graph primer." arXiv preprint arXiv:1708.08749 (2017).
+2. Chen, Ting, Yuxiao Zhu, Zihao Li, Jiachi Chen, Xiaoqi Li, Xiapu Luo, Xiaodong
+Lin, and Xiaosong Zhange. "Understanding ethereum via graph analysis."
+In IEEE INFOCOM 2018-IEEE Conference on Computer Communications, pp.
+1484-1492. IEEE, 2018.
+3. Ron, Dorit, and Adi Shamir. "Quantitative analysis of the full bitcoin transaction
+graph." In International Conference on Financial Cryptography and Data
+Security, pp. 6-24. Springer, Berlin, Heidelberg, 2013."""
+
+
 import networkx as nx
 import pandas as pd
 from datetime import date, datetime, timedelta
