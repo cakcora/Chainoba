@@ -6,7 +6,7 @@ This source file provides methods to calculate the following measures:
 - Generalized Hoede-Bakker Index (Node).
 
 Note:
-- Clustering Group's function is used to calculate the closeness centrality.
+- Clustering Group's function to calculating closeness centrality is not used because it returned "None" Type for a valid graph.
 
 Resource:
     Article: Social networks: Prestige, centrality, and influence
@@ -62,6 +62,15 @@ def calculate_degree_centrality_for_graph(G):
 
     return centrality_for_graph
 
+def calculate_closeness_centrality_for_nodes(G):
+    """
+    Calculates and returns the closeness centrality of the nodes.
+
+    :param G: NetworkX.Graph
+    :return: Dictionary where key is the index of each node, and value is the degree centrality of the i_th node
+    """
+
+    return nx.closeness_centrality(G)
 
 def calculate_closeness_centrality_for_graph(G):
     """
@@ -71,7 +80,8 @@ def calculate_closeness_centrality_for_graph(G):
     :return: A single float value that represents the closeness centrality of the graph.
     """
 
-    centrality_for_nodes = clustering_helper.calculateclosenesscentrality(G)
+    # centrality_for_nodes = clustering_helper.calculateclosenesscentrality(G)
+    centrality_for_nodes = calculate_closeness_centrality_for_nodes(G)
 
     max_key = max(centrality_for_nodes, key=centrality_for_nodes.get)
     max_value = centrality_for_nodes[max_key]

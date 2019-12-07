@@ -35,7 +35,7 @@ def get_max_k_value(G, vertex):
     return G.number_of_edges(vertex)
 
 # Import the ethereum graph from 'graph' team.
-def generate_undirected_graph():
+def generate_ethereum_graph():
     """
     Using networkx, put together a undirected graph.
     :return:
