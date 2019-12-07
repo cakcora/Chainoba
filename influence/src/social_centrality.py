@@ -1,22 +1,19 @@
-from influence.generator import generate_undirected_graph
-from influence.kcore import get_k_cores
-from influence.kcore import max_k_core_graph
-from graph.getGraph.getAPIData import getGraph
+"""
+A source file to call and test all functions in influence.centralities.py
+"""
 
-import matplotlib.pyplot as plt
-import random
-import networkx as nx
+import influence.driver as influence_driver
 
-# message, G = getGraph(9, 2, 2009, 2, 'ADDRESS')
+print ("influence_driver.calculate_degree_centrality_for_nodes()")
+influence_driver.calculate_degree_centrality_for_nodes()
+print ("influence_driver.calculate_degree_centrality_for_graph()")
+influence_driver.calculate_degree_centrality_for_graph()
+print ("influence_driver.calculate_betweenness_centrality_for_graph()")
+influence_driver.calculate_betweenness_centrality_for_graph()
+print ("influence_driver.calculate_betweenness_centrality_for_nodes()")
+influence_driver.calculate_betweenness_centrality_for_nodes()
+print ("influence_driver.calculate_closeness_centrality_for_graph()")
+influence_driver.calculate_closeness_centrality_for_graph()
+print ("influence_driver.calculate_generalized_hoede_bakker_index()")
+influence_driver.calculate_generalized_hoede_bakker_index()
 
-# Generate a random graph for testing functions
-G = generate_undirected_graph()
-
-print("hello world")
-
-nx.write_edgelist(nx.path_graph(10), "test.edgelist")
-
-
-
-nx.draw(G)
-plt.show()
