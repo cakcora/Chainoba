@@ -40,6 +40,23 @@ foundations/
 │           ├── LICENSE
 │           ├── README.md
 │           ├── blockchain_parser
+├── EthereumApi/
+│   ├── __init__.py
+│   ├── common/
+│   │   ├── __init__.py
+│   │   └── utils.py
+├   |── dataparser/
+|   |   ├── Data_model.sql
+|   |   ├── __init__.py
+|   |   ├── bitcoin-parser.py
+│   ├── main.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   └── models.py
+│   ├── resources/
+│   |   ├── __init__.py
+│   |   ├── transaction.py
 ├── postman_request_templates/
 │   └── Chainoba-foundations.postman_collection.json
 ├── requirements.txt
@@ -61,7 +78,8 @@ foundations/
  `Data Source>Postgres SQL`, and then add in the ``username`` field `postgres` and ``password`` field ``postgres`` select OK from the pop up window.
 10. Create the database with the provided DDL. On the Database side bar, right click on Postgres and select ``Jump to console...``
 then copy everything inside `/foundations/dataparser/Data_model.sql` into the terminal and execute it. 
-11. If you click on the Database side bar, expand ``postgres@localhost>databases>postgres>schemas>bitcoin`` and you should be able to see the database.
+For ethereum data copy everything inside `/foundations/EthereumAPI/dataparser/Data_model.sql` into the terminal and execute it. 
+11. If you click on the Database side bar, expand ``postgres@localhost>databases>postgres>schemas>bitcoin`` and you should be able to see the database. for ethereum use schema as "ethereum"
 
 ## Known Issues
 
