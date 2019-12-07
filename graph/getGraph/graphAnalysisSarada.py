@@ -24,10 +24,13 @@ In IEEE INFOCOM 2018-IEEE Conference on Computer Communications, pp.
 4. Ron, Dorit, and Adi Shamir. "Quantitative analysis of the full bitcoin transaction
 graph." In International Conference on Financial Cryptography and Data
 Security, pp. 6-24. Springer, Berlin, Heidelberg, 2013."""
+
+
 import networkx as nx
 import pandas as pd
 import numpy as np
 import requests
+import json
 from graph.getGraph.getAPIData import getGraph
 BTC_REC_URL="http://159.203.28.234:5000/bitcoin/total_btc_received"
 LOA_URL="http://159.203.28.234:5000/bitcoin/activity_level"
@@ -74,7 +77,7 @@ def TotalBTCreceived(curDate,ntObj,dfTotRec):
                 "BTCrecLT10000": e,"BTCrecLT50000":f,"BTCrecGT50000":g
         }
         r = requests.post(url=BTC_REC_URL, data=data)
-        print(r.text)
+
     except Exception as e:
         return 'Fail', e
     return "success", dfTotRec
@@ -109,10 +112,10 @@ def diffChainlets(curDate,ntObj,dfChainletsOcc):
         data = {"Date": curDate,"SplitChlt": splitNumber,"MergeChlt": mergeNumber,"TransitionChlt": transitionNumber
                 }
         r = requests.post(url=ChianletsOCC_URL, data=data)
-        return "Success",dfChainletsOcc
+
     except Exception as e:
         return 'Fail', e
-
+    return "Success", dfChainletsOcc
 
 def diffChainletMatrix(curDate,dbObject):
     """Occurrence matrix and Amount Matrix of 20X20 Occurrence Matrix"""
@@ -130,10 +133,10 @@ def diffChainletMatrix(curDate,dbObject):
                     occ[int(value)][int(out)] += 1
                     aocc[int(value)][int(out)] += amt/100000000
         print("Date:",curDate)
-        return occ,aocc
+
     except Exception as e:
         return 'Fail', e
-
+    return occ, aocc
 
 def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
     """total amount of different chainlets(Split,Merge and Transition) in a graph """
@@ -141,10 +144,10 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
         ind = dict(ntObj.in_degree)
         aind = dict(ntObj.in_degree(weight='weight'))
         outd = dict(ntObj.out_degree)
-        splitAmt=mergeAmt=transitionAmt=0
+        splitAmt=mergeAmt=transitionAmt=0.0
         for ele, value in ind.items():
             if len(ele) == 64:
-                if(value>0):
+                if (value > 0):
                     if(value<outd[ele]):
                         splitAmt += aind[ele]
                     elif (value > outd[ele]):
@@ -156,16 +159,16 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
                                                 "Amount of merge Chainlets": format((mergeAmt/100000000), '.2f'),
                                                 "Amount of transition Chainlets": format((transitionAmt/100000000), '.2f')}
                                                  ,ignore_index=True)
-        data = {"Date": curDate, "SplitChAmt": splitAmt,
-                "MergeChAmt": mergeAmt,
-                "TransitionChAmt":transitionAmt
+        data = {"Date": curDate, "SplitChAmt": json.dumps(splitAmt/100000000),
+                "MergeChAmt": json.dumps((mergeAmt/100000000)),
+                "TransitionChAmt":json.dumps(transitionAmt/100000000)
                 }
 
         r = requests.post(url=ChianletsOCCAmt_URL, data=data)
-        return "Success", dfChainletsAocc
+        print(r.text)
     except Exception as e:
         return 'Fail', e
-
+    return "Success", dfChainletsAocc
 
 def StronglyConnectedComponents(curDate,ntObj,dfSCC):
     """Number of Strongly Connected Components in the graph"""
@@ -174,10 +177,11 @@ def StronglyConnectedComponents(curDate,ntObj,dfSCC):
         dfSCC = dfSCC.append({"Date":curDate,"Number of Strongly connected components":l},ignore_index=True)
         data = {"Date": curDate, "SCC": l }
         r = requests.post(url=SCC_URL, data=data)
-        return "Success", dfSCC
+
+
     except Exception as e:
         return 'Fail', e
-
+    return "Success", dfSCC
 
 def WeaklyConnectedComponents(curDate,ntObj,dfWCC):
     """Number of Weakly Connected Components in the graph"""
@@ -186,11 +190,11 @@ def WeaklyConnectedComponents(curDate,ntObj,dfWCC):
         dfWCC = dfWCC.append({"Date": curDate, "Number of Weakly connected components": a},ignore_index=True)
         data = {"Date": curDate, "WCC": a}
         r = requests.post(url=WCC_URL, data=data)
-        return "Success", dfWCC
+
 
     except Exception as e:
         return 'Fail', e
-
+    return "Success", dfWCC
 
 def LevelOfActivity(curDate,ntObj,dfLOActivity):
     """Analysis of level of Activity for the all the addresses on daily basis """
@@ -233,8 +237,10 @@ def LevelOfActivity(curDate,ntObj,dfLOActivity):
         data={"Date": curDate,"LOALT2": a,"LOALT5": b,"LOALT10": c,"LOALT100":d,"LOALT1000":e,"LOALT5000":f,
               "LOAGT5000":g}
         r=requests.post(url=LOA_URL, data=data)
-        return "Success", dfLOActivity
+
+
+
     except Exception as e:
         return 'Fail', e
-
+    return "Success", dfLOActivity
 
