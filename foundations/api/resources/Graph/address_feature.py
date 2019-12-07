@@ -1,4 +1,3 @@
-from datetime import datetime
 from flask_restful import Resource
 from sqlalchemy import and_
 from sqlalchemy.exc import SQLAlchemyError

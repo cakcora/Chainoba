@@ -145,9 +145,10 @@ class BlockReadableTime(Base):
             .format(self.hash, self.id, self.version, self.hashprev, self.hashmerkleroot, self.ntime, self.nbits,
                     self.nnonce, self.timestamp)
 
+
 # Graph group date
 class AddressFeature(Base):
-    __tablename__ = 'address_feature'
+    __tablename__ = 'graph_address_feature'
     __table_args__ = {'schema': CONSTANTS['schema']}
     id = Column(BigInteger, primary_key=True)
     address = Column(Integer)
@@ -161,6 +162,150 @@ class AddressFeature(Base):
     pearsoncc = Column(Float)
     maximal_balance = Column(Integer)
     current_balance = Column(Integer)
+
+
+class AddressDistribution(Base):
+    __tablename__ = 'graph_address_distribution'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    receive_only_per = Column(Float)
+    send_receive_per = Column(Float)
+
+
+class TotalBtcReceived(Base):
+    __tablename__ = 'graph_total_btc_received'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    btcreclt1 = Column(Integer)
+    btcreclt10 = Column(Integer)
+    btcreclt100 = Column(Integer)
+    btcreclt1000 = Column(Integer)
+    btcreclt10000 = Column(Integer)
+    btcreclt50000 = Column(Integer)
+    btcrecgt50000 = Column(Integer)
+
+
+class ActivityLevel(Base):
+    __tablename__ = 'graph_activity_level'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    loalt2 = Column(Integer)
+    loalt5 = Column(Integer)
+    loalt10 = Column(Integer)
+    loalt100 = Column(Integer)
+    loalt1000 = Column(Integer)
+    loalt5000 = Column(Integer)
+    loagt5000 = Column(Integer)
+
+
+class StronglyConnectedComponent(Base):
+    __tablename__ = 'graph_strongly_connected_component'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    scc = Column(Integer)
+
+
+class WeaklyConnectedComponent(Base):
+    __tablename__ = 'graph_weakly_connected_component'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    wcc = Column(Integer)
+
+
+class TransactionSize(Base):
+    __tablename__ = 'graph_transaction_size'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    trans_size_lt1 = Column(Integer)
+    trans_size_lt10 = Column(Integer)
+    trans_size_lt100 = Column(Integer)
+    trans_size_lt5000 = Column(Integer)
+    trans_size_lt20000 = Column(Integer)
+    trans_size_lt50000 = Column(Integer)
+    trans_size_gt50000 = Column(Integer)
+
+
+class AssortativityCoefficient(Base):
+    __tablename__ = 'graph_assortativity_coefficient'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    assort_coeff = Column(Float)
+
+
+class PearsonCoefficient(Base):
+    __tablename__ = 'graph_pearson_coefficient'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    pear_coeff = Column(Float)
+
+
+class ClusteringCoefficient(Base):
+    __tablename__ = 'graph_clustering_coefficient'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    clust_coeff = Column(Float)
+
+
+class BitcoinCirculation(Base):
+    __tablename__ = 'graph_bitcoin_circulation'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    tot_btc = Column(Float)
+    circ_percent = Column(Float)
+    not_circu_percent = Column(Float)
+
+
+class MostActiveEntity(Base):
+    __tablename__ = 'graph_most_active_entity'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    addr = Column(String)
+    no_of_trans = Column(Integer)
+
+
+class ChainletsOccurance(Base):
+    __tablename__ = 'graph_chainlets_occurance'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    split_chlt = Column(Integer)
+    merge_chlt = Column(Integer)
+    transition_chlt = Column(Integer)
+
+
+class ChainletsOccuranceAmount(Base):
+    __tablename__ = 'graph_chainlets_occurance_amount'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    split_chlt_amt = Column(Float)
+    merge_chlt_amt = Column(Float)
+    transition_chlt_amt = Column(Float)
+
+
+class CurrentBalance(Base):
+    __tablename__ = 'graph_current_balance'
+    __table_args__ = {'schema': CONSTANTS['schema']}
+    id = Column(BigInteger, primary_key=True)
+    date = Column(DateTime)
+    currbal1 = Column(Integer)
+    currbal10 = Column(Integer)
+    currbal100 = Column(Integer)
+    currbal1000 = Column(Integer)
+    currbal10000 = Column(Integer)
+    currbal50000 = Column(Integer)
+    currbalgt50000 = Column(Integer)
 
 
 if __name__ == '__main__':
