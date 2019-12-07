@@ -1,6 +1,18 @@
-""" Aurthor: Tadepalli Sarada Kiranmayee """
-""" Reference Papers are listed below:"""
-"""1. Akcora, Cuneyt Gurcan, Yulia R. Gel, and Murat Kantarcioglu. "Blockchain: A
+""" Aurthor: Tadepalli Sarada Kiranmayee
+
+
+Summary: Analysis on Composite Graph:
+1)Total Bitcoins received
+2)Level of activity of address nodes,
+3)Number of chainlets(merge/split/transition)
+4)Incoming amount to chainlets
+5)Number of chainlets in 20X20 matrix
+6)Amount of incoming chianlets in 20X20 matrix
+7) Number of Strongly Connected Components
+8) number of Weakly Connected Components
+
+Reference Papers are listed below:
+1. Akcora, Cuneyt Gurcan, Yulia R. Gel, and Murat Kantarcioglu. "Blockchain: A
 graph primer." arXiv preprint arXiv:1708.08749 (2017).
 2. Akcora, C. G., Dey, A. K., Gel, Y. R., & Kantarcioglu, M. (2018, June). Forecasting
 bitcoin price with graph chainlets. In Pacific-Asia Conference on Knowledge
