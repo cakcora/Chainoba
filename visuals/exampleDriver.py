@@ -1,46 +1,36 @@
-import visuals.showGraph.showAddressGraph as AG
-import visuals.showGraph.showTransactionGraph as TG
-import visuals.showGraph.showPath as P
-import visuals.showGraph.showCluster as SC
-import visuals.showGraph.showCompositeGraph as CG
+from visuals.showGraph import (ShowAddressGraph, ShowTransactionGraph, ShowPath, ShowCluster, ShowCompositeGraph)
+
 
 def main():
-    g1 = AG.ShowAddressGraph()
-    # the fist list, represents input addresses the second is output addresses and the last list represents the corresponding bitcoin amount
-    # transferred. address a1 has sent 1 bitcoin to a1. a2 has sent 1 bitcoin to a1
-    g1.add_node(["a1", "a2", "a3", "a4"], ["a1", "a1", "a5", "a3"], [1, 1, 1, 2])
-    g1.add_node(["a4", "a5", "a3", "a6"], ["a4", "a1", "a5", "a3"], [1, 3, 1, 2])
-    g1.add_node(["a1"], ["a3"], [1, 1, 1, 2])
-    g1.add_node(["a9"], ["a19"], [1, 1, 1, 2])
-    g1.add_node(["a1", "a5", "a3", "a6"], ["a2", "a6", "a4", "a7"], [1, 3, 1, 2])
+    g1 = ShowAddressGraph()
     inputs = ["a7", "a8", "a9", "a10"]
-    output = ["a11", "a12", "a13", "a14"]
+    outputs = ["a11", "a12", "a13", "a14"]
     amount = [1, 3, 1, 2]
-    g1.add_node(inputs, output, amount)
+    g1.add_node(inputs, outputs, amount)
     g1.show_graph()
 
-    g2 = TG.ShowTransactionGraph()
+    g2 = ShowTransactionGraph()
     g2.add_node(["T1", "T2", "T4", "T3"], ["T3", "T6", "T2", "T2"], [1, 3, 2, 2], [2, 5, 4, 4], [2, 2, 5, 2])
     g2.add_node(["T5", "T7", "T9", "T10"], ["T6", "T6", "T11", "T12"], [1, 1, 2, 2], [2, 2, 4, 4], [3, 2, 5, 2])
     g2.show_graph()
 
-    g3 = P.ShowPath()
+    g3 = ShowPath()
     path = ["a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10"]
     amount = [19, 18, 18, 18, 17, 16, 16, 19, 20]
     g3.add_path(path, amount)
     g3.show_graph()
 
-    g4 = SC.ShowCluster()
-    input = ["a1", "a2", "a3", "a4", "a21", "a22", "a23", "a24", "a11", "a12", "a13", "a14"]
-    cluster_input = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
-    output = ["a220", "a23", "a240", "a110", "a120", "a13", "a140", "a1", "a20", "a30", "a4", "a210"]
+    g4 = ShowCluster()
+    inputs = ["a1", "a2", "a3", "a4", "a21", "a22", "a23", "a24", "a11", "a12", "a13", "a14"]
+    cluster_inputs = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
+    outputs = ["a220", "a23", "a240", "a110", "a120", "a13", "a140", "a1", "a20", "a30", "a4", "a210"]
     amount = [1, 2, 3, 1, 2, 3, 1, 3, 1, 2, 1]
-    g4.add_node(input, output, amount)
+    g4.add_node(inputs, outputs, amount)
     g4.cluster_addresses(["a1", "a2", "a3", "a4", "a13"], [2, 2, 1, 1, 1])
-    g4.cluster_addresses(input, cluster_input)
+    g4.cluster_addresses(inputs, cluster_inputs)
     g4.show_graph()
 
-    g5 = CG.ShowCompositeGraph()
+    g5 = ShowCompositeGraph()
 
     # call add_composite_node(nodes that are sending transactions ,amount of bitcoin corresponding nodes, output addresses,
     # the amount each node recieve, time )
