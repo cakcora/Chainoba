@@ -1,7 +1,8 @@
-""" Aurthor: Tadepalli Sarada Kiranmayee """
-"""Summary: Address features: Functions for Amount received to Address,level of activity,"""
+""" Aurthor: Tadepalli Sarada Kiranmayee
 
-""" Reference Papers are listed below:
+Summary: Address features: Functions for Amount received to Address,level of activity
+
+Reference Papers are listed below:
 1. Akcora, Cuneyt Gurcan, Yulia R. Gel, and Murat Kantarcioglu. "Blockchain: A
 graph primer." arXiv preprint arXiv:1708.08749 (2017).
 2. Akcora, C. G., Dey, A. K., Gel, Y. R., & Kantarcioglu, M. (2018, June). Forecasting
