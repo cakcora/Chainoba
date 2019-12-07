@@ -5,7 +5,7 @@ Resource:
     Authors: Akcora, C. G., Gel, Y. R., & Kantarcioglu, M.
     source: https://arxiv.org/abs/1708.08749
 """
-from visuals.showGraph._show_graph import ShowGraphABC
+from visuals.show_graph._show_graph import ShowGraphABC
 
 
 class ShowTransactionGraph(ShowGraphABC):

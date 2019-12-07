@@ -1,4 +1,4 @@
-from visuals.showGraph import (ShowAddressGraph, ShowTransactionGraph, ShowPath, ShowCluster, ShowCompositeGraph)
+from visuals.show_graph import (ShowAddressGraph, ShowTransactionGraph, ShowPath, ShowCluster, ShowCompositeGraph)
 
 
 def main():
