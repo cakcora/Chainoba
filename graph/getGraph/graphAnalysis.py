@@ -1,3 +1,19 @@
+""" Aurthor: Tadepalli Sarada Kiranmayee """
+"""Summary: Address features: Functions for Amount received to Address,level of activity,"""
+
+""" Reference Papers are listed below:
+1. Akcora, Cuneyt Gurcan, Yulia R. Gel, and Murat Kantarcioglu. "Blockchain: A
+graph primer." arXiv preprint arXiv:1708.08749 (2017).
+2. Akcora, C. G., Dey, A. K., Gel, Y. R., & Kantarcioglu, M. (2018, June). Forecasting
+bitcoin price with graph chainlets. In Pacific-Asia Conference on Knowledge
+Discovery and Data Mining (pp. 765-776). Springer, Cham.
+3. Chen, Ting, Yuxiao Zhu, Zihao Li, Jiachi Chen, Xiaoqi Li, Xiapu Luo, Xiaodong
+Lin, and Xiaosong Zhange. "Understanding ethereum via graph analysis."
+In IEEE INFOCOM 2018-IEEE Conference on Computer Communications, pp.
+1484-1492. IEEE, 2018.
+4. Ron, Dorit, and Adi Shamir. "Quantitative analysis of the full bitcoin transaction
+graph." In International Conference on Financial Cryptography and Data
+Security, pp. 6-24. Springer, Berlin, Heidelberg, 2013."""
 import pandas as pd
 
 def amountToAddress(dfobject):
