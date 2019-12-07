@@ -30,7 +30,7 @@ import networkx as nx
 import pandas as pd
 import numpy as np
 import requests
-import json
+
 from graph.getGraph.getAPIData import getGraph
 BTC_REC_URL="http://159.203.28.234:5000/bitcoin/total_btc_received"
 LOA_URL="http://159.203.28.234:5000/bitcoin/activity_level"
@@ -159,9 +159,9 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
                                                 "Amount of merge Chainlets": format((mergeAmt/100000000), '.2f'),
                                                 "Amount of transition Chainlets": format((transitionAmt/100000000), '.2f')}
                                                  ,ignore_index=True)
-        data = {"Date": curDate, "SplitChAmt": json.dumps(splitAmt/100000000),
-                "MergeChAmt": json.dumps((mergeAmt/100000000)),
-                "TransitionChAmt":json.dumps(transitionAmt/100000000)
+        data = {"Date": curDate, "SplitChAmt": (splitAmt/100000000),
+                "MergeChAmt": (mergeAmt/100000000),
+                "TransitionChAmt":(transitionAmt/100000000)
                 }
 
         r = requests.post(url=ChianletsOCCAmt_URL, data=data)
