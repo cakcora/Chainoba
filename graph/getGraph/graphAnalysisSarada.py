@@ -160,11 +160,12 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
                                                 "Amount of transition Chainlets": format((transitionAmt/100000000), '.2f')}
                                                  ,ignore_index=True)
         data = {"Date": curDate, "SplitChAmt": (splitAmt/100000000),
-                "MergeChAmt": (mergeAmt/100000000),
+                "MergeChAmt":(mergeAmt/100000000),
                 "TransitionChAmt":(transitionAmt/100000000)
                 }
 
         r = requests.post(url=ChianletsOCCAmt_URL, data=data)
+
     except Exception as e:
         return 'Fail', e
     return "Success", dfChainletsAocc
