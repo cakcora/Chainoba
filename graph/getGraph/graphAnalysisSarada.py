@@ -165,7 +165,6 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
                 }
 
         r = requests.post(url=ChianletsOCCAmt_URL, data=data)
-        print(r.text)
     except Exception as e:
         return 'Fail', e
     return "Success", dfChainletsAocc
