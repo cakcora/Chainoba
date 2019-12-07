@@ -39,7 +39,7 @@ def BTCirculation(date, ntObj, dbobj):
                 count1 = count1 + outval
         NtBitcoinCircle = ((count - count1)/count)*100
         Total = count+count1
-        bitcoinCirculated = 100 -NtBitcoinCircle
+        bitcoinCirculated = 100 - NtBitcoinCircle
 
         data = {
             'Date': date,
