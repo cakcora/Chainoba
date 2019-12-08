@@ -20,14 +20,4 @@ In order to get the k-core subgraph of ethereum/bitcoin network, use the functio
 - `max_k_core_graph(G)` - Maximum k-core subgraph for a given graph 'G'. This will give you the most densely connected subgraph with the maximum k values.
 
 - `get_max_k_value(G, vertex)` - Get the maximum K value for a given vertex.
-
-> ## Functions to be implemented
-
-- `subcore(G, K, u)` - Maintains the K values of vertices when
-a single edge is inserted or removed. _this function will be used for comparative results_
-
-- `insert_edge` - Maintains the K values of vertices when
-a single edge is inserted or removed. _this function will be used for comparative results_
-
-- `remove_edge` - Maintains the K values of vertices when
-a single edge is inserted or removed. _this function will be used for comparative results_
+rted or removed. _this function will be used for comparative results_
