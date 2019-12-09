@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, LargeBinary, BigInte
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from .config import cfg as CONFIG
+from foundations.EthereumAPI.models.config import cfg as CONFIG
 
 Base = declarative_base()
 

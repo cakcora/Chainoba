@@ -40,23 +40,7 @@ def pump_dump(f_path, volume_thresh, price_thresh, window_size, candle_size):
 
 # Ponzi Scheme - Ethereum - Karan
 # Extracting Account Features from the existing Smart Contracts
-def get_account_features():
-    return None
-
-
-# Ponzi Scheme - Ethereum - Karan
-# Extracting Code Features from Transaction Data
-def get_code_features():
-    return None
-
-
-# Ponzi Scheme - Ethereum - Karan
-# Build the classification model using Random Forest
-def classify_contract_as_ponzi():
-    return None
-
-
-# Ponzi Scheme - Ethereum - Karan
-# Apply the model on all Smart Contracts in Ethereum
-def ponzi_scheme_detection():
-    return None
+from anomaly.karan_ponzi.graph_comparison_ponzi import graph
+def implement_random_forest_ponzi():
+    '''graph_comparison() gives the graph analysis of the features of the schemes. random_forest_ponzi_evaluation() is called, which in turn is calling get_account_data(). get_account_data() gets the data from Etherscan.io'''
+    return graph.graph_comparison()
