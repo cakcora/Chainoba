@@ -10,6 +10,7 @@ from graph.getGraph.dataExtraction import Extract_MainGraph, Extract_AddressGrap
 
 from graph.getGraph.dataProcessing import EdgeListCreation, VertexListCreation
 import pandas as pd
+
 BLOCK_URL = "http://159.203.28.234:5000/bitcoin/blocks"
 TRANSBLOCK_URL = "http://159.203.28.234:5000/bitcoin/blocks/transactions"
 TRANSACTION_URL = "http://159.203.28.234:5000/bitcoin/transactions"
@@ -107,8 +108,8 @@ def getGraph(dd=9, mm=1, yy=2009, dOffset=1, graphType='COMPOSITE'):
                     bCount = counter
                 else:
                     return 'Fail', transacId
-
             bCount = 0
+
             """Get transactions' details by transaction id (transaction_ids maximum size 10)"""
             while bCount < len(transId):
                 if (len(transId) - bCount) > TRANSACTION_SIZE:
@@ -123,6 +124,7 @@ def getGraph(dd=9, mm=1, yy=2009, dOffset=1, graphType='COMPOSITE'):
                         if result4 != 'Success':
                             return 'Fail', dfObj
                     elif graphType == 'ADDRESS':
+
                         result4, dfObj = Extract_AddressGraph(transacDetail, dfObj)
                         if result4 != 'Success':
                             return 'Fail', dfObj
@@ -151,3 +153,4 @@ def getGraph(dd=9, mm=1, yy=2009, dOffset=1, graphType='COMPOSITE'):
     except Exception as e:
         return 'Fail', e
     return 'Success', netxObj
+

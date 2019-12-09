@@ -1,7 +1,8 @@
 ## Influence Team
 
 ---
-## k-core decomposition
+k-core decomposition
+
 In order to get the k-core subgraph of ethereum/bitcoin network, use the function we can make use of the given implemented functions. 
 
 ### Install required packages.
@@ -13,21 +14,21 @@ In order to get the k-core subgraph of ethereum/bitcoin network, use the functio
 - **K** is used to denote the maximum k value of a vertex
 - **u** is used to denote the vertex
 
-> ## Functions
+> ## KCore
 
-- `get_k-core(G,k)` - Provide G and k, this function will return to you the k-core subgraph of G.
+>
+    
+- `def get_k_cores(k, core)` - Return the k-core of this graph
+    -   k - [int, optional] The order of the core. If not specified return the main core.
+    -   core_number : [dictionary, optional] Precomputed core numbers for the graph G.
 
-- `max_k_core_graph(G)` - Maximum k-core subgraph for a given graph 'G'. This will give you the most densely connected subgraph with the maximum k values.
+- `def get_core_number()` - This function will return a dictionary keyed by node to the core number.
 
-- `get_max_k_value(G, vertex)` - Get the maximum K value for a given vertex.
+- `def max_k_core_graph()` - Maximum k-core sub-graph for this graph
 
-> ## Functions to be implemented
+- `def get_graph()` - Get the graph associated with the object instance
 
-- `subcore(G, K, u)` - Maintains the K values of vertices when
-a single edge is inserted or removed. _this function will be used for comparative results_
+- `def generate_graph(input, output, amount)` - Provide 3 lists of inputs, outputs, and amounts **in-order**. This function will be updated to 
+automatically extract this information once the graph functionality is better implemented.
 
-- `insert_edge` - Maintains the K values of vertices when
-a single edge is inserted or removed. _this function will be used for comparative results_
-
-- `remove_edge` - Maintains the K values of vertices when
-a single edge is inserted or removed. _this function will be used for comparative results_
+---
