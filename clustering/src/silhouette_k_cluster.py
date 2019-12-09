@@ -1,3 +1,6 @@
+"""
+This file implements k means clustering on bitcoin data from 2009. For visualization, silhouette analysis is used
+"""
 from sklearn.preprocessing import FunctionTransformer, StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.pipeline import Pipeline
