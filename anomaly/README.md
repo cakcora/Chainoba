@@ -1,4 +1,4 @@
-# Anomaly
+﻿# Anomaly
 
 Please put your function signatures in the driver.py file. The actual implementation of the functions are not included 
 in this file.
@@ -33,3 +33,4 @@ We have called the original API(https://blockchain.info/) to illustrate the resu
     It is hard to test more than 3 hops as the computation time grows exponentially(find it in the table).\
     Note: generate_exchange_addresses() is preprossing method to generate exchange_addresses.txt
     
+

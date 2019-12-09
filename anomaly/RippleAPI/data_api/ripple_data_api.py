@@ -1,5 +1,11 @@
-#I modified some parts of the open-source code on the link below that were not working properly.
-# Reference: https://github.com/arsenlosenko/python-ripple-lib/blob/master/ripple_api/data_api.py
+################################# HEADER ########################################################
+## This class is a modification of what is available on the open-source project                ##
+## https://github.com/arsenlosenko/python-ripple-lib/blob/master/ripple_api/data_api.py        ##
+## The RippleDataAPIClient class implements the connection to the Ripple Data API and          ##
+## implements calling methods to all methods available in the API.                             ##
+## The original code had some problems on passing parameters to the API, so in this version    ##
+## I corrected this bug.                                                                       ##
+#################################################################################################
 
 from urllib.parse import urljoin
 from urllib.error import HTTPError, URLError
