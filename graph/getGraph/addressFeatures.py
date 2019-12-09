@@ -1,3 +1,7 @@
+""" Author: Srija Srivastava"""
+"""To compute address feature(LEVEL_OF_ACTIVITY/TOTAL_BTC_RECEIVED/TOTAL_BTC_SENT/CURRENT_BALANCE) and return it in 
+the form of dataframe """
+
 import pandas as pd
 from graph.getGraph.getAPIData import getGraph
 from graph.getGraph.graphanalysisSrija import CurrentBalance,BitcoinSent
