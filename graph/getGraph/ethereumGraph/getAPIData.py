@@ -1,3 +1,6 @@
+""" Author: Srija Srivastava"""
+"""To create Ethereum address graph"""
+
 import requests
 import networkx as nx
 ETHER_URL = "http://localhost:6000/ethereum/transactions"

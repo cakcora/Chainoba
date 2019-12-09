@@ -1,4 +1,6 @@
 
+from clustering.behaviour_pattern_clustering import bpc
+
 """
 This file will have all the functions related to clustering
 - clustering
@@ -87,19 +89,27 @@ def data_preprocessing():
     return ""
 
 
-
-
-
-def ward_method_clustering(G):
+def behaviour_pattern_clustering(G, k):
     """
-    Performs agglomerative hierarchical clustering  of user or transaction addresses with similar behavior patterns.
+        Performs Behavior pattern clustering (BPC) of users with similar behavior patterns based on their spending
+        patterns.
+        The algorithm is based on the paper:
+            Behavior pattern clustering in blockchain networks by Huang et. al (2017)
+            DOI 10.1007/s11042-017-4396-4
 
-    :param G: Networkx MultiDiGraph object
-    :return: dict: A dictionary of addresses where keys are the cluster labels and values are members of the same
-    cluster
-    """
-
-    if G[0] == 'Fail':
-        return None
-
-    return ward_method_clustering(G[1].nodes)
+        Parameters
+        ----------
+        :param G: Networkx MultiDiGraph object
+            A transaction network where each edge represents: {fromUserAddress, toUserAddress, amountOfTransaction}
+        :param k: int
+            The number of clusters the user wants
+        :return: (message, resultList): tuple
+            * message: string
+                "Success" - if successfully performed clustering
+                "Fail: with error in the same message string" - if unsuccessful
+            * resultList: list
+                [[0], [0, 1], [0, 1, 2, 3, 0, 1, 0, 1, 2]] - cluster labels if successful (i.e.) message == "Success"
+                None - if unsuccessful
+                The cluster labels represent the transaction behaviour pattern of each node in the transaction graph (G)
+        """
+    return bpc(G, k)
