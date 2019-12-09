@@ -8,7 +8,6 @@ CONSTANTS = {
     'ADD_DETAIL_API': 'https://blockchain.info/rawaddr/',
     'EXCHANGE_FILE_CSV': 'transaction_details_26_10_2019.csv',
     'EXCHANGE_FILE_TXT': 'exchange_addresses.txt'
-    # 'TX_DETAIL_API': 'https://blockchain.info/rawtx/',
 }
 
 
@@ -42,8 +41,7 @@ def generate_exchange_address():
         file.write(addr + "\n")
 
 
-# testing, how many exchange addresses are generated in 1000 initial suspicious addresses.
-# TODO: will eliminate addr from merging_address after all the computation is done.
+# How many exchange addresses are generated in 1000 initial suspicious addresses.
 def check_exchange_address():
     with open(CONSTANTS['MERGING_FILE'], 'r') as file:
         merging_list = file.readlines()
@@ -97,9 +95,8 @@ def fifth_labor_problem1():
     suspicious_dictionary = dict()
     start = time.time()
 
-    for line in range(100):  # len(data) is more than 20K
+    for line in range(1000):
 
-        print("executing line number:", line)
         suspicious_address = data[line].split("\t")[1].split("\n")[0]
         transaction_list = get_transaction_list(suspicious_address)  # the size is 50 in maximum
 
@@ -108,8 +105,6 @@ def fifth_labor_problem1():
             continue
 
         output_address_set = set()
-
-        # using initial suspicious addresses as inputs return all the output addresses within one transaction
         temp = get_output_address(transaction_list, suspicious_address)
 
         for items in temp:
@@ -117,14 +112,9 @@ def fifth_labor_problem1():
 
         suspicious_dictionary[suspicious_address] = output_address_set
 
-    # TEST: SHOW whole suspicious dictionary information
-    # print("--------------------------------------------")
-    # print(str(suspicious_dictionary).replace(", ", "\n"))
-
     address_set = set()
     merging_address_set = set()
 
-    # iterate suspicious_dictionary to find merging addresses in one transaction.
     for key, value in suspicious_dictionary.items():
         address_list = list(value)
         for i in range(len(address_list)):
@@ -135,19 +125,14 @@ def fifth_labor_problem1():
 
     end = time.time()
 
-    # write to merging_addresses.txt file
-    # merging_addresses_file = open(CONSTANTS['MERGING_FILE'], "a")
-    # for addr in merging_addresses_set:
-    #     merging_addresses_file.write(addr + "\n")
-    #
-    # merging_addresses_file.close()
+    merging_address_file = open(CONSTANTS['MERGING_FILE'], "a")
+    for addr in merging_address_set:
+        merging_address_file.write(addr + "\n")
 
-    # Testing 1000 lines from input require 636 secs,
-    # found 1217 merging addresses including 4 exchange addresses
+    merging_address_file.close()
+
     print("Time elapsed: ", end - start)
-    print(len(address_set))
     print("--------------------------------------------")
-    print(len(merging_address_set))
     print(merging_address_set)
 
 
@@ -158,21 +143,18 @@ def fifth_labor_problem2():
         data = file.readlines()
 
     suspicious_dictionary = dict()
-
     start = time.time()
 
-    for line in range(1000):  # len(data) is more than 20K
-        print("executing line number:", line)
+    for line in range(1000):
 
         suspicious_address = data[line].split("\t")[1].split("\n")[0]
-        transaction_list = get_transaction_list(suspicious_address)  # the size is 50 in maximum
+        transaction_list = get_transaction_list(suspicious_address)
 
         if transaction_list is None:
             line += 1
             continue
 
         output_address_set = set()
-
         hop1_address_list = list(get_output_address2(transaction_list, suspicious_address))
 
         for i in range(len(hop1_address_list)):
@@ -193,7 +175,6 @@ def fifth_labor_problem2():
     output_addresses_set = set()
     merging_addresses_set = set()
 
-    # iterate suspicious_dictionary to find merging addresses in one transaction.
     for key, value in suspicious_dictionary.items():
         address_list = list(value)
         for i in range(len(address_list)):
@@ -203,18 +184,15 @@ def fifth_labor_problem2():
                 merging_addresses_set.add(address_list[i])
 
     end = time.time()
-
-    # write to merging_addresses.txt file
     merging_addresses_file = open(CONSTANTS['MERGING_FILE'], "a")
+
     for addr in merging_addresses_set:
         merging_addresses_file.write(addr + "\n")
 
     merging_addresses_file.close()
 
     print("Time elapsed: ", end - start)
-    print(len(output_addresses_set))
     print("--------------------------------------------")
-    print(len(merging_addresses_set))
     print(merging_addresses_set)
 
 
