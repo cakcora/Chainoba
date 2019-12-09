@@ -49,5 +49,10 @@ pip install -r visuals/requirements.txt
 <br> All classes have a local main function and the output of each main function is stored in 
 visuals\show_graph\output</br>. Refer to them in case the explanation in here is not sufficient.
   
- 
-
+ * Use <b>exampleDriver</b> to visualize scatter graph and box plot <br>
+    * call <b>generate_scattered_graph(node_array, xaxis_name, yaxis_name)</b>: this function takes the coordinates of x and y,        
+    xaxis name and y axis name as function parameters.   
+    * it displays a scatter plot as output. 
+    * call <b>generate_box_plot(node_array, xaxis_name, yaxis_name)</b>:this function takes the minimum value , maximum value 
+    and median value of a box in the array along with the xaxis and yaxis names. 
+    * it displays a box plot as output. 

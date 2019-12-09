@@ -1,7 +1,13 @@
+""" Author: Srija Srivastava"""
+"""To get the Bitcoin data using the provided API  and redirecting that data to extract and process the details required 
+for graph creation. Then create Bitcoin graph(COMPOSITE/ADDRESS/TRANSACTION) """
+
+
 import requests
 import networkx as nx
 
 from graph.getGraph.dataExtraction import Extract_MainGraph, Extract_AddressGraph, Extract_TransactionGraph
+
 from graph.getGraph.dataProcessing import EdgeListCreation, VertexListCreation
 import pandas as pd
 BLOCK_URL = "http://159.203.28.234:5000/bitcoin/blocks"

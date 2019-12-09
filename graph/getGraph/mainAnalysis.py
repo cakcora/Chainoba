@@ -1,3 +1,8 @@
+""" Author: Srija Srivastava"""
+"""To call all the graph metric analysis functions on daily basis depending upon the specified start date and end 
+date """
+
+
 import pandas as pd
 from datetime import date, datetime, timedelta
 from graph.getGraph.getAPIData import getGraph

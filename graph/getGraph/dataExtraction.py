@@ -1,3 +1,7 @@
+"""Author : Saumya Omanakuttan"""
+
+""" The function defined are used to extract the data from the JSON object and create the edgelist for Composite Graph, Address graph, Transaction Graph """
+
 import json
 import math
 
