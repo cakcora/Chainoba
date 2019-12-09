@@ -1,3 +1,5 @@
+from anomaly.kainth_pump_dump import analysis_pump_dump
+
 
 # pump and dump prediction
 # get the data price for pump and dump prediction
@@ -24,34 +26,16 @@ def get_predicted_pumped_coins(threshold: float):
 
 
 # ---- Pump and Dump - Kainth ----
-# Pulls the raw data from exchanges. Returns list of fetched symbols.
-# -- EXAMPLE INPUT --
-# exchange = 'binance'
-# from_date = '2019-04-20 00:00:00'
-# number_candles = 240 - number of candles
-# candle_size = '12h' - candlesticks
-# f_path = '../data' - CSV OHLCV file path for output
-def pull_data(exchange, from_date, number_candles, candle_size, f_path):
-    return 1
-
-
-# ---- Pump and Dump - Kainth ----
-# Gets symbol name from the csv file.
-def get_symbol(f_path):
-    return "XRP-BTC"  # Example
-
-
-# ---- Pump and Dump - Kainth ----
 # Main analysis method for pump and dump detection. Returns final dataframe with number of pump and dumps.
 # -- EXAMPLE INPUT --
-# symbol_name : "XRP-BTC" - symbol name provided by the exchange.
-# f_path : '../data' - output file from previously generated.
+# f_path : 'data/lbank/lbank_AAC-ETH_[2019-11-20 00.00.00]-TO-[2019-12-07 02.00.00].csv'
 # volume_thresh : 5 (500%) - volume threshold
 # price_thresh : 1.05 (5%) -  price threshold
 # window_size : 24 - size of the window for the rolling average (in hours)
 # candle_size = '12h' - candlesticks
-def analyse_symbol(symbol_name, f_path, volume_thresh, price_thresh, window_size, candle_size):
-    return 1
+def pump_dump(f_path, volume_thresh, price_thresh, window_size, candle_size):
+    df = analysis_pump_dump.analyse_symbol(f_path, volume_thresh, price_thresh, window_size, candle_size)
+    return df
 
 
 # Ponzi Scheme - Ethereum - Karan

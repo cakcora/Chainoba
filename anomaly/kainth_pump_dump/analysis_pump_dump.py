@@ -1,3 +1,9 @@
+'''
+Analysis framework has been referred from:
+Kamps, Josh & Kleinberg, Bennett. (2018). To the moon: defining and detecting cryptocurrency pump-and-dumps.
+Crime Science. 7. 10.1186/s40163-018-0093-5.
+'''
+
 import ccxt
 import pandas as pd
 import os
@@ -53,14 +59,13 @@ def analyse_folder(folder, vol_thresh, price_thresh, window_size=24, candle_size
 
 # Main analysis method for pump and dump detection. Returns final dataframe with number of pump and dumps.
 # -- EXAMPLE INPUT --
-# symbol_name : "XRP-BTC" - symbol name provided by the exchange.
 # f_path : '../data' - output file from previously generated.
 # volume_thresh : 5 (500%) - volume threshold
 # price_thresh : 1.05 (5%) -  price threshold
 # window_size : 24 - size of the window for the rolling average (in hours)
 # candle_size = '12h' - candlesticks
 # returns final dataframe
-def analyse_symbol(f_path, volume_thresh, price_thresh, window_size=24, candle_size='1h'):
+def analyse_symbol(f_path, volume_thresh, price_thresh, window_size, candle_size):
     # -- load the data --
     exchange_name, symbol_name, df = load_csv(f_path)
 
@@ -179,7 +184,6 @@ def add_RA(df, win_size, col, name):
 
 # returns a (exchange_name ,symbol_name, dataframe) tuple
 def load_csv(f_path, suppress=True):
-
     df = pd.read_csv(f_path, index_col=0, parse_dates=["Timestamp"])
     filename = os.path.basename(f_path)
     exchange_name = filename.split("_")[0]
@@ -193,8 +197,10 @@ def load_csv(f_path, suppress=True):
 
 # Any of the data collected from pull_xchange_data.py will work if plugged into the file path,
 # the basic parameters can also be changed here
-analyse_symbol(f_path='../data/binance/binance_ADA-BNB_[2019-11-20 00.00.00]-TO-[2019-11-29 01.00.00].csv',
+'''
+analyse_symbol(f_path='data/lbank/lbank_AAC-ETH_[2019-11-20 00.00.00]-TO-[2019-12-07 02.00.00].csv',
                volume_thresh=4,
                price_thresh=1.05,
                window_size=12,
                candle_size='1h')
+'''
