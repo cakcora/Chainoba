@@ -1,5 +1,9 @@
 
-import anomaly.pump_prediction
+# pump and dump prediction
+# get the data price for pump and dump prediction
+def load_price_data():
+    return 0
+
 
 
 """
@@ -61,7 +65,42 @@ def pump_dump(f_path, volume_thresh, price_thresh, window_size, candle_size):
 
 # Ponzi Scheme - Ethereum - Karan
 # Extracting Account Features from the existing Smart Contracts
+def get_account_features():
+    return None
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Extracting Code Features from Transaction Data
+def get_code_features():
+    return None
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Build the classification model using Random Forest
+def classify_contract_as_ponzi():
+    return None
+
+
+# Ponzi Scheme - Ethereum - Karan
+# Apply the model on all Smart Contracts in Ethereum
+def ponzi_scheme_detection():
+    return None
+
+# Fifth Labor - Tanbir
+# Run the commands on UNIX System to find the loop count in the bitcoin blockchain for ransomware linkage behavior
+# cd fifth_labor
+# python3 main.py -n 1 -l True -s False -o 100
+
+
+# Fifth Labor - Tanbir
+# Run the commands on UNIX System to find the split address count in the bitcoin blockchain for ransomware linkage behavior
+# cd fifth_labor
+# python3 main.py -n 1 -l False -s True -o 100
+
+# Parameter details on fifth_labor/README.md
+
 from anomaly.karan_ponzi.graph_comparison_ponzi import graph
 def implement_random_forest_ponzi():
     '''graph_comparison() gives the graph analysis of the features of the schemes. random_forest_ponzi_evaluation() is called, which in turn is calling get_account_data(). get_account_data() gets the data from Etherscan.io'''
     return graph.graph_comparison()
+
