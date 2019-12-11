@@ -1,8 +1,44 @@
-"""Graph Analysis by Tadepalli Sarada Kiranmayee"""
+""" Aurthor: Tadepalli Sarada Kiranmayee
+
+
+Summary: Analysis on Composite Graph:
+1)Total Bitcoins received
+2)Level of activity of address nodes,
+3)Number of chainlets(merge/split/transition)
+4)Incoming amount to chainlets
+5)Number of chainlets in 20X20 matrix
+6)Amount of incoming chianlets in 20X20 matrix
+7) Number of Strongly Connected Components
+8) number of Weakly Connected Components
+
+Reference Papers are listed below:
+1. Akcora, Cuneyt Gurcan, Yulia R. Gel, and Murat Kantarcioglu. "Blockchain: A
+graph primer." arXiv preprint arXiv:1708.08749 (2017).
+2. Akcora, C. G., Dey, A. K., Gel, Y. R., & Kantarcioglu, M. (2018, June). Forecasting
+bitcoin price with graph chainlets. In Pacific-Asia Conference on Knowledge
+Discovery and Data Mining (pp. 765-776). Springer, Cham.
+3. Chen, Ting, Yuxiao Zhu, Zihao Li, Jiachi Chen, Xiaoqi Li, Xiapu Luo, Xiaodong
+Lin, and Xiaosong Zhange. "Understanding ethereum via graph analysis."
+In IEEE INFOCOM 2018-IEEE Conference on Computer Communications, pp.
+1484-1492. IEEE, 2018.
+4. Ron, Dorit, and Adi Shamir. "Quantitative analysis of the full bitcoin transaction
+graph." In International Conference on Financial Cryptography and Data
+Security, pp. 6-24. Springer, Berlin, Heidelberg, 2013."""
+
+
 import networkx as nx
 import pandas as pd
 import numpy as np
+import requests
+
 from graph.getGraph.getAPIData import getGraph
+BTC_REC_URL="http://159.203.28.234:5000/bitcoin/total_btc_received"
+LOA_URL="http://159.203.28.234:5000/bitcoin/activity_level"
+SCC_URL="http://159.203.28.234:5000/bitcoin/strongly_connected_component"
+WCC_URL="http://159.203.28.234:5000/bitcoin/weakly_connected_component"
+ChianletsOCC_URL="http://159.203.28.234:5000/bitcoin/chainlets_occurance"
+ChianletsOCCAmt_URL="http://159.203.28.234:5000/bitcoin/chainlets_occurance_amount"
+
 def TotalBTCreceived(curDate,ntObj,dfTotRec):
     """ Total the number of BTC received by the addresses in the graph on daily basis"""
     try:
@@ -36,10 +72,16 @@ def TotalBTCreceived(curDate,ntObj,dfTotRec):
                  "Number of addresses with Total BTC received [1000,10000)": e,
                  "Number of addresses with Total BTC received [10000,50000)": f,
                  "Number of addresses with Total BTC received greater than equal to 50000": g}, ignore_index=True)
-        return "success",dfTotRec
+
+        data = {"Date" : curDate,"BTCrecLT1": a,"BTCrecLT10":b,"BTCrecLT100": c,"BTCrecLT1000": d,
+                "BTCrecLT10000": e,"BTCrecLT50000":f,"BTCrecGT50000":g
+        }
+        r = requests.post(url=BTC_REC_URL, data=data)
 
     except Exception as e:
         return 'Fail', e
+    return "success", dfTotRec
+
 
 def diffChainlets(curDate,ntObj,dfChainletsOcc):
     """total number of different chainlets(Split,Merge and Transition) in a graph"""
@@ -67,9 +109,14 @@ def diffChainlets(curDate,ntObj,dfChainletsOcc):
         dfChainletsOcc = dfChainletsOcc.append({"Date":curDate, "Occurrence of split Chainlets":splitNumber,
                            "Occurrence of merge Chainlets":mergeNumber,
                            "Occurrence of transition Chainlets":transitionNumber},ignore_index=True)
-        return "Success",dfChainletsOcc
+        data = {"Date": curDate,"SplitChlt": splitNumber,"MergeChlt": mergeNumber,"TransitionChlt": transitionNumber
+                }
+        r = requests.post(url=ChianletsOCC_URL, data=data)
+
     except Exception as e:
         return 'Fail', e
+    return "Success", dfChainletsOcc
+
 def diffChainletMatrix(curDate,dbObject):
     """Occurrence matrix and Amount Matrix of 20X20 Occurrence Matrix"""
     try:
@@ -84,21 +131,23 @@ def diffChainletMatrix(curDate,dbObject):
                 amt = aind[ele]
                 if (value > 0):
                     occ[int(value)][int(out)] += 1
-                    aocc[int(value)][int(out)] += amt
+                    aocc[int(value)][int(out)] += amt/100000000
         print("Date:",curDate)
-        return occ,aocc
+
     except Exception as e:
         return 'Fail', e
+    return occ, aocc
+
 def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
     """total amount of different chainlets(Split,Merge and Transition) in a graph """
     try:
         ind = dict(ntObj.in_degree)
         aind = dict(ntObj.in_degree(weight='weight'))
         outd = dict(ntObj.out_degree)
-        splitAmt=mergeAmt=transitionAmt=0
+        splitAmt=mergeAmt=transitionAmt=0.0
         for ele, value in ind.items():
             if len(ele) == 64:
-                if(value>0):
+                if (value > 0):
                     if(value<outd[ele]):
                         splitAmt += aind[ele]
                     elif (value > outd[ele]):
@@ -108,31 +157,44 @@ def diffChainletsAmount(curDate,ntObj,dfChainletsAocc):
 
         dfChainletsAocc = dfChainletsAocc.append({"Date": curDate,"Amount of split Chainlets": format((splitAmt/100000000), '.2f'),
                                                 "Amount of merge Chainlets": format((mergeAmt/100000000), '.2f'),
-                                                "Amount of transition Chainlets": format((transitionAmt/100000000), '.2f')},ignore_index=True)
-        return "Success", dfChainletsAocc
+                                                "Amount of transition Chainlets": format((transitionAmt/100000000), '.2f')}
+                                                 ,ignore_index=True)
+        data = {"Date": curDate, "SplitChAmt": (splitAmt/100000000),
+                "MergeChAmt":(mergeAmt/100000000),
+                "TransitionChAmt":(transitionAmt/100000000)
+                }
+
+        r = requests.post(url=ChianletsOCCAmt_URL, data=data)
+
     except Exception as e:
         return 'Fail', e
+    return "Success", dfChainletsAocc
 
 def StronglyConnectedComponents(curDate,ntObj,dfSCC):
     """Number of Strongly Connected Components in the graph"""
     try:
-        count=0
-        for i in nx.strongly_connected_components(ntObj):
-            count += 1
-        dfSCC = dfSCC.append({"Date":curDate,"Number of Strongly connected components":count},ignore_index=True)
-        return "Success", dfSCC
+        l=nx.number_strongly_connected_components(ntObj)
+        dfSCC = dfSCC.append({"Date":curDate,"Number of Strongly connected components":l},ignore_index=True)
+        data = {"Date": curDate, "SCC": l }
+        r = requests.post(url=SCC_URL, data=data)
+
+
     except Exception as e:
         return 'Fail', e
+    return "Success", dfSCC
+
 def WeaklyConnectedComponents(curDate,ntObj,dfWCC):
     """Number of Weakly Connected Components in the graph"""
     try:
-        count = 0
-        for i in nx.weakly_connected_components(ntObj):
-            count += 1
-        dfWCC = dfWCC.append({"Date": curDate, "Number of Weakly connected components": count},ignore_index=True)
-        return "Success", dfWCC
+        a = nx.number_weakly_connected_components(ntObj)
+        dfWCC = dfWCC.append({"Date": curDate, "Number of Weakly connected components": a},ignore_index=True)
+        data = {"Date": curDate, "WCC": a}
+        r = requests.post(url=WCC_URL, data=data)
+
+
     except Exception as e:
         return 'Fail', e
+    return "Success", dfWCC
 
 def LevelOfActivity(curDate,ntObj,dfLOActivity):
     """Analysis of level of Activity for the all the addresses on daily basis """
@@ -172,9 +234,13 @@ def LevelOfActivity(curDate,ntObj,dfLOActivity):
                                              "Number of addresses with Level of activity [100,1000)":e,
                                              "Number of addresses with Level of activity [1000,5000)":f,
                                              "Number of addresses with Level of activity greater than equal to 5000":g},ignore_index=True)
-        return "Success", dfLOActivity
+        data={"Date": curDate,"LOALT2": a,"LOALT5": b,"LOALT10": c,"LOALT100":d,"LOALT1000":e,"LOALT5000":f,
+              "LOAGT5000":g}
+        r=requests.post(url=LOA_URL, data=data)
+
+
+
     except Exception as e:
         return 'Fail', e
-
-
+    return "Success", dfLOActivity
 

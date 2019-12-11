@@ -1,3 +1,7 @@
+""" Aurthor: Tadepalli Sarada Kiranmayee
+
+Summary:Processing of the Bitcoin Graph data  using Pandas"""
+
 import pandas as pd
 
 def VertexListCreation(datafObj, vertexlist):
