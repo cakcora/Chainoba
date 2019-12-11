@@ -1,50 +1,40 @@
-import json
-from pyvis.network import Network
-import os
+"""
+Generating Address Graph based on method proposed by Akcora, C. G. et al.
+Resource:
+    Article: Blockchain: A Graph Primer
+    Authors: Akcora, C. G., Gel, Y. R., & Kantarcioglu, M.
+    source: https://arxiv.org/abs/1708.08749
+"""
+from visuals.show_graph._show_graph import ShowGraphABC
 
-class address_graph:
 
+class ShowAddressGraph(ShowGraphABC):
+    """
+    This class generates an Address Graph.
+    """
     def __init__(self):
-        self.graph = Network(height="750px", width="100%", directed=True)
-        with open('layouts\\address_graph_layout.json') as f:
-            self.composite_options = json.load(f)
+        """
+        Initializing the visualizations based on superclass constructor.
+        Creating a canvas and initializing overall layout of the visualization.
+        """
+        super().__init__(ShowGraphABC._UNDIRECTED, "address")
 
-    def show_graph(self):
-        dirOutput = "output"
-        if not os.path.exists(dirOutput):
-            os.makedirs("output")
-        self.graph.show("output\\address_gragh.html")
-
-    def add_address_node(self, input, output, amount):
-
-        input_edge = zip(input, output, amount)
+    def add_node(self, inputs, outputs, amounts):
+        """
+        Adds information of an address graph.
+        :param inputs: Input addresses that send bitcoin. Should be in form of a list data type.
+        :param outputs: Output addresses that send bitcoin. Should be in form of a list data type.
+        :param amounts: Amount each input address sends to its corresponding output address in the list of input
+        and output. Should be in form of a list.
+        :return:
+        """
+        # Creating the corresponding tuples: (input[i],output[i],amount[i])
+        input_edge = zip(inputs, outputs, amounts)
         for i in input_edge:
-            input = i[0]
-            output = i[1]
+            inputs = i[0]
+            outputs = i[1]
             weight = i[2]
-            self.graph.add_node(input)
-            self.graph.add_node(output)
-            self.graph.add_edge(input, output, value=weight, title = weight)
-        self.graph.options = self.composite_options
-
-'''
-def main():
-    graph2 = address_graph()
-
-    #the fist list, represents input addresses the second is output addresses and the last list represents the corresponding bitcoin amount 
-    #transferred. address a1 has sent 1 bitcoin to a1. a2 has sent 1 bitcoin to a1 
-    
-    graph2.add_address_node(["a1", "a2", "a3", "a4"], ["a1", "a1", "a5", "a3"], [1, 1, 1, 2])
-    graph2.add_address_node(["a4", "a5", "a3", "a6"], ["a4", "a1", "a5", "a3"], [1, 3, 1, 2])
-    graph2.add_address_node(["a1"], ["a3"], [1, 1, 1, 2])
-    graph2.add_address_node(["a9"], ["a19"], [1, 1, 1, 2])
-    graph2.add_address_node(["a1", "a5", "a3", "a6"], ["a2", "a6", "a4", "a7"], [1, 3, 1, 2])
-    input = ["a7", "a8", "a9", "a10"]
-    output = ["a11", "a12", "a13", "a14"]
-    amount = [1, 3, 1, 2]
-    graph2.add_address_node(input, output, amount)
-    graph2.show_graph()
-
-if __name__== "__main__":
-    main()
-    '''
+            self.graph.add_node(inputs)
+            self.graph.add_node(outputs)
+            self.graph.add_edge(inputs, outputs, value=weight, title=weight)
+        self.graph.options = self.options

@@ -1,7 +1,7 @@
 {
   "nodes": {
     "size": 20,
-     "color" : {
+    "color" : {
       "color" : "rgb(116,204,244)",
       "highlight": "#F9A602",
       "hover": "#F9A602",
@@ -14,9 +14,8 @@
       "to": {
         "enable":true,
         "type" : "vee",
-        "scaleFactor": 1
+        "scaleFactor": 0.2
       }
-
     },
     "color" : {
       "color" : "rgb(116,204,244)",
@@ -30,8 +29,7 @@
   },
   "layout": {
     "hierarchical": {
-      "enabled": true,
-      "direction": "LR",
+      "enabled": false,
       "sortMethod": "directed"
     }
   },
