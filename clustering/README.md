@@ -1,4 +1,13 @@
 # Clustering
+
+## Behavior Pattern Clustering (BPC)
+This is a similarity measure in blockchain networks that clusters behavior patterns of users into different categories 
+based on behaviour templates. In this implementation, we cluster users' spending patterns on the Blockchain to identify
+*k* unique spending behaviours throughout a given network.
+
+The interface:
+```behaviour_pattern_clustering(G, k)```  in ```driver.py``` explains how to use this module. 
+
 ## K-means clustering with silhouette analysis
 
 K-means algorithm identifies k number of centroids, 

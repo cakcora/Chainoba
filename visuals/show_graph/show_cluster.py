@@ -1,79 +1,81 @@
-import json
-from pyvis.network import Network
-import os
-import colorsys
+"""
+Generating an Address Graph and grouping the address nodes which belong to the same class.
+Resource:
+    Article: Blockchain: A Graph Primer
+    Authors: Akcora, C. G., Gel, Y. R., & Kantarcioglu, M.
+    source: https://arxiv.org/abs/1708.08749
+"""
+from visuals.show_graph._show_graph import ShowGraphABC
 import random
 
-class address_graph:
 
+class ShowCluster(ShowGraphABC):
+    """
+    This class generates an Address Graphs and groups the addresses.
+    """
     def __init__(self):
-        self.graph = Network(height="750px", width="100%", directed=True)
-        with open('layouts\\cluster_layout.json') as f:
-            self.composite_options = json.load(f)
+        """
+        Initializing the visualizations based on superclass constructor.
+        Creating a canvas and initializing overall layout of the visualization.
+        """
+        super().__init__(ShowGraphABC._UNDIRECTED, "cluster")
 
-    def show_graph(self):
-        dirOutput = "output"
-        if not os.path.exists(dirOutput):
-            os.makedirs("output")
-        self.graph.show("output\\cluster_gragh.html")
-
-    def add_address_graph(self, input, output, amount):
-
-        input_edge = zip(input, output, amount)
+    def add_node(self, inputs, outputs, amounts):
+        """
+        Adds information of an address graph
+        :param inputs: Input addresses that send bitcoin
+        :param outputs: Output addresses that receive bitcoin.
+        :param amounts: Amount of bitcoin each input address sends to corresponding
+         output address in the input and output list.
+        :return:
+        """
+        # creating the corresponding tuples: (input[i],output[i],amount[i])
+        input_edge = zip(inputs, outputs, amounts)
         for i in input_edge:
-            input = i[0]
-            output = i[1]
+            inputs = i[0]
+            outputs = i[1]
             weight = i[2]
-            self.graph.add_node(input)
-            self.graph.add_node(output)
-            self.graph.add_edge(input, output, value=weight,title = weight)
-        self.graph.options = self.composite_options
-
-    def colors(self,n):
-        ret = []
-        r = int(random.random() * 256)
-        g = int(random.random() * 256)
-        b = int(random.random() * 256)
-        step = 256 / n
-        for i in range(n):
-            r += step
-            g += step
-            b += step
-            r = int(r) % 256
-            g = int(g) % 256
-            b = int(b) % 256
-            ret.append((r, g, b))
-        return ret
+            self.graph.add_node(inputs)
+            self.graph.add_node(outputs)
+            self.graph.add_edge(inputs, outputs, value=weight, title=weight)
+        self.graph.options = self.options
 
     def cluster_addresses(self, address, cluster):
-
-        color_num = max(cluster)
-        print(color_num)
-        colors = self.colors(4)
-
+        """
+        Gets addresses and clusters which each address belongs to it.
+        :param address: Addresses in the address graph.
+        :param cluster: The cluster that each corresponding address belongs to it.
+        :return:
+        """
+        # The number of colors that needs to be generated
+        num_clusters = max(cluster)
+        colors = rand_colors(num_clusters)
+        # Search in all nodes and assign a color to each node in each cluster
         for i in self.graph.nodes:
             try:
-                idx = address.index(i["id"])
                 value = cluster[address.index(i["id"])]
-                print(i, "      id           ", value)
-                print(str(colors[value - 1]))
                 i["color"] = "rgb" + str(colors[value - 1])
             except Exception:
                 pass
-'''
-def main():
 
-    graph2 = address_graph()
-    input =["a1", "a2", "a3", "a4","a21", "a22", "a23", "a24","a11", "a12", "a13", "a14"]
-    cluster_input = [1,2,3,1,2,3,1,2,3,1,2,3]
-    output = [ "a220", "a23", "a240", "a110", "a120", "a13", "a140", "a1", "a20", "a30", "a4", "a210"]
-    amount = [1,2,3,1,2,3,1,3,1,2,1]
-    graph2.add_address_graph(input,output,amount)
-    graph2.cluster_addresses(["a1","a2","a3","a4","a13"],[2,2,1,1,1])
-    graph2.cluster_addresses(input,cluster_input)
 
-    graph2.show_graph()
-
-if __name__== "__main__":
-    main()
-'''
+def rand_colors(n):
+    """
+    Generating random colors.
+    :param n: Number of colors that needs to be generated.
+    :return: A list of size n with n different colors generated randomly.
+    """
+    ret = []
+    r = int(random.random() * 256)
+    g = int(random.random() * 256)
+    b = int(random.random() * 256)
+    step = 256 / n
+    for i in range(n):
+        r += step
+        g += step
+        b += step
+        r = int(r) % 256
+        g = int(g) % 256
+        b = int(b) % 256
+        ret.append((r, g, b))
+    return ret

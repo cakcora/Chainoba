@@ -1,0 +1,51 @@
+{
+  "nodes": {
+    "size": 20,
+    "color" : {
+      "color" : "rgb(116,204,244)",
+      "highlight": "#F9A602",
+      "hover": "#F9A602",
+      "inherit": "from",
+      "opacity" :1.0
+    }
+  },
+  "edges": {
+    "arrows": {
+      "to": {
+        "enable":true,
+        "type" : "vee",
+        "scaleFactor": 0.2
+      }
+    },
+    "color" : {
+      "color" : "rgb(116,204,244)",
+      "highlight": "#F9A602",
+      "hover": "#F9A602",
+      "inherit": "from",
+      "opacity" :1.0
+    },
+    "smooth": false,
+    "arrowStrikethrough" : false
+  },
+  "layout": {
+    "hierarchical": {
+      "enabled": true,
+      "direction": "LR",
+      "sortMethod": "directed"
+    }
+  },
+  "interaction": {
+    "navigationButtons": true
+  },
+  "physics": {
+    "hierarchicalRepulsion": {
+      "centralGravity": 0,
+      "springLength": 75,
+      "nodeDistance": 145,
+      "damping": 0.2
+    },
+    "maxVelocity": 28,
+    "minVelocity": 0.75,
+    "solver": "hierarchicalRepulsion"
+  }
+}

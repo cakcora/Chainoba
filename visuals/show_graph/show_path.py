@@ -1,48 +1,38 @@
-import json
-from pyvis.network import Network
-import os
+"""
+Generating Path Graph based on method proposed by Akcora, C. G. et al.
+Resource:
+    Article: Blockchain: A Graph Primer
+    Authors: Akcora, C. G., Gel, Y. R., & Kantarcioglu, M.
+source: https://arxiv.org/abs/1708.08749
+"""
+from visuals.show_graph._show_graph import ShowGraphABC
 
-class show_path:
 
+class ShowPath(ShowGraphABC):
+    """
+    This class generates a Path Graph.
+    """
     def __init__(self):
-        self.graph = Network(height="750px", width="100%", directed=True)
+        """
+        Initializing the visualizations based on superclass constructor.
+        Creating a canvas and initializing overall layout of the visualization.
+        """
+        super().__init__(ShowGraphABC._UNDIRECTED, "path")
 
-        with open('layouts\path_layout.json') as f:
-            self.composite_options = json.load(f)
-
-
-    def show_graph(self):
-        dirOutput = "output"
-        if not os.path.exists(dirOutput):
-            os.makedirs("output")
-        self.graph.show("output\path_graph.html")
-
-    def add_path(self, input, amount):
-
-        input_edge = zip(input[0:len(input)-1], input[1:len(input)],amount)
-
+    def add_path(self, addresses, amount):
+        """
+        Call this function to pass address nodes of a path.
+        :param addresses: Address nodes that form a path. Should be in form of a list.
+        :param amount: Amount of bitcoin that one address has sent to the second address in addresses list. Should be in form of a list.
+        :return:
+        """
+        # creating the corresponding tuples: (inputs[i], amount[i])
+        input_edge = zip(addresses[0:len(addresses) - 1], addresses[1:len(addresses)], amount)
         for i in input_edge:
-            input = i[0]
-            output = i[1]
-            weight = i[2]
-            self.graph.add_node(input)
-            self.graph.add_node(output)
-            self.graph.add_edge(input, output, value = weight, title = weight)
-
-        self.graph.options = self.composite_options
-
-
-    def show(self):
-        self.show_graph()
-
-'''
-def main():
-    graph2 = show_path()
-    path = ["a2","a3","a4","a5","a6","a7", "a8","a9","a10"]
-    amount = [19,18,18,18,17,16,16,19,20]
-    graph2.add_path(path, amount)
-    graph2.show_graph()
-
-if __name__== "__main__":
-    main()
-'''
+            addresses = i[0]
+            outputs = i[1]
+            weights = i[2]
+            self.graph.add_node(addresses)
+            self.graph.add_node(outputs)
+            self.graph.add_edge(addresses, outputs, value=weights, title=weights)
+        self.graph.options = self.options

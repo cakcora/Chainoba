@@ -1,5 +1,5 @@
-# Graph
-To get any graph, import 
+# Bitcoin Graph
+To get Bitcoin graph, import 
 <b>getGraph(dd, mm, yy, dOffset,graphType)</b> function from getAPIData. 
 <br>
 
@@ -86,6 +86,12 @@ Note : Different features are :<br>
 * The Feature :CURRENT_BALANCE
 
 ##Note: The data retrieved will be on daily basis
+
+# Ethereum Graph
+To get Ethereum graph, call 
+<b>getEthereumgraph(24, 4, 2018, 1, "zrx")</b> function from graph.getGraph.ethereumGraph.getAPIData import getEthereumgraph, 
+where the function signature is getEthereumgraph(day,month,year,dOffset,tokename)
+<br>
 
 
 <h6>References</h6>

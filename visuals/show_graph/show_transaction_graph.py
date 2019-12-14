@@ -1,45 +1,43 @@
-import json
-from pyvis.network import Network
-import os
+"""
+Generating Transaction Graph based on method proposed by Akcora, C. G. et al.
+Resource:
+    Article: Blockchain: A Graph Primer
+    Authors: Akcora, C. G., Gel, Y. R., & Kantarcioglu, M.
+    source: https://arxiv.org/abs/1708.08749
+"""
+from visuals.show_graph._show_graph import ShowGraphABC
 
-class transaction_graph:
 
+class ShowTransactionGraph(ShowGraphABC):
+    """
+    This class generates a Transaction Graph.
+    """
     def __init__(self):
-        self.graph = Network(height="750px", width="100%", directed=True)
-        with open('layouts\\transaction_graph_layout.json') as f:
-            self.options = json.load(f)
+        """
+        Initializing the visualizations based on superclass constructor.
+        Creating a canvas and initializing overall layout of the visualization.
+        """
+        super().__init__(ShowGraphABC._DIRECTED, "transaction")
 
-    def show_graph(self):
-        dirOutput = "output"
-        if not os.path.exists(dirOutput):
-            os.makedirs("output")
-        self.graph.show("output\\transaction_gragh.html")
-
-    def add_transaction(self,input, output, in_time, out_time, amount):
-
-        input_edge = zip(input, in_time, output, out_time, amount)
+    def add_node(self, inputs, outputs, in_time, out_time, amounts):
+        """
+        Adds information of a transaction graph.
+        :param inputs: Input transaction addresses that send bitcoin. Should be in form of a list data type.
+        :param outputs: Output transaction addresses that receive bitcoin. Should be in form of a list data type.
+        :param in_time: Time in which input transactions had happened. Should be in form of a list data type.
+        :param out_time: Time in which output transactions had happened. Should be in form of a list data type.
+        :param amounts: Amount of bitcoin which each input transaction had sent to an output transaction.
+        :return:
+        """
+        # creating the corresponding tuples: (inputs[i], in_time[i], outputs[i], out_time[i], amounts[i])
+        input_edge = zip(inputs, in_time, outputs, out_time, amounts)
         for i in input_edge:
-            input = i[0]
-            label = i[0]
+            input_node = i[0]
             time_in = i[1]
-            output = i[2]
+            output_node = i[2]
             time_out = i[3]
-            weight = i[4]
-            self.graph.add_node(input, level=time_in, shape="square")
-            self.graph.add_node(output, level=time_out, shape="square")
-            self.graph.add_edge(input, output, value=weight, title = weight)
-
+            weights = i[4]
+            self.graph.add_node(input_node, level=time_in, shape="square")
+            self.graph.add_node(output_node, level=time_out, shape="square")
+            self.graph.add_edge(input_node, output_node, value=weights, title=weights)
         self.graph.options = self.options
-
-'''
-def main():
-
-    graph2 = transaction_graph()
-
-    graph2.add_transaction(["T1","T2","T4","T3"],["T3","T6","T2","T2"], [1,3,2,2], [2,5,4,4], [2,2,5,2])
-    graph2.add_transaction(["T5", "T7", "T9", "T10"], ["T6", "T6", "T11", "T12"], [1, 1, 2, 2], [2, 2, 4, 4], [3, 2, 5, 2])
-    graph2.show_graph()
-
-if __name__== "__main__":
-    main()
-'''
