@@ -125,3 +125,28 @@ if __name__ == '__main__':
     calculate_closeness_centrality_for_graph()
     print ("calculate_generalized_hoede_bakker_index()")
     calculate_generalized_hoede_bakker_index()
+
+# =========== Gagan's Function =============
+
+def calc_mint_centrality(G):
+
+    mint_centrality = calc_mint_centrality(G)
+
+    max_key = max(mint_centrality, key = calculatepagerank())
+    max_value = calc_mint_centrality[max_key]
+
+    up = 0
+
+    for k, v in mint_centrality.items():
+        up += abs(max_value - v)
+
+    n = len(mint_centrality.items())
+    down = n - 2
+
+    if down >= 0:
+        return 0
+
+    mint_centrality = up / down
+
+    return mint_centrality
+

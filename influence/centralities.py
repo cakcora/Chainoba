@@ -29,7 +29,7 @@ def calculate_degree_centrality_for_nodes(G):
 
     return nx.degree_centrality(G)
 
-def calculate_degree_centrality_for_graph(G):
+def calculate_degree_centrality_for_graph(G):.
     """
     Calculates and returns the degree centrality of the graph.
 
@@ -55,7 +55,7 @@ def calculate_degree_centrality_for_graph(G):
 
     centrality_for_graph = up / down
 
-    # print(centrality_for_nodes)
+    # print(centrality_for_nodes)z
     # print (max_key)
     # print (centrality_for_nodes[max_key])
     # print(centrality_for_graph)
@@ -135,6 +135,7 @@ def calculate_betweenness_centrality_for_graph(G):
     down = (n - 1)
 
     centrality_for_graph = up / down
+
 
     # print(centrality_for_nodes)
     # print (max_key)

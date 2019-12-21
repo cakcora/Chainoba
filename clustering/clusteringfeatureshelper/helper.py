@@ -66,7 +66,7 @@ def calculatecommunicabilitycentrality(network):
         return 0
  
     if len(n.values()) == 0: 
-        return 0  
+        return 0  Q
     else:
         return round(sum(n.values())/len(n.values()), 7)
 
