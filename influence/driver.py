@@ -126,7 +126,7 @@ if __name__ == '__main__':
     print ("calculate_generalized_hoede_bakker_index()")
     calculate_generalized_hoede_bakker_index()
 
-# =========== Gagan's Functions =============
+# =========== Gagan's Function =============
 
 def calc_mint_centrality(G):
 
