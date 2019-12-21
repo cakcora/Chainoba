@@ -132,7 +132,8 @@ fewBlocks/
 foundation/fewBlocks/
 
 # dependencies
-foundations/dataparser/dependencies/
+foundations/bitcoin_api/dataparser/dependencies/
 
 # db configuration
-foundations/api/models/config.py
+foundations/bitcoin_api/models/config.py
+foundations/ethereum_api/models/config.py
